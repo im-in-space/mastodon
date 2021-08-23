@@ -21,7 +21,7 @@
 #
 
 class CustomEmoji < ApplicationRecord
-  LOCAL_LIMIT = (ENV['MAX_EMOJI_SIZE'] || 50.kilobytes).to_i
+  LOCAL_LIMIT = (ENV['MAX_EMOJI_SIZE'] || 2.megabytes).to_i
   LIMIT       = [LOCAL_LIMIT, (ENV['MAX_REMOTE_EMOJI_SIZE'] || 200.kilobytes).to_i].max
 
   SHORTCODE_RE_FRAGMENT = '[a-zA-Z0-9_]{2,}'
@@ -30,7 +30,7 @@ class CustomEmoji < ApplicationRecord
     :(#{SHORTCODE_RE_FRAGMENT}):
     (?=[^[:alnum:]:]|$)/x
 
-  IMAGE_MIME_TYPES = %w(image/png image/gif).freeze
+  IMAGE_MIME_TYPES = %w(image/png image/gif image/webp image/jpeg image/svg+xml).freeze
 
   belongs_to :category, class_name: 'CustomEmojiCategory', optional: true
   has_one :local_counterpart, -> { where(domain: nil) }, class_name: 'CustomEmoji', primary_key: :shortcode, foreign_key: :shortcode

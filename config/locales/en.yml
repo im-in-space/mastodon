@@ -354,7 +354,7 @@ en:
       enable: Enable
       enabled: Enabled
       enabled_msg: Successfully enabled that emoji
-      image_hint: PNG up to 50KB
+      image_hint: PNG, GIF, WebP, SVG or JPEG up to 2MB
       list: List
       listed: Listed
       new:
