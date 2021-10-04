@@ -21,8 +21,10 @@
 #
 
 class CustomEmoji < ApplicationRecord
+  include Attachmentable
+
   LOCAL_LIMIT = (ENV['MAX_EMOJI_SIZE'] || 2.megabytes).to_i
-  LIMIT       = [LOCAL_LIMIT, (ENV['MAX_REMOTE_EMOJI_SIZE'] || 200.kilobytes).to_i].max
+  LIMIT       = [LOCAL_LIMIT, (ENV['MAX_REMOTE_EMOJI_SIZE'] || 2.megabytes).to_i].max
 
   SHORTCODE_RE_FRAGMENT = '[a-zA-Z0-9_]{2,}'
 
@@ -35,7 +37,7 @@ class CustomEmoji < ApplicationRecord
   belongs_to :category, class_name: 'CustomEmojiCategory', optional: true
   has_one :local_counterpart, -> { where(domain: nil) }, class_name: 'CustomEmoji', primary_key: :shortcode, foreign_key: :shortcode
 
-  has_attached_file :image, styles: { static: { format: 'png', convert_options: '-coalesce -strip' } }
+  has_attached_file :image, styles: { static: { format: 'png', convert_options: '-coalesce -strip' } }, validate_media_type: false
 
   before_validation :downcase_domain
 
@@ -51,8 +53,6 @@ class CustomEmoji < ApplicationRecord
   scope :listed, -> { local.where(disabled: false).where(visible_in_picker: true) }
 
   remotable_attachment :image, LIMIT
-
-  include Attachmentable
 
   after_commit :remove_entity_cache
 
