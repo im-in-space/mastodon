@@ -847,6 +847,7 @@ a.name-tag,
     padding: 0 5px;
     margin-bottom: 10px;
     flex: 1 0 50%;
+    max-width: 100%;
   }
 
   .account__header__fields,
@@ -936,6 +937,13 @@ a.name-tag,
 }
 
 .retention {
+  overflow: auto;
+
+  > h4 {
+    position: sticky;
+    left: 0;
+  }
+
   &__table {
     &__number {
       color: $secondary-text-color;
@@ -1034,6 +1042,7 @@ a.name-tag,
   &__graph {
     position: absolute;
     bottom: 0;
+    width: 100%;
 
     svg {
       display: block;
