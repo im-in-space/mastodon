@@ -2,9 +2,9 @@ name: Check i18n
 
 on:
   push:
-    branches: [ main ]
+    branches: [ im-in.space ]
   pull_request:
-    branches: [ main ]
+    branches: [ im-in.space ]
 
 env:
   RAILS_ENV: test
