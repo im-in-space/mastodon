@@ -216,7 +216,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :instances, only: [:index, :show], constraints: { id: /[^\/]+/ } do
+    resources :instances, only: [:index, :show, :destroy], constraints: { id: /[^\/]+/ } do
       member do
         post :clear_delivery_errors
         post :restart_delivery
@@ -251,6 +251,11 @@ Rails.application.routes.draw do
         post :memorialize
         post :approve
         post :reject
+        post :unblock_email
+      end
+
+      collection do
+        post :batch
       end
 
       resource :change_email, only: [:show, :update]
@@ -270,14 +275,6 @@ Rails.application.routes.draw do
           post :promote
           post :demote
         end
-      end
-    end
-
-    resources :pending_accounts, only: [:index] do
-      collection do
-        post :approve_all
-        post :reject_all
-        post :batch
       end
     end
 
