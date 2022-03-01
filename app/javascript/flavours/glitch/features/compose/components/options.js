@@ -265,7 +265,7 @@ class ComposerOptions extends ImmutablePureComponent {
             {
               icon: 'file-image-o',
               name: 'gif',
-              text: <FormattedMessage {...messages.gif} />,
+              text: formatMessage(messages.gif),
             }
           ]}
           onChange={this.handleClickAttach}
