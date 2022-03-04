@@ -125,4 +125,6 @@ Rails.application.configure do
   }
 
   config.x.otp_secret = ENV.fetch('OTP_SECRET')
+
+  config.hosts << ENV['ONION_HOST'] if ENV['ONION_HOST'].present?
 end
