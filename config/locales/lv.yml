@@ -377,6 +377,7 @@ lv:
       enable: Iespējot
       enabled: Iespējots
       enabled_msg: Šī emocijzīme ir veiksmīgi iespējota
+      image_hint: PNG vai GIF līdz %{size}
       list: Saraksts
       listed: Uzrakstītas
       new:
@@ -1457,7 +1458,7 @@ lv:
       one: 'saturēja neatļautu tēmturi: %{tags}'
       other: 'saturēja neatļautus tēmturus: %{tags}'
       zero: 'neatļauti tēmturi: %{tags}'
-    edited_at: Rediģēts %{date}
+    edited_at_html: Rediģēts %{date}
     errors:
       in_reply_not_found: Šķiet, ka ziņa, uz kuru tu mēģini atbildēt, nepastāv.
     open_in_web: Atvērt webā
