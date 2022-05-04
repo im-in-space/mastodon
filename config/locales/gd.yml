@@ -17,7 +17,7 @@ gd:
     contact_missing: Cha deach a shuidheachadh
     contact_unavailable: Chan eil seo iomchaidh
     continue_to_web: Lean air adhart dhan aplacaid-lìn
-    discover_users: Lorg cleachdaichean
+    discover_users: Rùraich cleachdaichean
     documentation: Docamaideadh
     federation_hint_html: Le cunntas air %{instance}, ’s urrainn dhut leantainn air daoine air frithealaiche Mastodon sam bith is a bharrachd.
     get_apps: Feuch aplacaid mobile
@@ -40,7 +40,7 @@ gd:
       other: post
       two: phost
     status_count_before: A dh’fhoillsich
-    tagline: Lean air caraidean ’s lorg feadhainn ùra
+    tagline: Lean air caraidean ’s rùraich feadhainn ùra
     terms: Teirmichean na seirbheise
     unavailable_content: Frithealaichean fo mhaorsainneachd
     unavailable_content_description:
@@ -541,6 +541,7 @@ gd:
       delivery:
         all: Na h-uile
         clear: Falamhaich na mearachdan lìbhrigidh
+        failing: A’ fàilligeadh
         restart: Ath-thòisich air an lìbhrigeadh
         stop: Cuir stad air an lìbhrigeadh
         unavailable: Chan eil e ri làimh
@@ -597,7 +598,7 @@ gd:
     relays:
       add_new: Cuir ath-sheachadan ùr ris
       delete: Sguab às
-      description_html: "’S e frithealaiche eadar-mheadhanach a th’ ann an <strong>ath-sheachadan co-nasgaidh</strong> a nì iomlaid air grunnan mòra de phostaichean poblach eadar na frithealaichean a dh’fho-sgrìobhas ’s a dh’fhoillsicheas dha. <strong>’S urrainn dha cuideachadh a thoirt do dh’fhrithealaichean beaga is meadhanach mòr ach an lorg iad susbaint sa cho-shaoghal</strong> agus às an aonais, bhiodh aig cleachdaichean ionadail leantainn air daoine eile air frithealaichean cèine a làimh."
+      description_html: "’S e frithealaiche eadar-mheadhanach a th’ ann an <strong>ath-sheachadan co-nasgaidh</strong> a nì iomlaid air grunnan mòra de phostaichean poblach eadar na frithealaichean a dh’fho-sgrìobhas ’s a dh’fhoillsicheas dha. <strong>’S urrainn dha cuideachadh a thoirt do dh’fhrithealaichean beaga is meadhanach mòr ach an rùraich iad susbaint sa cho-shaoghal</strong> agus às an aonais, bhiodh aig cleachdaichean ionadail leantainn air daoine eile air frithealaichean cèine a làimh."
       disable: Cuir à comas
       disabled: Chaidh a chur à comas
       enable: Cuir an comas
@@ -625,6 +626,7 @@ gd:
       action_taken_by: Chaidh an gnìomh a ghabhail le
       actions:
         delete_description_html: Thèid na postaichean le gearan orra a sguabadh às agus rabhadh a chlàradh gus do chuideachadh ach am bi thu nas teinne le droch-ghiùlan on aon chunntas sam àm ri teachd.
+        mark_as_sensitive_description_html: Thèid comharra an fhrionasachd a chur ris na meadhanan sna postaichean le gearan orra agus rabhadh a chlàradh gus do chuideachadh ach am bi thu nas teinne le droch-ghiùlan on aon chunntas sam àm ri teachd.
         other_description_html: Seall barrachd roghainnean airson giùlan a’ chunntais a stiùireadh agus an conaltradh leis a’ chunntas a chaidh gearan a dhèanamh mu dhèidhinn a ghnàthachadh.
         resolve_description_html: Cha dèid gnìomh sam bith a ghabhail an aghaidh a’ chunntais le gearan air agus thèid an gearan a dhùnadh gun rabhadh a chlàradh.
         silence_description_html: Chan fhaic ach an fheadhainn a tha a’ leantainn oirre mu thràth no a lorgas a làimh i a’ phròifil seo agus cuingichidh seo uiread nan daoine a ruigeas i gu mòr. Gabhaidh seo a neo-dhèanamh uair sam bith.
@@ -712,12 +714,12 @@ gd:
         title: Dealbh suaichnein
       peers_api_enabled:
         desc_html: Ainmean àrainne air an do thachair am frithealaiche seo sa cho-shaoghal
-        title: Foillsich liosta nam frithealaichean a chaidh a lorg san API
+        title: Foillsich liosta nam frithealaichean a chaidh a rùrachadh san API
       preview_sensitive_media:
         desc_html: Ro-sheallaidh ceanglaichean dealbhag fhiù ’s ma chaidh comharradh gu bheil am meadhan frionasach
         title: Seall meadhanan frionasach ann an ro-sheallaidhean OpenGraph
       profile_directory:
-        desc_html: Suidhich gun gabh cleachdaichean a lorg
+        desc_html: Suidhich gun gabh cleachdaichean a rùrachadh
         title: Cuir eòlaire nam pròifil an comas
       registrations:
         closed_message:
@@ -843,7 +845,7 @@ gd:
         description_html: Seo na postaichean air a bheil am frithealaiche agad eòlach ’s a tha ’gan co-roinneadh is ’nan annsachd gu tric aig an àm seo. Faodaidh iad a bhith ’nan cuideachadh dhan luchd-cleachdaidh ùr no a thill ach an lorg iad daoine airson leantainn orra. Cha dèid postaichean a shealltainn gu poblach gus an gabh thu ris an ùghdar agus gus an aontaich an t-ùghdar gun dèid an cunntas aca a mholadh do dhaoine eile. ’S urrainn dhut postaichean àraidh a cheadachadh no a dhiùltadh cuideachd.
         disallow: Na ceadaich am post
         disallow_account: Na ceadaich an t-ùghdar
-        not_discoverable: Cha do chuir an t-ùghdar roimhe gun gabh a lorg
+        not_discoverable: Cha do chuir an t-ùghdar roimhe gun gabh a rùrachadh
         shared_by:
           few: Chaidh a cho-roinneadh no ’na annsachd %{friendly_count} tursan
           one: Chaidh a cho-roinneadh no ’na annsachd %{friendly_count} turas
@@ -928,7 +930,7 @@ gd:
     advanced_web_interface_hint: 'Ma tha thu airson leud gu lèir na sgrìn agad a chleachdadh, leigidh an eadar-aghaidh-lìn adhartach leat gun rèitich thu mòran cholbhan eadar-dhealaichte ach am faic thu na thogras tu de dh’fhiosrachadh aig an aon àm: Dachaigh, brathan, loidhne-ama cho-naisgte, na thogras tu de liostaichean is tagaichean hais.'
     animations_and_accessibility: Beòthachaidhean agus so-ruigsinneachd
     confirmation_dialogs: Còmhraidhean dearbhaidh
-    discovery: Lorg
+    discovery: Rùrachadh
     localization:
       body: Tha Mastodon ’ga eadar-theangachadh le saor-thoilich.
       guide_link: https://crowdin.com/project/mastodon
@@ -1054,7 +1056,7 @@ gd:
       username_unavailable: Cha bhi an t-ainm-cleachdaiche agad ri fhaighinn fhathast
   directories:
     directory: Eòlaire nam pròifil
-    explanation: Lorg cleachdaichean stèidhichte air an ùidhean
+    explanation: Rùraich cleachdaichean stèidhichte air an ùidhean
     explore_mastodon: Rùraich %{title}
   disputes:
     strikes:
@@ -1274,6 +1276,11 @@ gd:
         one: Cuideachd, bhuannaich thu %{count} neach-leantainn ùr on àm a bha thu air falbh! Nach ma sin!
         other: Cuideachd, bhuannaich thu %{count} luchd-leantainn ùr on àm a bha thu air falbh! Nach ma sin!
         two: Cuideachd, bhuannaich thu %{count} neach-leantainn ùr on àm a bha thu air falbh! Nach ma sin!
+      subject:
+        few: "%{count} brathan ùra on tadhal mu dheireadh agad 🐘"
+        one: "%{count} bhrath ùr on tadhal mu dheireadh agad 🐘"
+        other: "%{count} brath ùr on tadhal mu dheireadh agad 🐘"
+        two: "%{count} bhrath ùr on tadhal mu dheireadh agad 🐘"
       title: Fhad ’s a bha thu air falbh…
     favourite:
       body: 'Is annsa le %{name} am post agad:'
@@ -1602,6 +1609,13 @@ gd:
       explanation: Dh’iarr thu lethbhreac-glèidhidh slàn dhen chunntas Mastodon agad. Tha e deis ri luchdadh a-nuas a-nis!
       subject: Tha an tasg-lann agad deis ri luchdadh a-nuas
       title: Tasg-lann dhut
+    suspicious_sign_in:
+      change_password: atharraich thu am facal-faire agad
+      details: 'Seo mion-fhiosrachadh mun chlàradh a-steach:'
+      explanation: Mhothaich sinn do chlàradh a-steach dhan chunntas agad o sheòladh IP ùr.
+      further_actions_html: Mur e thu fhèin a bh’ ann, mholamaid gun %{action} sa bhad agus gun cuir thu an dearbhadh dà-cheumnach an comas airson an cunntas agad a chumail tèarainte.
+      subject: Chaidh an cunntas agad inntrigeadh o sheòladh IP ùr
+      title: Clàradh a-steach ùr
     warning:
       appeal: Cuir ath-thagradh a-null
       appeal_description: Ma tha thu dhen bheachd gur e mearachd a th’ ann, ’s urrainn dhut ath-thagradh a chur a-null gun sgioba aig %{instance}.
@@ -1613,7 +1627,7 @@ gd:
         disable: Chan urrainn dhut an cunntas agad a chleachdadh tuilleadh ach mairidh a’ phròifil ’s an dàta eile agad. Faodaidh tu lethbhreac-glèidhidh dhen dàta agad iarraidh, roghainnean a’ chunntais atharrachadh no an cunntas agad a sguabadh às.
         mark_statuses_as_sensitive: Chuir maoir %{instance} comharra na frionasachd ri cuid dhe na postaichean agad. Is ciall dha seo gum feumar gnogag a thoirt air na meadhanan sna postaichean mus faicear ro-shealladh. ’S urrainn dhut fhèin comharra a chur gu bheil meadhan frionasach nuair a sgrìobhas tu post san à ri teachd.
         sensitive: O seo a-mach, thèid comharra na frionasachd a chur ri faidhle meadhain sam bith a luchdaicheas tu suas agus thèid am falach air cùlaibh rabhaidh a ghabhas briogadh air.
-        silence: "’S urrainn dhut an cunntas agad a chleachdadh fhathast ach chan fhaic ach na daoine a tha a’ leantainn ort mu thràth na postaichean agad air an fhrithealaiche seo agus dh’fhaoidte gun dèid d’ às-dhùnadh o iomadh gleus luirg. Gidheadh, faodaidh càch leantainn ort a làimh fhathast."
+        silence: "’S urrainn dhut an cunntas agad a chleachdadh fhathast ach chan fhaic ach na daoine a tha a’ leantainn ort mu thràth na postaichean agad air an fhrithealaiche seo agus dh’fhaoidte gun dèid d’ às-dhùnadh o iomadh gleus rùrachaidh. Gidheadh, faodaidh càch leantainn ort a làimh fhathast."
         suspend: Chan urrainn dhut an cunntas agad a chleachdadh tuilleadh agus chan fhaigh thu grèim air a’ phròifil no air an dàta eile agad. ’S urrainn dhut clàradh a-steach fhathast airson lethbhreac-glèidhidh dhen dàta agad iarraidh mur dèid an dàta a thoirt air falbh an ceann 30 latha gu slàn ach cumaidh sinn cuid dhen dàta bhunasach ach nach seachain thu an cur à rèim.
       reason: 'Adhbhar:'
       statuses: 'Iomradh air postaichean:'
