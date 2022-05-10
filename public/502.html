@@ -35,7 +35,7 @@
       font-size: 3rem;
     }
 
-    .onion {
+    code {
       line-break: anywhere;
     }
   </style>
@@ -51,14 +51,28 @@
       <br/>
       <b>IPv6:</b> <code>2a01:4f8:162:70d2::2</code>
       <br/>
-      <b>TOR:</b> <code class="onion">pugvnub3iu36gzqcuzhxlrft52xyereovu7ypfn2bzrj44o3clf6zvyd.onion</code>
+      <b>TOR:</b> <code>pugvnub3iu36gzqcuzhxlrft52xyereovu7ypfn2bzrj44o3clf6zvyd.onion</code>
     </p>
   </div>
   <script>
     const clocks = ['🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚', '🕛']
     let tick = 0
 
-    setInterval(function () {
+    function checkIfItsBack () {
+      fetch('https://im-in.space/api/v1/instance')
+        .then(r => {
+          if (r.ok && r.headers.get('content-type').includes('application/json')) {
+            console.log('Looks like we are back!')
+            window.location.reload()
+          } else {
+            console.log('Still not back, checking again in a bit...')
+            setTimeout(checkIfItsBack, 10 * 1000)
+          }
+        })
+    }
+
+    setTimeout(checkIfItsBack, 12 * 1000)
+    setInterval(_ => {
       tick++
       document.querySelector('.beeg').innerHTML = clocks[tick % 12]
     }, 1000)
