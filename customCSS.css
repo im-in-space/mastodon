@@ -51,6 +51,7 @@ span.reactions-bar__item__emoji > img[alt^=":sticker_"] {
   margin: -3px -3px -3px -3px;
 }
 
+
 /* Color some status */
 .status[data-status-by="@kdy"] {
   box-shadow: inset 0 40px 40px 0 rgba(233, 30, 99, 20%);
@@ -58,115 +59,6 @@ span.reactions-bar__item__emoji > img[alt^=":sticker_"] {
 .status[data-status-by^="@status"] {
   box-shadow: inset 0 40px 40px 0 rgba(255, 165, 31, 20%);
 }
-
-
-/* Based on https://git.is-cute.ml/erin/dot-files/src/branch/main/configs/custom-mastodon.css
-   Hashtag Gradients 
-   The basis for this code comes from @AgathaSorceress@eldritch.cafe */
-/* trans */
-a.hashtag[href*="tags/trans" i]:hover {
-  text-decoration: underline;
-}
-.hashtag[href*="tags/trans" i] span {
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(90deg, #e67bda, #FFF, #55a9e3);
-  color: transparent;
-}
-
-/* aggie */
-a.hashtag[href*="tags/agatha" i]:hover {
-  text-decoration: underline;
-}
-.hashtag[href*="tags/agatha" i] span {
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(90deg, #a887ea, #f7a8b8);
-  color: transparent;
-}
-a.hashtag[href*="tags/aggie" i]:hover {
-  text-decoration: underline;
-}
-.hashtag[href*="tags/aggie" i] span {
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(90deg, #a887ea, #f7a8b8);
-  color: transparent;
-}
-
-/* bi */
-a.hashtag[href*="tags/bi" i]:hover {
-  text-decoration: underline;
-}
-.hashtag[href*="tags/bi" i] span {
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(90deg, #d70071, #9C4E97, #0035aa);
-  color: transparent;
-}
-
-/* enby */
-a.hashtag[href*="tags/enby" i]:hover {
-  text-decoration: underline;
-}
-.hashtag[href*="tags/enby" i] span {
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(90deg, #fbf539, #fcfbfc, #9D59D2, #2C2C2C);
-  color: transparent;
-}
-a.hashtag[href*="tags/nonbinary" i]:hover {
-  text-decoration: underline;
-}
-.hashtag[href*="tags/nonbinary" i] span {
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(90deg, #fbf539, #fcfbfc, #9D59D2, #2C2C2C);
-  color: transparent;
-}
-
-/* pan */
-a.hashtag[href*="tags/pan" i]:hover {
-  text-decoration: underline;
-}
-.hashtag[href*="tags/pan" i] span {
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(90deg, #FD208A, #FFD600, #22AFFE);
-  color: transparent;
-}
-
-/* ace */
-a.hashtag[href*="tags/ace" i]:hover {
-  text-decoration: underline;
-}
-.hashtag[href*="tags/ace" i] span {
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(90deg, #191717, #857E78, #FFFEFF, #7D2A7A);
-  color: transparent;
-}
-a.hashtag[href*="tags/asexual" i]:hover {
-  text-decoration: underline;
-}
-.hashtag[href*="tags/asexual" i] span {
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(90deg, #191717, #857E78, #FFFEFF, #7D2A7A);
-  color: transparent;
-}
-
-/* aro */
-a.hashtag[href*="tags/aro" i]:hover {
-  text-decoration: underline;
-}
-.hashtag[href*="tags/aro" i] span {
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(90deg, #39A741, #A8D47A, #FCFCF9, #A9A9A9, #000000);
-  color: transparent;
-}
-
 
 
 /* Make it harder to download audio from public pages */

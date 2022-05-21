@@ -1,0 +1,8 @@
+@import 'modern/light';
+@import '../flavours/glitch/styles/mastodon-light';
+@import 'modern/style';
+
+.layout-multiple-columns .column {
+	flex-grow: 1;
+	max-width: 500px;
+}

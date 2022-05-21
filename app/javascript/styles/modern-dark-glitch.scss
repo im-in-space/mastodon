@@ -1,0 +1,8 @@
+@import 'modern/dark';
+@import '../flavours/glitch/styles/index';
+@import 'modern/style';
+
+.layout-multiple-columns .column {
+	flex-grow: 1;
+	max-width: 500px;
+}
