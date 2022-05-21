@@ -6,11 +6,11 @@
 
   .entry:hover,
   .focusable:hover {
-    background-color: $ui-base-lighter-color;
+    background-color: $ui-base-color;
   }
 
-  .public-account-bio {
-    background-color: lighten($ui-base-color, 8%);
+  .endorsements-widget {
+    background-color: $ui-base-color;
   }
 
   .account__section-headline {
@@ -19,7 +19,7 @@
   }
 
   .footer {
-    background: lighten($ui-base-color, 8%);
+    background: $ui-base-color;
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 60px;
@@ -60,7 +60,9 @@
   }
 
   .pillbar-button {
-    color: $darker-text-color;
+    &:not(.active) {
+      color: $darker-text-color;
+    }
 
     &:not([disabled]).active {
       box-shadow: none;
