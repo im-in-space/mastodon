@@ -1,0 +1,69 @@
+/* Fixes */
+.public-layout {
+  .activity-stream {
+    box-shadow: none;
+  }
+
+  .entry:hover,
+  .focusable:hover {
+    background-color: $ui-base-lighter-color;
+  }
+
+  .public-account-bio {
+    background-color: lighten($ui-base-color, 8%);
+  }
+
+  .account__section-headline {
+    background: lighten($ui-base-color, 8%);
+    border-radius: var(--radius)!important;
+  }
+
+  .footer {
+    background: lighten($ui-base-color, 8%);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 60px;
+    margin-top: 10px;
+    padding: 15px !important;
+  }
+}
+
+#mastodon {
+  .status {
+    padding: 15px !important;
+  }
+
+  &:not(.detailed-status__wrapper) .media-gallery,
+  &:not(.detailed-status__wrapper) .video-player {
+    margin-left: 0px;
+  }
+
+  .detailed-status__action-bar .icon-button,
+  .status__action-bar .icon-button {
+    padding: .2em !important
+  }
+
+  .drawer--header {
+    background: lighten($ui-base-color, 8%);
+    border-radius: var(--radius-round);
+    margin-inline: 5px;
+    overflow: hidden;
+    border: 0!important;
+    
+    & > * {
+      border-bottom: none;
+    }
+  }
+
+  .drawer__inner__mastodon {
+    background-color: transparent !important;
+  }
+
+  .pillbar-button {
+    color: $darker-text-color;
+
+    &:not([disabled]).active {
+      box-shadow: none;
+    }
+  }
+}

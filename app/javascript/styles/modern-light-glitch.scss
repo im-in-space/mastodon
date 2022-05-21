@@ -1,8 +1,16 @@
 @import 'modern/light';
 @import '../flavours/glitch/styles/mastodon-light';
 @import 'modern/style';
+@import 'modern/glitch-diff';
 
 .layout-multiple-columns .column {
 	flex-grow: 1;
 	max-width: 500px;
+}
+
+#mastodon {
+  .compose-form .autosuggest-textarea__suggestions,
+  .compose-form .compose-form__buttons-wrapper {
+    background: #ecf0f4;
+  }
 }
