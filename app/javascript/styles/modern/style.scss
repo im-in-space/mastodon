@@ -190,6 +190,10 @@
 .public-layout .columns-area__panels__main > div {
   border-radius: var(--radius);
 }
+#mastodon .columns-area__panels__main .scrollable,
+.public-layout .columns-area__panels__main .scrollable {
+  padding-bottom: 40vh !important;
+}
 #mastodon .scrollable,
 .public-layout .scrollable,
 #mastodon .column-back-button,
@@ -229,6 +233,10 @@
 #mastodon .columns-area,
 .public-layout .columns-area {
   overflow: visible !important;
+}
+#mastodon .scrollable--flex .account-timeline__header,
+.public-layout .scrollable--flex .account-timeline__header {
+  margin: 0 !important;
 }
 #mastodon .account-timeline__header,
 .public-layout .account-timeline__header {
@@ -433,6 +441,33 @@
 .public-layout .entry:hover {
   background-color: var(--hover-color);
 }
+#mastodon .status__info,
+.public-layout .status__info {
+  margin-top: 5px;
+}
+#mastodon .status__info .status__avatar,
+.public-layout .status__info .status__avatar {
+  top: 15px;
+  left: 15px !important;
+}
+#mastodon .status__content,
+.public-layout .status__content {
+  min-height: 1.4em;
+  padding-top: 2px;
+}
+#mastodon .media-gallery,
+.public-layout .media-gallery,
+#mastodon .video-player,
+.public-layout .video-player {
+  margin-left: -62px;
+  width: unset;
+  box-shadow: var(--shadow-low);
+  border-radius: var(--radius);
+  margin-block: 15px !important;
+  animation: scaleIn 0.4s;
+  max-width: unset !important;
+  max-height: 80vh !important;
+}
 #mastodon .detailed-status__wrapper,
 .public-layout .detailed-status__wrapper,
 #mastodon .detailed-status,
@@ -454,32 +489,7 @@
 #mastodon .detailed-status .video-player,
 .public-layout .detailed-status .video-player {
   margin-left: 0 !important;
-}
-#mastodon :not(.detailed-status__wrapper) .status__info,
-.public-layout :not(.detailed-status__wrapper) .status__info {
-  margin-top: 5px;
-}
-#mastodon :not(.detailed-status__wrapper) .status__info .status__avatar,
-.public-layout :not(.detailed-status__wrapper) .status__info .status__avatar {
-  top: 15px;
-  left: 15px !important;
-}
-#mastodon :not(.detailed-status__wrapper) .status__content,
-.public-layout :not(.detailed-status__wrapper) .status__content {
-  min-height: 1.4em;
-  padding-top: 2px;
-}
-#mastodon :not(.detailed-status__wrapper) .media-gallery,
-.public-layout :not(.detailed-status__wrapper) .media-gallery,
-#mastodon :not(.detailed-status__wrapper) .video-player,
-.public-layout :not(.detailed-status__wrapper) .video-player {
-  margin-left: -62px;
-  width: unset;
-  box-shadow: var(--shadow-low);
-  border-radius: var(--radius);
-  margin-block: 15px !important;
-  animation: scaleIn 0.4s;
-  max-width: unset !important;
+  max-height: unset !important;
 }
 #mastodon .status__action-bar,
 .public-layout .status__action-bar,
@@ -496,6 +506,8 @@
   width: unset !important;
   padding: 0.3em 0.5em !important;
   height: unset !important;
+  flex: 0 1 auto !important;
+  min-width: 0;
 }
 #mastodon .status__action-bar .icon-button::after,
 .public-layout .status__action-bar .icon-button::after,
@@ -504,6 +516,9 @@
   content: attr(aria-label);
   font-size: 0.7em;
   margin-left: 0.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #mastodon .status__action-bar .status__action-bar-dropdown,
 .public-layout .status__action-bar .status__action-bar-dropdown,
@@ -704,7 +719,6 @@
   #mastodon .columns-area__panels__main,
   .public-layout .columns-area__panels__main {
     padding: 0 !important;
-    padding-bottom: 150px !important;
   }
   #mastodon .is-composing .columns-area__panels__main,
   .public-layout .is-composing .columns-area__panels__main {
@@ -838,7 +852,7 @@
   }
   #mastodon .status__action-bar .icon-button,
   .public-layout .status__action-bar .icon-button {
-    flex-grow: 1;
+    flex-grow: 1 !important;
     margin: 0 !important;
     justify-content: center;
     padding: 0.7em !important;
