@@ -1,0 +1,40 @@
+.bg-profile {
+  display: none;
+}
+
+@supports (filter: blur(8px)) {
+  .bg-profile {
+    display: block;
+    filter: blur(8px);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+
+    .bg-profile-img {
+      background-size: cover;
+      background-position: center;
+      height: calc(100% + 30px);
+      margin: -15px;
+      width: calc(100% + 30px);
+    }
+  }
+}
+
+/* Fixes */
+.public-layout {
+  .activity-stream {
+    box-shadow: none;
+    
+    .entry {
+      border-bottom: 1px solid lighten($ui-base-color, 8%);
+    }
+  }
+}
+
+.layout-multiple-columns .column {
+  flex-grow: 1;
+  max-width: 500px;
+}
