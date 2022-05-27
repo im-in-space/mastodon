@@ -3,22 +3,27 @@ body:not(.app-body):not(.admin) {
   background: $classic-base-color url('~images/space-bg.jpg');
 }
 
-/* Fixes */
 .public-layout {
   .activity-stream {
+    // There's a shadow floating, removing it
     box-shadow: none;
     
     .entry {
+      // Modern sets the background to none, put one back
+      // in case the profile has a background
       background: $ui-base-color !important;
+      // Also add a separator between posts
       border-bottom: 1px solid lighten($ui-base-color, 8%);
     }
   }
 
+  // Fix the background when hovering too
   .entry:hover,
   .focusable:hover {
     background-color: lighten($ui-base-color, 2%) !important;
   }
 
+  // Add some backgrounds to elements in case there's a background
   .contact-widget,
   .landing-page__information.contact-widget,
   .endorsements-widget {
@@ -26,11 +31,13 @@ body:not(.app-body):not(.admin) {
     border-radius: var(--radius);
   }
 
+  // Same as above, but lighter
   .account__section-headline {
     background: lighten($ui-base-color, 8%);
-    border-radius: var(--radius)!important;
+    border-radius: var(--radius) !important;
   }
 
+  // Same as above for the footer, and add some spaces
   .footer {
     background: $ui-base-color;
     border-radius: var(--radius);
@@ -41,27 +48,47 @@ body:not(.app-body):not(.admin) {
   }
 }
 
+
+/* Fixes */
 #mastodon {
   .status {
+    // The theme puts a large padding on the left to align the content
+    // on the right of the profile picture, which may make things really
+    // too cramped
     padding: 15px !important;
 
-    // Force it back
+    // Modern sets the background to none,
+    // so put one back for direct statuses
     &.status-direct {
       background: lighten($ui-base-color, 8%) !important;
       border-bottom-color: lighten($ui-base-color, 12%) !important;
     }
+
+    // Fix the collapsed gradiant so it stays inside the "card"
+    &.collapsed {
+      .status__content:after {
+        left: 85px;
+        right: 85px;
+      }
+    }
   }
 
+  // Reverting the margin on elements that were negative due to the
+  // big padding the theme used to have
   &:not(.detailed-status__wrapper) .media-gallery,
   &:not(.detailed-status__wrapper) .video-player {
     margin-left: 0px;
   }
 
+  // Since we have more elements on the action bar (including the date/time)
+  // I'm redecing the padding a bit
   .detailed-status__action-bar .icon-button,
   .status__action-bar .icon-button {
     padding: .2em !important;
   }
 
+  // Glitch still uses -- here while vanilla is __
+  // so I'm just kinda copy-pasting the styles here
   .drawer--header {
     background: lighten($ui-base-color, 8%);
     border-radius: var(--radius-round);
@@ -74,16 +101,20 @@ body:not(.app-body):not(.admin) {
     }
   }
 
+  // Make the background on the compose column transparent
+  // which is better on mobile IMO
   .drawer__inner,
   .drawer__inner__mastodon {
     background-color: transparent !important;
   }
 
   .pillbar-button {
+    // Fix unreadable options in the column settings when not selected
     &:not(.active) {
       color: $darker-text-color;
     }
 
+    // And remove ugly box-shadow
     &:not([disabled]).active {
       box-shadow: none;
     }
@@ -93,10 +124,13 @@ body:not(.app-body):not(.admin) {
 @media (max-width: 895px) {
   #mastodon .status__action-bar,
   .public-layout .status__action-bar {
+    // Reverting the margin on elements that were negative due to the
+    // big padding the theme used to have
     margin-left: 0 !important;
   }
 }
 
+// This was used in mastodon.coffee, I like it
 .layout-multiple-columns .column {
   flex-grow: 1;
   max-width: 500px;
