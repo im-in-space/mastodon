@@ -1,9 +1,6 @@
 /* Instance-stuff */
-body {
-  &:not(.app-body),
-  &:not(.admin) {
-    background: $classic-base-color url('~images/space-bg.jpg');
-  }
+body:not(.app-body):not(.admin) {
+  background: $classic-base-color url('~images/space-bg.jpg');
 }
 
 /* Fixes */
