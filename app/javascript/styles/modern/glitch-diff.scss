@@ -1,8 +1,7 @@
 /* Instance-stuff */
-body {
+body:not(.app-body) {
   background: $classic-base-color url('~images/space-bg.jpg');
 }
-
 
 /* Fixes */
 .public-layout {
@@ -10,6 +9,7 @@ body {
     box-shadow: none;
     
     .entry {
+      background: $ui-base-color !important;
       border-bottom: 1px solid lighten($ui-base-color, 8%);
     }
   }
@@ -44,6 +44,12 @@ body {
 #mastodon {
   .status {
     padding: 15px !important;
+
+    // Force it back
+    &.status-direct {
+      background: lighten($ui-base-color, 8%) !important;
+      border-bottom-color: lighten($ui-base-color, 12%) !important;
+    }
   }
 
   &:not(.detailed-status__wrapper) .media-gallery,
