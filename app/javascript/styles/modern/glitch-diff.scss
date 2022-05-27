@@ -1,3 +1,9 @@
+/* Instance-stuff */
+body {
+  background: $classic-base-color url('~images/space-bg.jpg');
+}
+
+
 /* Fixes */
 .public-layout {
   .activity-stream {
@@ -10,11 +16,14 @@
 
   .entry:hover,
   .focusable:hover {
-    background-color: $ui-base-color;
+    background-color: lighten($ui-base-color, 2%);
   }
 
+  .contact-widget,
+  .landing-page__information.contact-widget,
   .endorsements-widget {
     background-color: $ui-base-color;
+    border-radius: var(--radius);
   }
 
   .account__section-headline {
@@ -24,17 +33,12 @@
 
   .footer {
     background: $ui-base-color;
-    border-radius: 4px;
+    border-radius: var(--radius);
     overflow: hidden;
     margin-bottom: 60px;
     margin-top: 10px;
     padding: 15px !important;
   }
-}
-
-.layout-multiple-columns .column {
-  flex-grow: 1;
-  max-width: 500px;
 }
 
 #mastodon {
@@ -64,6 +68,7 @@
     }
   }
 
+  .drawer__inner,
   .drawer__inner__mastodon {
     background-color: transparent !important;
   }
@@ -77,4 +82,16 @@
       box-shadow: none;
     }
   }
+}
+
+@media (max-width: 895px) {
+  #mastodon .status__action-bar,
+  .public-layout .status__action-bar {
+    margin-left: 0 !important;
+  }
+}
+
+.layout-multiple-columns .column {
+  flex-grow: 1;
+  max-width: 500px;
 }
