@@ -1,6 +1,9 @@
 /* Instance-stuff */
-body:not(.app-body) {
-  background: $classic-base-color url('~images/space-bg.jpg');
+body {
+  &:not(.app-body),
+  &:not(.admin) {
+    background: $classic-base-color url('~images/space-bg.jpg');
+  }
 }
 
 /* Fixes */
@@ -16,7 +19,7 @@ body:not(.app-body) {
 
   .entry:hover,
   .focusable:hover {
-    background-color: lighten($ui-base-color, 2%);
+    background-color: lighten($ui-base-color, 2%) !important;
   }
 
   .contact-widget,
@@ -59,7 +62,7 @@ body:not(.app-body) {
 
   .detailed-status__action-bar .icon-button,
   .status__action-bar .icon-button {
-    padding: .2em !important
+    padding: .2em !important;
   }
 
   .drawer--header {
