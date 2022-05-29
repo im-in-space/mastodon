@@ -3,6 +3,12 @@ body:not(.app-body):not(.admin) {
   background: $classic-base-color url('~images/space-bg.jpg');
 }
 
+// Remove the left padding
+#mastodon .status,
+.public-layout .status {
+  --status-left-padding: 15px !important;;
+}
+
 .public-layout {
   .activity-stream {
     // There's a shadow floating, removing it
@@ -52,11 +58,6 @@ body:not(.app-body):not(.admin) {
 /* Fixes */
 #mastodon {
   .status {
-    // The theme puts a large padding on the left to align the content
-    // on the right of the profile picture, which may make things really
-    // too cramped
-    padding: 15px !important;
-
     // Modern sets the background to none,
     // so put one back for direct statuses
     &.status-direct {
@@ -71,14 +72,6 @@ body:not(.app-body):not(.admin) {
         right: 85px;
       }
     }
-  }
-
-  // Reverting the margin on elements that were negative due to the
-  // big padding the theme used to have
-  .media-gallery,
-  .status-card.horizontal.interactive,
-  .video-player {
-    margin-left: 0px;
   }
 
   // Since we have more elements on the action bar (including the date/time)
