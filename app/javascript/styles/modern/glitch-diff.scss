@@ -53,7 +53,6 @@ body:not(.app-body):not(.admin) {
   }
 }
 
-
 /* Fixes */
 #mastodon {
   .status {
@@ -71,6 +70,13 @@ body:not(.app-body):not(.admin) {
         right: 85px;
       }
     }
+  }
+
+  // The -10px here breaks a lot in Glitch, like collapsed statuses don't show
+  // the basic info, or it's just too close to the user name. It's fine at 0.
+  .notification__message,
+  .status__prepend {
+    margin-bottom: 0px !important
   }
 
   // Since we have more elements on the action bar (including the date/time)
