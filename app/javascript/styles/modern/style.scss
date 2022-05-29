@@ -7,8 +7,8 @@
   --shadow: 0 10px 40px -10px rgba(0,0,0,0.15);
   --shadow-low: 0 8px 16px -10px rgba(0,0,0,0.4);
 }
-#mastodon button,
-.public-layout button,
+#mastodon button:not(.column-header__button),
+.public-layout button:not(.column-header__button),
 #mastodon video,
 .public-layout video,
 #mastodon input,
@@ -469,6 +469,11 @@
   border-radius: var(--radius) !important;
   transition: background 0.2s, box-shadow 0.4s, margin 0.2s, border 0.2s;
   animation: fadeUp 0.4s forwards cubic-bezier(0, 1, 1, 1);
+}
+#mastodon .focusable.focusable,
+.public-layout .focusable.focusable,
+#mastodon .entry.focusable,
+.public-layout .entry.focusable {
   background: none;
 }
 #mastodon .focusable.entry,
@@ -494,8 +499,12 @@
   background-color: var(--hover-color);
 }
 #mastodon .status__prepend,
-.public-layout .status__prepend {
+.public-layout .status__prepend,
+#mastodon .notification__message,
+.public-layout .notification__message {
   padding-top: 15px !important;
+  padding-bottom: 0 !important;
+  margin-bottom: -10px !important;
 }
 #mastodon .status__info,
 .public-layout .status__info {
@@ -505,6 +514,19 @@
 .public-layout .status__info .status__avatar {
   top: 15px;
   left: 15px !important;
+}
+#mastodon .status__info .status__avatar .account__avatar-overlay-base,
+.public-layout .status__info .status__avatar .account__avatar-overlay-base {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  border-radius: var(--radius);
+}
+#mastodon .status__info .status__avatar .account__avatar-overlay-overlay,
+.public-layout .status__info .status__avatar .account__avatar-overlay-overlay {
+  border-radius: var(--radius-round);
+  bottom: -10%;
+  right: -10%;
 }
 #mastodon .status__info .display-name strong,
 .public-layout .status__info .display-name strong {
@@ -547,7 +569,7 @@
 .public-layout .video-player,
 #mastodon .status-card.horizontal.interactive,
 .public-layout .status-card.horizontal.interactive {
-  margin-left: -62px;
+  margin-left: calc(15px - var(--status-left-padding));
   width: unset;
   box-shadow: var(--shadow-low);
   border-radius: var(--radius);
@@ -709,8 +731,9 @@
 }
 #mastodon .status,
 .public-layout .status {
+  --status-left-padding: 78px;
   overflow: visible !important;
-  padding: 15px 15px 15px 78px !important;
+  padding: 15px 15px 15px var(--status-left-padding) !important;
 }
 #mastodon .detailed-status,
 .public-layout .detailed-status {
@@ -939,6 +962,7 @@
   .public-layout .columns-area--mobile > .column > .column-header__wrapper .column-header {
     height: 100%;
     background: none;
+    border-radius: var(--radius) !important;
   }
   #mastodon .columns-area--mobile > .column > .column-header__wrapper .column-header button,
   .public-layout .columns-area--mobile > .column > .column-header__wrapper .column-header button {
@@ -959,6 +983,11 @@
     padding: 0 !important;
     max-width: unset;
   }
+  #mastodon .columns-area__panels__main .scrollable,
+  .public-layout .columns-area__panels__main .scrollable {
+    padding: 5px !important;
+    padding-bottom: 40vh !important;
+  }
   #mastodon .columns-area__panels__main .scrollable::before,
   .public-layout .columns-area__panels__main .scrollable::before {
     content: "";
@@ -966,6 +995,10 @@
     inset: 0;
     background-color: inherit;
     z-index: -1;
+  }
+  #mastodon .columns-area__panels__main .scrollable .account-timeline__header,
+  .public-layout .columns-area__panels__main .scrollable .account-timeline__header {
+    margin: -5px !important;
   }
   #mastodon .is-composing .columns-area__panels__main,
   .public-layout .is-composing .columns-area__panels__main {
@@ -978,6 +1011,38 @@
   #mastodon .columns-area__panels__main > div,
   .public-layout .columns-area__panels__main > div {
     border-radius: 0 !important;
+  }
+  #mastodon .status__prepend,
+  .public-layout .status__prepend,
+  #mastodon .notification__message,
+  .public-layout .notification__message {
+    margin-bottom: -5px !important;
+  }
+  #mastodon .status,
+  .public-layout .status {
+    --status-left-padding: 70px !important;
+    padding-top: 14px !important;
+  }
+  #mastodon .status .status__avatar,
+  .public-layout .status .status__avatar {
+    left: 14px !important;
+    width: 45px !important;
+    height: 45px !important;
+    background-size: 45px !important;
+  }
+  #mastodon .status .status__avatar > div,
+  .public-layout .status .status__avatar > div {
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover !important;
+  }
+  #mastodon .status .media-gallery,
+  .public-layout .status .media-gallery,
+  #mastodon .status .video-player,
+  .public-layout .status .video-player,
+  #mastodon .status .status-card.horizontal.interactive,
+  .public-layout .status .status-card.horizontal.interactive {
+    margin-bottom: 0 !important;
   }
   #mastodon .tabs-bar__wrapper,
   .public-layout .tabs-bar__wrapper {
@@ -993,7 +1058,6 @@
     background: none;
     border-radius: 0 !important;
     pointer-events: none;
-    filter: brightness(0.95);
   }
   #mastodon .tabs-bar__wrapper > *,
   .public-layout .tabs-bar__wrapper > * {
@@ -1008,6 +1072,7 @@
     color: #fff !important;
     overflow: visible !important;
     padding-inline: 5px;
+    box-shadow: 0 0 24px rgba(0,0,0,0.1);
   }
   #mastodon .tabs-bar__wrapper .tabs-bar a,
   .public-layout .tabs-bar__wrapper .tabs-bar a {
@@ -1067,6 +1132,8 @@
     width: max-content !important;
     box-shadow: var(--shadow) !important;
     max-width: calc(100vw - 130px);
+    border-radius: var(--radius-round) !important;
+    overflow: hidden;
   }
   #mastodon .tabs-bar__wrapper #tabs-bar__portal > button,
   .public-layout .tabs-bar__wrapper #tabs-bar__portal > button {
@@ -1082,15 +1149,8 @@
   }
   #mastodon .tabs-bar__wrapper #tabs-bar__portal .column-header__collapsible,
   .public-layout .tabs-bar__wrapper #tabs-bar__portal .column-header__collapsible {
-    transition: margin-top 0.2s cubic-bezier(0, 0, 0, 2);
-    max-width: 100%;
-    border-radius: var(--radius);
-  }
-  #mastodon .tabs-bar__wrapper #tabs-bar__portal .column-header__collapsible:not(.collapsed),
-  .public-layout .tabs-bar__wrapper #tabs-bar__portal .column-header__collapsible:not(.collapsed) {
-    width: auto !important;
-    max-width: calc(100vw - 40px);
-    margin-top: 5px;
+    max-width: calc(100vw - 40px) !important;
+    opacity: 1 !important;
   }
   .floating-action-button {
     bottom: 70px;
