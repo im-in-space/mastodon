@@ -4,8 +4,7 @@ body:not(.app-body):not(.admin) {
 }
 
 // Remove the left padding
-#mastodon .status,
-.public-layout .status {
+#mastodon .status {
   --status-left-padding: 15px !important;;
 }
 
