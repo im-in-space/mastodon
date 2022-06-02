@@ -23,8 +23,12 @@ body:not(.app-body):not(.admin) {
   }
 
   // Fix the background when hovering too
+  .detailed-status:hover,
   .entry:hover,
-  .focusable:hover {
+  .focusable:hover,
+  .detailed-status:focus-within,
+  .entry:focus-within,
+  .focusable:focus-within {
     background-color: lighten($ui-base-color, 2%) !important;
   }
 
