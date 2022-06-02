@@ -85,6 +85,9 @@ body:not(.app-body):not(.admin) {
   .status__action-bar .icon-button {
     padding: .2em !important;
   }
+  .status__action-bar-button {
+    margin-right: 8px
+  }
 
   // Glitch still uses -- here while vanilla is __
   // so I'm just kinda copy-pasting the styles here
@@ -102,7 +105,7 @@ body:not(.app-body):not(.admin) {
 
   // Make the background on the compose column transparent
   // which is better on mobile IMO
-  .drawer__inner,
+  .drawer__inner:not(.darker),
   .drawer__inner__mastodon {
     background-color: transparent !important;
   }
