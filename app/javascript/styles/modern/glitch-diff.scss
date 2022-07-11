@@ -5,7 +5,7 @@ body:not(.app-body):not(.admin) {
 
 // Remove the left padding
 #mastodon .status {
-  --status-left-padding: 15px !important;;
+  --status-left-padding: 15px !important;
 }
 
 .public-layout {
@@ -78,9 +78,17 @@ body:not(.app-body):not(.admin) {
 
   // The -10px here breaks a lot in Glitch, like collapsed statuses don't show
   // the basic info, or it's just too close to the user name. It's fine at 0.
+  // Also fix alignement with a smaller padding-top.
   .notification__message,
   .status__prepend {
-    margin-bottom: 0px !important
+    margin-bottom: 0px !important;
+    padding-top: 8px !important;
+  }
+
+  // For the calc(), it's because it slightly cuts off the icons on the left due
+  // to removing the big left padding.
+  .status__prepend {
+    margin-inline-start: calc(var(--status-left-padding) + 15px);
   }
 
   // Since we have more elements on the action bar (including the date/time)
