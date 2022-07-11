@@ -256,6 +256,17 @@ Rails.application.routes.draw do
 
     resources :rules
 
+    resources :webhooks do
+      member do
+        post :enable
+        post :disable
+      end
+
+      resource :secret, only: [], controller: 'webhooks/secrets' do
+        post :rotate
+      end
+    end
+
     resources :reports, only: [:index, :show] do
       resources :actions, only: [:create], controller: 'reports/actions'
 
@@ -462,9 +473,15 @@ Rails.application.routes.draw do
       resources :bookmarks,    only: [:index]
       resources :reports,      only: [:create]
       resources :trends,       only: [:index], controller: 'trends/tags'
-      resources :filters,      only: [:index, :create, :show, :update, :destroy]
+      resources :filters,      only: [:index, :create, :show, :update, :destroy] do
+        resources :keywords, only: [:index, :create], controller: 'filters/keywords'
+      end
       resources :endorsements, only: [:index]
       resources :markers,      only: [:index, :create]
+
+      namespace :filters do
+        resources :keywords, only: [:show, :update, :destroy]
+      end
 
       namespace :apps do
         get :verify_credentials, to: 'credentials#show'
@@ -583,6 +600,9 @@ Rails.application.routes.draw do
           end
         end
 
+        resources :domain_allows, only: [:index, :show, :create, :destroy]
+        resources :domain_blocks, only: [:index, :show, :update, :create, :destroy]
+
         namespace :trends do
           resources :tags, only: [:index]
           resources :links, only: [:index]
@@ -599,6 +619,7 @@ Rails.application.routes.draw do
       resources :media, only: [:create]
       get '/search', to: 'search#index', as: :search
       resources :suggestions, only: [:index]
+      resources :filters,     only: [:index, :create, :show, :update, :destroy]
 
       namespace :admin do
         resources :accounts, only: [:index]
