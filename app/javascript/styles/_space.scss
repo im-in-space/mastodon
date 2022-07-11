@@ -1,6 +1,11 @@
 // Might be missing
 $classic-base-color: #282c37;
 
+// Our color
+$classic-highlight-color: #ff9800;
+$ui-highlight-color: $classic-highlight-color;
+$highlight-text-color: $ui-highlight-color;
+
 // Change app background
 body {
     background: $classic-base-color url('~images/space-bg.jpg');
