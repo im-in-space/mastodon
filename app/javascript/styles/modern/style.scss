@@ -22,10 +22,7 @@
 .modal-layout button,
 #mastodon label,
 .public-layout label,
-.modal-layout label,
-#mastodon :not(.account__header__tabs__name) > :not(h1) > span,
-.public-layout :not(.account__header__tabs__name) > :not(h1) > span,
-.modal-layout :not(.account__header__tabs__name) > :not(h1) > span {
+.modal-layout label {
   user-select: none;
 }
 #mastodon .button--block,
@@ -2113,6 +2110,58 @@
 .modal-layout .timeline-hint.account-card .account-card__actions {
   margin-top: auto !important;
 }
+#mastodon .focusable.empty-column-indicator,
+.public-layout .focusable.empty-column-indicator,
+.modal-layout .focusable.empty-column-indicator,
+#mastodon .entry.empty-column-indicator,
+.public-layout .entry.empty-column-indicator,
+.modal-layout .entry.empty-column-indicator,
+#mastodon .statuses-grid__item .detailed-status.empty-column-indicator,
+.public-layout .statuses-grid__item .detailed-status.empty-column-indicator,
+.modal-layout .statuses-grid__item .detailed-status.empty-column-indicator,
+#mastodon .trends__item.empty-column-indicator,
+.public-layout .trends__item.empty-column-indicator,
+.modal-layout .trends__item.empty-column-indicator,
+#mastodon .story.empty-column-indicator,
+.public-layout .story.empty-column-indicator,
+.modal-layout .story.empty-column-indicator,
+#mastodon .account-card.empty-column-indicator,
+.public-layout .account-card.empty-column-indicator,
+.modal-layout .account-card.empty-column-indicator,
+#mastodon :not(.focusable) > .account.empty-column-indicator,
+.public-layout :not(.focusable) > .account.empty-column-indicator,
+.modal-layout :not(.focusable) > .account.empty-column-indicator,
+#mastodon .timeline-hint.empty-column-indicator,
+.public-layout .timeline-hint.empty-column-indicator,
+.modal-layout .timeline-hint.empty-column-indicator {
+  display: block;
+}
+#mastodon .focusable.timeline-hint,
+.public-layout .focusable.timeline-hint,
+.modal-layout .focusable.timeline-hint,
+#mastodon .entry.timeline-hint,
+.public-layout .entry.timeline-hint,
+.modal-layout .entry.timeline-hint,
+#mastodon .statuses-grid__item .detailed-status.timeline-hint,
+.public-layout .statuses-grid__item .detailed-status.timeline-hint,
+.modal-layout .statuses-grid__item .detailed-status.timeline-hint,
+#mastodon .trends__item.timeline-hint,
+.public-layout .trends__item.timeline-hint,
+.modal-layout .trends__item.timeline-hint,
+#mastodon .story.timeline-hint,
+.public-layout .story.timeline-hint,
+.modal-layout .story.timeline-hint,
+#mastodon .account-card.timeline-hint,
+.public-layout .account-card.timeline-hint,
+.modal-layout .account-card.timeline-hint,
+#mastodon :not(.focusable) > .account.timeline-hint,
+.public-layout :not(.focusable) > .account.timeline-hint,
+.modal-layout :not(.focusable) > .account.timeline-hint,
+#mastodon .timeline-hint.timeline-hint,
+.public-layout .timeline-hint.timeline-hint,
+.modal-layout .timeline-hint.timeline-hint {
+  display: block;
+}
 #mastodon .focusable.timeline-hint a::before,
 .public-layout .focusable.timeline-hint a::before,
 .modal-layout .focusable.timeline-hint a::before,
@@ -2140,6 +2189,13 @@
   content: "";
   position: absolute;
   inset: 0;
+}
+#mastodon .empty-column-indicator,
+.public-layout .empty-column-indicator,
+.modal-layout .empty-column-indicator {
+  display: unset;
+  contain: unset;
+  padding: 10px !important;
 }
 #mastodon .status,
 .public-layout .status,
@@ -2822,7 +2878,7 @@
 #mastodon .navigation-panel .column-link .column-link__icon,
 .public-layout .navigation-panel .column-link .column-link__icon,
 .modal-layout .navigation-panel .column-link .column-link__icon,
-.column-header__icon {
+.column-header > button .column-header__icon {
   margin-inline-end: 1em !important;
 }
 #mastodon .navigation-panel .column-link::before,
