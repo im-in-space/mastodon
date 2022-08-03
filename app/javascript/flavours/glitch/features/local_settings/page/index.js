@@ -303,38 +303,59 @@ class LocalSettingsPage extends React.PureComponent {
     ({ intl, onChange, settings }) => (
       <div className='glitch local-settings__page content_warnings'>
         <h1><FormattedMessage id='settings.content_warnings' defaultMessage='Content warnings' /></h1>
-        <DeprecatedLocalSettingsPageItem
-          id='mastodon-settings--content_warnings-auto_unfold'
-          value={expandSpoilers}
-        >
-          <FormattedMessage id='settings.enable_content_warnings_auto_unfold' defaultMessage='Automatically unfold content-warnings' />
-          <span className='hint'>
-            <FormattedMessage
-              id='settings.deprecated_setting'
-              defaultMessage="This setting is now controlled from Mastodon's {settings_page_link}"
-              values={{
-                settings_page_link: (
-                  <a href={preferenceLink('user_setting_expand_spoilers')}>
-                    <FormattedMessage
-                      id='settings.shared_settings_link'
-                      defaultMessage='user preferences'
-                    />
-                  </a>
-                )
-              }}
-            />
-          </span>
-        </DeprecatedLocalSettingsPageItem>
         <LocalSettingsPageItem
           settings={settings}
-          item={['content_warnings', 'filter']}
-          id='mastodon-settings--content_warnings-auto_unfold'
+          item={['content_warnings', 'shared_state']}
+          id='mastodon-settings--content_warnings-shared_state'
           onChange={onChange}
-          placeholder={intl.formatMessage(messages.regexp)}
-          disabled={!expandSpoilers}
         >
-          <FormattedMessage id='settings.content_warnings_filter' defaultMessage='Content warnings to not automatically unfold:' />
+          <FormattedMessage id='settings.content_warnings_shared_state' defaultMessage='Show/hide content of all copies at once' />
+          <span className='hint'><FormattedMessage id='settings.content_warnings_shared_state_hint' defaultMessage='Reproduce upstream Mastodon behavior by having the Content Warning button affect all copies of a post at once. This will prevent automatic collapsing of any copy of a toot with unfolded CW' /></span>
         </LocalSettingsPageItem>
+        <LocalSettingsPageItem
+          settings={settings}
+          item={['content_warnings', 'media_outside']}
+          id='mastodon-settings--content_warnings-media_outside'
+          onChange={onChange}
+        >
+          <FormattedMessage id='settings.content_warnings_media_outside' defaultMessage='Display media attachments outside content warnings' />
+          <span className='hint'><FormattedMessage id='settings.content_warnings_media_outside_hint' defaultMessage='Reproduce upstream Mastodon behavior by having the Content Warning toggle not affect media attachments' /></span>
+        </LocalSettingsPageItem>
+        <section>
+          <h2><FormattedMessage id='settings.content_warnings_unfold_opts' defaultMessage='Auto-unfolding options' /></h2>
+          <DeprecatedLocalSettingsPageItem
+            id='mastodon-settings--content_warnings-auto_unfold'
+            value={expandSpoilers}
+          >
+            <FormattedMessage id='settings.enable_content_warnings_auto_unfold' defaultMessage='Automatically unfold content-warnings' />
+            <span className='hint'>
+              <FormattedMessage
+                id='settings.deprecated_setting'
+                defaultMessage="This setting is now controlled from Mastodon's {settings_page_link}"
+                values={{
+                  settings_page_link: (
+                    <a href={preferenceLink('user_setting_expand_spoilers')}>
+                      <FormattedMessage
+                        id='settings.shared_settings_link'
+                        defaultMessage='user preferences'
+                      />
+                    </a>
+                  )
+                }}
+              />
+            </span>
+          </DeprecatedLocalSettingsPageItem>
+          <LocalSettingsPageItem
+            settings={settings}
+            item={['content_warnings', 'filter']}
+            id='mastodon-settings--content_warnings-auto_unfold'
+            onChange={onChange}
+            placeholder={intl.formatMessage(messages.regexp)}
+            disabled={!expandSpoilers}
+          >
+            <FormattedMessage id='settings.content_warnings_filter' defaultMessage='Content warnings to not automatically unfold:' />
+          </LocalSettingsPageItem>
+        </section>
       </div>
     ),
     ({ intl, onChange, settings }) => (
@@ -366,6 +387,7 @@ class LocalSettingsPage extends React.PureComponent {
           onChange={onChange}
         >
           <FormattedMessage id='settings.enable_collapsed' defaultMessage='Enable collapsed toots' />
+          <span className='hint'><FormattedMessage id='settings.enable_collapsed_hint' defaultMessage='Collapsed posts have parts of their contents hidden to take up less screen space. This is distinct from the Content Warning feature' /></span>
         </LocalSettingsPageItem>
         <LocalSettingsPageItem
           settings={settings}
@@ -457,6 +479,7 @@ class LocalSettingsPage extends React.PureComponent {
             dependsOn={[['collapsed', 'enabled']]}
           >
             <FormattedMessage id='settings.image_backgrounds_media' defaultMessage='Preview collapsed toot media' />
+            <span className='hint'><FormattedMessage id='settings.image_backgrounds_media_hint' defaultMessage='If the post has any media attachment, use the first one as a background' /></span>
           </LocalSettingsPageItem>
         </section>
       </div>

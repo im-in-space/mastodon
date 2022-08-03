@@ -77,10 +77,8 @@ ja:
     posts_tab_heading: 投稿
     posts_with_replies: 投稿と返信
     roles:
-      admin: Admin
       bot: Bot
       group: Group
-      moderator: Mod
     unavailable: プロフィールは利用できません
     unfollow: フォロー解除
   admin:
@@ -99,7 +97,6 @@ ja:
       avatar: アイコン
       by_domain: ドメイン
       change_email:
-        changed_msg: メールアドレスの変更に成功しました！
         current_email: 現在のメールアドレス
         label: メールアドレスを変更
         new_email: 新しいメールアドレス
@@ -180,12 +177,6 @@ ja:
       reset: リセット
       reset_password: パスワード再設定
       resubscribe: 再講読
-      role: 役割
-      roles:
-        admin: 管理者
-        moderator: モデレーター
-        staff: スタッフ
-        user: ユーザー
       search: 検索
       search_same_email_domain: 同じドメインのメールアドレスを使用しているユーザー
       search_same_ip: 同じIPのユーザーを検索
@@ -629,6 +620,25 @@ ja:
       unresolved: 未解決
       updated_at: 更新日時
       view_profile: プロフィールを表示
+    roles:
+      privileges:
+        manage_rules: ルールの管理
+        manage_rules_description: ユーザーがサーバールールを変更できるようにします
+        manage_settings: 設定の管理
+        manage_settings_description: ユーザーがサイト設定を変更できるようにします
+        manage_taxonomies_description: トレンドコンテンツの確認とハッシュタグの設定の更新
+        manage_user_access: アクセス権を管理
+        manage_user_access_description: 他のユーザーの2段階認証を無効にしたり、メールアドレスを変更したり、パスワードをリセットしたりすることができます。
+        manage_users: ユーザーの管理
+        manage_webhooks: Webhook の管理
+        manage_webhooks_description: 管理者イベントのWebhookを設定できます。
+        view_audit_log: 監査ログの表示
+        view_audit_log_description: ユーザーがサーバー上で管理アクションの履歴を表示できるようにします
+        view_dashboard: ダッシュボードの表示
+        view_dashboard_description: ユーザーがダッシュボードやさまざまなメトリクスにアクセスできるようにします
+        view_devops: 開発者
+        view_devops_description: Sidekiq と pgHero ダッシュボードにアクセスできるようにします
+      title: 権限
     rules:
       add_new: ルールを追加
       delete: 削除
@@ -681,9 +691,6 @@ ja:
         deletion:
           desc_html: 誰でも自分のアカウントを削除できるようにします
           title: アカウント削除を受け付ける
-        min_invite_role:
-          disabled: 誰にも許可しない
-          title: 招待の作成を許可
         require_invite_text:
           desc_html: アカウント登録が承認制の場合、「意気込みをお聞かせください」のテキストを必須入力にする
           title: 新規ユーザー登録時の理由を必須入力にする
@@ -696,9 +703,6 @@ ja:
       show_known_fediverse_at_about_page:
         desc_html: チェックを外すと、ランディングページからリンクされた公開タイムラインにローカルの公開投稿のみ表示します。
         title: 公開タイムラインに連合先のコンテンツも表示する
-      show_staff_badge:
-        desc_html: ユーザーページにスタッフのバッジを表示します
-        title: スタッフバッジを表示する
       site_description:
         desc_html: フロントページへの表示に使用される紹介文です。このMastodonサーバーを特徴付けることやその他重要なことを記述してください。HTMLタグ、特に<code>&lt;a&gt;</code> と <code>&lt;em&gt;</code>が使えます。
         title: サーバーの説明
@@ -835,6 +839,7 @@ ja:
       enabled: アクティブ
       events: イベント
       new: 新しいwebhook
+      status: ステータス
       title: Webhooks
       webhook: Webhook
   admin_mailer:
@@ -1085,15 +1090,22 @@ ja:
       public: 公開タイムライン
       thread: 会話
     edit:
+      add_keyword: キーワードを追加
+      keywords: キーワード
       title: フィルターを編集
     errors:
       invalid_context: 対象がないか無効です
-      invalid_irreversible: この機能はホームタイムラインまたは通知と一緒に指定する場合のみ機能します
     index:
+      contexts: "%{contexts} のフィルター"
       delete: 削除
       empty: フィルターはありません。
+      expires_in: "%{distance} で期限切れ"
+      expires_on: 有効期限 %{date}
+      keywords:
+        other: "%{count}件のキーワード"
       title: フィルター
     new:
+      save: 新規フィルターを保存
       title: 新規フィルターを追加
   footer:
     developers: 開発者向け
@@ -1210,6 +1222,8 @@ ja:
     copy_account_note_text: このユーザーは%{acct}から引っ越しました。これは以前のメモです。
   notification_mailer:
     admin:
+      report:
+        subject: "%{name} がレポートを送信しました"
       sign_up:
         subject: "%{name}さんがサインアップしました"
     digest:

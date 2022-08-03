@@ -22,6 +22,9 @@ th:
     federation_hint_html: ด้วยบัญชีที่ %{instance} คุณจะสามารถติดตามผู้คนในเซิร์ฟเวอร์ Mastodon และอื่น ๆ
     get_apps: ลองแอปมือถือ
     hosted_on: Mastodon ที่โฮสต์ที่ %{domain}
+    instance_actor_flash: 'บัญชีนี้เป็นตัวดำเนินการเสมือนที่ใช้เพื่อเป็นตัวแทนของเซิร์ฟเวอร์เองและไม่ใช่ผู้ใช้รายบุคคลใด ๆ บัญชีใช้สำหรับวัตถุประสงค์ในการติดต่อกับภายนอกและไม่ควรได้รับการปิดกั้นเว้นแต่คุณต้องการปิดกั้นทั้งอินสแตนซ์ ในกรณีนี้คุณควรใช้การปิดกั้นโดเมน
+
+      '
     learn_more: เรียนรู้เพิ่มเติม
     logged_in_as_html: คุณกำลังเข้าสู่ระบบเป็น %{username} ในปัจจุบัน
     logout_before_registering: คุณได้เข้าสู่ระบบอยู่แล้ว
@@ -46,6 +49,7 @@ th:
       silenced_title: เซิร์ฟเวอร์ที่จำกัดอยู่
       suspended: 'จะไม่ประมวลผล จัดเก็บ หรือแลกเปลี่ยนข้อมูลจากเซิร์ฟเวอร์เหล่านี้ ทำให้การโต้ตอบหรือการสื่อสารใด ๆ กับผู้ใช้จากเซิร์ฟเวอร์เหล่านี้เป็นไปไม่ได้:'
       suspended_title: เซิร์ฟเวอร์ที่ระงับอยู่
+    unavailable_content_html: โดยทั่วไป Mastodon อนุญาตให้คุณดูเนื้อหาจากและโต้ตอบกับผู้ใช้จากเซิร์ฟเวอร์อื่นใดในจักรวาลสหพันธ์ นี่คือข้อยกเว้นที่ทำขึ้นในเซิร์ฟเวอร์นี้โดยเฉพาะ
     user_count_after:
       other: ผู้ใช้
     user_count_before: บ้านของ
@@ -58,6 +62,7 @@ th:
     followers:
       other: ผู้ติดตาม
     following: กำลังติดตาม
+    instance_actor_flash: บัญชีนี้เป็นตัวดำเนินการเสมือนที่ใช้เพื่อเป็นตัวแทนของเซิร์ฟเวอร์เองและไม่ใช่ผู้ใช้รายบุคคลใด ๆ บัญชีใช้สำหรับวัตถุประสงค์ในการติดต่อกับภายนอกและไม่ควรได้รับการระงับ
     joined: เข้าร่วมเมื่อ %{date}
     last_active: ใช้งานล่าสุด
     link_verified_on: ตรวจสอบความเป็นเจ้าของของลิงก์นี้เมื่อ %{date}
@@ -74,10 +79,8 @@ th:
     posts_tab_heading: โพสต์
     posts_with_replies: โพสต์และการตอบกลับ
     roles:
-      admin: ผู้ดูแล
       bot: บอต
       group: กลุ่ม
-      moderator: ผู้ควบคุม
     unavailable: โปรไฟล์ไม่พร้อมใช้งาน
     unfollow: เลิกติดตาม
   admin:
@@ -96,12 +99,17 @@ th:
       avatar: ภาพประจำตัว
       by_domain: โดเมน
       change_email:
-        changed_msg: เปลี่ยนอีเมลบัญชีสำเร็จ!
+        changed_msg: เปลี่ยนอีเมลสำเร็จ!
         current_email: อีเมลปัจจุบัน
         label: เปลี่ยนอีเมล
         new_email: อีเมลใหม่
         submit: เปลี่ยนอีเมล
         title: เปลี่ยนอีเมลสำหรับ %{username}
+      change_role:
+        changed_msg: เปลี่ยนบทบาทสำเร็จ!
+        label: เปลี่ยนบทบาท
+        no_role: ไม่มีบทบาท
+        title: เปลี่ยนบทบาทสำหรับ %{username}
       confirm: ยืนยัน
       confirmed: ยืนยันแล้ว
       confirming: กำลังยืนยัน
@@ -145,6 +153,7 @@ th:
         active: ใช้งานอยู่
         all: ทั้งหมด
         pending: รอดำเนินการ
+        silenced: จำกัดอยู่
         suspended: ระงับอยู่
         title: การควบคุม
       moderation_notes: หมายเหตุการควบคุม
@@ -152,6 +161,7 @@ th:
       most_recent_ip: IP ล่าสุด
       no_account_selected: ไม่มีการเปลี่ยนแปลงบัญชีเนื่องจากไม่มีการเลือก
       no_limits_imposed: ไม่มีการกำหนดขีดจำกัด
+      no_role_assigned: ไม่มีการกำหนดบทบาท
       not_subscribed: ไม่ได้บอกรับ
       pending: การตรวจทานที่รอดำเนินการ
       perform_full_suspension: ระงับ
@@ -177,12 +187,7 @@ th:
       reset: รีเซ็ต
       reset_password: ตั้งรหัสผ่านใหม่
       resubscribe: บอกรับใหม่
-      role: สิทธิอนุญาต
-      roles:
-        admin: ผู้ดูแล
-        moderator: ผู้ควบคุม
-        staff: พนักงาน
-        user: ผู้ใช้
+      role: บทบาท
       search: ค้นหา
       search_same_email_domain: ผู้ใช้อื่น ๆ ที่มีโดเมนอีเมลเดียวกัน
       search_same_ip: ผู้ใช้อื่น ๆ ที่มี IP เดียวกัน
@@ -202,6 +207,8 @@ th:
       subscribe: บอกรับ
       suspend: ระงับ
       suspended: ระงับอยู่
+      suspension_irreversible: ลบข้อมูลของบัญชีนี้อย่างถาวรแล้ว คุณสามารถเลิกระงับบัญชีเพื่อทำให้บัญชีใช้งานได้แต่จะไม่กู้คืนข้อมูลใด ๆ ที่บัญชีมีก่อนหน้านี้
+      suspension_reversible_hint_html: ระงับบัญชีแล้ว และจะเอาข้อมูลออกอย่างสมบูรณ์ใน %{date} จนกว่าจะถึงตอนนั้น สามารถกู้คืนบัญชีได้โดยไม่มีผลร้ายใด ๆ หากคุณต้องการเอาข้อมูลของบัญชีทั้งหมดออกในทันที คุณสามารถทำได้ด้านล่าง
       title: บัญชี
       unblock_email: เลิกปิดกั้นที่อยู่อีเมล
       unblocked_email_msg: เลิกปิดกั้นที่อยู่อีเมลของ %{username} สำเร็จ
@@ -292,6 +299,7 @@ th:
         destroy_instance_html: "%{name} ได้ล้างข้อมูลโดเมน %{target}"
         destroy_ip_block_html: "%{name} ได้ลบกฎสำหรับ IP %{target}"
         destroy_status_html: "%{name} ได้เอาโพสต์โดย %{target} ออก"
+        destroy_unavailable_domain_html: "%{name} ได้ทำการจัดส่งไปยังโดเมน %{target} ต่อ"
         disable_2fa_user_html: "%{name} ได้ปิดใช้งานความต้องการสองปัจจัยสำหรับผู้ใช้ %{target}"
         disable_custom_emoji_html: "%{name} ได้ปิดใช้งานอีโมจิ %{target}"
         disable_sign_in_token_auth_user_html: "%{name} ได้ปิดใช้งานการรับรองความถูกต้องด้วยโทเคนอีเมลสำหรับ %{target}"
@@ -411,6 +419,8 @@ th:
       destroyed_msg: เลิกทำการปิดกั้นโดเมนแล้ว
       domain: โดเมน
       edit: แก้ไขการปิดกั้นโดเมน
+      existing_domain_block: คุณได้กำหนดขีดจำกัดที่เข้มงวดกว่าใน %{name} ไปแล้ว
+      existing_domain_block_html: คุณได้กำหนดขีดจำกัดที่เข้มงวดกว่าใน %{name} ไปแล้ว คุณจำเป็นต้อง <a href="%{unblock_url}">เลิกปิดกั้น</a> ก่อน
       new:
         create: สร้างการปิดกั้น
         hint: การปิดกั้นโดเมนจะไม่ป้องกันการสร้างรายการบัญชีในฐานข้อมูล แต่จะใช้วิธีการควบคุมที่เฉพาะเจาะจงกับบัญชีเหล่านั้นย้อนหลังและโดยอัตโนมัติ
@@ -421,8 +431,11 @@ th:
           suspend: ระงับ
         title: การปิดกั้นโดเมนใหม่
       obfuscate: ทำให้ชื่อโดเมนคลุมเครือ
+      obfuscate_hint: ปิดบังชื่อโดเมนบางส่วนในรายการหากมีการเปิดใช้งานการประกาศรายการการจำกัดโดเมน
       private_comment: ความคิดเห็นส่วนตัว
+      private_comment_hint: ความคิดเห็นเกี่ยวกับการจำกัดโดเมนนี้สำหรับการใช้งานภายในโดยผู้ควบคุม
       public_comment: ความคิดเห็นสาธารณะ
+      public_comment_hint: ความคิดเห็นเกี่ยวกับการจำกัดโดเมนนี้สำหรับสาธารณชนทั่วไป หากมีการเปิดใช้งานการประกาศรายการการจำกัดโดเมน
       reject_media: ปฏิเสธไฟล์สื่อ
       reject_media_hint: เอาไฟล์สื่อที่จัดเก็บไว้ในเซิร์ฟเวอร์ออกและปฏิเสธที่จะดาวน์โหลดไฟล์ใด ๆ ในอนาคต ไม่เกี่ยวข้องกับการระงับ
       reject_reports: ปฏิเสธรายงาน
@@ -431,6 +444,8 @@ th:
       view: ดูการปิดกั้นโดเมน
     email_domain_blocks:
       add_new: เพิ่มใหม่
+      attempts_over_week:
+        other: "%{count} ความพยายามในการลงทะเบียนในช่วงสัปดาห์ที่ผ่านมา"
       created_msg: ปิดกั้นโดเมนอีเมลสำเร็จ
       delete: ลบ
       dns:
@@ -442,9 +457,11 @@ th:
         resolve: แปลงที่อยู่โดเมน
         title: ปิดกั้นโดเมนอีเมลใหม่
       no_email_domain_block_selected: ไม่มีการเปลี่ยนแปลงการปิดกั้นโดเมนอีเมลเนื่องจากไม่มีการเลือก
+      resolved_dns_records_hint_html: ชื่อโดเมนจะแก้ไขเป็นโดเมน MX ต่อไปนี้ ซึ่งแต่ท้ายที่สุดแล้วคุณจะต้องรับผิดชอบในการยอมรับอีเมล การบล็อกโดเมน MX จะบล็อกการลงชื่อสมัครใช้จากที่อยู่อีเมลใดๆ ที่ใช้โดเมน MX เดียวกัน ถึงแม้ว่าชื่อโดเมนที่มองเห็นได้นั้นจะต่างกัน <strong>ระวังอย่าบล็อกผู้ให้บริการอีเมลรายใหญ่</strong>
       resolved_through_html: แปลงที่อยู่ผ่าน %{domain}
       title: โดเมนอีเมลที่ปิดกั้นอยู่
     follow_recommendations:
+      description_html: "<strong>จะทำตามคำแนะนำช่วยให้ผู้ใช้ใหม่ให้พบเนื้อหาที่น่าสนใจได้อย่างรวดเร็ว</strong> เมื่อผู้ใช้ไม่ได้โต้ตอบใดๆกับผู้อื่นมากพอที่จะสร้างคำแนะนำส่วนบุคคลให้กดติดตาม ขอแนะนำให้ใช้บัญชีเหล่านี้แทน พวกเขาจะคำนวณใหม่ทุกๆวันจากบัญชีต่างๆ ที่มีการมีส่วนร่วมล่าสุดและจำนวนผู้ติดตามในพื้นที่สูงสุดสำหรับภาษาที่คุณกำหนดไว้"
       language: สำหรับภาษา
       status: สถานะ
       suppress: ระงับคำแนะนำการติดตาม
@@ -596,6 +613,38 @@ th:
       unresolved: ยังไม่ได้แก้ปัญหา
       updated_at: อัปเดตเมื่อ
       view_profile: ดูโปรไฟล์
+    roles:
+      add_new: เพิ่มบทบาท
+      assigned_users:
+        other: "%{count} ผู้ใช้"
+      categories:
+        administration: การดูแล
+        invites: คำเชิญ
+        moderation: การควบคุม
+        special: พิเศษ
+      delete: ลบ
+      edit: แก้ไขบทบาท '%{name}'
+      everyone: สิทธิอนุญาตเริ่มต้น
+      permissions_count:
+        other: "%{count} สิทธิอนุญาต"
+      privileges:
+        administrator: ผู้ดูแล
+        delete_user_data: ลบข้อมูลผู้ใช้
+        invite_users: เชิญผู้ใช้
+        manage_announcements: จัดการประกาศ
+        manage_appeals: จัดการการอุทธรณ์
+        manage_blocks: จัดการการปิดกั้น
+        manage_custom_emojis: จัดการอีโมจิที่กำหนดเอง
+        manage_federation: จัดการการติดต่อกับภายนอก
+        manage_invites: จัดการคำเชิญ
+        manage_reports: จัดการรายงาน
+        manage_roles: จัดการบทบาท
+        manage_rules: จัดการกฎ
+        manage_settings: จัดการการตั้งค่า
+        manage_user_access: จัดการการเข้าถึงของผู้ใช้
+        manage_users: จัดการผู้ใช้
+        view_devops_description: อนุญาตให้ผู้ใช้เข้าถึงแดชบอร์ด Sidekiq และ pgHero
+      title: บทบาท
     rules:
       add_new: เพิ่มกฎ
       delete: ลบ
@@ -647,9 +696,6 @@ th:
         deletion:
           desc_html: อนุญาตให้ใครก็ตามลบบัญชีของเขา
           title: เปิดการลบบัญชี
-        min_invite_role:
-          disabled: ไม่มีใคร
-          title: อนุญาตคำเชิญโดย
         require_invite_text:
           title: ต้องให้ผู้ใช้ใหม่ป้อนเหตุผลที่จะเข้าร่วม
       registrations_mode:
@@ -661,9 +707,6 @@ th:
       show_known_fediverse_at_about_page:
         desc_html: เมื่อปิดใช้งาน จำกัดเส้นเวลาสาธารณะที่เชื่อมโยงจากหน้าเริ่มต้นให้แสดงเฉพาะเนื้อหาในเซิร์ฟเวอร์เท่านั้น
         title: รวมเนื้อหาที่ติดต่อกับภายนอกไว้ในหน้าเส้นเวลาสาธารณะที่ไม่ได้รับรองความถูกต้อง
-      show_staff_badge:
-        desc_html: แสดงป้ายพนักงานในหน้าผู้ใช้
-        title: แสดงป้ายพนักงาน
       site_description:
         desc_html: ย่อหน้าเกริ่นนำใน API อธิบายถึงสิ่งที่ทำให้เซิร์ฟเวอร์ Mastodon นี้พิเศษและสิ่งอื่นใดที่สำคัญ คุณสามารถใช้แท็ก HTML โดยเฉพาะอย่างยิ่ง <code>&lt;a&gt;</code> และ <code>&lt;em&gt;</code>
         title: คำอธิบายเซิร์ฟเวอร์
@@ -791,6 +834,8 @@ th:
       edit: แก้ไขปลายทาง
       enable: เปิดใช้งาน
       enabled: ใช้งานอยู่
+      enabled_events:
+        other: "%{count} เหตุการณ์ที่เปิดใช้งาน"
       events: เหตุการณ์
       status: สถานะ
   admin_mailer:
@@ -1032,12 +1077,20 @@ th:
       public: เส้นเวลาสาธารณะ
       thread: การสนทนา
     edit:
+      add_keyword: เพิ่มคำสำคัญ
+      keywords: คำสำคัญ
       title: แก้ไขตัวกรอง
     index:
+      contexts: กรองใน %{contexts}
       delete: ลบ
       empty: คุณไม่มีตัวกรอง
+      expires_in: หมดอายุใน %{distance}
+      expires_on: หมดอายุเมื่อ %{date}
+      keywords:
+        other: "%{count} คำสำคัญ"
       title: ตัวกรอง
     new:
+      save: บันทึกตัวกรองใหม่
       title: เพิ่มตัวกรองใหม่
   footer:
     developers: นักพัฒนา
@@ -1142,6 +1195,8 @@ th:
     copy_account_note_text: 'ผู้ใช้นี้ได้ย้ายจาก %{acct} นี่คือหมายเหตุก่อนหน้านี้ของคุณเกี่ยวกับผู้ใช้:'
   notification_mailer:
     admin:
+      report:
+        subject: "%{name} ได้ส่งรายงาน"
       sign_up:
         subject: "%{name} ได้ลงทะเบียน"
     digest:
