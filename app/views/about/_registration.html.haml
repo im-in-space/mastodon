@@ -21,6 +21,13 @@
         = f.simple_fields_for :invite_request do |invite_request_fields|
           = invite_request_fields.input :text, as: :text, wrapper: :with_block_label, required: Setting.require_invite_text
 
+    %p.lead.rules-list{style: "padding: 1em !important;"}
+      Please
+      %u do not
+      use a public anonymizer email service (like temporary boxes or forwarders).
+      %br
+      You will be asked to change your email under a time limit or will be suspended without notice.
+
     .fields-group
       = f.input :agreement, as: :boolean, wrapper: :with_label, label: t('auth.checkbox_agreement_html', rules_path: about_more_path, terms_path: terms_path), required: true, disabled: disabled
 

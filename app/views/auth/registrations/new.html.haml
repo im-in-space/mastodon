@@ -35,6 +35,13 @@
 
   = f.input :invite_code, as: :hidden
 
+  %p.rules-list{style: "margin-top: 0 !important; margin-bottom: 1.85em; padding: 1em !important;"}
+    Please
+    %u do not
+    use a public anonymizer email service (like temporary boxes or forwarders).
+    %br
+    You will be asked to change your email under a time limit or will be suspended without notice.
+
   .fields-group
     = f.input :agreement, as: :boolean, wrapper: :with_label, label: whitelist_mode? ? t('auth.checkbox_agreement_without_rules_html', terms_path: terms_path) : t('auth.checkbox_agreement_html', rules_path: about_more_path, terms_path: terms_path), required: true
 
