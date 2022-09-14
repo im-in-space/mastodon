@@ -122,6 +122,12 @@ body:not(.app-body):not(.admin) {
     background-color: transparent !important;
   }
 
+  // The cancel button when replying was inaccessible
+  .composer--reply .account {
+    display: inline-block;
+    width: calc(100% - 1.28571em - 10px);
+  }
+
   .pillbar-button {
     // Fix unreadable options in the column settings when not selected
     &:not(.active) {
