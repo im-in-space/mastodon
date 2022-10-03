@@ -35,7 +35,7 @@ const messages = defineMessages({
   admin_account: { id: 'status.admin_account', defaultMessage: 'Open moderation interface for @{name}' },
   admin_status: { id: 'status.admin_status', defaultMessage: 'Open this status in the moderation interface' },
   copy: { id: 'status.copy', defaultMessage: 'Copy link to status' },
-  translate: { id: 'status.translate', defaultMessage: 'Translate' },
+  translate: { id: 'status.translate', defaultMessage: 'Translate with Google' },
 });
 
 export default @injectIntl

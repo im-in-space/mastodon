@@ -41,7 +41,7 @@ const messages = defineMessages({
   copy: { id: 'status.copy', defaultMessage: 'Copy link to status' },
   hide: { id: 'status.hide', defaultMessage: 'Hide toot' },
   edited: { id: 'status.edited', defaultMessage: 'Edited {date}' },
-  translate: { id: 'status.translate', defaultMessage: 'Translate' },
+  translate: { id: 'status.translate', defaultMessage: 'Translate with Google' },
   filter: { id: 'status.filter', defaultMessage: 'Filter this post' },
 });
 
