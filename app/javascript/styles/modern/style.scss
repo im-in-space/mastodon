@@ -4,6 +4,7 @@
   --radius-round: 24px;
   --hover-color: rgba(170,170,170,0.07);
   --border-color: rgba(120,120,120,0.2);
+  --border-color-2: #787878;
   --shadow: 0 10px 40px -10px rgba(0,0,0,0.15);
   --shadow-low: 0 8px 16px -10px rgba(0,0,0,0.4);
   --shadow-med: 0 8px 60px -30px rgba(0,0,0,0.1);
@@ -33,6 +34,9 @@
 #mastodon .compose-form__upload-thumbnail,
 .public-layout .compose-form__upload-thumbnail,
 .modal-layout .compose-form__upload-thumbnail,
+#mastodon .button,
+.public-layout .button,
+.modal-layout .button,
 #mastodon button:not(.column-header__button),
 .public-layout button:not(.column-header__button),
 .modal-layout button:not(.column-header__button),
@@ -271,10 +275,12 @@
 .dropdown-menu__separator {
   margin: 0 !important;
 }
-#mastodon .columns-area__panels__pane__inner,
-.public-layout .columns-area__panels__pane__inner,
-.modal-layout .columns-area__panels__pane__inner {
-  margin-top: 30px;
+@media (min-width: 895px) {
+  #mastodon .columns-area__panels__pane__inner,
+  .public-layout .columns-area__panels__pane__inner,
+  .modal-layout .columns-area__panels__pane__inner {
+    margin-top: 30px;
+  }
 }
 #mastodon .compose-panel,
 .public-layout .compose-panel,
@@ -375,6 +381,109 @@
   margin-right: 0.2em;
   transform: scale(1.2);
 }
+#mastodon .server-banner,
+.public-layout .server-banner,
+.modal-layout .server-banner {
+  padding-inline: 10px;
+}
+#mastodon .server-banner .server-banner__hero,
+.public-layout .server-banner .server-banner__hero,
+.modal-layout .server-banner .server-banner__hero {
+  border-radius: var(--radius);
+  width: 100%;
+  border-radius: var(--radius) var(--radius) 0 0;
+  border: 1px solid var(--border-color);
+  box-sizing: border-box;
+}
+#mastodon .server-banner .server-banner__description,
+.public-layout .server-banner .server-banner__description,
+.modal-layout .server-banner .server-banner__description {
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  margin-top: -20px;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+#mastodon .server-banner .server-banner__meta,
+.public-layout .server-banner .server-banner__meta,
+.modal-layout .server-banner .server-banner__meta {
+  flex-direction: column;
+}
+#mastodon .server-banner .server-banner__meta .server-banner__meta__column,
+.public-layout .server-banner .server-banner__meta .server-banner__meta__column,
+.modal-layout .server-banner .server-banner__meta .server-banner__meta__column {
+  width: unset;
+  overflow: visible;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+#mastodon .server-banner .server-banner__meta .server-banner__meta__column h4,
+.public-layout .server-banner .server-banner__meta .server-banner__meta__column h4,
+.modal-layout .server-banner .server-banner__meta .server-banner__meta__column h4 {
+  margin: 0;
+  font-size: 0.9em !important;
+  width: 100%;
+}
+#mastodon .server-banner .server-banner__meta .server-banner__meta__column .account,
+.public-layout .server-banner .server-banner__meta .server-banner__meta__column .account,
+.modal-layout .server-banner .server-banner__meta .server-banner__meta__column .account {
+  margin-inline: -10px;
+  padding: 10px !important;
+  width: 100%;
+}
+#mastodon .server-banner .server-banner__meta .server-banner__meta__column .account::after,
+.public-layout .server-banner .server-banner__meta .server-banner__meta__column .account::after,
+.modal-layout .server-banner .server-banner__meta .server-banner__meta__column .account::after {
+  content: unset;
+}
+#mastodon .server-banner .server-banner__meta .server-banner__meta__column .server-banner__number,
+.public-layout .server-banner .server-banner__meta .server-banner__meta__column .server-banner__number,
+.modal-layout .server-banner .server-banner__meta .server-banner__meta__column .server-banner__number,
+#mastodon .server-banner .server-banner__meta .server-banner__meta__column .server-banner__number-label,
+.public-layout .server-banner .server-banner__meta .server-banner__meta__column .server-banner__number-label,
+.modal-layout .server-banner .server-banner__meta .server-banner__meta__column .server-banner__number-label {
+  font-size: 1.1em;
+  line-height: 2;
+  margin-right: 0.5em;
+}
+#mastodon .server-banner .server-banner__meta .server-banner__meta__column .server-banner__number-label,
+.public-layout .server-banner .server-banner__meta .server-banner__meta__column .server-banner__number-label,
+.modal-layout .server-banner .server-banner__meta .server-banner__meta__column .server-banner__number-label {
+  font-weight: 400 !important;
+}
+#mastodon .navigation-panel__sign-in-banner,
+.public-layout .navigation-panel__sign-in-banner,
+.modal-layout .navigation-panel__sign-in-banner {
+  margin-inline: 5px;
+  padding: 20px;
+  border: 1px solid;
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  margin-top: 10px;
+  order: -1;
+}
+#mastodon .navigation-panel__sign-in-banner hr,
+.public-layout .navigation-panel__sign-in-banner hr,
+.modal-layout .navigation-panel__sign-in-banner hr {
+  display: none;
+}
+#mastodon .navigation-panel__sign-in-banner .sign-in-banner,
+.public-layout .navigation-panel__sign-in-banner .sign-in-banner,
+.modal-layout .navigation-panel__sign-in-banner .sign-in-banner {
+  padding: 0;
+}
+#mastodon .navigation-panel__sign-in-banner .sign-in-banner p,
+.public-layout .navigation-panel__sign-in-banner .sign-in-banner p,
+.modal-layout .navigation-panel__sign-in-banner .sign-in-banner p {
+  color: inherit !important;
+  line-height: 1.5;
+}
+#mastodon .navigation-panel__sign-in-banner .sign-in-banner > :last-child,
+.public-layout .navigation-panel__sign-in-banner .sign-in-banner > :last-child,
+.modal-layout .navigation-panel__sign-in-banner .sign-in-banner > :last-child {
+  margin-bottom: 0;
+}
 @media (min-width: 895px) {
   .layout-single-column .getting-started__footer {
     opacity: 0.5;
@@ -406,7 +515,6 @@
 #mastodon .columns-area__panels__main,
 .public-layout .columns-area__panels__main,
 .modal-layout .columns-area__panels__main {
-  margin: 0 10px;
   padding-top: 30px !important;
   overflow: visible !important;
   transition: max-width 0.2s cubic-bezier(0, 0, 0, 1.1), margin 0.2s cubic-bezier(0, 0, 0, 1.1);
@@ -417,6 +525,13 @@
   .modal-layout .columns-area__panels__main {
     max-width: var(--tl-width) !important;
     padding: 0 15px;
+  }
+}
+@media (min-width: 895px) {
+  #mastodon .columns-area__panels__main,
+  .public-layout .columns-area__panels__main,
+  .modal-layout .columns-area__panels__main {
+    margin: 0 10px;
   }
 }
 #mastodon .columns-area__panels__main > div,
@@ -433,6 +548,16 @@
 .public-layout .columns-area__panels__main :not(.scrollable--flex) > .scrollable,
 .modal-layout .columns-area__panels__main :not(.scrollable--flex) > .scrollable {
   padding-bottom: 40vh !important;
+}
+#mastodon .columns-area__panels__main .column-actions,
+.public-layout .columns-area__panels__main .column-actions,
+.modal-layout .columns-area__panels__main .column-actions {
+  position: static;
+}
+#mastodon .columns-area__panels__main .column-actions .column-actions__background,
+.public-layout .columns-area__panels__main .column-actions .column-actions__background,
+.modal-layout .columns-area__panels__main .column-actions .column-actions__background {
+  border-bottom-left-radius: var(--radius);
 }
 #mastodon .scrollable,
 .public-layout .scrollable,
@@ -2193,34 +2318,44 @@
 #mastodon .empty-column-indicator,
 .public-layout .empty-column-indicator,
 .modal-layout .empty-column-indicator {
-  display: unset;
   contain: unset;
   padding: 10px !important;
+  color: unset;
+  opacity: 0.8;
+  font-size: 1.2em;
+  line-height: 2;
+}
+#mastodon .empty-column-indicator a,
+.public-layout .empty-column-indicator a,
+.modal-layout .empty-column-indicator a {
+  display: block;
+  font-weight: 700;
+  font-size: 1.1em;
 }
 #mastodon .status,
 .public-layout .status,
 .modal-layout .status,
-#mastodon .focusable > .account,
-.public-layout .focusable > .account,
-.modal-layout .focusable > .account {
+#mastodon .columns-area__panels__main .account,
+.public-layout .columns-area__panels__main .account,
+.modal-layout .columns-area__panels__main .account {
   border: 0 !important;
   padding: 15px !important;
 }
 #mastodon .status:not(.account),
 .public-layout .status:not(.account),
 .modal-layout .status:not(.account),
-#mastodon .focusable > .account:not(.account),
-.public-layout .focusable > .account:not(.account),
-.modal-layout .focusable > .account:not(.account) {
+#mastodon .columns-area__panels__main .account:not(.account),
+.public-layout .columns-area__panels__main .account:not(.account),
+.modal-layout .columns-area__panels__main .account:not(.account) {
   padding-inline-start: var(--status-left-padding) !important;
 }
 #mastodon .status.account .account__avatar-wrapper,
 .public-layout .status.account .account__avatar-wrapper,
 .modal-layout .status.account .account__avatar-wrapper,
-#mastodon .focusable > .account.account .account__avatar-wrapper,
-.public-layout .focusable > .account.account .account__avatar-wrapper,
-.modal-layout .focusable > .account.account .account__avatar-wrapper {
-  margin-left: 10px;
+#mastodon .columns-area__panels__main .account.account .account__avatar-wrapper,
+.public-layout .columns-area__panels__main .account.account .account__avatar-wrapper,
+.modal-layout .columns-area__panels__main .account.account .account__avatar-wrapper {
+  margin-left: 0px;
 }
 #mastodon .status__prepend,
 .public-layout .status__prepend,
@@ -2580,11 +2715,22 @@
 .modal-layout .picture-in-picture__footer .icon-button[aria-label]::after {
   all: unset;
   content: attr(aria-label);
-  font-size: 0.7em;
+  font-size: 12px;
   margin-inline-start: 0.5em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+#mastodon .status__action-bar .icon-button .icon-button__counter,
+.public-layout .status__action-bar .icon-button .icon-button__counter,
+.modal-layout .status__action-bar .icon-button .icon-button__counter,
+#mastodon .detailed-status__action-bar .icon-button .icon-button__counter,
+.public-layout .detailed-status__action-bar .icon-button .icon-button__counter,
+.modal-layout .detailed-status__action-bar .icon-button .icon-button__counter,
+#mastodon .picture-in-picture__footer .icon-button .icon-button__counter,
+.public-layout .picture-in-picture__footer .icon-button .icon-button__counter,
+.modal-layout .picture-in-picture__footer .icon-button .icon-button__counter {
+  width: auto !important;
 }
 #mastodon .status__action-bar .status__action-bar-dropdown,
 .public-layout .status__action-bar .status__action-bar-dropdown,
@@ -2855,78 +3001,93 @@
 #mastodon .navigation-panel,
 .public-layout .navigation-panel,
 .modal-layout .navigation-panel {
-  padding-top: 50px;
   padding-bottom: 20px;
   height: calc(100% - 30px);
   box-sizing: border-box;
 }
-#mastodon .navigation-panel .column-link,
-.public-layout .navigation-panel .column-link,
-.modal-layout .navigation-panel .column-link {
-  flex-grow: 2 !important;
-  display: flex !important;
-  align-items: center !important;
-  align-content: center;
-  max-height: 3.3em;
-  min-height: 2.7em !important;
-  padding-block: 0;
-  position: relative;
-  box-sizing: border-box;
-  opacity: 0.9;
-  overflow: hidden;
+@media (min-width: 1191px) {
+  #mastodon .navigation-panel,
+  .public-layout .navigation-panel,
+  .modal-layout .navigation-panel {
+    padding-top: 50px !important;
+  }
+  #mastodon .navigation-panel .navigation-panel__logo,
+  .public-layout .navigation-panel .navigation-panel__logo,
+  .modal-layout .navigation-panel .navigation-panel__logo {
+    display: none;
+  }
 }
-#mastodon .navigation-panel .column-link .column-link__icon,
-.public-layout .navigation-panel .column-link .column-link__icon,
-.modal-layout .navigation-panel .column-link .column-link__icon,
-.column-header > button .column-header__icon {
-  margin-inline-end: 1em !important;
+@media (min-width: 895px) {
+  #mastodon .navigation-panel .column-link,
+  .public-layout .navigation-panel .column-link,
+  .modal-layout .navigation-panel .column-link {
+    flex-grow: 2 !important;
+    display: flex !important;
+    align-items: center !important;
+    align-content: center;
+    max-height: 3.3em;
+    min-height: 2.7em !important;
+    padding-block: 0;
+    position: relative;
+    box-sizing: border-box;
+    opacity: 0.9;
+    overflow: hidden;
+  }
+  #mastodon .navigation-panel .column-link .column-link__icon,
+  .public-layout .navigation-panel .column-link .column-link__icon,
+  .modal-layout .navigation-panel .column-link .column-link__icon,
+  .column-header > button .column-header__icon {
+    margin-inline-end: 1em !important;
+  }
+  #mastodon .navigation-panel .column-link::before,
+  .public-layout .navigation-panel .column-link::before,
+  .modal-layout .navigation-panel .column-link::before {
+    content: "" !important;
+    position: absolute;
+    border-radius: 100px !important;
+    width: unset !important;
+    height: unset !important;
+    inset: 0px 0px !important;
+    opacity: 0 !important;
+    background-color: rgba(150,150,150,0.1);
+    transition: opacity 0.2s;
+  }
+  #mastodon .navigation-panel .column-link.active,
+  .public-layout .navigation-panel .column-link.active,
+  .modal-layout .navigation-panel .column-link.active {
+    opacity: 1 !important;
+    font-weight: 600;
+  }
+  #mastodon .navigation-panel .column-link:hover:before,
+  .public-layout .navigation-panel .column-link:hover:before,
+  .modal-layout .navigation-panel .column-link:hover:before,
+  #mastodon .navigation-panel .column-link:focus:before,
+  .public-layout .navigation-panel .column-link:focus:before,
+  .modal-layout .navigation-panel .column-link:focus:before {
+    opacity: 1 !important;
+  }
+  #mastodon .navigation-panel .column-link[href="/settings/preferences"],
+  .public-layout .navigation-panel .column-link[href="/settings/preferences"],
+  .modal-layout .navigation-panel .column-link[href="/settings/preferences"] {
+    display: none !important;
+  }
+  #mastodon .navigation-panel .column-link[href="/web/lists"] + div hr,
+  .public-layout .navigation-panel .column-link[href="/web/lists"] + div hr,
+  .modal-layout .navigation-panel .column-link[href="/web/lists"] + div hr {
+    display: none;
+  }
+  #mastodon .navigation-panel .column-link[href="/web/lists"] + div .column-link i,
+  .public-layout .navigation-panel .column-link[href="/web/lists"] + div .column-link i,
+  .modal-layout .navigation-panel .column-link[href="/web/lists"] + div .column-link i {
+    opacity: 0.2;
+  }
 }
-#mastodon .navigation-panel .column-link::before,
-.public-layout .navigation-panel .column-link::before,
-.modal-layout .navigation-panel .column-link::before {
-  content: "" !important;
-  position: absolute;
-  border-radius: 100px !important;
-  width: unset !important;
-  height: unset !important;
-  inset: 0px 0px !important;
-  opacity: 0 !important;
-  background-color: rgba(150,150,150,0.1);
-  transition: opacity 0.2s;
-}
-#mastodon .navigation-panel .column-link.active,
-.public-layout .navigation-panel .column-link.active,
-.modal-layout .navigation-panel .column-link.active {
-  opacity: 1 !important;
-  font-weight: 600;
-}
-#mastodon .navigation-panel .column-link:hover:before,
-.public-layout .navigation-panel .column-link:hover:before,
-.modal-layout .navigation-panel .column-link:hover:before,
-#mastodon .navigation-panel .column-link:focus:before,
-.public-layout .navigation-panel .column-link:focus:before,
-.modal-layout .navigation-panel .column-link:focus:before {
-  opacity: 1 !important;
-}
-#mastodon .navigation-panel .column-link[href="/settings/preferences"],
-.public-layout .navigation-panel .column-link[href="/settings/preferences"],
-.modal-layout .navigation-panel .column-link[href="/settings/preferences"] {
-  display: none !important;
-}
-#mastodon .navigation-panel .column-link[href="/web/lists"] + div hr,
-.public-layout .navigation-panel .column-link[href="/web/lists"] + div hr,
-.modal-layout .navigation-panel .column-link[href="/web/lists"] + div hr {
-  display: none;
-}
-#mastodon .navigation-panel .column-link[href="/web/lists"] + div .column-link i,
-.public-layout .navigation-panel .column-link[href="/web/lists"] + div .column-link i,
-.modal-layout .navigation-panel .column-link[href="/web/lists"] + div .column-link i {
-  opacity: 0.2;
-}
-#mastodon .getting-started__trends,
-.public-layout .getting-started__trends,
-.modal-layout .getting-started__trends {
-  display: unset !important;
+@media (min-width: 895px) {
+  #mastodon .getting-started__trends,
+  .public-layout .getting-started__trends,
+  .modal-layout .getting-started__trends {
+    display: unset !important;
+  }
 }
 #mastodon .trends__item,
 .public-layout .trends__item,
