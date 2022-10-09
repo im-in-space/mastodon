@@ -730,9 +730,11 @@
           border-top: 1px solid lighten($ui-base-color, 12%);
         }
 
+/* im-in-space: Don't hide the roles
         .roles {
           display: none;
         }
+*/
       }
 
       &__links {

@@ -4,7 +4,7 @@ class REST::AccountSerializer < ActiveModel::Serializer
   include RoutingHelper
   include FormattingHelper
 
-  attributes :id, :username, :acct, :display_name, :locked, :bot, :discoverable, :group, :created_at,
+  attributes :id, :username, :acct, :display_name, :locked, :bot, :role, :discoverable, :group, :created_at,
              :note, :url, :avatar, :avatar_static, :header, :header_static,
              :followers_count, :following_count, :statuses_count, :last_status_at
 
@@ -81,6 +81,10 @@ class REST::AccountSerializer < ActiveModel::Serializer
 
   def bot
     object.suspended? ? false : object.bot
+  end
+
+  def role
+    object.suspended? ? false : object.user_role
   end
 
   def discoverable
