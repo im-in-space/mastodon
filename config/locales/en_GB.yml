@@ -220,7 +220,6 @@ en_GB:
       emoji: Emoji
       enable: Enable
       enabled_msg: Successfully enabled that emoji
-      image_hint: PNG, GIF, WebP, SVG or JPEG up to %{size}
       listed: Listed
       new:
         title: Add new custom emoji

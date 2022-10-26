@@ -526,7 +526,7 @@
   "status.show_original": "Show original",
   "status.show_thread": "Montrer le fil",
   "status.translate": "Traduire",
-  "status.translated_from": "Translated from {lang}",
+  "status.translated_from": "Trandit depuis {lang}",
   "status.uncached_media_warning": "Indisponible",
   "status.unmute_conversation": "Ne plus masquer la conversation",
   "status.unpin": "Retirer du profil",
