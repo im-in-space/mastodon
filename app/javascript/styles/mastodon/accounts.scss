@@ -139,6 +139,7 @@
 
   .older {
     float: left;
+    padding-left: 0;
 
     .fa {
       display: inline-block;
@@ -148,6 +149,7 @@
 
   .newer {
     float: right;
+    padding-right: 0;
 
     .fa {
       display: inline-block;
