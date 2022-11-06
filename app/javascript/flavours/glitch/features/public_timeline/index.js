@@ -9,6 +9,8 @@ import { expandPublicTimeline } from 'flavours/glitch/actions/timelines';
 import { addColumn, removeColumn, moveColumn } from 'flavours/glitch/actions/columns';
 import ColumnSettingsContainer from './containers/column_settings_container';
 import { connectPublicStream } from 'flavours/glitch/actions/streaming';
+import { Helmet } from 'react-helmet';
+import DismissableBanner from 'flavours/glitch/components/dismissable_banner';
 
 const messages = defineMessages({
   title: { id: 'column.public', defaultMessage: 'Federated timeline' },
@@ -43,6 +45,7 @@ class PublicTimeline extends React.PureComponent {
 
   static contextTypes = {
     router: PropTypes.object,
+    identity: PropTypes.object,
   };
 
   static propTypes = {
@@ -78,18 +81,29 @@ class PublicTimeline extends React.PureComponent {
 
   componentDidMount () {
     const { dispatch, onlyMedia, onlyRemote, allowLocalOnly } = this.props;
+    const { signedIn } = this.context.identity;
 
     dispatch(expandPublicTimeline({ onlyMedia, onlyRemote, allowLocalOnly }));
-    this.disconnect = dispatch(connectPublicStream({ onlyMedia, onlyRemote, allowLocalOnly }));
+    if (signedIn) {
+      this.disconnect = dispatch(connectPublicStream({ onlyMedia, onlyRemote, allowLocalOnly }));
+    }
   }
 
   componentDidUpdate (prevProps) {
+    const { signedIn } = this.context.identity;
+
     if (prevProps.onlyMedia !== this.props.onlyMedia || prevProps.onlyRemote !== this.props.onlyRemote || prevProps.allowLocalOnly !== this.props.allowLocalOnly) {
       const { dispatch, onlyMedia, onlyRemote, allowLocalOnly } = this.props;
 
-      this.disconnect();
+      if (this.disconnect) {
+        this.disconnect();
+      }
+
       dispatch(expandPublicTimeline({ onlyMedia, onlyRemote, allowLocalOnly }));
-      this.disconnect = dispatch(connectPublicStream({ onlyMedia, onlyRemote, allowLocalOnly }));
+
+      if (signedIn) {
+        this.disconnect = dispatch(connectPublicStream({ onlyMedia, onlyRemote, allowLocalOnly }));
+      }
     }
   }
 
@@ -129,6 +143,10 @@ class PublicTimeline extends React.PureComponent {
           <ColumnSettingsContainer columnId={columnId} />
         </ColumnHeader>
 
+        <DismissableBanner id='public_timeline'>
+          <FormattedMessage id='dismissable_banner.public_timeline' defaultMessage='These are the most recent public posts from people on this and other servers of the decentralized network that this server knows about.' />
+        </DismissableBanner>
+
         <StatusListContainer
           timelineId={`public${onlyRemote ? ':remote' : (allowLocalOnly ? ':allow_local_only' : '')}${onlyMedia ? ':media' : ''}`}
           onLoadMore={this.handleLoadMore}
@@ -138,6 +156,11 @@ class PublicTimeline extends React.PureComponent {
           bindToDocument={!multiColumn}
           regex={this.props.regex}
         />
+
+        <Helmet>
+          <title>{intl.formatMessage(messages.title)}</title>
+          <meta name='robots' content='noindex' />
+        </Helmet>
       </Column>
     );
   }

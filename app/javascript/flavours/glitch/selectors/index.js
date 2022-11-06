@@ -1,8 +1,8 @@
 import escapeTextContentForBrowser from 'escape-html';
 import { createSelector } from 'reselect';
 import { List as ImmutableList } from 'immutable';
-import { toServerSideType } from 'flavours/glitch/util/filters';
-import { me } from 'flavours/glitch/util/initial_state';
+import { toServerSideType } from 'flavours/glitch/utils/filters';
+import { me } from 'flavours/glitch/initial_state';
 
 const getAccountBase         = (state, id) => state.getIn(['accounts', id], null);
 const getAccountCounters     = (state, id) => state.getIn(['accounts_counters', id], null);
@@ -42,7 +42,7 @@ export const makeGetStatus = () => {
     ],
 
     (statusBase, statusReblog, accountBase, accountReblog, filters) => {
-      if (!statusBase) {
+      if (!statusBase || statusBase.get('isLoading')) {
         return null;
       }
 

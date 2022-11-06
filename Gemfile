@@ -72,6 +72,7 @@ gem 'rack-attack', '~> 6.6'
 gem 'rack-cors', '~> 1.1', require: 'rack/cors'
 gem 'rails-i18n', '~> 6.0'
 gem 'rails-settings-cached', '~> 0.6'
+gem 'redcarpet', '~> 3.5'
 gem 'redis', '~> 4.5', require: ['redis', 'redis/connection/hiredis']
 gem 'mario-redis-lock', '~> 1.2', require: 'redis_lock'
 gem 'rqrcode', '~> 2.1'
@@ -98,8 +99,6 @@ gem 'json-ld'
 gem 'json-ld-preloaded', '~> 3.2'
 gem 'rdf-normalize', '~> 0.5'
 
-gem 'redcarpet', '~> 3.5'
-
 group :development, :test do
   gem 'fabrication', '~> 2.30'
   gem 'fuubar', '~> 2.5'
@@ -122,7 +121,7 @@ group :test do
   gem 'rspec-sidekiq', '~> 3.1'
   gem 'simplecov', '~> 0.21', require: false
   gem 'webmock', '~> 3.18'
-  gem 'rspec_junit_formatter', '~> 0.5'
+  gem 'rspec_junit_formatter', '~> 0.6'
 end
 
 group :development do

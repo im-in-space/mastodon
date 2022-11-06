@@ -24,6 +24,10 @@ class Api::BaseController < ApplicationController
     render json: { error: 'Duplicate record' }, status: 422
   end
 
+  rescue_from Date::Error do
+    render json: { error: 'Invalid date supplied' }, status: 422
+  end
+
   rescue_from ActiveRecord::RecordNotFound do
     render json: { error: 'Record not found' }, status: 404
   end
@@ -129,7 +133,7 @@ class Api::BaseController < ApplicationController
   end
 
   def disallow_unauthenticated_api_access?
-    authorized_fetch_mode?
+    ENV['DISALLOW_UNAUTHENTICATED_API_ACCESS'] == 'true' || Rails.configuration.x.whitelist_mode
   end
 
   private

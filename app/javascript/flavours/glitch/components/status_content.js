@@ -5,8 +5,8 @@ import { FormattedMessage } from 'react-intl';
 import Permalink from './permalink';
 import classnames from 'classnames';
 import Icon from 'flavours/glitch/components/icon';
-import { autoPlayGif } from 'flavours/glitch/util/initial_state';
-import { decode as decodeIDNA } from 'flavours/glitch/util/idna';
+import { autoPlayGif } from 'flavours/glitch/initial_state';
+import { decode as decodeIDNA } from 'flavours/glitch/utils/idna';
 
 const textMatchesTarget = (text, origin, host) => {
   return (text === origin || text === host
@@ -124,6 +124,9 @@ export default class StatusContent extends React.PureComponent {
         link.setAttribute('title', link.href);
         link.classList.add('unhandled-link');
 
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener nofollow noreferrer');
+
         try {
           if (tagLinks && isLinkMisleading(link)) {
             // Add a tag besides the link to display its origin
@@ -149,9 +152,6 @@ export default class StatusContent extends React.PureComponent {
           if (tagLinks && e instanceof TypeError) link.removeAttribute('href');
         }
       }
-
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
     }
   }
 

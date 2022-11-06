@@ -5,7 +5,8 @@ import SearchContainer from 'mastodon/features/compose/containers/search_contain
 import ComposeFormContainer from 'mastodon/features/compose/containers/compose_form_container';
 import NavigationContainer from 'mastodon/features/compose/containers/navigation_container';
 import LinkFooter from './link_footer';
-import { changeComposing } from 'mastodon/actions/compose';
+import ServerBanner from 'mastodon/components/server_banner';
+import { changeComposing, mountCompose, unmountCompose } from 'mastodon/actions/compose';
 
 export default @connect()
 class ComposePanel extends React.PureComponent {
@@ -19,11 +20,23 @@ class ComposePanel extends React.PureComponent {
   };
 
   onFocus = () => {
-    this.props.dispatch(changeComposing(true));
+    const { dispatch } = this.props;
+    dispatch(changeComposing(true));
   }
 
   onBlur = () => {
-    this.props.dispatch(changeComposing(false));
+    const { dispatch } = this.props;
+    dispatch(changeComposing(false));
+  }
+
+  componentDidMount () {
+    const { dispatch } = this.props;
+    dispatch(mountCompose());
+  }
+
+  componentWillUnmount () {
+    const { dispatch } = this.props;
+    dispatch(unmountCompose());
   }
 
   render() {
@@ -35,6 +48,7 @@ class ComposePanel extends React.PureComponent {
 
         {!signedIn && (
           <React.Fragment>
+            <ServerBanner />
             <div className='flex-spacer' />
           </React.Fragment>
         )}
@@ -46,7 +60,7 @@ class ComposePanel extends React.PureComponent {
           </React.Fragment>
         )}
 
-        <LinkFooter withHotkeys />
+        <LinkFooter />
       </div>
     );
   }

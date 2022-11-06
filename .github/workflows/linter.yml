@@ -16,10 +16,10 @@ name: Lint Code Base
 #############################
 on:
   push:
-    branches-ignore: [main]
+    branches-ignore: [im-in.space]
     # Remove the line above to run when pushing to master
   pull_request:
-    branches: [main]
+    branches: [im-in.space]
 
 ###############
 # Set the Job #
@@ -71,7 +71,7 @@ jobs:
         uses: github/super-linter@v4
         env:
           CSS_FILE_NAME: stylelint.config.js
-          DEFAULT_BRANCH: main
+          DEFAULT_BRANCH: im-in.space
           NO_COLOR: 1 # https://github.com/xt0rted/stylelint-problem-matcher/issues/360
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js

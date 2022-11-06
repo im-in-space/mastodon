@@ -1,24 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as registerPushNotifications from 'mastodon/actions/push_notifications';
 import { setupBrowserNotifications } from 'mastodon/actions/notifications';
 import Mastodon, { store } from 'mastodon/containers/mastodon';
 import ready from 'mastodon/ready';
 
-const perf = require('./performance');
+const perf = require('mastodon/performance');
 
+/**
+ * @returns {Promise<void>}
+ */
 function main() {
   perf.start('main()');
 
-  if (window.history && history.replaceState) {
-    const { pathname, search, hash } = window.location;
-    const path = pathname + search + hash;
-    if (!(/^\/web($|\/)/).test(path)) {
-      history.replaceState(null, document.title, `/web${path}`);
-    }
-  }
-
-  ready(() => {
+  return ready(async () => {
     const mountNode = document.getElementById('mastodon');
     const props = JSON.parse(mountNode.getAttribute('data-props'));
 
@@ -26,19 +20,28 @@ function main() {
     store.dispatch(setupBrowserNotifications());
 
     if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-      import('workbox-window')
-        .then(({ Workbox }) => {
-          const wb = new Workbox('/sw.js');
+      const [{ Workbox }, { me }] = await Promise.all([
+        import('workbox-window'),
+        import('mastodon/initial_state'),
+      ]);
 
-          return wb.register();
-        })
-        .then(() => {
-          store.dispatch(registerPushNotifications.register());
-        })
-        .catch(err => {
-          console.error(err);
-        });
+      const wb = new Workbox('/sw.js');
+
+      try {
+        await wb.register();
+      } catch (err) {
+        console.error(err);
+
+        return;
+      }
+
+      if (me) {
+        const registerPushNotifications = await import('mastodon/actions/push_notifications');
+
+        store.dispatch(registerPushNotifications.register());
+      }
     }
+
     perf.stop('main()');
   });
 }

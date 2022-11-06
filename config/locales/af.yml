@@ -2,18 +2,18 @@
 af:
   about:
     contact_unavailable: NVT
-    continue_to_web: Gaan voort na web toepassing
-    discover_users: Verken gebruikers
-    documentation: Dokumentasie
-    federation_hint_html: Met 'n rekening op %{instance} sal jy in staat wees om mense op enige Mastodon en federasie bediener te volg.
-    get_apps: Probeer 'n mobiele toepassing
     hosted_on: Mastodon gehuisves op %{domain}
-    tagline: Gedesentraliseerde sosiale netwerk
   admin:
+    announcements:
+      publish: Publiseer
+      published_msg: Aankondiging was suksesvol gepubliseer!
+      unpublish: Depubliseer
     domain_blocks:
       existing_domain_block: Jy het alreeds strenger perke ingelê op %{name}.
     trends:
       only_allowed: Slegs toegelate
+      preview_card_providers:
+        title: Publiseerders
       trending: Gewild
     webhooks:
       add_new: Voeg end-punt by
@@ -44,6 +44,8 @@ af:
     '429': Too many requests
     '500': 
     '503': The page could not be served due to a temporary server failure.
+  navigation:
+    toggle_menu: Skakel-kieslys
   rss:
     content_warning: 'Inhoud waarskuwing:'
     descriptions:

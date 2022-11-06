@@ -1,140 +1,77 @@
 ---
 de:
   about:
-    about_hashtag_html: Das sind öffentliche Beiträge, die mit <strong>#%{hashtag}</strong> getaggt wurden. Wenn du irgendwo im Födiversum ein Konto besitzt, kannst du mit ihnen interagieren.
-    about_mastodon_html: Mastodon ist ein soziales Netzwerk. Es basiert auf offenen Web-Protokollen und freier, quelloffener Software. Es ist dezentral – genau wie E-Mail!
-    about_this: Über diesen Server
-    active_count_after: aktiv
-    active_footnote: Monatlich aktive User (MAU)
-    administered_by: 'Betrieben von:'
-    api: API
-    apps: Mobile Apps
-    apps_platforms: Benutze Mastodon auf iOS, Android und anderen Plattformen
-    browse_directory: Durchsuche das Profilverzeichnis und filtere nach Interessen
-    browse_local_posts: Durchsuche einen Live-Stream öffentlicher Beiträge dieses Servers
-    browse_public_posts: Stöbere durch öffentliche Beiträge auf Mastodon
-    contact: Kontakt
-    contact_missing: Nicht angegeben
+    about_mastodon_html: 'Das soziale Netzwerk der Zukunft: Keine Werbung, keine Überwachung, dafür dezentral und mit Anstand! Starte jetzt mit Mastodon!'
+    contact_missing: Nicht festgelegt
     contact_unavailable: Nicht verfügbar
-    continue_to_web: Weiter zur Web-App
-    discover_users: Benutzer entdecken
-    documentation: Dokumentation
-    federation_hint_html: Mit einem Account auf %{instance} wirst du in der Lage sein, Nutzern auf irgendeinem Mastodon-Server und darüber hinaus zu folgen.
-    get_apps: Versuche eine mobile App
     hosted_on: Mastodon, gehostet auf %{domain}
-    instance_actor_flash: |
-      Dieses Konto ist ein virtueller Akteur, welcher den Server selbst – und nicht einen einzelnen Benutzer – repräsentiert.
-      Dieser wird für Föderationszwecke verwendet und sollte nicht blockiert werden, es sei denn, du möchtest die gesamte Instanz blockieren.
-    learn_more: Mehr erfahren
-    logged_in_as_html: Du bist derzeit als %{username} eingeloggt.
-    logout_before_registering: Du bist bereits angemeldet.
-    rules: Server-Regeln
-    rules_html: 'Unten ist eine Zusammenfassung der Regeln, denen du folgen musst, wenn du ein Konto auf diesem Mastodon-Server haben möchtest:'
-    see_whats_happening: Finde heraus, was gerade in der Welt los ist
-    server_stats: 'Serverstatistiken:'
-    source_code: Quellcode
-    status_count_after:
-      one: Beitrag
-      other: Beiträge
-    status_count_before: mit
-    tagline: Dezentrales soziales Netzwerk
-    unavailable_content: Nicht verfügbarer Inhalt
-    unavailable_content_description:
-      domain: Server
-      reason: 'Grund:'
-      rejecting_media: Mediendateien dieses Servers werden nicht verarbeitet und keine Thumbnails werden angezeigt, was manuelles Anklicken auf den anderen Server erfordert.
-      rejecting_media_title: Gefilterte Medien
-      silenced: Beiträge von diesem Server werden nirgends angezeigt, außer in deiner Startseite, wenn du der Person folgst, die den Beitrag verfasst hat.
-      silenced_title: Stummgeschaltete Server
-      suspended: Du kannst niemanden von diesem Server folgen, und keine Daten werden verarbeitet oder gespeichert und keine Daten ausgetauscht.
-      suspended_title: Gesperrte Server
-    unavailable_content_html: Mastodon erlaubt es dir generell, mit Inhalten zu interagieren, diese anzuzeigen und mit anderen Nutzern im Fediversum über Server hinweg zu interagieren. Dies sind die Ausnahmen, die auf diesem bestimmten Server gemacht wurden.
-    user_count_after:
-      one: Profil
-      other: Profile
-    user_count_before: Hostet
-    what_is_mastodon: Was ist Mastodon?
+    title: Über
   accounts:
-    choices_html: "%{name} empfiehlt:"
-    endorsements_hint: Du kannst Personen, denen du über die Weboberfläche folgst, auswählen, und sie werden hier angezeigt.
-    featured_tags_hint: Du kannst spezifische Hashtags, die hier angezeigt werden, angeben.
     follow: Folgen
     followers:
-      one: Folgender
+      one: Follower
       other: Folgende
-    following: Folgt
+    following: Folge ich
     instance_actor_flash: Dieses Konto ist ein virtueller Akteur, der den Server selbst repräsentiert und nicht ein einzelner Benutzer. Es wird für Föderationszwecke verwendet und sollte nicht gesperrt werden.
-    joined: Beigetreten am %{date}
     last_active: zuletzt aktiv
-    link_verified_on: Besitz des Links wurde überprüft am %{date}
-    media: Medien
-    moved_html: "%{name} ist auf %{new_profile_link} umgezogen:"
-    network_hidden: Diese Informationen sind nicht verfügbar
-    nothing_here: Hier gibt es nichts!
-    people_followed_by: Profile, denen %{name} folgt
-    people_who_follow: Profile, die %{name} folgen
+    link_verified_on: Das Profil mit dieser E-Mail-Adresse wurde bereits am %{date} bestätigt
+    nothing_here: Keine Accounts mit dieser Auswahl vorhanden.
     pin_errors:
       following: Du musst dieser Person bereits folgen, um sie empfehlen zu können
     posts:
       one: Beitrag
       other: Beiträge
     posts_tab_heading: Beiträge
-    posts_with_replies: Beiträge mit Antworten
-    roles:
-      bot: Bot
-      group: Gruppe
-    unavailable: Profil nicht verfügbar
-    unfollow: Entfolgen
   admin:
     account_actions:
       action: Aktion ausführen
       title: Moderationsaktion auf %{acct} ausführen
     account_moderation_notes:
-      create: Notiz erstellen
-      created_msg: Moderationsnotiz erfolgreich erstellt!
+      create: Notiz abspeichern
+      created_msg: Moderationshinweis erfolgreich abgespeichert!
       destroyed_msg: Moderationsnotiz erfolgreich gelöscht!
     accounts:
       add_email_domain_block: E-Mail-Domain auf Blacklist setzen
-      approve: Akzeptieren
+      approve: Genehmigen
       approved_msg: Anmeldeantrag von %{username} erfolgreich genehmigt
-      are_you_sure: Bist du sicher?
+      are_you_sure: Bist du dir sicher?
       avatar: Profilbild
       by_domain: Domain
       change_email:
-        changed_msg: E-Mail erfolgreich geändert!
+        changed_msg: E-Mail-Adresse erfolgreich geändert!
         current_email: Aktuelle E-Mail-Adresse
         label: E-Mail-Adresse ändern
         new_email: Neue E-Mail-Adresse
         submit: E-Mail-Adresse ändern
         title: E-Mail-Adresse für %{username} ändern
       change_role:
-        changed_msg: Rolle erfolgreich geändert!
-        label: Rolle ändern
-        no_role: Keine Rolle
-        title: Rolle für %{username} ändern
+        changed_msg: Benutzerrechte erfolgreich aktualisiert!
+        label: Benutzerrechte verändern
+        no_role: Keine Benutzerrechte
+        title: Benutzerrechte für %{username} bearbeiten
       confirm: Bestätigen
       confirmed: Bestätigt
-      confirming: Bestätigung
+      confirming: Verifiziert
       custom: Benutzerdefiniert
       delete: Daten löschen
       deleted: Gelöscht
-      demote: Degradieren
+      demote: Zurückstufen
       destroyed_msg: Daten von %{username} wurden zum Löschen in die Warteschlange eingereiht
-      disable: Ausschalten
-      disable_sign_in_token_auth: Deaktiviere die Zwei-Faktor-Authentifizierung per E-Mail
-      disable_two_factor_authentication: 2FA abschalten
-      disabled: Ausgeschaltet
-      display_name: Anzeigename
+      disable: Sperren
+      disable_sign_in_token_auth: Deaktiviere die Zwei-Faktor-Authentisierung (2FA) per E-Mail
+      disable_two_factor_authentication: Zwei-Faktor-Authentisierung (2FA) deaktivieren
+      disabled: Gesperrte
+      display_name: Angezeigter Name
       domain: Domain
       edit: Bearbeiten
       email: E-Mail
       email_status: E-Mail-Status
       enable: Freischalten
-      enable_sign_in_token_auth: Aktiviere die Zwei-Faktor-Authentifizierung per E-Mail
+      enable_sign_in_token_auth: Aktiviere die Zwei-Faktor-Authentisierung (2FA) per E-Mail
       enabled: Freigegeben
       enabled_msg: Konto von %{username} erfolgreich freigegeben
       followers: Follower
-      follows: Folgt
+      follows: Folge ich
       header: Titelbild
       inbox_url: Posteingangs-URL
       invite_request_text: Begründung für das Beitreten
@@ -176,7 +113,7 @@ de:
       public: Öffentlich
       push_subscription_expires: PuSH-Abonnement läuft aus
       redownload: Profil neu laden
-      redownloaded_msg: Profil von %{username} erfolgreich von Ursprung aktualisiert
+      redownloaded_msg: Das Profil von %{username} wurde von der Quelle erfolgreich aktualisiert
       reject: Ablehnen
       rejected_msg: Anmeldeantrag von %{username} erfolgreich abgelehnt
       remove_avatar: Profilbild entfernen
@@ -184,7 +121,7 @@ de:
       removed_avatar_msg: Profilbild von %{username} erfolgreich entfernt
       removed_header_msg: Titelbild von %{username} wurde erfolgreich entfernt
       resend_confirmation:
-        already_confirmed: Diese_r Benutzer_in wurde bereits bestätigt
+        already_confirmed: Dieses Profil wurde bereits bestätigt
         send: Bestätigungs-E-Mail erneut senden
         success: Bestätigungs-E-Mail erfolgreich gesendet!
       reset: Zurücksetzen
@@ -197,8 +134,8 @@ de:
       security_measures:
         only_password: Nur Passwort
         password_and_2fa: Passwort und 2FA
-      sensitive: NSFW
-      sensitized: Als NSFW markieren
+      sensitive: Inhaltswarnung
+      sensitized: Mit Inhaltswarnung versehen
       shared_inbox_url: Geteilte Posteingang-URL
       show:
         created_reports: Erstellte Meldungen
@@ -216,7 +153,7 @@ de:
       unblock_email: E-Mail Adresse entsperren
       unblocked_email_msg: Die E-Mail-Adresse von %{username} wurde erfolgreich entsperrt
       unconfirmed_email: Unbestätigte E-Mail-Adresse
-      undo_sensitized: Nicht mehr als NSFW markieren
+      undo_sensitized: Inhaltswarnung aufheben
       undo_silenced: Stummschaltung aufheben
       undo_suspension: Verbannung aufheben
       unsilenced_msg: Konto von %{username} erfolgreich freigegeben
@@ -259,25 +196,26 @@ de:
         destroy_user_role: Rolle löschen
         disable_2fa_user: 2FA deaktivieren
         disable_custom_emoji: Benutzerdefiniertes Emoji deaktivieren
-        disable_sign_in_token_auth_user: Zwei-Faktor-Authentifizierung per E-Mail für den Nutzer deaktiviert
+        disable_sign_in_token_auth_user: Zwei-Faktor-Authentisierung (2FA) per E-Mail für diesen Account deaktivieren
         disable_user: Benutzer deaktivieren
         enable_custom_emoji: Benutzerdefiniertes Emoji aktivieren
-        enable_sign_in_token_auth_user: Zwei-Faktor-Authentifizierung per E-Mail für den Nutzer aktiviert
+        enable_sign_in_token_auth_user: Zwei-Faktor-Authentisierung (2FA) per E-Mail für diesen Account aktivieren
         enable_user: Benutzer aktivieren
-        memorialize_account: Account deaktivieren
+        memorialize_account: Gedenkkonto
         promote_user: Benutzer befördern
         reject_appeal: Einspruch ablehnen
         reject_user: Benutzer ablehnen
         remove_avatar_user: Profilbild entfernen
         reopen_report: Meldung wieder eröffnen
+        resend_user: Bestätigungs-E-Mail erneut senden
         reset_password_user: Passwort zurücksetzen
         resolve_report: Bericht lösen
-        sensitive_account: Markiere die Medien in deinem Konto als NSFW
+        sensitive_account: Zwangssensibles Konto
         silence_account: Konto stummschalten
         suspend_account: Konto sperren
         unassigned_report: Meldung widerrufen
         unblock_email_account: E-Mail Adresse entsperren
-        unsensitive_account: Markiere die Medien in deinem Konto nicht mehr als NSFW
+        unsensitive_account: Zwangssensibles Konto rückgängig machen
         unsilence_account: Konto nicht mehr stummschalten
         unsuspend_account: Konto nicht mehr sperren
         update_announcement: Ankündigung aktualisieren
@@ -303,7 +241,7 @@ de:
         create_ip_block_html: "%{name} hat eine Regel für IP %{target} erstellt"
         create_unavailable_domain_html: "%{name} hat die Lieferung an die Domain %{target} eingestellt"
         create_user_role_html: "%{name} hat die Rolle %{target} erstellt"
-        demote_user_html: "%{name} stufte Benutzer_in %{target} herunter"
+        demote_user_html: "%{name} hat die Nutzungsrechte von %{target} heruntergestuft"
         destroy_announcement_html: "%{name} hat die neue Ankündigung %{target} gelöscht"
         destroy_canonical_email_block_html: "%{name} hat die E-Mail mit dem Hash %{target} freigegeben"
         destroy_custom_emoji_html: "%{name} hat das %{target} Emoji gelöscht"
@@ -315,27 +253,28 @@ de:
         destroy_status_html: "%{name} hat einen Beitrag von %{target} entfernt"
         destroy_unavailable_domain_html: "%{name} setzte die Lieferung an die Domain %{target} fort"
         destroy_user_role_html: "%{name} hat die Rolle %{target} gelöscht"
-        disable_2fa_user_html: "%{name} hat Zwei-Faktor-Anforderung für Benutzer_in %{target} deaktiviert"
+        disable_2fa_user_html: "%{name} hat die Zwei-Faktor-Authentisierung für %{target} deaktiviert"
         disable_custom_emoji_html: "%{name} hat das %{target} Emoji deaktiviert"
         disable_sign_in_token_auth_user_html: "%{name} hat die E-Mail-Token Authentifizierung für %{target} deaktiviert"
-        disable_user_html: "%{name} hat Zugang von Benutzer_in %{target} deaktiviert"
+        disable_user_html: "%{name} hat den Zugang für %{target} deaktiviert"
         enable_custom_emoji_html: "%{name} hat das %{target} Emoji aktiviert"
         enable_sign_in_token_auth_user_html: "%{name} hat die E-Mail-Token-Authentifizierung für %{target} aktiviert"
-        enable_user_html: "%{name} hat Zugang von Benutzer_in %{target} aktiviert"
+        enable_user_html: "%{name} hat den Zugang für %{target} aktiviert"
         memorialize_account_html: "%{name} hat das Konto von %{target} in eine Gedenkseite umgewandelt"
         promote_user_html: "%{name} hat %{target} befördert"
         reject_appeal_html: "%{name} hat die Moderationsbeschlüsse von %{target} abgelehnt"
         reject_user_html: "%{name} hat die Registrierung von %{target} abgelehnt"
         remove_avatar_user_html: "%{name} hat das Profilbild von %{target} entfernt"
         reopen_report_html: "%{name} hat die Meldung %{target} wieder geöffnet"
+        resend_user_html: "%{name} hat erneut eine Bestätigungs-E-Mail für %{target} gesendet"
         reset_password_user_html: "%{name} hat das Passwort von %{target} zurückgesetzt"
         resolve_report_html: "%{name} hat die Meldung %{target} bearbeitet"
-        sensitive_account_html: "%{name} markierte die Medien von %{target} als NSFW"
+        sensitive_account_html: "%{name} hat die Medien von %{target} mit einer Inhaltswarnung versehen"
         silence_account_html: "%{name} hat das Konto von %{target} stummgeschaltet"
         suspend_account_html: "%{name} hat das Konto von %{target} verbannt"
         unassigned_report_html: "%{name} hat die Zuweisung der Meldung %{target} entfernt"
         unblock_email_account_html: "%{name} entsperrte die E-Mail-Adresse von %{target}"
-        unsensitive_account_html: "%{name} markierte Medien von %{target} als nicht NSFW"
+        unsensitive_account_html: "%{name} hat die Inhaltswarnung für Medien von %{target} aufgehoben"
         unsilence_account_html: "%{name} hat die Stummschaltung von %{target} aufgehoben"
         unsuspend_account_html: "%{name} hat die Verbannung von %{target} aufgehoben"
         update_announcement_html: "%{name} aktualisierte Ankündigung %{target}"
@@ -387,6 +326,7 @@ de:
       listed: Gelistet
       new:
         title: Eigenes Emoji hinzufügen
+      no_emoji_selected: Keine Emojis wurden geändert, da keine ausgewählt wurden
       not_permitted: Du bist für die Durchführung dieses Vorgangs nicht berechtigt
       overwrite: Überschreiben
       shortcode: Kürzel
@@ -401,7 +341,7 @@ de:
     dashboard:
       active_users: Aktive Benutzer
       interactions: Interaktionen
-      media_storage: Medienspeicher
+      media_storage: Medien
       new_users: Neue Benutzer
       opened_reports: Erstellte Meldungen
       pending_appeals_html:
@@ -440,7 +380,7 @@ de:
       domain: Domain
       edit: Domainblockade bearbeiten
       existing_domain_block: Du hast %{name} bereits stärker eingeschränkt.
-      existing_domain_block_html: Es gibt schon eine Blockade für %{name}, diese muss erst <a href="%{unblock_url}">aufgehoben</a> werden.
+      existing_domain_block_html: Du hast bereits strengere Beschränkungen für die Domain %{name} verhängt. Du musst diese erst <a href="%{unblock_url}">aufheben</a>.
       new:
         create: Blockade einrichten
         hint: Die Domain-Blockade wird nicht verhindern, dass Konteneinträge in der Datenbank erstellt werden. Aber es werden rückwirkend und automatisch alle Moderationsmethoden auf diese Konten angewendet.
@@ -610,7 +550,7 @@ de:
       action_taken_by: Maßnahme ergriffen durch
       actions:
         delete_description_html: Der gemeldete Beitrag wird gelöscht und ein Strike wird aufgezeichnet, um dir bei zukünftigen Verstößen des gleichen Accounts zu helfen.
-        mark_as_sensitive_description_html: Die Medien in den gemeldeten Beiträgen werden als NSFW markiert und ein Strike wird notiert, um dir dabei zu helfen, härter auf zukünftige Zuwiderhandlungen desselben Kontos zu reagieren.
+        mark_as_sensitive_description_html: Die Medien in den gemeldeten Beiträgen werden mit einer Inhaltswarnung (NSFW) versehen und der Vorfall wird gesichert, um bei zukünftigen Verstößen desselben Kontos besser reagieren zu können.
         other_description_html: Weitere Optionen zur Kontrolle des Kontoverhaltens und zur Anpassung der Kommunikation mit dem gemeldeten Konto.
         resolve_description_html: Es wird keine Maßnahme gegen das gemeldete Konto ergriffen, es wird kein Strike verzeichnet und die Meldung wird geschlossen.
         silence_description_html: Das Profil wird nur für diejenigen sichtbar sein, die ihm bereits folgen oder es manuell nachschlagen, und die Reichweite wird stark begrenzt. Kann immer rückgängig gemacht werden.
@@ -619,7 +559,7 @@ de:
       add_to_report: Mehr zur Meldung hinzufügen
       are_you_sure: Bist du dir sicher?
       assign_to_self: Mir zuweisen
-      assigned: Zugewiesene_r Moderator_in
+      assigned: Zugewiesene*r Moderator*in
       by_target_domain: Domain des gemeldeten Kontos
       category: Kategorie
       category_description_html: Der Grund, warum dieses Konto und/oder der Inhalt gemeldet wurden, wird in der Kommunikation mit dem gemeldeten Konto zitiert
@@ -631,7 +571,7 @@ de:
       forwarded: Weitergeleitet
       forwarded_to: Weitergeleitet an %{domain}
       mark_as_resolved: Als gelöst markieren
-      mark_as_sensitive: Als NSFW markieren
+      mark_as_sensitive: Mit einer Inhaltswarnung versehen
       mark_as_unresolved: Als ungelöst markieren
       no_one_assigned: Niemand
       notes:
@@ -639,7 +579,7 @@ de:
         create_and_resolve: Mit Kommentar lösen
         create_and_unresolve: Mit Kommentar wieder öffnen
         delete: Löschen
-        placeholder: Beschreibe, welche Maßnahmen ergriffen wurden oder irgendwelche andere Neuigkeiten…
+        placeholder: Bitte beschreiben, welche Maßnahmen ergriffen wurden oder andere damit verbundene Aktualisierungen …
         title: Notizen
       notes_description_html: Zeige und hinterlasse Notizen an andere Moderator_innen und dein zukünftiges Ich
       quick_actions_description_html: 'Führe eine schnelle Aktion aus oder scrolle nach unten, um gemeldete Inhalte zu sehen:'
@@ -659,12 +599,12 @@ de:
       unassign: Zuweisung entfernen
       unresolved: Ungelöst
       updated_at: Aktualisiert
-      view_profile: Zeige Profil
+      view_profile: Profil anzeigen
     roles:
       add_new: Rolle hinzufügen
       assigned_users:
-        one: "%{count} Benutzer"
-        other: "%{count} Benutzer"
+        one: "%{count} Account"
+        other: "%{count} Accounts"
       categories:
         administration: Administration
         devops: DevOps
@@ -709,7 +649,7 @@ de:
         manage_taxonomies: Taxonomien verwalten
         manage_taxonomies_description: Ermöglicht Benutzern die Überprüfung angesagter Inhalte und das Aktualisieren der Hashtag-Einstellungen
         manage_user_access: Benutzerzugriff verwalten
-        manage_user_access_description: Erlaubt es Benutzern, die Zwei-Faktor-Authentifizierung anderer Benutzer zu deaktivieren, ihre E-Mail-Adresse zu ändern und ihr Passwort zurückzusetzen
+        manage_user_access_description: Erlaubt es Benutzer*innen, die Zwei-Faktor-Authentisierung (2FA) anderer Benutzer zu deaktivieren, ihre E-Mail-Adresse zu ändern und ihr Passwort zurückzusetzen
         manage_users: Benutzer verwalten
         manage_users_description: Erlaubt es Benutzern, die Details anderer Benutzer anzuzeigen und Moderationsaktionen gegen sie auszuführen
         manage_webhooks: Webhooks verwalten
@@ -729,107 +669,75 @@ de:
       empty: Es wurden bis jetzt keine Server-Regeln definiert.
       title: Server-Regeln
     settings:
-      activity_api_enabled:
-        desc_html: Anzahl der lokal geposteten Beiträge, aktiven Nutzern und neuen Registrierungen in wöchentlichen Zusammenfassungen
-        title: Veröffentliche gesamte Statistiken über Benutzeraktivitäten
-      bootstrap_timeline_accounts:
-        desc_html: Mehrere Profilnamen durch Kommata trennen. Diese Konten werden immer in den Folgemempfehlungen angezeigt
-        title: Konten, welche neuen Benutzern empfohlen werden sollen
-      contact_information:
-        email: Öffentliche E-Mail-Adresse
-        username: Profilname für die Kontaktaufnahme
-      custom_css:
-        desc_html: Verändere das Aussehen mit CSS-Stilen, die auf jeder Seite geladen werden
-        title: Benutzerdefiniertes CSS
-      default_noindex:
-        desc_html: Beeinflusst alle Benutzer, die diese Einstellung nicht selbst geändert haben
-        title: Benutzer aus Suchmaschinen-Indizierung standardmäßig herausnehmen
+      about:
+        manage_rules: Serverregeln verwalten
+        preamble: Schildere ausführlich, wie Dein Server betrieben, moderiert und finanziert wird.
+        rules_hint: Es gibt einen eigenen Bereich für Regeln, an die sich Ihre Benutzer halten sollen.
+        title: Über
+      appearance:
+        preamble: Passen Sie Mastodons Weboberfläche an.
+        title: Darstellung
+      branding:
+        preamble: Das Branding Ihres Servers unterscheidet ihn von anderen Servern im Netzwerk. Diese Informationen können in einer Vielzahl von Umgebungen angezeigt werden, z. B. in der Weboberfläche von Mastodon, in nativen Anwendungen, in Linkvorschauen auf anderen Websites und in Messaging-Apps und so weiter. Aus diesem Grund ist es am besten, diese Informationen klar, kurz und prägnant zu halten.
+        title: Branding
+      content_retention:
+        preamble: Steuern Sie, wie nutzergenerierte Inhalte in Mastodon gespeichert werden.
+        title: Aufbewahrung von Inhalten
+      discovery:
+        follow_recommendations: Folgeempfehlungen
+        preamble: Das Auffinden interessanter Inhalte ist wichtig, um neue Nutzer einzubinden, die Mastodon noch nicht kennen. Bestimmen Sie, wie verschiedene Suchfunktionen auf Ihrem Server funktionieren.
+        profile_directory: Profilverzeichnis
+        public_timelines: Öffentliche Timelines
+        title: Entdecken
+        trends: Trends
       domain_blocks:
         all: An alle
         disabled: An niemanden
-        title: Zeige Domain-Blockaden
         users: Für angemeldete lokale Benutzer
-      domain_blocks_rationale:
-        title: Rationale anzeigen
-      hero:
-        desc_html: Wird auf der Startseite angezeigt. Mindestens 600x100px sind empfohlen. Wenn es nicht gesetzt wurde, wird das Server-Thumbnail dafür verwendet
-        title: Bild für Einstiegsseite
-      mascot:
-        desc_html: Angezeigt auf mehreren Seiten. Mehr als 293x205px empfohlen. Wenn es nicht gesetzt wurde, wird stattdessen das Standard-Maskottchen genutzt werden.
-        title: Maskottchen-Bild
-      peers_api_enabled:
-        desc_html: Domain-Namen, die der Server im Fediversum gefunden hat
-        title: Veröffentliche entdeckte Server durch die API
-      preview_sensitive_media:
-        desc_html: Linkvorschauen auf anderen Webseiten werden ein Vorschaubild anzeigen, obwohl die Medien als NSFW markiert sind
-        title: NSFW-Medien in OpenGraph-Vorschau anzeigen
-      profile_directory:
-        desc_html: Erlaube es Benutzern, auffindbar zu sein
-        title: Aktiviere Profilverzeichnis
       registrations:
-        closed_message:
-          desc_html: Wird auf der Einstiegsseite gezeigt, wenn die Anmeldung geschlossen ist. Du kannst HTML-Tags nutzen
-          title: Nachricht über geschlossene Registrierung
-        deletion:
-          desc_html: Allen erlauben, ihr Konto eigenmächtig zu löschen
-          title: Kontolöschung erlauben
-        require_invite_text:
-          desc_html: Wenn eine Registrierung manuell genehmigt werden muss, mache den „Warum möchtest du beitreten?“-Text obligatorisch statt optional
-          title: Neue Benutzer müssen einen Einladungstext ausfüllen
+        preamble: Lege fest, wer auf Deinem Server ein Konto erstellen darf.
+        title: Registrierungen
       registrations_mode:
         modes:
           approved: Zustimmung benötigt zur Registrierung
           none: Niemand kann sich registrieren
           open: Jeder kann sich registrieren
-        title: Registrierungsmodus
-      show_known_fediverse_at_about_page:
-        desc_html: Wenn aktiviert, wird es alle Beiträge aus dem bereits bekannten Teil des Födiversums auf der Startseite anzeigen. Andernfalls werden lokale Beitrage des Servers angezeigt.
-        title: Zeige eine öffentliche Zeitleiste auf der Einstiegsseite
-      site_description:
-        desc_html: Einleitungsabschnitt auf der Frontseite. Beschreibe, was diesen Mastodon-Server ausmacht. Du kannst HTML-Tags benutzen, insbesondere <code>&lt;a&gt;</code> und <code>&lt;em&gt;</code>.
-        title: Beschreibung des Servers
-      site_description_extended:
-        desc_html: Bietet sich für Verhaltenskodizes, Regeln, Richtlinien und weiteres an, was deinen Server auszeichnet. Du kannst HTML-Tags benutzen
-        title: Erweiterte Beschreibung des Servers
-      site_short_description:
-        desc_html: Wird in der Seitenleiste und in Meta-Tags angezeigt. Beschreibe in einem einzigen Abschnitt, was Mastodon ist und was diesen Server von anderen unterscheidet. Falls leer, wird die Server-Beschreibung verwendet.
-        title: Kurze Beschreibung des Servers
-      site_title: Name des Servers
-      thumbnail:
-        desc_html: Wird für die Vorschau via OpenGraph und API verwendet. 1200×630 px wird empfohlen
-        title: Vorschaubild des Servers
-      timeline_preview:
-        desc_html: Auf der Einstiegsseite die öffentliche Zeitleiste anzeigen
-        title: Zeitleisten-Vorschau
-      title: Server-Einstellungen
-      trendable_by_default:
-        desc_html: Bestimmte angesagte Inhalte können immer noch explizit deaktiviert werden
-        title: Trends ohne vorherige Überprüfung erlauben
-      trends:
-        desc_html: Zuvor überprüfte Hashtags öffentlich anzeigen, die derzeit angesagt sind
-        title: Trendende Hashtags
+      title: Servereinstellungen
     site_uploads:
       delete: Hochgeladene Datei löschen
       destroyed_msg: Upload erfolgreich gelöscht!
     statuses:
+      account: Autor
+      application: Anwendung
       back_to_account: Zurück zum Konto
       back_to_report: Zurück zur Seite mit den Meldungen
       batch:
         remove_from_report: Von der Meldung entfernen
         report: Meldung
       deleted: Gelöscht
+      favourites: Favoriten
+      history: Versionsverlauf
+      in_reply_to: Antwortet auf
+      language: Sprache
       media:
         title: Medien
+      metadata: Metadaten
       no_status_selected: Keine Beiträge wurden geändert, weil keine ausgewählt wurden
+      open: Beitrag öffnen
+      original_status: Ursprünglicher Beitrag
+      reblogs: Geteilte Beiträge
+      status_changed: Beitrag bearbeitet
       title: Beiträge des Kontos
+      trending: Trends
+      visibility: Sichtbarkeit
       with_media: Mit Medien
     strikes:
       actions:
         delete_statuses: "%{name} hat die Beiträge von %{target} entfernt"
         disable: "%{name} hat das Konto von %{target} eingefroren"
-        mark_statuses_as_sensitive: "%{name} markierte %{target}'s Beiträge als NSFW"
+        mark_statuses_as_sensitive: "%{name} hat die Beiträge von %{target} mit einer Inhaltswarnung versehen"
         none: "%{name} hat eine Warnung an %{target} gesendet"
-        sensitive: "%{name} markierte das Konto von %{target} als NSFW"
+        sensitive: "%{name} hat das Profil von %{target} mit einer Inhaltswarnung versehen"
         silence: "%{name} hat das Konto von %{target} eingeschränkt"
         suspend: "%{name} hat das Konto von %{target} verbannt"
       appeal_approved: Einspruch angenommen
@@ -861,6 +769,9 @@ de:
         description_html: Dies sind Links, die derzeit von Konten geteilt werden, von denen dein Server Beiträge sieht. Es kann deinen Benutzern helfen herauszufinden, was in der Welt vor sich geht. Es werden keine Links öffentlich angezeigt, bis du den Publisher genehmigst. Du kannst auch einzelne Links zulassen oder ablehnen.
         disallow: Verbiete Link
         disallow_provider: Verbiete Herausgeber
+        no_link_selected: Keine Links wurden geändert, da keine ausgewählt wurden
+        publishers:
+          no_publisher_selected: Es wurden keine Herausgeber geändert, da keine ausgewählt wurden
         shared_by_over_week:
           one: In der letzten Woche von einer Person geteilt
           other: In der letzten Woche von %{count} Personen geteilt
@@ -880,6 +791,7 @@ de:
         description_html: Dies sind Beiträge, von denen dein Server weiß, dass sie derzeit viel geteilt und favorisiert werden. Es kann deinen neuen und wiederkehrenden Benutzern helfen, weitere Personen zu finden. Es werden keine Beiträge öffentlich angezeigt, bis du den Autor genehmigst und der Autor es zulässt, sein Konto anderen Benutzern zeigen zu lassen. Du kannst auch einzelne Beiträge zulassen oder ablehnen.
         disallow: Beitrag verbieten
         disallow_account: Autor verbieten
+        no_status_selected: Keine angesagten Beiträge wurden geändert, da keine ausgewählt wurden
         not_discoverable: Der Autor hat sich nicht dafür entschieden, entdeckt zu werden
         shared_by:
           one: Einmal geteilt oder favorisiert
@@ -895,6 +807,7 @@ de:
           tag_uses_measure: Gesamtnutzungen
         description_html: Dies sind Hashtags, die derzeit in vielen Beiträgen erscheinen, die dein Server sieht. Es kann deinen Benutzern helfen, herauszufinden, worüber die Menschen im Moment am meisten reden. Es werden keine Hashtags öffentlich angezeigt, bis du sie genehmigst.
         listable: Kann vorgeschlagen werden
+        no_tag_selected: Keine Tags wurden geändert, da keine ausgewählt wurden
         not_listable: Wird nicht vorgeschlagen
         not_trendable: Wird nicht unter Trends angezeigt
         not_usable: Kann nicht verwendet werden
@@ -940,9 +853,9 @@ de:
       actions:
         delete_statuses: deren Beiträge zu löschen
         disable: deren Konto einzufrieren
-        mark_statuses_as_sensitive: um ihre Beiträge als NSFW zu markieren
+        mark_statuses_as_sensitive: um die Beiträge des Profils mit einer Inhaltswarnung zu versehen
         none: eine Warnung
-        sensitive: deren Konto als NSFW zu markieren
+        sensitive: um das Profil mit einer Inhaltswarnung zu versehen
         silence: deren Konto zu beschränken
         suspend: deren Konto zu sperren
       body: "%{target} hat etwas gegen eine Moderationsentscheidung von %{action_taken_by} von %{date}, die %{type} war. Die Person schrieb:"
@@ -958,12 +871,8 @@ de:
     new_trends:
       body: 'Die folgenden Einträge müssen überprüft werden, bevor sie öffentlich angezeigt werden können:'
       new_trending_links:
-        no_approved_links: Derzeit sind keine trendenen Links hinterlegt, die genehmigt wurden.
-        requirements: 'Jeder dieser Kandidaten könnte den #%{rank} genehmigten trendenen Link übertreffen, der derzeit "%{lowest_link_title}" mit einer Punktzahl von %{lowest_link_score} ist.'
         title: Angesagte Links
       new_trending_statuses:
-        no_approved_statuses: Derzeit sind keine trendenen Beiträge hinterlegt, die genehmigt wurden.
-        requirements: 'Jeder dieser Kandidaten könnte den #%{rank} genehmigten trendenen Beitrag übertreffen, der derzeit "%{lowest_status_url}" mit einer Punktzahl von %{lowest_status_score} ist.'
         title: Angesagte Beiträge
       new_trending_tags:
         no_approved_tags: Derzeit gibt es keine genehmigten trendenen Hashtags.
@@ -979,7 +888,7 @@ de:
     remove: Alle Aliase aufheben
   appearance:
     advanced_web_interface: Fortgeschrittene Benutzeroberfläche
-    advanced_web_interface_hint: Wenn du mehr aus deiner Bildschirmbreite herausholen möchtest, erlaubt es dir die fortgeschrittene Benutzeroberfläche, viele unterschiedliche Spalten auf einmal zu sehen, wie z.B. deine Startseite, Benachrichtigungen, das gesamte bekannte Netz, deine Listen und beliebige Hashtags.
+    advanced_web_interface_hint: Wenn du mehr aus deiner Bildschirmbreite herausholen möchtest, kannst du mit der fortgeschrittenen Benutzeroberfläche weitere Spalten hinzufügen und dadurch mehr Informationen auf einmal sehen, z. B. deine Startseite, die Mitteilungen, die vereinigte Timeline sowie beliebig viele deiner Listen und Hashtags.
     animations_and_accessibility: Animationen und Barrierefreiheit
     confirmation_dialogs: Bestätigungsfenster
     discovery: Entdecken
@@ -987,14 +896,14 @@ de:
       body: Mastodon wurde von Freiwilligen übersetzt.
       guide_link: https://de.crowdin.com/project/mastodon
       guide_link_text: Jeder kann etwas dazu beitragen.
-    sensitive_content: NSFW
-    toot_layout: Beitragslayout
+    sensitive_content: Inhaltswarnung
+    toot_layout: Timeline-Layout
   application_mailer:
     notification_preferences: Ändere E-Mail-Einstellungen
     salutation: "%{name},"
     settings: 'E-Mail-Einstellungen ändern: %{link}'
     view: 'Ansehen:'
-    view_profile: Zeige Profil
+    view_profile: Profil anzeigen
     view_status: Beitrag öffnen
   applications:
     created: Anwendung erfolgreich erstellt
@@ -1004,10 +913,8 @@ de:
     warning: Sei mit diesen Daten sehr vorsichtig. Teile sie mit niemandem!
     your_token: Dein Zugangs-Token
   auth:
-    apply_for_account: Eine Einladung anfragen
+    apply_for_account: Auf Warteliste kommen
     change_password: Passwort
-    checkbox_agreement_html: Ich akzeptiere die <a href="%{rules_path}" target="_blank">Server-Regeln</a> und die <a href="%{terms_path}" target="_blank">Nutzungsbedingungen</a>
-    checkbox_agreement_without_rules_html: Ich stimme den <a href="%{terms_path}" target="_blank">Nutzungsbedingungen</a> zu
     delete_account: Konto löschen
     delete_account_html: Falls du dein Konto löschen willst, kannst du <a href="%{path}">hier damit fortfahren</a>. Du wirst um Bestätigung gebeten werden.
     description:
@@ -1026,6 +933,7 @@ de:
     migrate_account: Ziehe zu einem anderen Konto um
     migrate_account_html: Wenn du wünschst, dieses Konto zu einem anderen umzuziehen, kannst du <a href="%{path}">dies hier einstellen</a>.
     or_log_in_with: Oder anmelden mit
+    privacy_policy_agreement_html: Ich habe die <a href="%{privacy_policy_path}" target="_blank">Datenschutzbestimmungen</a> gelesen und stimme ihnen zu
     providers:
       cas: CAS
       saml: SAML
@@ -1033,12 +941,18 @@ de:
     registration_closed: "%{instance} akzeptiert keine neuen Mitglieder"
     resend_confirmation: Bestätigungs-Mail erneut versenden
     reset_password: Passwort zurücksetzen
+    rules:
+      preamble: Diese werden von den Moderatoren von %{domain} erzwungen.
+      title: Einige Grundregeln.
     security: Sicherheit
     set_new_password: Neues Passwort setzen
     setup:
       email_below_hint_html: Wenn die unten stehende E-Mail-Adresse falsch ist, kannst du sie hier ändern und eine neue Bestätigungs-E-Mail erhalten.
       email_settings_hint_html: Die Bestätigungs-E-Mail wurde an %{email} gesendet. Wenn diese E-Mail-Adresse nicht korrekt ist, kannst du sie in den Einstellungen ändern.
       title: Konfiguration
+    sign_up:
+      preamble: Mit einem Account auf diesem Mastodon-Server kannst du jeder anderen Person im Netzwerk folgen, unabhängig davon, wo ihr Account gehostet wird.
+      title: Okay, lass uns mit %{domain} anfangen.
     status:
       account_status: Kontostatus
       confirming: Warte auf die Bestätigung der E-Mail.
@@ -1047,7 +961,6 @@ de:
       redirecting_to: Dein Konto ist inaktiv, da es derzeit zu %{acct} umgeleitet wird.
       view_strikes: Zeige frühere Streiks gegen dein Konto
     too_fast: Formular zu schnell gesendet, versuche es erneut.
-    trouble_logging_in: Schwierigkeiten beim Anmelden?
     use_security_key: Sicherheitsschlüssel verwenden
   authorize_follow:
     already_following: Du folgst diesem Konto bereits
@@ -1058,7 +971,7 @@ de:
     following: 'Erfolg! Du folgst nun:'
     post_follow:
       close: Oder du schließt einfach dieses Fenster.
-      return: Zeige das Profil
+      return: Das Benutzerprofil anzeigen
       web: In der Benutzeroberfläche öffnen
     title: "%{acct} folgen"
   challenge:
@@ -1105,10 +1018,6 @@ de:
       more_details_html: Weitere Details findest du in der <a href="%{terms_path}">Datenschutzrichtlinie</a>.
       username_available: Dein Benutzername wird wieder verfügbar
       username_unavailable: Dein Benutzername bleibt nicht verfügbar
-  directories:
-    directory: Profilverzeichnis
-    explanation: Entdecke Benutzer basierend auf deren Interessen
-    explore_mastodon: Entdecke %{title}
   disputes:
     strikes:
       action_taken: Maßnahme ergriffen
@@ -1131,9 +1040,9 @@ de:
       title_actions:
         delete_statuses: Post-Entfernung
         disable: Einfrieren des Kontos
-        mark_statuses_as_sensitive: Das Markieren der Beiträge als NSFW
+        mark_statuses_as_sensitive: Beiträge mit einer Inhaltswarnung versehen
         none: Warnung
-        sensitive: Das Markieren des Kontos als NSFW
+        sensitive: Profil mit einer Inhaltswarnung versehen
         silence: Kontobeschränkung
         suspend: Kontosperre
       your_appeal_approved: Dein Einspruch wurde angenommen
@@ -1163,29 +1072,29 @@ de:
     archive_takeout:
       date: Datum
       download: Dein Archiv herunterladen
-      hint_html: Du kannst ein Archiv deiner <strong>Beiträge und hochgeladenen Medien</strong> anfragen. Die exportierten Daten werden in dem ActivityPub-Format gespeichert, welches mit jeder Software lesbar ist, die das Format unterstützt. Du kannst alle 7 Tage ein Archiv anfordern.
-      in_progress: Stelle dein Archiv zusammen...
-      request: Dein Archiv anfragen
+      hint_html: Du kannst ein Archiv deiner <strong>Beiträge, Listen, hochgeladenen Medien, usw.</strong> anfordern. Die exportierten Daten werden in dem ActivityPub-Format gespeichert und können mit jeder passenden Software gelesen werden. Du kannst alle 7 Tage ein Archiv anfordern.
+      in_progress: Persönliches Archiv wird erstellt …
+      request: Dein Archiv anfordern
       size: Größe
-    blocks: Du hast blockiert
+    blocks: Blockierte Accounts
     bookmarks: Lesezeichen
     csv: CSV
-    domain_blocks: Domainblockaden
+    domain_blocks: Blockierte Domains
     lists: Listen
-    mutes: Du hast stummgeschaltet
+    mutes: Stummgeschaltete Accounts
     storage: Medienspeicher
   featured_tags:
     add_new: Neu hinzufügen
     errors:
       limit: Du hast bereits die maximale Anzahl an empfohlenen Hashtags erreicht
-    hint_html: "<strong>Was sind empfohlene Hashtags?</strong> Sie werden in deinem öffentlichen Profil deutlich angezeigt und ermöglichen es den Menschen, deine öffentlichen Beiträge speziell unter diesen Hashtags zu durchsuchen. Sie sind ein großartiges Werkzeug, um kreative Werke oder langfristige Projekte zu verfolgen."
+    hint_html: "<strong>Was sind empfohlene Hashtags?</strong> Sie werden in deinem öffentlichen Profil hervorgehoben und ermöglichen es den Menschen, deine öffentlichen Beiträge speziell unter diesen Hashtags zu durchsuchen. Sie sind ein großartiges Werkzeug, um kreative Werke oder langfristige Projekte zu verfolgen."
   filters:
     contexts:
       account: Profile
       home: Startseite
-      notifications: Benachrichtigungen
-      public: Öffentliche Zeitleisten
-      thread: Gespräche
+      notifications: Mitteilungen
+      public: Öffentliche Timelines
+      thread: Unterhaltungen
     edit:
       add_keyword: Stichwort hinzufügen
       keywords: Stichwörter
@@ -1198,7 +1107,7 @@ de:
     index:
       contexts: Filter in %{contexts}
       delete: Löschen
-      empty: Du hast keine Filter.
+      empty: Du hast noch keine Filter gesetzt.
       expires_in: Läuft ab in %{distance}
       expires_on: Läuft am %{date} ab
       keywords:
@@ -1222,9 +1131,6 @@ de:
         hint: Dieser Filter wird verwendet, um einzelne Beiträge unabhängig von anderen Kriterien auszuwählen. Du kannst mehr Beiträge zu diesem Filter über die Webschnittstelle hinzufügen.
         title: Gefilterte Beiträge
   footer:
-    developers: Entwickler
-    more: Mehr…
-    resources: Ressourcen
     trending_now: In den Trends
   generic:
     all: Alle
@@ -1266,8 +1172,7 @@ de:
       domain_blocking: Domain-Blockliste
       following: Folgeliste
       muting: Stummschaltungsliste
-    upload: Hochladen
-  in_memoriam_html: In Gedenken.
+    upload: Liste importieren
   invites:
     delete: Deaktivieren
     expired: Abgelaufen
@@ -1279,7 +1184,7 @@ de:
       '604800': 1 Woche
       '86400': 1 Tag
     expires_in_prompt: Nie
-    generate: Generieren
+    generate: Einladungslink erstellen
     invited_by: 'Du wurdest eingeladen von:'
     max_uses:
       one: 1 mal verwendet
@@ -1288,7 +1193,7 @@ de:
     prompt: Generiere und teile Links, um Zugang zu diesem Server zu erteilen
     table:
       expires_at: Läuft ab
-      uses: Verwendungen
+      uses: Verwendet
     title: Leute einladen
   lists:
     errors:
@@ -1299,7 +1204,7 @@ de:
       password: Passwort
       sign_in_token: E-Mail Sicherheitscode
       webauthn: Sicherheitsschlüssel
-    description_html: Wenn du Aktivitäten siehst, die du nicht erkennst, solltest du dein Passwort ändern und die Zwei-Faktor-Authentifizierung aktivieren.
+    description_html: Wenn du verdächtige Aktivitäten bemerkst, die du nicht verstehst oder zuordnen kannst, solltest du dringend dein Passwort ändern und ungeachtet dessen die Zwei-Faktor-Authentisierung (2FA) aktivieren.
     empty: Kein Authentifizierungsverlauf verfügbar
     failed_sign_in_html: Fehler beim Anmeldeversuch mit %{method} von %{ip} (%{browser})
     successful_sign_in_html: Erfolgreiche Anmeldung mit %{method} von %{ip} (%{browser})
@@ -1320,14 +1225,14 @@ de:
       move_to_self: darf nicht das aktuelles Konto sein
       not_found: kann nicht gefunden werden
       on_cooldown: Die Abklingzeit läuft gerade
-    followers_count: Folgende zur Zeit des Verschiebens
+    followers_count: Anzahl der Follower zum Zeitpunkt der Migration des Accounts
     incoming_migrations: Ziehe von einem anderen Konto um
     incoming_migrations_html: Um von einem anderen Konto zu diesem zu wechseln, musst du zuerst <a href="%{path}">einen Kontoalias</a> erstellen.
-    moved_msg: Dein Konto wird jetzt zu %{acct} weitergeleitet und deine Folgende werden verschoben.
+    moved_msg: Dein altes Profil wird jetzt zum neuen Account %{acct} weitergeleitet und deine Follower werden übertragen.
     not_redirecting: Dein Konto wird derzeit nicht auf ein anderes Konto weitergeleitet.
     on_cooldown: Du hast dein Konto vor kurzem migriert. Diese Funktion wird in %{count} Tagen wieder verfügbar sein.
     past_migrations: Vorherige Migrationen
-    proceed_with_move: Folgende verschieben
+    proceed_with_move: Follower übertragen
     redirected_msg: Dein Konto wird nun zu %{acct} weitergeleitet.
     redirecting_to: Dein Konto wird zu %{acct} weitergeleitet.
     set_redirect: Umleitung einrichten
@@ -1336,7 +1241,7 @@ de:
       before: 'Bevor du fortfährst, lies bitte diese Hinweise sorgfältig durch:'
       cooldown: Nach dem Migrieren wird es eine Abklingzeit geben, in der du das Konto nicht noch einmal migrieren kannst
       disabled_account: Dein aktuelles Konto wird nachher nicht vollständig nutzbar sein. Du hast jedoch Zugriff auf den Datenexport sowie die Reaktivierung.
-      followers: Diese Aktion wird alle Folgende vom aktuellen Konto auf das neue Konto verschieben
+      followers: Alle Follower werden vom aktuellen zum neuen Konto übertragen
       only_redirect_html: Alternativ kannst du <a href="%{path}">nur eine Weiterleitung auf dein Profil</a> erstellen.
       other_data: Keine anderen Daten werden automatisch verschoben
       redirect: Das Profil deines aktuellen Kontos wird mit einer Weiterleitungsnachricht versehen und von Suchanfragen ausgeschlossen
@@ -1344,8 +1249,10 @@ de:
     title: Moderation
   move_handler:
     carry_blocks_over_text: Dieses Benutzerkonto ist von %{acct} umgezogen, welches du blockiert hast.
-    carry_mutes_over_text: Dieses Benutzerkonto ist von %{acct} umgezogen, welches du stummgeschaltet hast.
+    carry_mutes_over_text: Das Profil wurde von %{acct} übertragen – und dieses hattest du stummgeschaltet.
     copy_account_note_text: 'Dieser Benutzer ist von %{acct} umgezogen, hier sind deine letzten Notizen zu diesem Benutzer:'
+  navigation:
+    toggle_menu: Menü ein-/ausblenden
   notification_mailer:
     admin:
       report:
@@ -1373,7 +1280,7 @@ de:
     poll:
       subject: Eine Umfrage von %{name} ist beendet
     reblog:
-      body: "%{name} hat deinen Beitrag geteilt:"
+      body: 'Deinen Beitrag hat %{name} geteilt:'
       subject: "%{name} hat deinen Beitrag geteilt"
       title: Dein Beitrag wurde geteilt
     status:
@@ -1381,9 +1288,9 @@ de:
     update:
       subject: "%{name} bearbeitete einen Beitrag"
   notifications:
-    email_events: Ereignisse für E-Mail-Benachrichtigungen
-    email_events_hint: 'Wähle Ereignisse, für die du Benachrichtigungen erhalten möchtest:'
-    other_settings: Weitere Benachrichtigungseinstellungen
+    email_events: Benachrichtigungen per E-Mail
+    email_events_hint: 'Bitte die Ereignisse auswählen, für die du Benachrichtigungen erhalten möchtest:'
+    other_settings: Weitere Einstellungen
   number:
     human:
       decimal_units:
@@ -1396,10 +1303,10 @@ de:
           trillion: T
   otp_authentication:
     code_hint: Gib den von deiner Authentifizierungs-App generierten Code ein, um deine Anmeldung zu bestätigen
-    description_html: Wenn du <strong>Zwei-Faktor-Authentifizierung</strong> mit einer Authentifizierungs-App aktivierst, musst du, um dich anzumelden, im Besitz deines Smartphones sein, welches Tokens für dein Konto generiert.
+    description_html: Wenn du die <strong>Zwei-Faktor-Authentisierung</strong> (2FA) mit einer Authentifizierungs-App deines Smartphones aktivierst, benötigst du neben dem regulären Passwort zusätzlich auch den zeitbasierten Code der 2FA-App, um dich einloggen zu können.
     enable: Aktivieren
-    instructions_html: "<strong>Scanne diesen QR-Code in Google Authenticator oder einer ähnlichen TOTP-App auf deinem Handy</strong>. Von nun an generiert diese App Tokens, die du beim Anmelden eingeben musst."
-    manual_instructions: 'Wenn du den QR-Code nicht scannen kannst und ihn manuell eingeben musst, ist hier das Klartext-Geheimnis:'
+    instructions_html: "<strong>Scanne diesen QR-Code mit einer TOTP-App (wie dem Google Authenticator)</strong>. Die 2FA-App generiert dann zeitbasierte Codes, die du beim Login zusätzlich zum regulären Passwort eingeben musst."
+    manual_instructions: Wenn du den QR-Code nicht einscannen kannst, sondern die Zahlenfolge manuell eingeben musst, ist hier der geheime Token für deine 2FA-App.
     setup: Einrichten
     wrong_code: Der eingegebene Code war ungültig! Sind die Serverzeit und die Gerätezeit korrekt?
   pagination:
@@ -1420,9 +1327,11 @@ de:
       too_few_options: muss mindestens einen Eintrag haben
       too_many_options: kann nicht mehr als %{max} Einträge beinhalten
   preferences:
-    other: Weiteres
+    other: Erweitert
     posting_defaults: Standardeinstellungen für Beiträge
-    public_timelines: Öffentliche Zeitleisten
+    public_timelines: Öffentliche Timelines
+  privacy_policy:
+    title: Datenschutzerklärung
   reactions:
     errors:
       limit_reached: Limit für verschiedene Reaktionen erreicht
@@ -1431,8 +1340,8 @@ de:
     activity: Kontoaktivität
     dormant: Inaktiv
     follow_selected_followers: Ausgewählte Follower folgen
-    followers: Folgende
-    following: Folgt
+    followers: Follower
+    following: Folge ich
     invited: Eingeladen
     last_active: Zuletzt aktiv
     most_recent: Neuste
@@ -1445,22 +1354,7 @@ de:
     remove_selected_follows: Entfolge ausgewählten Benutzern
     status: Kontostatus
   remote_follow:
-    acct: Profilname@Domain, von wo aus du dieser Person folgen möchtest
     missing_resource: Die erforderliche Weiterleitungs-URL für dein Konto konnte nicht gefunden werden
-    no_account_html: Noch kein Konto? Du kannst dich <a href='%{sign_up_path}' target='_blank'>hier anmelden</a>
-    proceed: Weiter
-    prompt: 'Du wirst dieser Person folgen:'
-    reason_html: "<strong>Warum ist dieser Schritt erforderlich?</strong><code>%{instance}</code> ist möglicherweise nicht der Server, auf dem du registriert bist, also müssen wir dich erst auf deinen Heimserver weiterleiten."
-  remote_interaction:
-    favourite:
-      proceed: Fortfahren zum Favorisieren
-      prompt: 'Du möchtest diesen Beitrag favorisieren:'
-    reblog:
-      proceed: Fortfahren zum Teilen
-      prompt: 'Du möchtest diesen Beitrag teilen:'
-    reply:
-      proceed: Fortfahren zum Antworten
-      prompt: 'Du möchtest auf diesen Beitrag antworten:'
   reports:
     errors:
       invalid_rules: verweist nicht auf gültige Regeln
@@ -1507,17 +1401,17 @@ de:
       ios: iOS
       linux: Linux
       mac: Mac
-      other: unbekannte Plattform
+      other: unbekanntes Betriebssystem
       windows: Windows
       windows_mobile: Windows Mobile
-      windows_phone: Windows Handy
+      windows_phone: Windows Phone
     revoke: Schließen
     revoke_success: Sitzung erfolgreich geschlossen
     title: Sitzungen
     view_authentication_history: Authentifizierungsverlauf deines Kontos anzeigen
   settings:
     account: Konto
-    account_settings: Konto & Sicherheit
+    account_settings: Kontoeinstellungen
     aliases: Kontoaliase
     appearance: Aussehen
     authorized_apps: Autorisierte Anwendungen
@@ -1525,18 +1419,18 @@ de:
     delete: Konto löschen
     development: Entwicklung
     edit_profile: Profil bearbeiten
-    export: Datenexport
+    export: Export
     featured_tags: Empfohlene Hashtags
-    import: Datenimport
+    import: Import
     import_and_export: Importieren und Exportieren
     migrate: Konto-Umzug
     notifications: Benachrichtigungen
     preferences: Einstellungen
     profile: Profil
-    relationships: Folgende und Gefolgte
+    relationships: Folge ich und Follower
     statuses_cleanup: Automatische Löschung
     strikes: Strikes
-    two_factor_authentication: Zwei-Faktor-Auth
+    two_factor_authentication: Zwei-Faktor-Authentisierung (2FA)
     webauthn_authentication: Sicherheitsschlüssel
   statuses:
     attached:
@@ -1568,8 +1462,8 @@ de:
       reblog: Du kannst keine geteilten Beiträge anheften
     poll:
       total_people:
-        one: "%{count} Person"
-        other: "%{count} Personen"
+        one: "%{count} Stimme"
+        other: "%{count} Stimmen"
       total_votes:
         one: "%{count} Stimme"
         other: "%{count} Stimmen"
@@ -1582,19 +1476,19 @@ de:
     title: '%{name}: "%{quote}"'
     visibilities:
       direct: Direktnachricht
-      private: Nur Folgende
-      private_long: Nur für Folgende sichtbar
+      private: Nur eigene Follower
+      private_long: Nur für deine eigenen Follower sichtbar
       public: Öffentlich
       public_long: Für alle sichtbar
       unlisted: Nicht gelistet
-      unlisted_long: Für alle sichtbar, aber nicht in öffentlichen Zeitleisten aufgelistet
+      unlisted_long: Für alle sichtbar, aber in öffentlichen Timelines nicht aufgelistet
   statuses_cleanup:
     enabled: Automatisch alte Beiträge löschen
     enabled_hint: Löscht automatisch deine Beiträge, sobald sie einen bestimmten Altersgrenzwert erreicht haben, es sei denn, sie entsprechen einer der folgenden Ausnahmen
     exceptions: Ausnahmen
     explanation: Damit Mastodon nicht durch das Löschen von Beiträgen ausgebremst wird, wartet der Server damit, bis wenig los ist. Aus diesem Grund werden deine Beiträge ggf. erst einige Zeit nach Erreichen der Altersgrenze gelöscht.
     ignore_favs: Favoriten ignorieren
-    ignore_reblogs: Boosts ignorieren
+    ignore_reblogs: Geteilte Beiträge ignorieren
     interaction_exceptions: Ausnahmen basierend auf Interaktionen
     interaction_exceptions_explanation: Beachte, dass es keine Garantie für das Löschen von Beiträgen gibt, wenn sie nach einem Übertritt des Favoriten- oder Boost-Schwellenwert wieder unter diesen fallen.
     keep_direct: Direktnachrichten behalten
@@ -1619,69 +1513,19 @@ de:
       '63113904': 2 Jahre
       '7889238': 3 Monate
     min_age_label: Altersgrenze
-    min_favs: Behalte Beiträge, die öfter favorisiert wurden als
-    min_favs_hint: Löscht keine deiner Beiträge, die mehr als diese Anzahl an Favoriten erhalten haben. Leer lassen, um Beiträge zu löschen, unabhängig von ihrer Anzahl an Favoriten
-    min_reblogs: Behalte Beiträge, die öfter geteilt wurden als
-    min_reblogs_hint: Löscht keine deiner Beiträge, die mehr als diese Anzahl geteilt wurden. Lasse leer, um Beiträge zu löschen, unabhängig von ihrer Anzahl an Boosts
+    min_favs: Behalte Beiträge, die häufiger favorisiert wurden als ...
+    min_favs_hint: Lösche keine deiner Beiträge, die häufiger als diese Anzahl favorisiert worden sind. Lass das Feld leer, um alle Beiträge unabhängig der Anzahl der Favoriten zu löschen
+    min_reblogs: Behalte Beiträge, die häufiger geteilt wurden als ...
+    min_reblogs_hint: Lösche keine deiner Beiträge, die mehr als diese Anzahl geteilt wurden. Lasse das Feld leer, um alle Beiträge unabhängig der Anzahl der geteilten Beiträge zu löschen
   stream_entries:
     pinned: Angehefteter Beitrag
     reblogged: teilte
-    sensitive_content: NSFW
+    sensitive_content: Inhaltswarnung
   strikes:
     errors:
       too_late: Es ist zu spät, um gegen diese Verwarnung Einspruch zu erheben
   tags:
     does_not_match_previous_name: entspricht nicht dem vorherigen Namen
-  terms:
-    body_html: |
-      <h2>Datenschutzerklärung</h2>
-      <h3 id="collect">Welche Informationen sammeln wir?</h3>
-      <ul>
-      <li><em>Grundlegende Kontoinformationen</em>: Wenn du dich auf diesem Server registrierst, wirst du darum gebeten, einen Benutzernamen, eine E-Mail-Adresse und ein Passwort einzugeben. Du kannst auch zusätzliche Profilinformationen, wie etwa einen Anzeigenamen oder eine Biografie, eingeben und ein Profilbild oder ein Headerbild hochladen. Der Benutzername, der Anzeigename, die Biografie, das Profilbild und das Headerbild werden immer öffentlich angezeigt.</li>
-      <li><em>Beiträge, Folge- und andere öffentliche Informationen</em>: Die Liste der Leute, denen du folgst, wird öffentlich gezeigt; das gleiche gilt für deine Folgenden (Follower). Sobald du eine Nachricht übermittelst, wird das Datum und die Uhrzeit gemeinsam mit der Information, welche Anwendung du dafür verwendet hast, gespeichert. Nachricht können Medienanhänge enthalten, etwa Bilder und Videos. Öffentliche und ungelistete Beiträge sind öffentlich verfügbar. Sobald du einen Beitrag auf deinem Profil anpinnst, ist dies auch eine öffentlich verfügbare Information. Deine Beiträge werden an deine Folgenden ausgeliefert, was in manchen Fällen bedeutet, dass sie an andere Server ausgeliefert werden und dort Kopien gespeichert werden. Sobald du Beiträge löschst, wird dies ebenso an deine Follower ausgeliefert. Die Handlungen des Teilens und Favorisieren eines anderen Beitrages ist immer öffentlich.</li>
-      <li><em>Direkte und „Nur Folgende“-Beiträge</em>: Alle Beiträge werden auf dem Server gespeichert und verarbeitet. „Nur Folgende“-Beiträge werden an deine Folgenden und an Benutzer, die du in ihnen erwähnst, ausgeliefert, direkte Beiträge nur an in ihnen erwähnte Benutzer. In manchen Fällen bedeutet das, dass sie an andere Server ausgeliefert und dort Kopien gespeichert werden. Wir bemühen uns nach bestem Wissen und Gewissen, den Zugriff auf diese Beiträge auf nur autorisierte Personen einzuschränken, jedoch könnten andere Server dabei scheitern. Deswegen ist es wichtig, die Server, zu denen deine Folgenden gehören, zu überprüfen. Du kannst eine Option in den Einstellungen umschalten, um neue Folgenden manuell anzunehmen oder abzuweisen. <em>Bitte beachte, dass die Betreiber des Server und jedes empfangenden Servers solche Nachrichten anschauen könnten</em> und dass Empfänger von diesen eine Bildschirmkopie erstellen, sie kopieren oder anderweitig weiterverteilen könnten. <em>Teile keine sensiblen Informationen über Mastodon.</em></li>
-      <li><em>Internet-Protokoll-Adressen (IP-Adressen) und andere Metadaten</em>: Sobald du dich anmeldest, erfassen wir sowohl die IP-Adresse, von der aus du dich anmeldest, als auch den Namen deine Browseranwendung. Alle angemeldeten Sitzungen (Sessions) sind für deine Überprüfung und Widerruf in den Einstellungen verfügbar. Die letzte verwendete IP-Adresse wird bis zu 12 Monate lang gespeichert. Wir könnten auch Serverprotokoll behalten, welche die IP-Adresse von jeder Anfrage an unseren Server enthalten.</li>
-      </ul>
-      <hr class="spacer" />
-      <h3 id="use">Für was verwenden wir deine Informationen?</h3>
-      <p>Jede der von dir gesammelten Information kann in den folgenden Weisen verwendet werden:</p>
-      <ul>
-      <li>Um die Kernfunktionalität von Mastodon bereitzustellen. Du kannst du mit dem Inhalt anderer Leute interagieren und deine eigenen Inhalte beitragen, wenn du angemeldet bist. Zum Beispiel kannst du anderen folgen, um deren kombinierten Beiträge in deine personalisierten Start-Timeline zu sehen.</li>
-      <li>Um Moderation der Community zu ermöglichen, zum Beispiel beim Vergleichen deiner IP-Adresse mit anderen bekannten, um Verbotsumgehung oder andere Vergehen festzustellen.</li>
-      <li>Die E-Mail-Adresse, die du bereitstellst, kann dazu verwendet werden, dir Informationen, Benachrichtigungen über andere Leute, die mit deinen Inhalten interagieren oder dir Nachrichten senden, und auf Anfragen, Wünsche und/oder Fragen zu antworten.</li>
-      </ul>
-      <hr class="spacer" />
-      <h3 id="protect">Wie beschützen wir deine Informationen?</h3>
-      <p>Wir implementieren eine Reihe von Sicherheitsmaßnahmen, um die Sicherheit deiner persönlichen Information sicherzustellen, wenn du persönliche Informationen eingibst, übermittelst oder auf sie zugreifst. Neben anderen Dingen, wird sowohl deine Browsersitzung, als auch der Datenverkehr zwischen deinen Anwendungen und der Programmierschnittstelle (API) mit SSL gesichert, dein Passwort wird mit einem starken Einwegalgorithmus gehasht. Du kannst Zwei-Faktor-Authentifizierung aktivieren, um den Zugriff auf dein Konto zusätzlich abzusichern.</p>
-      <hr class="spacer" />
-      <h3 id="data-retention">Was ist unsere Datenspeicherungsrichtlinie?</h3>
-      <p>Wir werden mit bestem Wissen und Gewissen:</p>
-      <ul>
-      <li>Serverprotokolle, die IP-Adressen von allen deinen Anfragen an diesen Server, falls solche Protokolle behalten werden, für nicht mehr als 90 Tage behalten.</li>
-      <li>registrierten Benutzer zugeordnete IP-Adressen nicht länger als 12 Monate behalten.</li>
-      </ul>
-      <p>Du kannst ein Archiv deines Inhalts anfordern und herunterladen, inkludierend deiner Beiträge, Medienanhänge, Profilbilder und Headerbilder.</p>
-      <p>Es ist in den meisten Fällen möglich dein Konto jederzeit eigenmächtig unwiderruflich zu löschen.</p>
-      <hr class="spacer"/>
-      <h3 id="cookies">Verwenden wir Cookies?</h3>
-      <p>Ja. Cookies sind kleine Dateien, die eine Webseite oder ihr Serviceanbieter über deinen Webbrowser (sofern er es erlaubt) auf die Festplatte deines Computers überträgt. Diese Cookies ermöglichen es der Seite deinen Browser wiederzuerkennen und, sofern du ein registriertes Konto hast, diesen mit deinem registrierten Konto zu verknüpfen.</p>
-      <p>Wir verwenden Cookies, um deine Einstellungen zu verstehen und für zukünftige Besuche zu speichern.</p>
-      <hr class="spacer" />
-      <h3 id="disclose">Offenbaren wir Informationen an Dritte?</h3>
-      <p>Wir verkaufen nicht, handeln nicht mit oder übertragen deine persönlich identifizierbaren Informationen nicht an Dritte. Dies beinhaltet nicht Dritte, die vertrauenswürdig sind und uns beim Betreiben unserer Seite, Leiten unseres Geschäftes oder dabei, die Dienste für dich bereitzustellen, unterstützen, sofern diese Dritte zustimmen, diese Informationen vertraulich zu halten. Wir können auch Informationen freigeben, wenn wir glauben, dass Freigabe angemessen ist, um dem Gesetz zu entsprechen, unsere Seitenrichtlinien durchzusetzen oder unsere Rechte, Eigentum und/oder Sicherheit oder die anderer zu beschützen.</p>
-      <p>Dein öffentlicher Inhalt kann durch andere Server im Netzwerk heruntergeladen werden. Deine öffentlichen und "Nur Folgende"-Beiträge werden an die Server ausgeliefert, bei denen sich deine Folgenden befinden und direkte Nachrichten werden an die Server des Empfängers ausgeliefert, falls diese Folgenden oder Empfänger sich auf einem anderen Server als diesen befinden.</p>
-      <p>Wenn du eine Anwendung autorisierst, dein Konto zu benutzen, kann diese – abhängig von den von dir genehmigten Befugnissen – auf deine öffentlichen Profilinformationen, deine Folgt- und Folgende-Liste, deine Listen, alle deine Beiträge und deine Favoriten zugreifen. Anwendungen können nie auf deine E-Mail-Adresse oder dein Passwort zugreifen</p>
-      <hr class="spacer" />
-      <h3 id="children">Webseitenbenutzung durch Kinder</h3>
-      <p>Wenn sich dieser Server in der EU oder im Europäischen Wirtschaftsraum befindet: Unsere Website, Produkte und Dienstleistungen sind alle an Leute gerichtet, die mindestens 16 Jahre als sind. Wenn du unter 16 bist, darfst du nach den Bestimmungen der DSGVO (<a href="https://de.wikipedia.org/wiki/Datenschutz-Grundverordnung">Datenschutz-Grundverordnung</a>) diese Webseite nicht benutzen.</p>
-      <p>Wenn sich dieser Server in den USA befindet: Unsere Webseite, Produkte und Dienstleistungen sind alle an Leute gerichtet, die mindestens 13 Jahre alt sind. Wenn du unter 13 bist, darfst du nach den Bestimmungen des COPPA (<a href="https://de.wikipedia.org/wiki/Children%27s_Online_Privacy_Protection_Act">Children's Online Privacy Protection Act, dt. "Gesetz zum Schutz der Privatsphäre von Kindern im Internet"</a>) diese Webseite nicht benutzen.</p>
-      <p>Gesetzesvorschriften können unterschiedlich sein, wenn sich dieser Server in anderer Gerichtsbarkeit befindet.</p>
-      <hr class="spacer" />
-      <h3 id="changes">Änderung an unserer Datenschutzerklärung</h3>
-      <p>Wenn wir uns entscheiden, Änderungen an unserer Datenschutzerklärung vorzunehmen, werden wir diese Änderungen auf dieser Seite bekannt gegeben.</p>
-      <p>Dies ist eine Übersetzung, Irrtümer und Übersetzungsfehler vorbehalten. Im Zweifelsfall gilt die englische Originalversion.</p>
-      <p>Dieses Dokument ist CC-BY-SA. Es wurde zuletzt aktualisiert am 26. Mai 2022.</p>
-      <p>Ursprünglich übernommen von der <a href="https://github.com/discourse/discourse">Discourse-Datenschutzerklärung</a>.</p>
   themes:
     contrast: Mastodon (Hoher Kontrast)
     default: Mastodon (Dunkel)
@@ -1694,15 +1538,15 @@ de:
   two_factor_authentication:
     add: Hinzufügen
     disable: Deaktivieren
-    disabled_success: Zwei-Faktor-Authentifizierung erfolgreich deaktiviert
+    disabled_success: Zwei-Faktor-Authentisierung (2FA) erfolgreich deaktiviert
     edit: Bearbeiten
-    enabled: Zwei-Faktor-Authentisierung ist aktiviert
-    enabled_success: Zwei-Faktor-Authentisierung erfolgreich aktiviert
-    generate_recovery_codes: Wiederherstellungscodes generieren
-    lost_recovery_codes: Wiederherstellungscodes erlauben es dir, wieder Zugang zu deinem Konto zu erlangen, falls du dein Telefon verlieren solltest. Wenn du deine Wiederherstellungscodes verloren hast, kannst du sie hier neu generieren. Deine alten Wiederherstellungscodes werden damit ungültig gemacht.
-    methods: Zwei-Faktor-Methoden
+    enabled: Zwei-Faktor-Authentisierung (2FA) ist aktiviert
+    enabled_success: Zwei-Faktor-Authentisierung (2FA) erfolgreich aktiviert
+    generate_recovery_codes: Wiederherstellungscodes erstellen
+    lost_recovery_codes: Wiederherstellungscodes erlauben es dir, wieder Zugang zu deinem Konto zu erlangen, falls du keinen Zugriff mehr auf die Zwei-Faktor-Authentisierung (2FA) oder den Sicherheitsschlüssel hast. Solltest Du diese Wiederherstellungscodes verloren haben, kannst du sie hier neu generieren. Deine alten, bereits erstellten Wiederherstellungscodes werden dadurch ungültig.
+    methods: Methoden der Zwei-Faktor-Authentisierung (2FA)
     otp: Authentifizierungs-App
-    recovery_codes: Wiederherstellungs-Codes sichern
+    recovery_codes: Wiederherstellungscodes sichern
     recovery_codes_regenerated: Wiederherstellungscodes erfolgreich neu generiert
     recovery_instructions_html: Wenn du den Zugang zu deinem Telefon verlieren solltest, kannst du einen untenstehenden Wiederherstellungscode benutzen, um wieder auf dein Konto zugreifen zu können. <strong>Bewahre die Wiederherstellungscodes gut auf.</strong> Du könntest sie beispielsweise ausdrucken und bei deinen restlichen wichtigen Dokumenten aufbewahren.
     webauthn: Sicherheitsschlüssel
@@ -1718,13 +1562,13 @@ de:
       title: Einspruch abgelehnt
     backup_ready:
       explanation: Du hast ein vollständiges Backup von deinem Mastodon-Konto angefragt. Es kann jetzt heruntergeladen werden!
-      subject: Dein Archiv ist bereit zum Download
+      subject: Dein persönliches Archiv ist bereit zum Download
       title: Archiv-Download
     suspicious_sign_in:
       change_password: dein Passwort zu ändern
       details: 'Hier sind die Details des Versuchs:'
       explanation: Wir haben eine Anmeldung zu deinem Konto von einer neuen IP-Adresse festgestellt.
-      further_actions_html: Wenn du das nicht warst, empfehlen wir dir, %{action} und die Zwei-Faktor-Authentifizierung zu aktivieren, um dein Konto sicher zu halten.
+      further_actions_html: Wenn du das nicht warst, empfehlen wir dir schnellstmöglich, %{action} und die Zwei-Faktor-Authentisierung (2FA) für deinen Account zu aktivieren, um dein Konto abzusichern.
       subject: Es wurde auf dein Konto von einer neuen IP-Adresse zugegriffen
       title: Eine neue Anmeldung
     warning:
@@ -1732,11 +1576,11 @@ de:
       appeal_description: Wenn du glaubst, dass es sich um einen Fehler handelt, kannst du einen Einspruch an die Administration von %{instance} senden.
       categories:
         spam: Spam
-        violation: Inhalt verletzt die folgenden Community-Richtlinien
+        violation: Inhalt verstößt gegen die folgenden Community-Richtlinien
       explanation:
         delete_statuses: Einige deiner Beiträge wurden als Verstoß gegen eine oder mehrere Communityrichtlinien erkannt und von den Moderator_innen von %{instance} entfernt.
         disable: Du kannst dein Konto nicht mehr verwenden, aber dein Profil und andere Daten bleiben unversehrt. Du kannst ein Backup deiner Daten anfordern, die Kontoeinstellungen ändern oder dein Konto löschen.
-        mark_statuses_as_sensitive: Einige deiner Beiträge wurden von den Moderator_innen von %{instance} als NSFW markiert. Das bedeutet, dass die Nutzer die Medien in den Beiträgen antippen müssen, bevor eine Vorschau angezeigt wird. Du kannst Medien in Zukunft als NSFW markieren, wenn du Beiträge verfasst.
+        mark_statuses_as_sensitive: Ein oder mehrere Deiner Beiträge wurden von den Moderator*innen der Instanz %{instance} mit einer Inhaltswarnung (NSFW) versehen. Das bedeutet, dass Besucher*innen diese Medien in den Beiträgen zunächst antippen müssen, um die Vorschau anzuzeigen. Beim Verfassen der nächsten Beiträge kannst du auch selbst eine Inhaltswarnung für hochgeladene Medien festlegen.
         sensitive: Von nun an werden alle deine hochgeladenen Mediendateien als sensibel markiert und hinter einer Warnung versteckt.
         silence: Solange dein Konto limitiert ist, können nur die Leute, die dir bereits folgen, deine Beiträge auf dem Server sehen, und es könnte sein, dass du von verschiedenen öffentlichen Listungen ausgeschlossen wirst. Andererseits können andere dir manuell folgen.
         suspend: Du kannst dein Konto nicht mehr verwenden, und dein Profil und andere Daten sind nicht mehr verfügbar. Du kannst dich immer noch anmelden, um ein Backup deiner Daten anzufordern, bis die Daten innerhalb von 30 Tagen vollständig gelöscht wurden. Allerdings werden wir einige Daten speichern, um zu verhindern, dass du die Sperrung umgehst.
@@ -1745,39 +1589,32 @@ de:
       subject:
         delete_statuses: Deine Beiträge auf %{acct} wurden entfernt
         disable: Dein Konto %{acct} wurde eingefroren
-        mark_statuses_as_sensitive: Deine Beiträge auf %{acct} wurden als NSFW markiert
+        mark_statuses_as_sensitive: Die Beiträge deines Profils %{acct} wurden mit einer Inhaltswarnung (NSFW) versehen
         none: Warnung für %{acct}
-        sensitive: Deine Beiträge auf %{acct} werden von nun an als NSFW markiert
+        sensitive: Die Beiträge deines Profils %{acct} werden künftig mit einer Inhaltswarnung (NSFW) versehen
         silence: Dein Konto %{acct} wurde limitiert
         suspend: Dein Konto %{acct} wurde gesperrt
       title:
         delete_statuses: Beiträge entfernt
         disable: Konto eingefroren
-        mark_statuses_as_sensitive: Als NSFW markierte Beiträge
+        mark_statuses_as_sensitive: Mit einer Inhaltswarnung (NSFW) versehene Beiträge
         none: Warnung
-        sensitive: Als NSFW markiertes Konto
+        sensitive: Profil mit einer Inhaltswarnung (NSFW) versehen
         silence: Konto limitiert
         suspend: Konto gesperrt
     welcome:
-      edit_profile_action: Profil einstellen
-      edit_profile_step: Du kannst dein Profil anpassen, indem du einen Avatar oder ein Titelbild hochlädst oder deinen Anzeigenamen änderst und mehr. Wenn du deine Folgenden vorher überprüfen möchtest, bevor sie dir folgen können, dann kannst du dein Profil sperren.
+      edit_profile_action: Profil einrichten
+      edit_profile_step: Du kannst dein Profil anpassen, indem du einen Avatar oder ein Titelbild hochlädst, deinen Anzeigenamen änderst und viel mehr. Du kannst optional einstellen, ob du Accounts, die dir folgen wollen, akzeptieren musst, bevor sie dies können.
       explanation: Hier sind ein paar Tipps, um loszulegen
       final_action: Fang an zu posten
-      final_step: 'Fang an zu posten! Selbst ohne Follower werden deine öffentlichen Beiträge von anderen gesehen, zum Beispiel auf der lokalen Zeitleiste oder in Hashtags. Vielleicht möchtest du dich mit dem #introductions-Hashtag vorstellen.'
+      final_step: 'Fang jetzt an zu posten! Selbst ohne Follower werden deine öffentlichen Beiträge von anderen gesehen, zum Beispiel in der lokalen Timeline oder über die Hashtags. Möglicherweise möchtest du dich allen mit dem Hashtag #introductions vorstellen?'
       full_handle: Dein vollständiger Benutzername
       full_handle_hint: Dies ist, was du deinen Freunden sagen kannst, damit sie dich anschreiben oder dir von einem anderen Server folgen können.
-      review_preferences_action: Einstellungen ändern
-      review_preferences_step: Stelle sicher, dass du deine Einstellungen einstellst, wie zum Beispiel welche E-Mails du gerne erhalten möchtest oder was für Privatsphäreneinstellungen voreingestellt werden sollten. Wenn dir beim Ansehen von GIFs nicht schwindelig wird, dann kannst du auch das automatische Abspielen dieser aktivieren.
       subject: Willkommen bei Mastodon
-      tip_federated_timeline: Die föderierte Zeitleiste ist die sehr große Ansicht vom Mastodon-Netzwerk. Sie enthält aber auch nur Leute, denen du und deine Nachbarn folgen, sie ist also nicht komplett.
-      tip_following: Du folgst standardmäßig deinen Server-Admin(s). Um mehr interessante Leute zu finden, kannst du die lokale oder öffentliche Zeitleiste durchsuchen.
-      tip_local_timeline: Die lokale Zeitleiste ist eine Ansicht aller Leute auf %{instance}. Diese sind deine Nachbarn!
-      tip_mobile_webapp: Wenn dein mobiler Browser dir anbietet, Mastodon zu deinem Startbildschirm hinzuzufügen, dann kannst du Benachrichtigungen erhalten. Es verhält sich wie eine native App in vielen Belangen!
-      tips: Tipps
       title: Willkommen an Bord, %{name}!
   users:
     follow_limit_reached: Du kannst nicht mehr als %{limit} Leuten folgen
-    invalid_otp_token: Ungültiger Zwei-Faktor-Authentisierungs-Code
+    invalid_otp_token: Ungültiger Code der Zwei-Faktor-Authentisierung (2FA)
     otp_lost_help_html: Wenn Du beides nicht mehr weißt, melde Dich bei uns unter der E-Mailadresse %{email}
     seamless_external_login: Du bist angemeldet über einen Drittanbieter-Dienst, weswegen Passwort- und E-Maileinstellungen nicht verfügbar sind.
     signed_in_as: 'Angemeldet als:'
@@ -1799,5 +1636,5 @@ de:
     nickname_hint: Gib den Spitznamen deines neuen Sicherheitsschlüssels ein
     not_enabled: Du hast WebAuthn noch nicht aktiviert
     not_supported: Dieser Browser unterstützt keine Sicherheitsschlüssel
-    otp_required: Um Sicherheitsschlüssel zu verwenden, aktiviere zuerst die Zwei-Faktor-Authentifizierung.
+    otp_required: Um Sicherheitsschlüssel zu verwenden, aktiviere zunächst die Zwei-Faktor-Authentisierung (2FA).
     registered_on: Registriert am %{date}

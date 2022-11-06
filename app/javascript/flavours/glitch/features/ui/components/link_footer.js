@@ -3,9 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
-import { limitedFederationMode, version, repository, source_url } from 'flavours/glitch/util/initial_state';
-import { signOutLink, securityLink, privacyPolicyLink } from 'flavours/glitch/util/backend_links';
-import { logOut } from 'flavours/glitch/util/log_out';
+import { domain, version, source_url, profile_directory as profileDirectory } from 'flavours/glitch/initial_state';
+import { logOut } from 'flavours/glitch/utils/log_out';
 import { openModal } from 'flavours/glitch/actions/modal';
 import { PERMISSION_INVITE_USERS } from 'flavours/glitch/permissions';
 
@@ -43,32 +42,50 @@ class LinkFooter extends React.PureComponent {
     e.stopPropagation();
 
     this.props.onLogout();
- 
+
     return false;
   }
 
   render () {
+    const { signedIn, permissions } = this.context.identity;
+
+    const canInvite = signedIn && ((permissions & PERMISSION_INVITE_USERS) === PERMISSION_INVITE_USERS);
+    const canProfileDirectory = profileDirectory;
+
     return (
-      <div className='getting-started__footer'>
-        <ul>
-          {((this.context.identity.permissions & PERMISSION_INVITE_USERS) === PERMISSION_INVITE_USERS) && <li><a href='/invites' target='_blank'><FormattedMessage id='getting_started.invite' defaultMessage='Invite people' /></a> · </li>}
-          {!!securityLink && <li><a href='/auth/edit'><FormattedMessage id='getting_started.security' defaultMessage='Security' /></a> · </li>}
-          {!limitedFederationMode && <li><a href='/about/more' target='_blank'><FormattedMessage id='navigation_bar.info' defaultMessage='About this server' /></a> · </li>}
-          <li><a href='https://joinmastodon.org/apps' target='_blank'><FormattedMessage id='navigation_bar.apps' defaultMessage='Mobile apps' /></a> · </li>
-          <li><a href={privacyPolicyLink} target='_blank'><FormattedMessage id='getting_started.privacy_policy' defaultMessage='Privacy Policy' /></a> · </li>
-          <li><a href='/settings/applications' target='_blank'><FormattedMessage id='getting_started.developers' defaultMessage='Developers' /></a> · </li>
-          <li><a href='https://docs.joinmastodon.org' target='_blank'><FormattedMessage id='getting_started.documentation' defaultMessage='Documentation' /></a> · </li>
-          <li><a href={signOutLink} onClick={this.handleLogoutClick}><FormattedMessage id='navigation_bar.logout' defaultMessage='Logout' /></a></li>
-        </ul>
+      <div className='link-footer'>
+        <p>
+          <strong>{domain}</strong>:
+          {' '}
+          <Link key='about' to='/about'><FormattedMessage id='footer.about' defaultMessage='About' /></Link>
+          {canInvite && (
+            <>
+              {' · '}
+              <a key='invites' href='/invites' target='_blank'><FormattedMessage id='footer.invite' defaultMessage='Invite people' /></a>
+            </>
+          )}
+          {canProfileDirectory && (
+            <>
+              {' · '}
+              <Link key='directory' to='/directory'><FormattedMessage id='footer.directory' defaultMessage='Profiles directory' /></Link>
+            </>
+          )}
+          {' · '}
+          <Link key='privacy-policy' to='/privacy-policy'><FormattedMessage id='footer.privacy_policy' defaultMessage='Privacy policy' /></Link>
+        </p>
 
         <p>
-          <FormattedMessage
-            id='getting_started.open_source_notice'
-            defaultMessage='Glitchsoc is open source software, a friendly fork of {Mastodon}. You can contribute or report issues on GitHub at {github}.'
-            values={{
-              github: <span><a href={source_url} rel='noopener noreferrer' target='_blank'>{repository}</a> (v{version})</span>,
-              Mastodon: <a href='https://github.com/tootsuite/mastodon' rel='noopener noreferrer' target='_blank'>Mastodon</a> }}
-          />
+          <strong>Mastodon</strong>:
+          {' '}
+          <a href='https://joinmastodon.org' target='_blank'><FormattedMessage id='footer.about' defaultMessage='About' /></a>
+          {' · '}
+          <a href='https://joinmastodon.org/apps' target='_blank'><FormattedMessage id='footer.get_app' defaultMessage='Get the app' /></a>
+          {' · '}
+          <Link to='/keyboard-shortcuts'><FormattedMessage id='footer.keyboard_shortcuts' defaultMessage='Keyboard shortcuts' /></Link>
+          {' · '}
+          <a href={source_url} rel='noopener noreferrer' target='_blank'><FormattedMessage id='footer.source_code' defaultMessage='View source code' /></a>
+          {' · '}
+          v{version}
         </p>
       </div>
     );
