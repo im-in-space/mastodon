@@ -1,7 +1,11 @@
-/* Global fixes */
-body.with-modals {
-  background: #282c37;
+/* Temp fix? */
+@media screen and (max-width: 1174px) {
+  .layout-single-column #mastodon .columns-area__panels__pane__inner {
+    margin-top: 0 !important;
+  }
 }
+
+/* Global fixes */
 .status__prepend {
   background-color: transparent !important;
 }
@@ -12,10 +16,26 @@ body.with-modals {
   line-height: 24px !important;
 }
 
+/* Disable app header on multi-column view */
+.layout-multiple-columns .ui__header {
+  display: none !important;
+}
+
+/* Fix about spacings */
+.about__section__body .prose summary h2 {
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 0;
+  margin-top: 0.5em;
+}
+.about__section__body .prose img {
+  margin: 0;
+}
+
 
 /* Based on https://github.com/koyuspace/styles/blob/master/gettingstarted.scss */
-.getting-started__footer p:after {
-  content: "This instance has been customized and changes can be reviewed on GitHub at im-in-space/mastodon. If you have issues, feel free to contact kdy@im-in-space.";
+div[data-column="getting-started"] .link-footer p:first-child:after {
+  content: "This instance has been customized and changes can be reviewed on GitHub. If you have issues, please contact kdy@im-in-space.";
   display: block;
   margin-top: 1em;
 }
@@ -61,13 +81,6 @@ span.reactions-bar__item__emoji > img[alt^=":sticker_"] {
 }
 
 
-/* Make it harder to download audio from public pages */
-.public-layout .audio-player .video-player__buttons.right,
-body.player .audio-player .video-player__buttons.right {
-  display: none;
-}
-
-
 /* Rotating space core */
 .spacecore {
   -webkit-animation: rotateCore 15s linear infinite;
@@ -103,109 +116,3 @@ body.player .audio-player .video-player__buttons.right {
     transform: rotate(360deg);
   }
 }
-/* Global fixes */
-body.with-modals {
-  background: #282c37;
-}
-.status__prepend {
-  background-color: transparent !important;
-}
-.columns-area--mobile .scrollable {
-  overflow-y: scroll;
-}
-.status__action-bar-button.fa-language {
-  line-height: 24px !important;
-}
-
-
-/* Based on https://github.com/koyuspace/styles/blob/master/gettingstarted.scss */
-.getting-started__footer p:after {
-  content: "This instance has been customized and changes can be reviewed on GitHub at im-in-space/mastodon. If you have issues, feel free to contact kdy@im-in-space.";
-  display: block;
-  margin-top: 1em;
-}
-
-
-/* Ported from https://github.com/koyuspace/styles/blob/master/stickers.scss */
-/*
-.status__content .emojione:not([alt^=":sticker_"]) {
-  width: 32px !important;
-  height: 32px !important;
-  margin-top: 0px;
-}
-*/
-img[alt^=":sticker_"] {
-  width: 128px !important;
-  height: 128px !important;
-  display: block;
-  margin: 0 auto !important;
-}
-div.emoji-mart-category > span[title^=":sticker_"] > span {
-  width: 120px !important;
-  height: 120px !important;
-}
-.emoji-mart-emoji[title^=":sticker_"]:hover::before {
-  border-radius: 10px !important;
-}
-span.reactions-bar__item__emoji > img[alt^=":sticker_"] {
-  width: 16px !important;
-  height: 16px !important;
-}
-.status__content .emojione:not([alt^=":sticker_"]) {
-  padding: 3px;
-  margin: -3px -3px -3px -3px;
-}
-
-
-/* Color some status */
-.status[data-status-by="@kdy"] {
-  box-shadow: inset 0 40px 40px 0 rgba(233, 30, 99, 20%);
-}
-.status[data-status-by^="@status"] {
-  box-shadow: inset 0 40px 40px 0 rgba(255, 165, 31, 20%);
-}
-
-
-/* Make it harder to download audio from public pages */
-.public-layout .audio-player .video-player__buttons.right,
-body.player .audio-player .video-player__buttons.right {
-  display: none;
-}
-
-
-/* Rotating space core */
-.spacecore {
-  -webkit-animation: rotateCore 15s linear infinite;
-  animation: rotateCore 15s linear infinite;
-  background: url(https://im-in.space/spacecore.png) no-repeat;
-  background-size: cover;
-  height: 150px;
-  margin: 15px auto 30px;
-  width: 150px;
-}
-@keyframes rotateCore {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  20% {
-    transform: rotate(20deg);
-  }
-
-  40% {
-    transform: rotate(100deg);
-  }
-
-  60% {
-    transform: rotate(220deg);
-  }
-
-  80% {
-    transform: rotate(300deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-

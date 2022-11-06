@@ -6,15 +6,6 @@ $classic-highlight-color: #ff9800;
 $ui-highlight-color: $classic-highlight-color;
 $highlight-text-color: $ui-highlight-color;
 
-// Change app background
-body {
-    background: $classic-base-color url('~images/space-bg.jpg');
-    
-    &.with-modals {
-        background: $classic-base-color;
-    }
-}
-
 // Some changes to the about pages
 .about-body .wrapper {
     background-color: rgba(0, 0, 0, 0.7);
@@ -56,38 +47,6 @@ body {
     margin: 0;
 }
 
-// Header image is also a blurred background image
-.pagination {
-    a {
-        background: $classic-base-color;
-    }
-}
-
-.bg-profile {
-    display: none;
-}
-
-@supports (filter: blur(8px)) {
-    .bg-profile {
-        display: block;
-        filter: blur(8px);
-        height: 100%;
-        left: 0;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: -1;
-
-        .bg-profile-img {
-            background-size: cover;
-            background-position: center;
-            height: calc(100% + 30px);
-            margin: -15px;
-            width: calc(100% + 30px);
-        }
-    }
-}
-
 // Removing some background
 .drawer {
     .drawer--header,
@@ -105,18 +64,19 @@ body {
     }
 }
 
+.columns-area__panels__pane--navigational .navigation-panel,
 .tabs-bar__wrapper,
 .getting-started {
     background: transparent !important;
 }
 
 // More random fixes to the base theme
-.composer--options {
-    & > button.icon-button.inverted {
+.compose-form__buttons {
+    button.icon-button.inverted {
         color: #606984;
     }
 
-    & > button.icon-button.inverted.active {
+    button.icon-button.inverted.active {
         color: #ff9800;
     }
 }
@@ -153,56 +113,6 @@ body {
 .directory__tag > a,
 .directory__tag > div {
     background-color: #223 !important;
-}
-
-.public-layout {
-    .page-header,
-    .header {
-        background: #223 !important;
-
-        .nav-button {
-            background-color: #ff9800 !important;
-            color: #fff !important;
-
-            &:hover {
-                background-color: #ffa51f !important;
-            }
-
-            &:focus {
-                background-color: #ffa51f !important;
-            }
-
-            &:active {
-                background-color: #ffa51f !important;
-            }
-        }
-    }
-
-    .footer {
-        background: #223;
-        -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, .2);
-        box-shadow: 0 0 15px rgba(0, 0, 0, .2);
-        border-radius: 4px;
-        overflow: hidden;
-        margin-bottom: 60px;
-        margin-top: 10px;
-        padding: 15px !important;
-    }
-
-    .account__header__fields.wider {
-        dt {
-            text-align: right;
-            width: 200px;
-        }
-
-        dd {
-            text-align: left;
-        }
-    }
-    
-    .icon-button__counter {
-        display: none;
-    }
 }
 
 .button.logo-button {
@@ -256,14 +166,6 @@ body {
     &:hover {
         background: #29293d !important;
         color: #37aac0 !important;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .public-layout {
-        .public-account-header__bar {
-            background: #223 !important;
-        }
     }
 }
 

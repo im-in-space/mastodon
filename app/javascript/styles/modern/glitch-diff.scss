@@ -1,60 +1,6 @@
-/* Instance-stuff */
-body:not(.app-body):not(.admin) {
-  background: $classic-base-color url('~images/space-bg.jpg');
-}
-
 // Remove the left padding
 #mastodon .status {
   --status-left-padding: 15px !important;
-}
-
-.public-layout {
-  .activity-stream {
-    // There's a shadow floating, removing it
-    box-shadow: none;
-    
-    .entry {
-      // Modern sets the background to none, put one back
-      // in case the profile has a background
-      background: $ui-base-color !important;
-      // Also add a separator between posts
-      border-bottom: 1px solid lighten($ui-base-color, 8%);
-    }
-  }
-
-  // Fix the background when hovering too
-  .detailed-status:hover,
-  .entry:hover,
-  .focusable:hover,
-  .detailed-status:focus-within,
-  .entry:focus-within,
-  .focusable:focus-within {
-    background-color: lighten($ui-base-color, 2%) !important;
-  }
-
-  // Add some backgrounds to elements in case there's a background
-  .contact-widget,
-  .landing-page__information.contact-widget,
-  .endorsements-widget {
-    background-color: $ui-base-color;
-    border-radius: var(--radius);
-  }
-
-  // Same as above, but lighter
-  .account__section-headline {
-    background: lighten($ui-base-color, 8%);
-    border-radius: var(--radius) !important;
-  }
-
-  // Same as above for the footer, and add some spaces
-  .footer {
-    background: $ui-base-color;
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin-bottom: 60px;
-    margin-top: 10px;
-    padding: 15px !important;
-  }
 }
 
 /* Fixes */
@@ -142,8 +88,7 @@ body:not(.app-body):not(.admin) {
 }
 
 @media (max-width: 895px) {
-  #mastodon .status__action-bar,
-  .public-layout .status__action-bar {
+  #mastodon .status__action-bar {
     // Reverting the margin on elements that were negative due to the
     // big padding the theme used to have
     margin-left: 0 !important;
