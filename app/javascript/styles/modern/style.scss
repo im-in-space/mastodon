@@ -1,3 +1,4 @@
+
 :root {
   --tl-width: 750px;
   --radius: 12px;
@@ -8,7 +9,7 @@
   --shadow: 0 10px 40px -10px rgba(0,0,0,0.15);
   --shadow-low: 0 8px 16px -10px rgba(0,0,0,0.4);
   --shadow-med: 0 8px 60px -30px rgba(0,0,0,0.1);
-  --status-left-padding: 75px;
+  --status-left-padding: 15px;
 }
 .rtl textarea,
 .rtl p {
@@ -275,7 +276,7 @@
 .dropdown-menu__separator {
   margin: 0 !important;
 }
-@media (min-width: 895px) {
+@media (min-width: 1191px) {
   #mastodon .columns-area__panels__pane__inner,
   .public-layout .columns-area__panels__pane__inner,
   .modal-layout .columns-area__panels__pane__inner {
@@ -641,7 +642,7 @@
   margin: -10px;
   margin-bottom: 10px;
   background-color: inherit;
-  border-radius: var(--radius);
+  border-radius: var(--radius) !important;
 }
 #mastodon .account-timeline__header .account__moved-note,
 .public-layout .account-timeline__header .account__moved-note,
@@ -662,6 +663,7 @@
 .public-layout .account-timeline__header .account__header,
 .modal-layout .account-timeline__header .account__header {
   overflow: visible !important;
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 #mastodon .account-timeline__header .account__header__info,
 .public-layout .account-timeline__header .account__header__info,
@@ -673,8 +675,6 @@
 .modal-layout .account-timeline__header .account__header__image {
   height: 0;
   padding-bottom: 35%;
-  position: sticky;
-  top: calc(0px - var(--radius));
   border-radius: var(--radius) var(--radius) 0 0;
 }
 #mastodon .account-timeline__header .account__header__image img,
@@ -685,10 +685,14 @@
 #mastodon .account-timeline__header .account__header__bar,
 .public-layout .account-timeline__header .account__header__bar,
 .modal-layout .account-timeline__header .account__header__bar {
-  padding: 10px;
   border: 0;
   border-radius: var(--radius) var(--radius) 0 0;
   margin-top: calc(0px - var(--radius)) !important;
+}
+#mastodon .account-timeline__header .account__header__tabs__name,
+.public-layout .account-timeline__header .account__header__tabs__name,
+.modal-layout .account-timeline__header .account__header__tabs__name {
+  margin-bottom: 0;
 }
 #mastodon .account-timeline__header .account__header__tabs__name h1,
 .public-layout .account-timeline__header .account__header__tabs__name h1,
@@ -711,16 +715,10 @@
 .modal-layout .account-timeline__header .account-role > span {
   margin: 0 !important;
 }
-#mastodon .account-timeline__header .account__header__bio,
-.public-layout .account-timeline__header .account__header__bio,
-.modal-layout .account-timeline__header .account__header__bio {
-  margin: 0;
+#mastodon .account-timeline__header .account__header__extra,
+.public-layout .account-timeline__header .account__header__extra,
+.modal-layout .account-timeline__header .account__header__extra {
   margin-top: 10px;
-}
-#mastodon .account-timeline__header .account__header__bio > div,
-.public-layout .account-timeline__header .account__header__bio > div,
-.modal-layout .account-timeline__header .account__header__bio > div {
-  padding-inline: 10px !important;
 }
 #mastodon .account__header__fields,
 .public-layout .account__header__fields,
@@ -732,9 +730,17 @@
   flex-wrap: wrap;
   align-items: center;
   border: 0;
-  margin-top: 0 !important;
-  margin-bottom: 10px !important;
   gap: 10px;
+  background: none;
+  margin-inline: -5px;
+}
+#mastodon .account__header__fields.account__header__fields,
+.public-layout .account__header__fields.account__header__fields,
+.modal-layout .account__header__fields.account__header__fields,
+#mastodon .account__header__account-note.account__header__fields,
+.public-layout .account__header__account-note.account__header__fields,
+.modal-layout .account__header__account-note.account__header__fields {
+  margin-top: 15px;
 }
 .public-account-bio .account__header__fields {
   padding: 20px !important;
@@ -753,10 +759,12 @@
 .public-layout .account__header__account-note.account__header__account-note.account__header__account-note,
 .modal-layout .account__header__account-note.account__header__account-note.account__header__account-note {
   border: 0;
-  border-radius: var(--radius-round);
+  border-radius: var(--radius);
   overflow: hidden;
-  background-color: var(--border-color);
-  padding: 0 !important;
+  border: 1px solid var(--border-color-2);
+  padding: 8px 12px !important;
+  position: relative;
+  overflow: hidden;
 }
 #mastodon .account__header__fields dl dt,
 .public-layout .account__header__fields dl dt,
@@ -783,7 +791,6 @@
 .public-layout .account__header__account-note.account__header__account-note.account__header__account-note dd,
 .modal-layout .account__header__account-note.account__header__account-note.account__header__account-note dd {
   width: unset;
-  padding-block: 0.5em;
 }
 #mastodon .account__header__fields dl dt,
 .public-layout .account__header__fields dl dt,
@@ -798,6 +805,9 @@
 .public-layout .account__header__account-note.account__header__account-note.account__header__account-note dt,
 .modal-layout .account__header__account-note.account__header__account-note.account__header__account-note dt {
   background: none;
+  color: unset;
+  opacity: 0.9;
+  text-transform: capitalize;
 }
 #mastodon .account__header__fields dl dd,
 .public-layout .account__header__fields dl dd,
@@ -812,29 +822,16 @@
 .public-layout .account__header__account-note.account__header__account-note.account__header__account-note dd,
 .modal-layout .account__header__account-note.account__header__account-note.account__header__account-note dd {
   border: 0;
+  background: none;
 }
-#mastodon .account__header__fields dl dd:not(.verified),
-.public-layout .account__header__fields dl dd:not(.verified),
-.modal-layout .account__header__fields dl dd:not(.verified),
-#mastodon .account__header__account-note dl dd:not(.verified),
-.public-layout .account__header__account-note dl dd:not(.verified),
-.modal-layout .account__header__account-note dl dd:not(.verified),
-#mastodon .account__header__fields.account__header__account-note.account__header__account-note dd:not(.verified),
-.public-layout .account__header__fields.account__header__account-note.account__header__account-note dd:not(.verified),
-.modal-layout .account__header__fields.account__header__account-note.account__header__account-note dd:not(.verified),
-#mastodon .account__header__account-note.account__header__account-note.account__header__account-note dd:not(.verified),
-.public-layout .account__header__account-note.account__header__account-note.account__header__account-note dd:not(.verified),
-.modal-layout .account__header__account-note.account__header__account-note.account__header__account-note dd:not(.verified) {
-  padding-inline-start: 0;
-}
-#mastodon .account__header__fields.account__header__account-note,
-.public-layout .account__header__fields.account__header__account-note,
-.modal-layout .account__header__fields.account__header__account-note,
-#mastodon .account__header__account-note.account__header__account-note,
-.public-layout .account__header__account-note.account__header__account-note,
-.modal-layout .account__header__account-note.account__header__account-note {
-  margin: 10px;
-  margin-bottom: 0;
+#mastodon .account__header__fields.account__header__account-note.account__header__account-note,
+.public-layout .account__header__fields.account__header__account-note.account__header__account-note,
+.modal-layout .account__header__fields.account__header__account-note.account__header__account-note,
+#mastodon .account__header__account-note.account__header__account-note.account__header__account-note,
+.public-layout .account__header__account-note.account__header__account-note.account__header__account-note,
+.modal-layout .account__header__account-note.account__header__account-note.account__header__account-note {
+  padding: 0 !important;
+  margin-bottom: 15px;
   gap: 0;
   background: none !important;
   border: 1px solid var(--border-color) !important;
@@ -859,11 +856,6 @@
   margin: 0;
   font-weight: 600;
   padding-inline: 14px;
-}
-#mastodon .account__header__content,
-.public-layout .account__header__content,
-.modal-layout .account__header__content {
-  padding-top: 10px;
 }
 #mastodon#mastodon .account__section-headline,
 .public-layout#mastodon .account__section-headline,
@@ -3636,7 +3628,7 @@
 }
 @media (max-width: 895px) {
   :root {
-    --status-left-padding: 70px;
+    --status-left-padding: 15px;
   }
   #mastodon .columns-area--mobile > .column > div > div,
   .public-layout .columns-area--mobile > .column > div > div,
