@@ -9,11 +9,20 @@
 .status__prepend {
   background-color: transparent !important;
 }
-.columns-area--mobile .scrollable {
+/*
+.layout-single-column .scrollable {
   overflow-y: scroll;
 }
+*/
 .status__action-bar-button.fa-language {
   line-height: 24px !important;
+}
+/* TODO: Move to -diff in the modern theme */
+#mastodon .detailed-status__action-bar .icon-button[aria-label]:after, #mastodon .picture-in-picture__footer .icon-button[aria-label]:after, #mastodon .status__action-bar .icon-button[aria-label]:after, .modal-layout .detailed-status__action-bar .icon-button[aria-label]:after, .modal-layout .picture-in-picture__footer .icon-button[aria-label]:after, .modal-layout .status__action-bar .icon-button[aria-label]:after, .public-layout .detailed-status__action-bar .icon-button[aria-label]:after, .public-layout .picture-in-picture__footer .icon-button[aria-label]:after, .public-layout .status__action-bar .icon-button[aria-label]:after {
+  content: none !important;
+}
+.modal-layout.modal-layout .container-alt {
+  height: auto !important;
 }
 
 /* Disable app header on multi-column view */
@@ -116,3 +125,4 @@ span.reactions-bar__item__emoji > img[alt^=":sticker_"] {
     transform: rotate(360deg);
   }
 }
+

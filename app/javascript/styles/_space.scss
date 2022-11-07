@@ -18,11 +18,11 @@ $highlight-text-color: $ui-highlight-color;
     }
 }
 
-// Make UI fluid for large width
+// Make UI fluid for large width (is useless for glitch)
 // 1338px, we failed by ONE pixel
 @media screen and (min-width: 1338px) {
-    body.app-body .column,
-    body.app-body .column__wrapper {
+    body.layout-multiple-columns:not(.flavour-glitch) .column,
+    body.layout-multiple-columns:not(.flavour-glitch) .column__wrapper {
         flex: 1 1 0;
     }
 }
@@ -65,12 +65,14 @@ $highlight-text-color: $ui-highlight-color;
 }
 
 .columns-area__panels__pane--navigational .navigation-panel,
-.tabs-bar__wrapper,
 .getting-started {
     background: transparent !important;
 }
 
 // More random fixes to the base theme
+.tabs-bar__wrapper {
+    background-color: #223;
+}
 .compose-form__buttons {
     button.icon-button.inverted {
         color: #606984;
@@ -81,6 +83,7 @@ $highlight-text-color: $ui-highlight-color;
     }
 }
 
+/*
 .endorsements-widget {
     background: #223;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, .2);
@@ -89,6 +92,7 @@ $highlight-text-color: $ui-highlight-color;
     overflow: hidden;
     margin-bottom: 10px;
 }
+*/
 
 .rich-formatting {
     strong, b {
@@ -406,6 +410,7 @@ $highlight-text-color: $ui-highlight-color;
     background: #223;
 }
 
+/*
 .account__header {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
@@ -420,6 +425,7 @@ $highlight-text-color: $ui-highlight-color;
 .account__header > div {
     background: linear-gradient(to bottom, rgba(34, 34, 51, 0.10), #223);
 }
+*/
 
 .icon-button.inverted {
     color: #3aaacf
