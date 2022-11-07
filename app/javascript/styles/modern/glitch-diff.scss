@@ -4,6 +4,22 @@
 }
 
 /* Fixes */
+// While we wait for glitch update
+.account__header__bio .account__header__fields {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+.account__header__bio .account__header__fields dl {
+  display: block;
+}
+.account__header__bio .account__header__fields dd,
+.account__header__bio .account__header__fields dt {
+  font-size: 13px;
+  line-height: 18px;
+  padding: 0;
+  text-align: initial;
+}
+
 #mastodon {
   .status {
     // Modern sets the background to none,
