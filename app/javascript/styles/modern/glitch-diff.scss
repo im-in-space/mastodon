@@ -59,7 +59,7 @@
   }
 
   // Since we have more elements on the action bar (including the date/time)
-  // I'm redecing the padding a bit
+  // I'm reducing the padding a bit
   .detailed-status__action-bar .icon-button,
   .status__action-bar .icon-button {
     padding: .2em !important;
@@ -90,9 +90,14 @@
   }
 
   // The cancel button when replying was inaccessible
-  .composer--reply .account {
-    display: inline-block;
-    width: calc(100% - 1.28571em - 10px);
+  .compose-form .reply-indicator__header {
+    margin-bottom: -5px;
+
+    .account {
+      border-radius: 0!important; // Fix weird radius
+      display: inline-block;
+      width: calc(100% - 1.28571em - 10px);
+    }
   }
 
   .pillbar-button {
@@ -114,6 +119,11 @@
     // big padding the theme used to have
     margin-left: 0 !important;
   }
+}
+
+// Some elements went above the emoji picker (like the spoiler media button)
+.emoji-picker-dropdown__menu {
+  z-index: 500;
 }
 
 // This was used in mastodon.coffee, I like it
