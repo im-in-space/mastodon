@@ -9,15 +9,20 @@
   margin-left: 15px !important;
   margin-right: 15px !important;
 }
-.account__header__bio .account__header__fields dl {
-  display: block;
-}
-.account__header__bio .account__header__fields dd,
-.account__header__bio .account__header__fields dt {
-  font-size: 13px;
-  line-height: 18px;
-  padding: 0;
-  text-align: initial;
+.about__section__body,
+.account__header__bio {
+  .account__header__fields {
+    dl {
+      display: block;
+    }
+    dd,
+    dt {
+      font-size: 13px;
+      line-height: 18px;
+      padding: 0;
+      text-align: initial;
+    }
+  }
 }
 
 #mastodon {
