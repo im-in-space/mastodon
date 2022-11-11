@@ -35,7 +35,8 @@ const messages = defineMessages({
   admin_account: { id: 'status.admin_account', defaultMessage: 'Open moderation interface for @{name}' },
   admin_status: { id: 'status.admin_status', defaultMessage: 'Open this status in the moderation interface' },
   copy: { id: 'status.copy', defaultMessage: 'Copy link to status' },
-  translate: { id: 'status.translate', defaultMessage: 'Translate with Google' },
+  translate: { id: 'status.translate', defaultMessage: 'Translate' },
+  openOriginalPage: { id: 'account.open_original_page', defaultMessage: 'Open original page' },
 });
 
 export default @injectIntl
@@ -133,22 +134,8 @@ class ActionBar extends React.PureComponent {
   }
 
   handleCopy = () => {
-    const url      = this.props.status.get('url');
-    const textarea = document.createElement('textarea');
-
-    textarea.textContent    = url;
-    textarea.style.position = 'fixed';
-
-    document.body.appendChild(textarea);
-
-    try {
-      textarea.select();
-      document.execCommand('copy');
-    } catch (e) {
-
-    } finally {
-      document.body.removeChild(textarea);
-    }
+    const url = this.props.status.get('url');
+    navigator.clipboard.writeText(url);
   }
 
   handleTranslateClick = () => {
@@ -170,12 +157,17 @@ class ActionBar extends React.PureComponent {
     const pinnableStatus     = ['public', 'unlisted', 'private'].includes(status.get('visibility'));
     const mutingConversation = status.get('muted');
     const writtenByMe        = status.getIn(['account', 'id']) === me;
+    const isRemote           = status.getIn(['account', 'username']) !== status.getIn(['account', 'acct']);
 
     let menu = [];
 
     menu.push({ text: intl.formatMessage(messages.translate), action: this.handleTranslateClick });
 
     if (publicStatus) {
+      if (isRemote) {
+        menu.push({ text: intl.formatMessage(messages.openOriginalPage), href: status.get('url') });
+      }
+
       menu.push({ text: intl.formatMessage(messages.copy), action: this.handleCopy });
       menu.push({ text: intl.formatMessage(messages.embed), action: this.handleEmbed });
       menu.push(null);
