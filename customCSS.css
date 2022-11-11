@@ -10,10 +10,27 @@
 .status__prepend {
   background-color: transparent !important;
 }
+.privacy-dropdown__dropdown .content {
+  margin-left: 1em;
+}
+.privacy-dropdown__dropdown .content strong {
+  font-weight: bold;
+  display: block;
+}
 
 /* Disable app header on multi-column view */
 .layout-multiple-columns .ui__header {
   display: none !important;
+}
+
+/* When the "content-type" button is shown we don't have too much space
+   for the composers actions, so let's make some. */
+.flavour-glitch .compose-form__buttons-wrapper {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.flavour-glitch .compose-form__buttons > hr {
+  display: none;
 }
 
 /* Fix about page spacings */
