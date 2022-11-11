@@ -25,6 +25,14 @@
   }
 }
 
+// This fixes collapsed toots (we still override some parts bellow) but also
+// clicking on username when you open their profile because ".detailled-satatus__wrapper"
+// is at an another place and not with .focusable as expected upstream
+#mastodon .detailed-status__wrapper .status__content::before,
+#mastodon .detailed-status__wrapper .status__content::after {
+  height: auto !important;
+}
+
 #mastodon {
   .status {
     // Modern sets the background to none,
@@ -36,9 +44,16 @@
 
     // Fix the collapsed gradiant so it stays inside the "card"
     &.collapsed {
-      .status__content:after {
-        left: 85px;
-        right: 85px;
+      .status__content {
+        overflow: hidden !important;
+
+        &:after {
+          bottom: 0 !important;
+          height: auto !important;
+          left: 85px !important;
+          right: 85px !important;
+          top: 0 !important;
+        }
       }
     }
   }
