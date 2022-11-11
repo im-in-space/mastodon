@@ -1,5 +1,6 @@
 /* Temp fix? */
 @media screen and (max-width: 1174px) {
+  /* Big top shift removed, either style incompatibility or WIP on Glitch */
   .layout-single-column #mastodon .columns-area__panels__pane__inner {
     margin-top: 0 !important;
   }
@@ -9,28 +10,13 @@
 .status__prepend {
   background-color: transparent !important;
 }
-/*
-.layout-single-column .scrollable {
-  overflow-y: scroll;
-}
-*/
-.status__action-bar-button.fa-language {
-  line-height: 24px !important;
-}
-/* TODO: Move to -diff in the modern theme */
-#mastodon .detailed-status__action-bar .icon-button[aria-label]:after, #mastodon .picture-in-picture__footer .icon-button[aria-label]:after, #mastodon .status__action-bar .icon-button[aria-label]:after, .modal-layout .detailed-status__action-bar .icon-button[aria-label]:after, .modal-layout .picture-in-picture__footer .icon-button[aria-label]:after, .modal-layout .status__action-bar .icon-button[aria-label]:after, .public-layout .detailed-status__action-bar .icon-button[aria-label]:after, .public-layout .picture-in-picture__footer .icon-button[aria-label]:after, .public-layout .status__action-bar .icon-button[aria-label]:after {
-  content: none !important;
-}
-.modal-layout.modal-layout .container-alt {
-  height: auto !important;
-}
 
 /* Disable app header on multi-column view */
 .layout-multiple-columns .ui__header {
   display: none !important;
 }
 
-/* Fix about spacings */
+/* Fix about page spacings */
 .about__section__body .prose summary h2 {
   cursor: pointer;
   display: inline-block;
@@ -39,14 +25,6 @@
 }
 .about__section__body .prose img {
   margin: 0;
-}
-
-
-/* Based on https://github.com/koyuspace/styles/blob/master/gettingstarted.scss */
-div[data-column="getting-started"] .link-footer p:first-child:after {
-  content: "This instance has been customized and changes can be reviewed on GitHub. If you have issues, please contact kdy@im-in-space.";
-  display: block;
-  margin-top: 1em;
 }
 
 

@@ -83,6 +83,11 @@
     margin-right: 8px
   }
 
+  // Stop showing the text next to action buttons
+  .icon-button[aria-label]:after {
+    content: none !important;
+  }
+
   // Glitch still uses -- here while vanilla is __
   // so I'm just kinda copy-pasting the styles here
   .drawer--header {
@@ -136,9 +141,16 @@
   }
 }
 
-// Some elements went above the emoji picker (like the spoiler media button)
+// Some elements went above the emoji picker or privacy settings
+// (like the spoiler media button or profile pictures)
+.privacy-dropdown__dropdown,
 .emoji-picker-dropdown__menu {
   z-index: 500;
+}
+
+// Fix alignement in the sharing/following popups
+.modal-layout.modal-layout .container-alt {
+  height: auto !important;
 }
 
 // This was used in mastodon.coffee, I like it
