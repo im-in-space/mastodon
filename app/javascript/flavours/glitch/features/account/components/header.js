@@ -297,7 +297,7 @@ class Header extends ImmutablePureComponent {
       badge = (<div className='account-role bot'><FormattedMessage id='account.badges.bot' defaultMessage='Bot' /></div>);
     } else if (account.get('group')) {
       badge = (<div className='account-role group'><FormattedMessage id='account.badges.group' defaultMessage='Group' /></div>);
-    } else if (account.get('role') && account.get('role').get('name') != '') {
+    } else if (account.get('role') && account.get('role').get('name') !== '') {
       badge = (<div className={`account-role user-role-${account.get('role').get('id')}`}>{account.get('role').get('name')}</div>);
     } else {
       badge = null;
@@ -335,8 +335,9 @@ class Header extends ImmutablePureComponent {
 
           <div className='account__header__tabs__name'>
             <h1>
-              <span dangerouslySetInnerHTML={displayNameHtml} /> {badge}
+              <span dangerouslySetInnerHTML={displayNameHtml} />
               <small>@{acct} {lockedIcon}</small>
+              {badge}
             </h1>
           </div>
 

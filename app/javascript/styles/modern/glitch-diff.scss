@@ -58,6 +58,25 @@
     }
   }
 
+  // Add some spacing around the role on the other side too
+  .account-timeline__header .account-role {
+    margin-left: 0.4em;
+  }
+
+  // Make the @ address have a minimum width (so it wraps better)
+  // And flex: 1 to push the role tag to the right
+  .account__header__tabs__name h1 small {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  // Fix profile notes' textarea not usable at all
+  .account__header__fields textarea,
+  .account__header__account-note textarea {
+    width: -webkit-fill-available !important;
+    width: 100% !important;
+  }
+
   // The -10px here breaks a lot in Glitch, like collapsed statuses don't show
   // the basic info, or it's just too close to the user name. It's fine at 0.
   // Also fix alignement with a smaller padding-top.

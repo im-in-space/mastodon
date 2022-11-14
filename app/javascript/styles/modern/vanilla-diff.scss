@@ -1,4 +1,20 @@
 /* Fixes */
+#mastodon,
+.public-layout,
+.modal-layout {
+  // Add some spacing around the role on the other side too
+  .account-timeline__header .account-role {
+    margin-left: 0.4em;
+  }
+
+  // Make the @ address have a minimum width (so it wraps better)
+  // And flex: 1 to push the role tag to the right
+  .account__header__tabs__name h1 small {
+    flex: 1;
+    min-width: 150px;
+  }
+}
+
 // This was used in mastodon.coffee, I like it
 .layout-multiple-columns .column {
   flex-grow: 1;
