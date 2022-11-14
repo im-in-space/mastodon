@@ -84,6 +84,9 @@ Rails.application.configure do
     Bullet.add_safelist type: :n_plus_one_query, class_name: 'User', association: :account
   end
 
+  # Allow usage in GitHub Codespaces
+  config.hosts << /[a-z0-9\-.]+\.preview\.app\.github\.dev/
+
   config.x.otp_secret = ENV.fetch('OTP_SECRET', '1fc2b87989afa6351912abeebe31ffc5c476ead9bf8b3d74cbc4a302c7b69a45b40b1bbef3506ddad73e942e15ed5ca4b402bf9a66423626051104f4b5f05109')
 end
 
