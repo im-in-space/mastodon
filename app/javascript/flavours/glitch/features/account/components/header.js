@@ -319,8 +319,6 @@ class Header extends ImmutablePureComponent {
               <Avatar account={suspended || hidden ? undefined : account} size={90} />
             </a>
 
-            <div className='spacer' />
-
             {!suspended && (
               <div className='account__header__tabs__buttons'>
                 {!hidden && (
