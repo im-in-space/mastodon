@@ -283,7 +283,7 @@ export default class StatusContent extends React.PureComponent {
           to={`/@${item.get('acct')}`}
           href={item.get('url')}
           key={item.get('id')}
-          className='mention'
+          className='status-link mention'
         >
           @<span>{item.get('username')}</span>
         </Permalink>
