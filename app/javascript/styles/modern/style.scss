@@ -809,29 +809,82 @@
 #mastodon .account__header__account-note.account__header__account-note.account__header__account-note,
 .public-layout .account__header__account-note.account__header__account-note.account__header__account-note,
 .modal-layout .account__header__account-note.account__header__account-note.account__header__account-note {
-  padding: 0 !important;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   gap: 0;
-  background: none !important;
-  border: 1px solid var(--border-color) !important;
+  border: 0;
+  padding: 0 !important;
+  margin-inline: 0 !important;
+  border-radius: 8px;
+  font-size: 12px;
 }
-#mastodon .account__header__fields textarea,
-.public-layout .account__header__fields textarea,
-.modal-layout .account__header__fields textarea,
-#mastodon .account__header__account-note textarea,
-.public-layout .account__header__account-note textarea,
-.modal-layout .account__header__account-note textarea {
+#mastodon .account__header__fields.account__header__account-note.account__header__account-note label,
+.public-layout .account__header__fields.account__header__account-note.account__header__account-note label,
+.modal-layout .account__header__fields.account__header__account-note.account__header__account-note label,
+#mastodon .account__header__account-note.account__header__account-note.account__header__account-note label,
+.public-layout .account__header__account-note.account__header__account-note.account__header__account-note label,
+.modal-layout .account__header__account-note.account__header__account-note.account__header__account-note label {
+  z-index: 2;
+  padding: 0 !important;
+  padding-right: 0.7em !important;
+  pointer-events: none;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  vertical-align: unset;
+}
+#mastodon .account__header__fields.account__header__account-note.account__header__account-note:focus-within,
+.public-layout .account__header__fields.account__header__account-note.account__header__account-note:focus-within,
+.modal-layout .account__header__fields.account__header__account-note.account__header__account-note:focus-within,
+#mastodon .account__header__account-note.account__header__account-note.account__header__account-note:focus-within,
+.public-layout .account__header__account-note.account__header__account-note.account__header__account-note:focus-within,
+.modal-layout .account__header__account-note.account__header__account-note.account__header__account-note:focus-within {
+  padding: 0.5em 0.7em !important;
+  margin-inline: -5px !important;
+  border: 1px solid;
+}
+#mastodon .account__header__fields.account__header__account-note.account__header__account-note:not(:focus-within),
+.public-layout .account__header__fields.account__header__account-note.account__header__account-note:not(:focus-within),
+.modal-layout .account__header__fields.account__header__account-note.account__header__account-note:not(:focus-within),
+#mastodon .account__header__account-note.account__header__account-note.account__header__account-note:not(:focus-within),
+.public-layout .account__header__account-note.account__header__account-note.account__header__account-note:not(:focus-within),
+.modal-layout .account__header__account-note.account__header__account-note.account__header__account-note:not(:focus-within) {
+  border-radius: 0;
+  border-bottom: 1px solid;
+  padding-bottom: 0.4em !important;
+}
+#mastodon .account__header__fields.account__header__account-note.account__header__account-note textarea,
+.public-layout .account__header__fields.account__header__account-note.account__header__account-note textarea,
+.modal-layout .account__header__fields.account__header__account-note.account__header__account-note textarea,
+#mastodon .account__header__account-note.account__header__account-note.account__header__account-note textarea,
+.public-layout .account__header__account-note.account__header__account-note.account__header__account-note textarea,
+.modal-layout .account__header__account-note.account__header__account-note.account__header__account-note textarea {
   width: 0;
   flex-grow: 1;
   margin: 0 !important;
   border-radius: 0;
+  padding: 0;
+  margin: -100px !important;
+  padding: 100px !important;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  vertical-align: unset;
+  background: none;
 }
-#mastodon .account__header__fields label,
-.public-layout .account__header__fields label,
-.modal-layout .account__header__fields label,
-#mastodon .account__header__account-note label,
-.public-layout .account__header__account-note label,
-.modal-layout .account__header__account-note label {
+#mastodon .account__header__fields.account__header__account-note.account__header__account-note textarea::placeholder,
+.public-layout .account__header__fields.account__header__account-note.account__header__account-note textarea::placeholder,
+.modal-layout .account__header__fields.account__header__account-note.account__header__account-note textarea::placeholder,
+#mastodon .account__header__account-note.account__header__account-note.account__header__account-note textarea::placeholder,
+.public-layout .account__header__account-note.account__header__account-note.account__header__account-note textarea::placeholder,
+.modal-layout .account__header__account-note.account__header__account-note.account__header__account-note textarea::placeholder {
+  font-weight: 600;
+}
+#mastodon .account__header__fields.account__header__account-note.account__header__account-note label,
+.public-layout .account__header__fields.account__header__account-note.account__header__account-note label,
+.modal-layout .account__header__fields.account__header__account-note.account__header__account-note label,
+#mastodon .account__header__account-note.account__header__account-note.account__header__account-note label,
+.public-layout .account__header__account-note.account__header__account-note.account__header__account-note label,
+.modal-layout .account__header__account-note.account__header__account-note.account__header__account-note label {
   margin: 0;
   font-weight: 600;
   padding-inline: 14px;
@@ -2777,6 +2830,15 @@
 .modal-layout .picture-in-picture__footer .icon-button .icon-button__counter {
   width: auto !important;
 }
+#mastodon .status__action-bar .status__action-bar__dropdown,
+.public-layout .status__action-bar .status__action-bar__dropdown,
+.modal-layout .status__action-bar .status__action-bar__dropdown,
+#mastodon .detailed-status__action-bar .status__action-bar__dropdown,
+.public-layout .detailed-status__action-bar .status__action-bar__dropdown,
+.modal-layout .detailed-status__action-bar .status__action-bar__dropdown,
+#mastodon .picture-in-picture__footer .status__action-bar__dropdown,
+.public-layout .picture-in-picture__footer .status__action-bar__dropdown,
+.modal-layout .picture-in-picture__footer .status__action-bar__dropdown,
 #mastodon .status__action-bar .status__action-bar-dropdown,
 .public-layout .status__action-bar .status__action-bar-dropdown,
 .modal-layout .status__action-bar .status__action-bar-dropdown,
@@ -2949,7 +3011,6 @@
   #mastodon .column-back-button--slim .column-back-button .announcements__mastodon,
   .public-layout .column-back-button--slim .column-back-button .announcements__mastodon,
   .modal-layout .column-back-button--slim .column-back-button .announcements__mastodon {
-    margin-inline-start: 10px;
     z-index: -1;
     position: relative;
   }
@@ -3049,7 +3110,6 @@
 #mastodon .column-header__collapsible-inner,
 .public-layout .column-header__collapsible-inner,
 .modal-layout .column-header__collapsible-inner {
-  padding-bottom: 0 !important;
   overflow: hidden;
 }
 #mastodon .setting-toggle,
@@ -3713,8 +3773,90 @@
   background: inherit;
 }
 @media (max-width: 895px) {
-  :root {
-    --status-left-padding: 15px;
+  #mastodon .scrollable:not(.scrollable--flex),
+  .public-layout .scrollable:not(.scrollable--flex),
+  .modal-layout .scrollable:not(.scrollable--flex) {
+    padding: 0px !important;
+    padding-bottom: 40vh !important;
+  }
+  #mastodon .scrollable:not(.scrollable--flex)::before,
+  .public-layout .scrollable:not(.scrollable--flex)::before,
+  .modal-layout .scrollable:not(.scrollable--flex)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: inherit;
+    z-index: -1;
+  }
+  #mastodon .scrollable:not(.scrollable--flex) .account-timeline__header,
+  .public-layout .scrollable:not(.scrollable--flex) .account-timeline__header,
+  .modal-layout .scrollable:not(.scrollable--flex) .account-timeline__header {
+    margin: 0px !important;
+    margin-top: -15px !important;
+  }
+  #mastodon .focusable,
+  .public-layout .focusable,
+  .modal-layout .focusable,
+  #mastodon .entry,
+  .public-layout .entry,
+  .modal-layout .entry,
+  #mastodon .statuses-grid__item .detailed-status,
+  .public-layout .statuses-grid__item .detailed-status,
+  .modal-layout .statuses-grid__item .detailed-status,
+  #mastodon .trends__item,
+  .public-layout .trends__item,
+  .modal-layout .trends__item,
+  #mastodon .story,
+  .public-layout .story,
+  .modal-layout .story,
+  #mastodon .account-card,
+  .public-layout .account-card,
+  .modal-layout .account-card,
+  #mastodon :not(.focusable) > .account,
+  .public-layout :not(.focusable) > .account,
+  .modal-layout :not(.focusable) > .account,
+  #mastodon .timeline-hint,
+  .public-layout .timeline-hint,
+  .modal-layout .timeline-hint {
+    border-radius: 0 !important;
+  }
+  #mastodon .focusable::after,
+  .public-layout .focusable::after,
+  .modal-layout .focusable::after,
+  #mastodon .entry::after,
+  .public-layout .entry::after,
+  .modal-layout .entry::after,
+  #mastodon .statuses-grid__item .detailed-status::after,
+  .public-layout .statuses-grid__item .detailed-status::after,
+  .modal-layout .statuses-grid__item .detailed-status::after,
+  #mastodon .trends__item::after,
+  .public-layout .trends__item::after,
+  .modal-layout .trends__item::after,
+  #mastodon .story::after,
+  .public-layout .story::after,
+  .modal-layout .story::after,
+  #mastodon .account-card::after,
+  .public-layout .account-card::after,
+  .modal-layout .account-card::after,
+  #mastodon :not(.focusable) > .account::after,
+  .public-layout :not(.focusable) > .account::after,
+  .modal-layout :not(.focusable) > .account::after,
+  #mastodon .timeline-hint::after,
+  .public-layout .timeline-hint::after,
+  .modal-layout .timeline-hint::after {
+    inset-inline: 0 !important;
+  }
+  #mastodon .detailed-status__wrapper,
+  .public-layout .detailed-status__wrapper,
+  .modal-layout .detailed-status__wrapper {
+    margin: 10px !important;
+    border-radius: var(--radius) !important;
+  }
+  #mastodon .icon-button,
+  .public-layout .icon-button,
+  .modal-layout .icon-button {
+    flex-grow: 1 !important;
+    justify-content: center;
   }
   #mastodon .columns-area--mobile > .column > div > div,
   .public-layout .columns-area--mobile > .column > div > div,
@@ -3729,7 +3871,7 @@
   #mastodon .ui__header,
   .public-layout .ui__header,
   .modal-layout .ui__header {
-    z-index: 5;
+    z-index: 101;
   }
   #mastodon .columns-area__panels,
   .public-layout .columns-area__panels,
@@ -3749,28 +3891,6 @@
   .public-layout .columns-area__panels__main > .columns-area--mobile,
   .modal-layout .columns-area__panels__main > .columns-area--mobile {
     overflow: visible !important;
-  }
-  #mastodon .columns-area__panels__main .scrollable:not(.scrollable--flex),
-  .public-layout .columns-area__panels__main .scrollable:not(.scrollable--flex),
-  .modal-layout .columns-area__panels__main .scrollable:not(.scrollable--flex) {
-    padding: 0px !important;
-    padding-top: 15px !important;
-    padding-bottom: 40vh !important;
-  }
-  #mastodon .columns-area__panels__main .scrollable:not(.scrollable--flex)::before,
-  .public-layout .columns-area__panels__main .scrollable:not(.scrollable--flex)::before,
-  .modal-layout .columns-area__panels__main .scrollable:not(.scrollable--flex)::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: inherit;
-    z-index: -1;
-  }
-  #mastodon .columns-area__panels__main .scrollable:not(.scrollable--flex) .account-timeline__header,
-  .public-layout .columns-area__panels__main .scrollable:not(.scrollable--flex) .account-timeline__header,
-  .modal-layout .columns-area__panels__main .scrollable:not(.scrollable--flex) .account-timeline__header {
-    margin: 0px !important;
-    margin-top: -15px !important;
   }
   #mastodon .is-composing .columns-area__panels__main,
   .public-layout .is-composing .columns-area__panels__main,
@@ -3792,22 +3912,6 @@
   .public-layout .explore__links,
   .modal-layout .explore__links {
     padding: 0 !important;
-  }
-  #mastodon .status__wrapper,
-  .public-layout .status__wrapper,
-  .modal-layout .status__wrapper,
-  #mastodon .story,
-  .public-layout .story,
-  .modal-layout .story {
-    border-radius: 0 !important;
-  }
-  #mastodon .status__wrapper::after,
-  .public-layout .status__wrapper::after,
-  .modal-layout .status__wrapper::after,
-  #mastodon .story::after,
-  .public-layout .story::after,
-  .modal-layout .story::after {
-    inset-inline: 0 !important;
   }
   #mastodon .status,
   .public-layout .status,
@@ -3848,12 +3952,6 @@
   .public-layout .status .picture-in-picture-placeholder,
   .modal-layout .status .picture-in-picture-placeholder {
     margin-bottom: 0 !important;
-  }
-  #mastodon .detailed-status__wrapper,
-  .public-layout .detailed-status__wrapper,
-  .modal-layout .detailed-status__wrapper {
-    margin: 10px;
-    border-radius: var(--radius) !important;
   }
   #mastodon .status__action-bar,
   .public-layout .status__action-bar,
@@ -4160,6 +4258,49 @@
   overflow: auto hidden !important;
   padding: 0;
 }
+.layout-multiple-columns #mastodon .columns-area .scrollable:not(.scrollable--flex) {
+  padding: 0px !important;
+  padding-bottom: 40vh !important;
+}
+.layout-multiple-columns #mastodon .columns-area .scrollable:not(.scrollable--flex)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: inherit;
+  z-index: -1;
+}
+.layout-multiple-columns #mastodon .columns-area .scrollable:not(.scrollable--flex) .account-timeline__header {
+  margin: 0px !important;
+  margin-top: -15px !important;
+}
+.layout-multiple-columns #mastodon .columns-area .focusable,
+.layout-multiple-columns #mastodon .columns-area .entry,
+.layout-multiple-columns #mastodon .columns-area .statuses-grid__item .detailed-status,
+.layout-multiple-columns #mastodon .columns-area .trends__item,
+.layout-multiple-columns #mastodon .columns-area .story,
+.layout-multiple-columns #mastodon .columns-area .account-card,
+.layout-multiple-columns #mastodon .columns-area :not(.focusable) > .account,
+.layout-multiple-columns #mastodon .columns-area .timeline-hint {
+  border-radius: 0 !important;
+}
+.layout-multiple-columns #mastodon .columns-area .focusable::after,
+.layout-multiple-columns #mastodon .columns-area .entry::after,
+.layout-multiple-columns #mastodon .columns-area .statuses-grid__item .detailed-status::after,
+.layout-multiple-columns #mastodon .columns-area .trends__item::after,
+.layout-multiple-columns #mastodon .columns-area .story::after,
+.layout-multiple-columns #mastodon .columns-area .account-card::after,
+.layout-multiple-columns #mastodon .columns-area :not(.focusable) > .account::after,
+.layout-multiple-columns #mastodon .columns-area .timeline-hint::after {
+  inset-inline: 0 !important;
+}
+.layout-multiple-columns #mastodon .columns-area .detailed-status__wrapper {
+  margin: 10px !important;
+  border-radius: var(--radius) !important;
+}
+.layout-multiple-columns #mastodon .columns-area .icon-button {
+  flex-grow: 1 !important;
+  justify-content: center;
+}
 .layout-multiple-columns #mastodon .columns-area .column-header,
 .layout-multiple-columns #mastodon .columns-area .scrollable,
 .layout-multiple-columns #mastodon .columns-area .column-back-button,
@@ -4174,7 +4315,7 @@
   padding: 0 !important;
 }
 .layout-multiple-columns #mastodon .columns-area > div:not(.drawer):not(:last-child) {
-  padding-inline-end: 2px !important;
+  margin-inline-end: 2px !important;
 }
 .layout-multiple-columns #mastodon .columns-area > div.column {
   flex-grow: 1;
@@ -4187,12 +4328,12 @@
   margin-inline-end: auto !important;
 }
 .layout-multiple-columns #mastodon .columns-area .drawer {
-  padding-inline: 10px !important;
+  padding-inline: 6px !important;
   padding-top: 20px !important;
 }
 .layout-multiple-columns #mastodon .columns-area .drawer .drawer__header {
   border-radius: var(--radius-round);
-  margin-inline: 5px;
+  margin-inline: 10px;
   overflow: hidden;
   border: 0 !important;
 }
@@ -4205,18 +4346,25 @@
 .layout-multiple-columns #mastodon .columns-area .drawer .drawer__header a:last-child {
   padding-inline-end: 15px !important;
 }
+.layout-multiple-columns #mastodon .columns-area .search {
+  margin-inline: 10px;
+}
 .layout-multiple-columns #mastodon .columns-area .drawer__inner:not(.darker),
 .layout-multiple-columns #mastodon .columns-area .drawer__inner__mastodon {
   background-color: transparent;
   border: 0 !important;
 }
 .layout-multiple-columns #mastodon .columns-area .drawer__inner.darker {
-  border-radius: var(--radius) var(--radius) 0 0;
-  margin-inline: 5px;
-  width: calc(100% - 10px);
+  border-radius: var(--radius-round) var(--radius-round) 0 0;
 }
 .layout-multiple-columns #mastodon .columns-area .getting-started__trends {
   padding: 0px 20px;
+}
+.layout-multiple-columns #mastodon .columns-area .status {
+  padding-bottom: 10px !important;
+}
+.layout-multiple-columns #mastodon .columns-area .detailed-status .status__content {
+  font-size: 1.3em;
 }
 .modal-root__container {
   animation: bounceIn 0.7s !important;
