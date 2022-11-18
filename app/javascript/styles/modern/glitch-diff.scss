@@ -160,10 +160,12 @@
   }
 }
 
-// Some elements went above the emoji picker or privacy settings
+// Some elements went above floating menus or PiP
 // (like the spoiler media button or profile pictures)
 .privacy-dropdown__dropdown,
-.emoji-picker-dropdown__menu {
+.language-dropdown__dropdown,
+.emoji-picker-dropdown__menu,
+.picture-in-picture {
   z-index: 500;
 }
 
