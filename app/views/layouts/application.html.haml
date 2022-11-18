@@ -11,6 +11,9 @@
     - if storage_host?
       %link{ rel: 'dns-prefetch', href: storage_host }/
 
+    - if admin_self_url?
+      %link{ rel: 'me', href: admin_self_url }/
+
     %link{ rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' }/
 
     - %w(16 32 48).each do |size|

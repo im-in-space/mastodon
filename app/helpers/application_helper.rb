@@ -188,6 +188,15 @@ module ApplicationHelper
     ENV['S3_ALIAS_HOST'].present? || ENV['S3_CLOUDFRONT_HOST'].present?
   end
 
+  def admin_self_url
+    url = "https://#{ENV['LOCAL_DOMAIN']}/@"
+    url << Setting.site_contact_username.strip.gsub(/\A@/, '')
+  end
+
+  def admin_self_url?
+    admin_self_url.present?
+  end
+
   def quote_wrap(text, line_width: 80, break_sequence: "\n")
     text = word_wrap(text, line_width: line_width - 2, break_sequence: break_sequence)
     text.split("\n").map { |line| "> #{line}" }.join("\n")
