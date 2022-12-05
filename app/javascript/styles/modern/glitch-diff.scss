@@ -12,6 +12,8 @@
 .about__section__body,
 .account__header__bio {
   .account__header__fields {
+    max-width: calc(100% - 30px) !important;
+
     dl {
       display: block;
     }
@@ -21,6 +23,11 @@
       line-height: 18px;
       padding: 0;
       text-align: initial;
+    }
+    dt,
+    dd.verified {
+      background: transparent !important;
+      border: none !important;
     }
   }
 }
@@ -97,6 +104,7 @@
   .detailed-status__action-bar .icon-button,
   .status__action-bar .icon-button {
     padding: .2em !important;
+    min-width: 0 !important;
   }
   .status__action-bar-button {
     margin-right: 8px

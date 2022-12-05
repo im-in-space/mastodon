@@ -41,7 +41,7 @@ const messages = defineMessages({
   copy: { id: 'status.copy', defaultMessage: 'Copy link to status' },
   hide: { id: 'status.hide', defaultMessage: 'Hide toot' },
   edited: { id: 'status.edited', defaultMessage: 'Edited {date}' },
-  translate: { id: 'status.translate', defaultMessage: 'Translate with Google' },
+  translate: { id: 'status.translate', defaultMessage: 'Translate' },
   filter: { id: 'status.filter', defaultMessage: 'Filter this post' },
   openOriginalPage: { id: 'account.open_original_page', defaultMessage: 'Open original page' },
 });
@@ -232,7 +232,7 @@ class StatusActionBar extends ImmutablePureComponent {
     let replyTitle;
 
     menu.push({ text: intl.formatMessage(messages.open), action: this.handleOpen });
-    menu.push({ text: intl.formatMessage(messages.translate), action: this.handleTranslateClick });
+    menu.push({ text: `Google ${intl.formatMessage(messages.translate)}`, action: this.handleTranslateClick });
 
     if (publicStatus) {
       if (isRemote) {
