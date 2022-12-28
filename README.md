@@ -11,4 +11,4 @@ im-in.space is running on the [glitch social's fork of Mastodon](https://github.
 _Note: Screenshots slightly outdated. "[Modern](https://codeberg.org/Freeplay/UserStyles/src/branch/main/mastodon)" is the default theme for logged-out or new accounts._  
 _This is the "im-in.space" theme:_
 ![Timeline](https://s.kdy.ch/iminspace-simple.png)
-![Advanced web interface](https://s.kdy.ch/iminspace-deck.png)  
+![Advanced web interface](https://s.kdy.ch/iminspace-deck.png)
