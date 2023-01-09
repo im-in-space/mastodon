@@ -98,16 +98,17 @@
   }
 
   // Fix icons being misaligned
-  .notification .notification__message,
+  .notification .notification__message, // This rule only affect pure notifications (like "followed you/sign up")
+                                        // and not the ones who have a post attached to them
   .status__prepend {
     margin-left: 30px !important;
   }
-  .notification__message,
+  .notification__message, // Here we need to get for _all_ notifications, or the bottom half of the notification message is cut in half
   .status__prepend {
     margin-bottom: 0 !important;
   }
   .status__prepend {
-    margin-bottom: 8px !important;
+    // Reduce padding
     padding-top: 8px !important;
   }
 
@@ -200,10 +201,4 @@
 // Fix alignement in the sharing/following popups
 .modal-layout.modal-layout .container-alt {
   height: auto !important;
-}
-
-// This was used in mastodon.coffee, I like it
-.layout-multiple-columns .column {
-  flex-grow: 1;
-  max-width: 500px;
 }
