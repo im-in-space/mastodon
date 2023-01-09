@@ -84,19 +84,21 @@
     width: 100% !important;
   }
 
-  // The -10px here breaks a lot in Glitch, like collapsed statuses don't show
-  // the basic info, or it's just too close to the user name. It's fine at 0.
-  // Also fix alignement with a smaller padding-top.
-  .notification__message,
+  // Fix icons being misaligned
+  .notification .notification__message,
   .status__prepend {
-    margin-bottom: 0px !important;
+    margin-left: 30px !important;
+  }
+  .status__prepend {
     padding-top: 8px !important;
   }
 
-  // For the calc(), it's because it slightly cuts off the icons on the left due
-  // to removing the big left padding.
-  .status__prepend {
-    margin-inline-start: calc(var(--status-left-padding) + 15px);
+  // Remove useless background color change on focus/active behind the spoiler button
+  .status__content__spoiler-link {
+    &:after,
+    &:before {
+      background: transparent !important;
+    }
   }
 
   // Since we have more elements on the action bar (including the date/time)
