@@ -32,15 +32,22 @@
   }
 }
 
-// This fixes collapsed toots (we still override some parts bellow) but also
-// clicking on username when you open their profile because ".detailled-satatus__wrapper"
-// is at an another place and not with .focusable as expected upstream
-#mastodon .detailed-status__wrapper .status__content::before,
-#mastodon .detailed-status__wrapper .status__content::after {
-  height: auto !important;
-}
-
 #mastodon {
+  // This fixes collapsed toots (we still override some parts bellow) but also
+  // clicking on username when you open their profile because ".detailled-satatus__wrapper"
+  // is at an another place and not with .focusable as expected upstream
+  .detailed-status__wrapper .status__content {
+    &:before,
+    &:after {
+      height: auto !important;
+    }
+  }
+  .detailed-status__wrapper .status__content__text,
+  .status:not(.collapsed) .status__content__text {
+    -webkit-mask: none !important;
+    mask: none !important;
+  }
+
   .status {
     // Modern sets the background to none,
     // so put one back for direct statuses
@@ -78,7 +85,8 @@
   }
 
   // Don't make the profile header sticky, content goes thru it
-  .account-timeline__header .account__header__image {
+  .account-timeline__header .account__header__image, 
+  .account-timeline__header .account__header__image .account__header__info > span {
     position: relative !important;
   }
 
