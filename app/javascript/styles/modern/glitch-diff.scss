@@ -97,15 +97,19 @@
     width: 100% !important;
   }
 
-  // Fix icons being misaligned
-  .notification .notification__message, // This rule only affect pure notifications (like "followed you/sign up")
-                                        // and not the ones who have a post attached to them
-  .status__prepend {
-    margin-left: 30px !important;
-  }
+  // Fix icons/notifications being misaligned
   .notification__message, // Here we need to get for _all_ notifications, or the bottom half of the notification message is cut in half
   .status__prepend {
     margin-bottom: 0 !important;
+  }
+  .notification .notification__message, // This rule only affect pure notifications (like "followed you/sign up")
+  .status__prepend {
+    // Move to the right
+    margin-left: 30px !important;
+  }
+  .status__info .notification__message { // Here it's only the notifications with a post attached to them
+    // Reduce padding
+    padding-top: 0px !important;
   }
   .status__prepend {
     // Reduce padding
