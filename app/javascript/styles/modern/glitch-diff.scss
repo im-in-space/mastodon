@@ -77,6 +77,11 @@
     min-width: 150px;
   }
 
+  // Don't make the profile header sticky, content goes thru it
+  .account-timeline__header .account__header__image {
+    position: relative !important;
+  }
+
   // Fix profile notes' textarea not usable at all
   .account__header__fields textarea,
   .account__header__account-note textarea {
