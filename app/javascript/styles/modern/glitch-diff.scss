@@ -94,6 +94,10 @@
   .status__prepend {
     margin-left: 30px !important;
   }
+  .notification__message,
+  .status__prepend {
+    margin-bottom: 0 !important;
+  }
   .status__prepend {
     margin-bottom: 8px !important;
     padding-top: 8px !important;
