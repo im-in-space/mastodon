@@ -657,7 +657,11 @@ Rails.application.routes.draw do
         namespace :trends do
           resources :tags, only: [:index]
           resources :links, only: [:index]
-          resources :statuses, only: [:index]
+          resources :statuses, only: [:index] do
+            collection do
+              post :batch
+            end
+          end
         end
 
         post :measures, to: 'measures#create'
