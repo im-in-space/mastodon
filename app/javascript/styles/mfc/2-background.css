@@ -1,0 +1,218 @@
+/*------------------------------------------------------------------------------
+* BACKGROUND COLOR PALETTE =====================================================
+------------------------------------------------------------------------------*/
+
+/*----------------------
+base background and text
+----------------------*/
+
+/* background and drawer */
+body.app-body,
+.ui,
+.drawer__tab,
+.drawer__inner,
+.drawer__inner.darker,
+.drawer__inner__mastodon,
+.tabs-bar,
+.tabs-bar__wrapper,
+.getting-started,
+.search-results__section h5,
+.account__section-headline,
+    .account__section-headline button,
+.notification__filter-bar,
+    .notification__filter-bar button,
+.timeline-hint,
+.introduction,
+.account__header__image,
+.account__header__account-note textarea:focus,
+.flex-spacer, .getting-started, .getting-started__wrapper,
+/* DMs */
+.status.status-direct,
+    .status.status-direct:not(.read),
+    .focusable:focus .status.status-direct,
+    .status-direct .status__content,
+    .notification-favourite .status.status-direct,
+/* column preferences */
+.column-settings__section,
+    .column-header__collapsible,
+    .column-header__collapsible-inner,
+    .column-header__button.active,
+    .setting-meta__label,
+    .setting-toggle__label,
+.column-subheading,
+.content-wrapper,
+.media-spoiler,
+    .video-player__spoiler,
+    .video-player__spoiler.active:active,
+    .video-player__spoiler.active:focus,
+.react-toggle-track,
+.filter-form,
+/* in reply to */
+.reply-indicator,
+.reply-indicator__display-name,
+.reply-indicator__content,
+.reply-indicator__cancel .icon-button.inverted,
+.reply-indicator__content .status__content__spoiler-link,
+/* cw show more */
+.status__content .status__content__spoiler-link,
+.compose__action-bar .icon-button,
+/* settings page */
+.admin-wrapper .sidebar-wrapper,
+    .admin-wrapper .sidebar-wrapper__inner,
+    .admin-wrapper .sidebar ul a,
+    .admin-wrapper .sidebar ul a.selected,
+    .admin-wrapper .sidebar ul ul a,
+    .admin-wrapper .content h2,
+    .admin-wrapper .content h6,
+.simple_form input[type="datetime-local"]::placeholder, .simple_form input[type="email"]::placeholder, .simple_form input[type="number"]::placeholder, .simple_form input[type="password"]::placeholder, .simple_form input[type="text"]::placeholder, .simple_form input[type="url"]::placeholder, .simple_form textarea::placeholder,
+tr.nested-fields > td > .custom_filter_keywords_keyword > input,
+/* modals */
+.boost-modal__action-bar,
+    .confirmation-modal__action-bar,
+    .mute-modal__action-bar,
+.confirmation-modal__action-bar .confirmation-modal__cancel-button,
+    .confirmation-modal__action-bar .mute-modal__cancel-button,
+    .mute-modal__action-bar .confirmation-modal__cancel-button,
+    .mute-modal__action-bar .mute-modal__cancel-button,
+.error-column,
+    .regeneration-indicator,
+    .empty-column-indicator,
+.report-modal__comment .setting-text,
+.report-dialog-modal .dialog-option .poll__input,
+.report-dialog-modal__textarea,
+.report-dialog-modal .button.button-secondary,
+.introduction__text p code,
+.list-editor .search__input,
+.announcements__item,
+.dismissable-banner,
+    .dismissable-banner__message,
+.account-card__header img,
+.emoji-mart-search input,
+/* opengraph previews */
+.status-card__image,
+.status-card__content,
+.status-card__description,
+.button:disabled,
+/* public pages */
+body.theme-default,
+.button.button-alternative,
+    .button.button-alternative-2,
+.landing-page__call-to-action,
+.public-layout .header,
+.public-layout .header .nav-link,
+.public-layout .header .nav-button,
+.nothing-here,
+.brand__tagline,
+.table-of-contents,
+/* about page */
+.about__domain-blocks__domain,
+    .about__domain-blocks__domain:nth-child(2n),
+.about__footer,
+/* account fields*/
+.account__header__bio .account__header__fields,
+.account__header__bio .account__header__fields dd
+{
+background: var(--bgPage);
+color: var(--textPage)
+}
+
+/*--------------------
+override for bold text
+--------------------*/
+
+/* strong elements */
+.navigation-bar strong,
+.status-card__title,
+.status-direct .display-name strong,
+.reply-indicator__display-name strong,
+.admin-wrapper .content>p strong,
+.simple_form strong,
+.regeneration-indicator__label strong,
+.account__section-headline a.active,
+    .account__section-headline button.active,
+    .notification__filter-bar a.active,
+    .notification__filter-bar button.active,
+.about__domain-blocks__domain h6,
+/* public pages */
+.information-board__section,
+    .information-board__section span:last-child,
+.endorsements-widget .display-name__html,
+    .endorsements-widget h4,
+.pagination .page,
+    .pagination .gap,
+    .pagination .newer,
+    .pagination .older,
+    .pagination a,
+/*account fields*/
+.account__header__bio .account__header__fields dt
+{
+color: var(--textPageBold)
+}
+
+/*---------------------
+override for muted text
+---------------------*/
+
+/* de-emphasized elements */
+.navigation-bar,
+.navigation-panel hr,
+.getting-started,
+    .getting-started p,
+    .getting-started__footer p,
+.column-subheading,
+.account__section-headline a,
+.status-direct .icon-button,
+    .status-direct .display-name,
+    .status-direct .status__relative-time,
+    .status-direct .status__action-bar__counter__label,
+.status-direct.muted .status__content p,
+    .status-direct.muted .status__content a,
+    .status-direct.muted .display-name strong,
+.notification-favourite .status.status-direct .icon-button.disabled,
+.simple_form p.hint,
+    .simple_form span.hint,
+    .admin-wrapper .content .muted-hint,
+    .admin-wrapper .content>p,
+.status-card__host,
+.button:disabled,
+.loading-indicator,
+.list-editor .search__input::placeholder,
+    .list-editor .search__icon .fa,
+    .list-editor .search__icon .fa-times-circle,
+.report-dialog-modal__textarea::placeholder,
+.link-footer p,
+/* settings page */
+body .neutral-hint, .admin-wrapper .content .neutral-hint,
+/* public pages */
+.endorsements-widget .display-name__account,
+.public-layout .footer h4,
+    .public-layout .footer ul a,
+    .public-layout .footer ul li,
+    .public-layout .footer .grid .column-2 h4 a,
+    .public-layout .header .nav-button,
+/* log in, sign up, forgot passwd */
+.form-footer a,
+.lighter .simple_form p.hint.subtle-hint
+{
+color: var(--textPageMuted)
+}
+
+/* border color fix */
+.status.status-direct:not(.read),
+.table-of-contents li a,
+.report-dialog-modal .button.button-secondary
+{border-color: var(--textPageMuted)}
+
+.dismissable-banner,
+.about__domain-blocks,
+.emoji-mart-search input,
+.compose-panel hr, .navigation-panel hr
+{border-color: transparent}
+
+.about__domain-blocks__domain,
+.account__header__bio .account__header__fields dl
+{border-color: var(--bg)}
+
+/* account fields */
+.account__header__bio .account__header__fields .verified a, .account__header__bio .account__header__fields .verified dd, .account__header__bio .account__header__fields .verified dt
+{background: transparent}
