@@ -24,7 +24,7 @@ class REST::AccountSerializer < ActiveModel::Serializer
     end
   end
 
-  has_one :role, serializer: RoleSerializer, if: :local?
+  has_many :roles, serializer: RoleSerializer, if: :local?
 
   class AccountDecorator < SimpleDelegator
     def self.model_name
@@ -128,8 +128,12 @@ class REST::AccountSerializer < ActiveModel::Serializer
     object.silenced?
   end
 
-  def role
-    object.user.role unless object.suspended? || !object.user&.role&.highlighted?
+  def roles
+    if object.suspended?
+      []
+    else
+      [object.user.role].compact.filter { |role| role.highlighted? }
+    end
   end
 
   def noindex
