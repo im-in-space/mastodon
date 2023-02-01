@@ -33,6 +33,12 @@
 }
 
 #mastodon {
+  // Leave the roles under the profile picture
+  .account-timeline__header .account__header__bar .avatar .account-role {
+    margin-left: 0px;
+    position: static;
+  }
+
   // This fixes collapsed toots (we still override some parts bellow) but also
   // clicking on username when you open their profile because ".detailled-satatus__wrapper"
   // is at an another place and not with .focusable as expected upstream
