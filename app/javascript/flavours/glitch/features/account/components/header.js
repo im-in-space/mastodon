@@ -322,8 +322,8 @@ class Header extends ImmutablePureComponent {
     }
 
     let role = null;
-    if (account.get('role')) {
-      role = (<div key='role' className={`account-role user-role-${account.getIn(['role', 'id'])}`}>{account.getIn(['role', 'name'])}</div>);
+    if (account.getIn(['roles', 0])) {
+      role = (<div key='role' className={`account-role user-role-${account.getIn(['roles', 0, 'id'])}`}>{account.getIn(['roles', 0, 'name'])}</div>);
     }
 
     return (
@@ -342,6 +342,7 @@ class Header extends ImmutablePureComponent {
           <div className='account__header__tabs'>
             <a className='avatar' href={account.get('avatar')} rel='noopener noreferrer' target='_blank' onClick={this.handleAvatarClick}>
               <Avatar account={suspended || hidden ? undefined : account} size={90} />
+              {role}
             </a>
 
             {!suspended && (
@@ -364,7 +365,7 @@ class Header extends ImmutablePureComponent {
               <small>
                 <span>@{acct}</span> {lockedIcon}
               </small>
-              {role}{badge}
+              {badge}
             </h1>
           </div>
 
@@ -378,7 +379,7 @@ class Header extends ImmutablePureComponent {
                     {fields.map((pair, i) => (
                       <dl key={i}>
                         <dt dangerouslySetInnerHTML={{ __html: pair.get('name_emojified') }} title={pair.get('name')} />
-   
+
                         <dd className={pair.get('verified_at') && 'verified'} title={pair.get('value_plain')}>
                           {pair.get('verified_at') && <span title={intl.formatMessage(messages.linkVerifiedOn, { date: intl.formatDate(pair.get('verified_at'), dateFormatOptions) })}><Icon id='check' className='verified__mark' /></span>} <span dangerouslySetInnerHTML={{ __html: pair.get('value_emojified') }} className='translate' />
                         </dd>
