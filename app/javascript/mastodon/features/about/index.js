@@ -73,7 +73,7 @@ class Section extends React.PureComponent {
     const { collapsed } = this.state;
 
     this.setState({ collapsed: !collapsed }, () => onOpen && onOpen());
-  }
+  };
 
   render () {
     const { title, children } = this.props;
@@ -120,7 +120,7 @@ class About extends React.PureComponent {
   handleDomainBlocksOpen = () => {
     const { dispatch } = this.props;
     dispatch(fetchDomainBlocks());
-  }
+  };
 
   render () {
     const { multiColumn, intl, server, extendedDescription, domainBlocks } = this.props;
