@@ -1,9 +1,17 @@
+@import "https://lucy.im-in.space/LargePreviews.css";
+
 /* Temp fix? */
 @media screen and (max-width: 1174px) {
   /* Big top shift removed, either style incompatibility or WIP on Glitch */
   .layout-single-column #mastodon .columns-area__panels__pane__inner {
     margin-top: 0 !important;
   }
+}
+/* Borked checkboxes in chosen languages with Modern, esp. on mobile */
+body[class*="skin-modern"].admin .user_chosen_languages input {
+  margin-right: 5px !important;
+  position: static !important;
+  vertical-align: -2px;
 }
 
 /* Global fixes */
@@ -16,6 +24,9 @@
 .privacy-dropdown__dropdown .content strong {
   font-weight: bold;
   display: block;
+}
+.drawer .drawer__inner__mastodon {
+  pointer-events: none;
 }
 
 /* Disable app header on multi-column view */
@@ -53,7 +64,7 @@
 }
 
 /* Unread indicator not visible */
-#mastodon .notification.unread:before, 
+#mastodon .notification.unread:before,
 #mastodon .status.unread:before {
   inset: 0px !important;
 }
@@ -140,4 +151,3 @@ span.reactions-bar__item__emoji > img[alt^=":sticker_"] {
     transform: rotate(360deg);
   }
 }
-
