@@ -26,6 +26,11 @@ executors:
       - image: cimg/redis:7.0
 
 commands:
+  get-themes:
+    steps:
+      - run:
+          name: Download 3rd-party themes
+          command: bash cloneThemes.sh
   install-system-dependencies:
     steps:
       - run:
@@ -61,6 +66,7 @@ jobs:
           RAILS_ENV: test
     steps:
       - checkout
+      - get-themes
       - install-system-dependencies
       - install-ruby-dependencies:
           ruby-version: '3.2'
@@ -93,6 +99,7 @@ jobs:
     parallelism: 4
     steps:
       - checkout
+      - get-themes
       - install-system-dependencies
       - run:
           command: sudo apt-get install -y ffmpeg imagemagick libmagickcore-dev libmagickwand-dev libjpeg-dev libpng-dev libtiff-dev libwebp-dev libpam-dev

@@ -63,3 +63,6 @@ yarn-debug.log
 
 # Ignore Docker option files
 docker-compose.override.yml
+
+# im-in.space - 3rd party themes repos
+.themes
