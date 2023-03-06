@@ -8,7 +8,7 @@ class Api::V1::Admin::Trends::StatusesController < Api::V1::Trends::StatusesCont
   after_action :verify_authorized, only: :batch
 
   def batch
-    authorize [:admin, :status], :review?
+    authorize %i[admin status], :review?
 
     @form = Trends::StatusBatch.new(trends_status_batch_params.merge(current_account: current_account, action: action_from_button))
     @form.save

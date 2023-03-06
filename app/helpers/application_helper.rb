@@ -190,7 +190,7 @@ module ApplicationHelper
   end
 
   def admin_self_url
-    url = "https://#{ENV['LOCAL_DOMAIN']}/@#{Setting.site_contact_username.strip.gsub(/\A@/, '')}"
+    "https://#{ENV['LOCAL_DOMAIN']}/@#{Setting.site_contact_username.strip.gsub(/\A@/, '')}"
   end
 
   def admin_self_url?
