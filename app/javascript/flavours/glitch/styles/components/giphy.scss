@@ -1,5 +1,6 @@
 .giphy-modal {
-  @extend .boost-modal;
+  @extend .boost-modal; /* stylelint-disable-line scss/at-extend-no-missing-placeholder */
+
   width: 500px;
 }
 

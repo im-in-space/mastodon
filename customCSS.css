@@ -7,6 +7,7 @@
     margin-top: 0 !important;
   }
 }
+
 /* Borked checkboxes in chosen languages with Modern, esp. on mobile */
 body[class*="skin-modern"].admin .user_chosen_languages input {
   margin-right: 5px !important;
@@ -18,13 +19,16 @@ body[class*="skin-modern"].admin .user_chosen_languages input {
 .status__prepend {
   background-color: transparent !important;
 }
+
 .privacy-dropdown__dropdown .content {
   margin-left: 1em;
 }
+
 .privacy-dropdown__dropdown .content strong {
   font-weight: bold;
   display: block;
 }
+
 .drawer .drawer__inner__mastodon {
   pointer-events: none;
 }
@@ -40,6 +44,7 @@ body[class*="skin-modern"].admin .user_chosen_languages input {
   padding-left: 5px;
   padding-right: 5px;
 }
+
 .flavour-glitch .compose-form__buttons > hr {
   display: none;
 }
@@ -51,11 +56,13 @@ body[class*="skin-modern"].admin .user_chosen_languages input {
   margin-bottom: 0;
   margin-top: 0.5em;
 }
+
 .about__section__body .prose img {
   margin: 0;
 }
 
 /* Temp, move to modern's glitch-diff */
+
 /* User profiles were not clickable when opening a status */
 #mastodon .detailed-status.detailed-status__wrapper,
 #mastodon .detailed-status__wrapper.detailed-status__wrapper,
@@ -64,9 +71,9 @@ body[class*="skin-modern"].admin .user_chosen_languages input {
 }
 
 /* Unread indicator not visible */
-#mastodon .notification.unread:before,
-#mastodon .status.unread:before {
-  inset: 0px !important;
+#mastodon .notification.unread::before,
+#mastodon .status.unread::before {
+  inset: 0 !important;
 }
 
 /* Some elements gets in front of the PiP */
@@ -75,6 +82,7 @@ body[class*="skin-modern"].admin .user_chosen_languages input {
 }
 
 /* Ported from https://github.com/koyuspace/styles/blob/master/stickers.scss */
+
 /*
 .status__content .emojione:not([alt^=":sticker_"]) {
   width: 32px !important;
@@ -82,6 +90,7 @@ body[class*="skin-modern"].admin .user_chosen_languages input {
   margin-top: 0px;
 }
 */
+
 .account__header__content img[alt^=":sticker_"],
 .status__content img[alt^=":sticker_"] {
   width: 128px !important;
@@ -89,27 +98,31 @@ body[class*="skin-modern"].admin .user_chosen_languages input {
   display: block;
   margin: 0 auto !important;
 }
+
 div.emoji-mart-category > span[title^=":sticker_"] > span {
   width: 120px !important;
   height: 120px !important;
 }
+
 .emoji-mart-emoji[title^=":sticker_"]:hover::before {
   border-radius: 10px !important;
 }
+
 span.reactions-bar__item__emoji > img[alt^=":sticker_"] {
   width: 16px !important;
   height: 16px !important;
 }
+
 .status__content .emojione:not([alt^=":sticker_"]) {
   padding: 3px;
-  margin: -3px -3px -3px -3px;
+  margin: -3px;
 }
-
 
 /* Color some status */
 .status[data-status-by="@kdy"] {
   box-shadow: inset 0 40px 40px 0 rgba(233, 30, 99, 20%);
 }
+
 .status[data-status-by="@status"],
 .status[data-status-by^="@status@"] {
   box-shadow: inset 0 40px 40px 0 rgba(255, 165, 31, 20%);
@@ -118,15 +131,16 @@ span.reactions-bar__item__emoji > img[alt^=":sticker_"] {
 
 /* Rotating space core */
 .spacecore {
-  -webkit-animation: rotateCore 15s linear infinite;
+  -webkit-animation: rotate-core 15s linear infinite;
   animation: rotateCore 15s linear infinite;
-  background: url(https://im-in.space/spacecore.png) no-repeat;
+  background: url("https://im-in.space/spacecore.png") no-repeat;
   background-size: cover;
   height: 150px;
   margin: 15px auto 30px;
   width: 150px;
 }
-@keyframes rotateCore {
+
+@keyframes rotate-core {
   0% {
     transform: rotate(0deg);
   }

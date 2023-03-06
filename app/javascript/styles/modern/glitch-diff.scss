@@ -9,6 +9,7 @@
   margin-left: 15px !important;
   margin-right: 15px !important;
 }
+
 .about__section__body,
 .account__header__bio {
   .account__header__fields {
@@ -17,6 +18,7 @@
     dl {
       display: block;
     }
+
     dd,
     dt {
       font-size: 13px;
@@ -24,6 +26,7 @@
       padding: 0;
       text-align: initial;
     }
+
     dt,
     dd.verified {
       background: transparent !important;
@@ -35,7 +38,7 @@
 #mastodon {
   // Leave the roles under the profile picture
   .account-timeline__header .account__header__bar .avatar .account-role {
-    margin-left: 0px;
+    margin-left: 0;
     position: static;
   }
 
@@ -43,11 +46,12 @@
   // clicking on username when you open their profile because ".detailled-satatus__wrapper"
   // is at an another place and not with .focusable as expected upstream
   .detailed-status__wrapper .status__content {
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       height: auto !important;
     }
   }
+
   .detailed-status__wrapper .status__content__text,
   .status:not(.collapsed) .status__content__text {
     -webkit-mask: none !important;
@@ -67,7 +71,7 @@
       .status__content {
         overflow: hidden !important;
 
-        &:after {
+        &::after {
           bottom: 0 !important;
           height: auto !important;
           left: 85px !important;
@@ -86,7 +90,7 @@
   }
 
   // Don't make the profile header sticky, content goes thru it
-  .account-timeline__header .account__header__image, 
+  .account-timeline__header .account__header__image,
   .account-timeline__header .account__header__image .account__header__info > span {
     position: relative !important;
   }
@@ -103,15 +107,18 @@
   .status__prepend {
     margin-bottom: 0 !important;
   }
+
   .notification .notification__message, // This rule only affect pure notifications (like "followed you/sign up")
   .status__prepend {
     // Move to the right
     margin-left: 30px !important;
   }
+
   .status__info .notification__message { // Here it's only the notifications with a post attached to them
     // Reduce padding
-    padding-top: 0px !important;
+    padding-top: 0 !important;
   }
+
   .status__prepend {
     // Reduce padding
     padding-top: 8px !important;
@@ -119,8 +126,8 @@
 
   // Remove useless background color change on focus/active behind the spoiler button
   .status__content__spoiler-link {
-    &:after,
-    &:before {
+    &::after,
+    &::before {
       background: transparent !important;
     }
   }
@@ -132,12 +139,13 @@
     padding: .2em !important;
     min-width: 0 !important;
   }
+
   .status__action-bar-button {
     margin-right: 8px
   }
 
   // Stop showing the text next to action buttons
-  .icon-button[aria-label]:after {
+  .icon-button[aria-label]::after {
     content: none !important;
   }
 
@@ -149,7 +157,7 @@
     margin-inline: 5px;
     overflow: hidden;
     border: 0!important;
-    
+
     & > * {
       border-bottom: none;
     }

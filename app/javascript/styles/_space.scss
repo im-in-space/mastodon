@@ -8,7 +8,7 @@ $highlight-text-color: $ui-highlight-color;
 
 // Some changes to the about pages
 .about-body .wrapper {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 70%);
     margin: 0 auto;
     max-width: 800px;
     padding: 50px;
@@ -33,8 +33,8 @@ $highlight-text-color: $ui-highlight-color;
 }
 
 // Background for the gradient effect on collapsed toots
-.status.collapsed .status__content:after {
-    background: linear-gradient(rgba(34, 34, 51, 0), #223);
+.status.collapsed .status__content::after {
+    background: linear-gradient(rgba(34, 34, 51, 0%), #223);
 }
 
 // Make spoiler link button readable
@@ -73,6 +73,7 @@ $highlight-text-color: $ui-highlight-color;
 .tabs-bar__wrapper {
     background-color: #223;
 }
+
 .compose-form__buttons {
     button.icon-button.inverted {
         color: #606984;
@@ -112,7 +113,7 @@ $highlight-text-color: $ui-highlight-color;
 .table-of-contents,
 .public-account-bio,
 .public-account-header__bar::before,
-.directory__card__bar, 
+.directory__card__bar,
 .directory__card__extra,
 .directory__tag > a,
 .directory__tag > div {
@@ -303,6 +304,7 @@ $highlight-text-color: $ui-highlight-color;
 .column > .scrollable {
     background-color: #223;
     color: #fff;
+
     // border-bottom: 0;
 }
 
