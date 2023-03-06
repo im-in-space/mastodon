@@ -300,7 +300,7 @@ export function giphySet(options) {
     type: COMPOSE_GIPHY_SET,
     options: options,
   };
-};
+}
 
 export function uploadCompose(files) {
   return function (dispatch, getState) {

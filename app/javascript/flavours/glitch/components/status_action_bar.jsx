@@ -196,22 +196,22 @@ class StatusActionBar extends ImmutablePureComponent {
   handleTranslateClick = () => {
     // Grab the user language
     var userLang = navigator.language || navigator.userLanguage;
-    userLang = userLang.split("-")[0];
+    userLang = userLang.split('-')[0];
 
     // Grab the post content and put it into a div
     // but replace all <p> by two newlines and all <br>s with a newline
     var html = this.props.status.get('content');
-    var temp = document.createElement("div");
-    temp.innerHTML = html.replaceAll('</p><p>', "\n\n").replace(/<\s*\/?br\s*[\/]?>/gi, "\n");
+    var temp = document.createElement('div');
+    temp.innerHTML = html.replaceAll('</p><p>', '\n\n').replace(/<\s*\/?br\s*[/]?>/gi, '\n');
 
-    // Grab the text only ad URL encoded it
-    var plain = temp.textContent || temp.innerText || "";
+    // Grab the text only and URL encode it
+    var plain = temp.textContent || temp.innerText || '';
     var encoded = encodeURIComponent(plain);
 
     // Open the link on GTranslate
-    var url = "https://translate.google.com/?sl=auto&tl="+userLang+"&text="+encoded+"&op=translate";
+    var url = 'https://translate.google.com/?sl=auto&tl='+userLang+'&text='+encoded+'&op=translate';
     window.open(url, '_blank');
-  }
+  };
 
   handleFilterClick = () => {
     this.props.onAddFilter(this.props.status);
