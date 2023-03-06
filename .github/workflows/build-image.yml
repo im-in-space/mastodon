@@ -15,7 +15,7 @@ permissions:
 jobs:
   build-image:
     runs-on:
-      labels: ubuntu-latest-16-cores
+      labels: linux
 
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
