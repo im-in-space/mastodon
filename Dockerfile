@@ -91,6 +91,9 @@ ENV RAILS_ENV="production" \
 USER mastodon
 WORKDIR /opt/mastodon
 
+# Clone remote themes
+RUN bash cloneThemes.sh
+
 # Precompile assets
 RUN OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile
 

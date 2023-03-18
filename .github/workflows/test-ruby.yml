@@ -40,6 +40,9 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Clone remote themes
+        run: bash cloneThemes.sh
+
       - run: yarn install --frozen-lockfile
       - name: Precompile assets
         # Previously had set this, but it's not supported
