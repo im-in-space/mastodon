@@ -38,8 +38,6 @@ const mapDispatchToProps = dispatch => ({
   submit: (file) => dispatch(uploadCompose([file])),
 });
 
-export default @connect(mapStateToProps, mapDispatchToProps)
-@injectIntl
 class GIFModal extends ImmutablePureComponent {
 
   static propTypes = {
@@ -94,3 +92,5 @@ class GIFModal extends ImmutablePureComponent {
   }
 
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(GIFModal));
