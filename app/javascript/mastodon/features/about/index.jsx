@@ -94,8 +94,6 @@ class Section extends React.PureComponent {
 
 }
 
-export default @connect(mapStateToProps)
-@injectIntl
 class About extends React.PureComponent {
 
   static propTypes = {
@@ -253,3 +251,5 @@ class About extends React.PureComponent {
   }
 
 }
+
+export default connect(mapStateToProps)(injectIntl(About));

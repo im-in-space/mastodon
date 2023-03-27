@@ -43,7 +43,7 @@ jobs:
       - name: Clone remote themes
         run: bash cloneThemes.sh
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn --frozen-lockfile --production
       - name: Precompile assets
         # Previously had set this, but it's not supported
         # export NODE_OPTIONS=--openssl-legacy-provider
