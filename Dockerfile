@@ -13,7 +13,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /opt/mastodon
-COPY Gemfile* package.json yarn.lock /opt/mastodon/
+COPY Gemfile* package.json yarn.lock cloneThemes.sh /opt/mastodon/
 
 # hadolint ignore=DL3008
 RUN apt-get update && \
@@ -33,6 +33,7 @@ RUN apt-get update && \
         libreadline8 \
         python3 \
         shared-mime-info && \
+    bash cloneThemes.sh && \
     bundle config set --local deployment 'true' && \
     bundle config set --local without 'development test' && \
     bundle config set silence_root_warning true && \
@@ -90,9 +91,6 @@ ENV RAILS_ENV="production" \
 # Set the run user
 USER mastodon
 WORKDIR /opt/mastodon
-
-# Clone remote themes
-RUN bash cloneThemes.sh
 
 # Precompile assets
 RUN OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile

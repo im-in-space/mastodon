@@ -14,6 +14,9 @@ pullOrClone () {
   fi
 }
 
+# Create destination dirs (i.e. for Docker build)
+mkdir -p app/javascript/styles/modern
+
 # Create our working dir
 mkdir -p .themes
 cd .themes
