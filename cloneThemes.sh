@@ -33,6 +33,10 @@ cp -r mastomods/app/javascript/styles/mfc/ ../app/javascript/styles/
 pullOrClone "Cyberpunk-Neon" "https://github.com/Roboron3042/Cyberpunk-Neon.git"
 cp Cyberpunk-Neon/CSS/mastodon-cyberpunk-neon.css ../app/javascript/styles/_cyberpunk-neon.scss
 
+## - mastodon-bird-ui
+pullOrClone "mastodon-bird-ui" "https://github.com/ronilaukkarinen/mastodon-bird-ui.git"
+cp mastodon-bird-ui/style.css ../app/javascript/styles/_mastodon-bird-ui.scss
+
 ## - Modern
 pullOrClone "Mastodon-Modern" "https://codeberg.org/Freeplay/Mastodon-Modern.git"
 cp Mastodon-Modern/modern.css ../app/javascript/styles/modern/style.scss
