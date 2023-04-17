@@ -60,6 +60,19 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "Not found",
+        "id": "missing_indicator.label"
+      },
+      {
+        "defaultMessage": "This resource could not be found",
+        "id": "missing_indicator.sublabel"
+      }
+    ],
+    "path": "app/javascript/flavours/glitch/components/missing_indicator.json"
+  },
+  {
+    "descriptors": [
+      {
         "defaultMessage": "Select\nall",
         "id": "notification_purge.btn_all"
       },
@@ -282,6 +295,10 @@
       {
         "defaultMessage": "Draw something",
         "id": "compose.attach.doodle"
+      },
+      {
+        "defaultMessage": "Embed GIF",
+        "id": "compose.attach.gif"
       },
       {
         "defaultMessage": "HTML",
@@ -990,6 +1007,31 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "Search for GIFs",
+        "id": "giphy.search"
+      },
+      {
+        "defaultMessage": "Oops! Something went wrong. Please, try again.",
+        "id": "giphy.error"
+      },
+      {
+        "defaultMessage": "Loading...",
+        "id": "giphy.loading"
+      },
+      {
+        "defaultMessage": "No matches found.",
+        "id": "giphy.nomatches"
+      },
+      {
+        "defaultMessage": "Close",
+        "id": "settings.close"
+      }
+    ],
+    "path": "app/javascript/flavours/glitch/features/ui/components/gif_modal.json"
+  },
+  {
+    "descriptors": [
+      {
         "defaultMessage": "App settings",
         "id": "navigation_bar.app_settings"
       }
@@ -1084,10 +1126,41 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "Search",
+        "id": "tabs_bar.search"
+      }
+    ],
+    "path": "app/javascript/flavours/glitch/features/ui/components/tabs_bar.json"
+  },
+  {
+    "descriptors": [
+      {
         "defaultMessage": "This account is marked as moved to {moved_to_link}, and may thus not accept new follows.",
         "id": "moved_to_warning"
       }
     ],
     "path": "app/javascript/flavours/glitch/features/ui/index.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "Not found",
+        "id": "missing_indicator.label"
+      },
+      {
+        "defaultMessage": "This resource could not be found",
+        "id": "missing_indicator.sublabel"
+      }
+    ],
+    "path": "app/javascript/mastodon/components/missing_indicator.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "Search",
+        "id": "tabs_bar.search"
+      }
+    ],
+    "path": "app/javascript/mastodon/features/ui/components/tabs_bar.json"
   }
 ]
