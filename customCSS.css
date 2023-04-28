@@ -1,4 +1,4 @@
-@import "https://lucy.im-in.space/LargePreviews.css";
+@import 'https://lucy.im-in.space/LargePreviews.css';
 
 /* Temp fix? */
 @media screen and (max-width: 1174px) {
@@ -9,7 +9,7 @@
 }
 
 /* Borked checkboxes in chosen languages with Modern, esp. on mobile */
-body[class*="skin-modern"].admin .user_chosen_languages input {
+body[class*='skin-modern'].admin .user_chosen_languages input {
   margin-right: 5px !important;
   position: static !important;
   vertical-align: -2px;
@@ -91,49 +91,53 @@ body[class*="skin-modern"].admin .user_chosen_languages input {
 }
 */
 
-.account__header__content img[alt^=":sticker_"],
-.status__content img[alt^=":sticker_"] {
+.account__header__content img[alt^=':sticker_'],
+.status__content img[alt^=':sticker_'] {
   width: 128px !important;
   height: 128px !important;
   display: block;
   margin: 0 auto !important;
 }
 
-div.emoji-mart-category > span[title^=":sticker_"] > span {
+div.emoji-mart-category > span[title^=':sticker_'] > span {
   width: 120px !important;
   height: 120px !important;
 }
 
-.emoji-mart-emoji[title^=":sticker_"]:hover::before {
+.emoji-mart-emoji[title^=':sticker_']:hover::before {
   border-radius: 10px !important;
 }
 
-span.reactions-bar__item__emoji > img[alt^=":sticker_"] {
+span.reactions-bar__item__emoji > img[alt^=':sticker_'] {
   width: 16px !important;
   height: 16px !important;
 }
 
-.status__content .emojione:not([alt^=":sticker_"]) {
+.status__content .emojione:not([alt^=':sticker_']) {
   padding: 3px;
   margin: -3px;
+
+  /* Don't limit emotes in width */
+  max-height: 20px;
+  max-width: 100%;
+  width: auto;
 }
 
 /* Color some status */
-.status[data-status-by="@kdy"] {
+.status[data-status-by='@kdy'] {
   box-shadow: inset 0 40px 40px 0 rgba(233, 30, 99, 20%);
 }
 
-.status[data-status-by="@status"],
-.status[data-status-by^="@status@"] {
+.status[data-status-by='@status'],
+.status[data-status-by^='@status@'] {
   box-shadow: inset 0 40px 40px 0 rgba(255, 165, 31, 20%);
 }
-
 
 /* Rotating space core */
 .spacecore {
   -webkit-animation: rotate-core 15s linear infinite;
   animation: rotateCore 15s linear infinite;
-  background: url("https://im-in.space/spacecore.png") no-repeat;
+  background: url('https://im-in.space/spacecore.png') no-repeat;
   background-size: cover;
   height: 150px;
   margin: 15px auto 30px;
