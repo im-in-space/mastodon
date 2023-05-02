@@ -4,6 +4,18 @@
 }
 
 /* Fixes */
+// Remove thread line for now, breaking alignement
+// and the available space
+.status__line {
+  display: none !important;
+}
+
+.status--in-thread .status__content,
+.status--in-thread .status__action-bar {
+  margin-inline-start: 0 !important;
+  width: 100%;
+}
+
 // While we wait for glitch update
 .account__header__bio .account__header__fields {
   margin-left: 15px !important;
