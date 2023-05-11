@@ -11,7 +11,7 @@
 .logo-container {
   margin: 100px auto 50px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (width < 500px) {
     margin: 50px auto 0;
   }
 

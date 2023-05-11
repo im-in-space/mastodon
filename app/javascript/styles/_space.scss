@@ -8,80 +8,80 @@ $highlight-text-color: $ui-highlight-color;
 
 // Some changes to the about pages
 .about-body .wrapper {
-    background-color: rgba(0, 0, 0, 70%);
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 50px;
+  background-color: rgba(0, 0, 0, 70%);
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 50px;
 
-    ol {
-        margin-bottom: 26px;
-    }
+  ol {
+    margin-bottom: 26px;
+  }
 }
 
 // Make UI fluid for large width (is useless for glitch)
 // 1338px, we failed by ONE pixel
-@media screen and (min-width: 1338px) {
-    body.layout-multiple-columns:not(.flavour-glitch) .column,
-    body.layout-multiple-columns:not(.flavour-glitch) .column__wrapper {
-        flex: 1 1 0;
-    }
+@media screen and (width >= 1338px) {
+  body.layout-multiple-columns:not(.flavour-glitch) .column,
+  body.layout-multiple-columns:not(.flavour-glitch) .column__wrapper {
+    flex: 1 1 0;
+  }
 }
 
 // Background for DMs
 .status.status-direct {
-    background: #313543 !important;
+  background: #313543 !important;
 }
 
 // Background for the gradient effect on collapsed toots
 .status.collapsed .status__content::after {
-    background: linear-gradient(rgba(34, 34, 51, 0%), #223);
+  background: linear-gradient(rgba(34, 34, 51, 0%), #223);
 }
 
 // Make spoiler link button readable
 .status__content .status__content__spoiler-link {
-    color: #37aac0;
+  color: #37aac0;
 }
 
 // Revert margin to make the app scrollable horizontaly
 .columns-area {
-    margin: 0;
+  margin: 0;
 }
 
 // Removing some background
 .drawer {
-    .drawer--header,
-    .contents {
-        background: transparent !important;
+  .drawer--header,
+  .contents {
+    background: transparent !important;
 
-        // Remove that outline when clicked
-        .mastodon {
-            outline: 0;
+    // Remove that outline when clicked
+    .mastodon {
+      outline: 0;
 
-            &::-moz-focus-inner {
-                border: none;
-            }
-        }
+      &::-moz-focus-inner {
+        border: none;
+      }
     }
+  }
 }
 
 .columns-area__panels__pane--navigational .navigation-panel,
 .getting-started {
-    background: transparent !important;
+  background: transparent !important;
 }
 
 // More random fixes to the base theme
 .tabs-bar__wrapper {
-    background-color: #223;
+  background-color: #223;
 }
 
 .compose-form__buttons {
-    button.icon-button.inverted {
-        color: #606984;
-    }
+  button.icon-button.inverted {
+    color: #606984;
+  }
 
-    button.icon-button.inverted.active {
-        color: #ff9800;
-    }
+  button.icon-button.inverted.active {
+    color: #ff9800;
+  }
 }
 
 /*
@@ -96,9 +96,10 @@ $highlight-text-color: $ui-highlight-color;
 */
 
 .rich-formatting {
-    strong, b {
-        font-weight: bold;
-    }
+  strong,
+  b {
+    font-weight: bold;
+  }
 }
 
 .landing-page__information,
@@ -117,214 +118,214 @@ $highlight-text-color: $ui-highlight-color;
 .directory__card__extra,
 .directory__tag > a,
 .directory__tag > div {
-    background-color: #223 !important;
+  background-color: #223 !important;
 }
 
 .button.logo-button {
-    background-color: #ff9800 !important;
-    color: #fff !important;
+  background-color: #ff9800 !important;
+  color: #fff !important;
 
-    &:active,
-    &:focus,
-    &:hover {
-        background-color: #ffa51f !important;
-
-        svg {
-            path {
-                &:last-child {
-                    fill: #ffa51f !important;
-                }
-            }
-        }
-    }
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: #ffa51f !important;
 
     svg {
-        path {
-            &:last-child {
-                fill: #ff9800 !important;
-            }
+      path {
+        &:last-child {
+          fill: #ffa51f !important;
         }
+      }
     }
+  }
+
+  svg {
+    path {
+      &:last-child {
+        fill: #ff9800 !important;
+      }
+    }
+  }
 }
 
 .simple_form {
-    button,
-    .button,
-    .block-button {
-        background-color: #ff9800 !important;
-        color: #fff !important;
+  button,
+  .button,
+  .block-button {
+    background-color: #ff9800 !important;
+    color: #fff !important;
 
-        &:hover,
-        &:focus,
-        &:active {
-            background-color: #ffa51f !important;
-        }
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: #ffa51f !important;
     }
+  }
 }
 
 .button.button-alternative {
+  background: #29293d !important;
+  color: #37aac0 !important;
+
+  &:active,
+  &:focus,
+  &:hover {
     background: #29293d !important;
     color: #37aac0 !important;
-
-    &:active,
-    &:focus,
-    &:hover {
-        background: #29293d !important;
-        color: #37aac0 !important;
-    }
+  }
 }
 
 // (v1.16) https://userstyles.org/styles/140852/mastodon-flat-dark-and-colourful
 .button {
-    background-color: #ff9800;
+  background-color: #ff9800;
 }
 
 .button:hover,
 .button:focus,
 .button:active,
 .button:disabled {
-    background-color: #ffa51f;
+  background-color: #ffa51f;
 }
 
 .ui {
-    background-color: #223;
+  background-color: #223;
 }
 
 .drawer .drawer__header,
 .column-header,
 .column-icon {
-    background-color: #223;
+  background-color: #223;
 }
 
 .column-icon {
-    color: #eee;
-    transition: all 200ms;
+  color: #eee;
+  transition: all 200ms;
 }
 
 .column-icon:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .column-icon.collapsable {
-    background-color: #3aaacf;
-    color: #fff;
-    font-size: 20px !important;
-    padding-bottom: 13px !important;
+  background-color: #3aaacf;
+  color: #fff;
+  font-size: 20px !important;
+  padding-bottom: 13px !important;
 }
 
 .column-settings--outer,
 .column-settings--section,
 .setting-toggle {
-    background-color: #3aaacf;
-    color: #fff;
+  background-color: #3aaacf;
+  color: #fff;
 }
 
 .setting-text,
 .setting-text:hover,
 .setting-text:focus {
-    color: #fff;
-    border-bottom: 2px solid #fff;
+  color: #fff;
+  border-bottom: 2px solid #fff;
 }
 
 .react-toggle--checked .react-toggle-track,
 .react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
-    background-color: #223;
+  background-color: #223;
 }
 
 .react-toggle--checked .react-toggle-thumb {
-    border-color: #223;
+  border-color: #223;
 }
 
 .drawer .drawer__header .drawer__tab {
-    color: #3aaacf;
+  color: #3aaacf;
 }
 
 .drawer .drawer__header a:hover {
-    background-color: #223;
-    color: #61b4cf;
+  background-color: #223;
+  color: #61b4cf;
 }
 
 .search__input {
-    background-color: #223;
-    transition: all 200ms;
-    color: #fff;
+  background-color: #223;
+  transition: all 200ms;
+  color: #fff;
 }
 
 .search__input:hover,
 .search__input:focus {
-    background-color: #eee;
-    color: #000;
+  background-color: #eee;
+  color: #000;
 }
 
 .drawer__inner {
-    background-color: #223;
+  background-color: #223;
 }
 
 .drawer__inner__mastodon {
-    background-color: #223 !important;
+  background-color: #223 !important;
 }
 
 .navigation-bar {
-    color: #eee;
+  color: #eee;
 }
 
 .navigation-bar strong {
-    font-size: 14px;
-    margin-top: 2px;
+  font-size: 14px;
+  margin-top: 2px;
 }
 
 .search-results__header {
-    background-color: #223;
-    color: #eee;
-    text-transform: capitalize;
+  background-color: #223;
+  color: #eee;
+  text-transform: capitalize;
 }
 
 .drawer__inner.darker {
-    background-color: #223;
+  background-color: #223;
 }
 
 .account__display-name {
-    outline: none;
+  outline: none;
 }
 
 .display-name span {
-    color: #ddd;
+  color: #ddd;
 }
 
 .icon-button:hover,
 .icon-button:focus,
 .icon-button:active,
 .icon-button.active {
-    color: #fff
+  color: #fff;
 }
 
 .activity-stream .entry,
 .status__prepend,
 .status,
 .column > .scrollable {
-    background-color: #223;
-    color: #fff;
+  background-color: #223;
+  color: #fff;
 
-    // border-bottom: 0;
+  // border-bottom: 0;
 }
 
 .notification__message {
-    color: #ccc;
+  color: #ccc;
 }
 
 .notification__filter-bar,
 .notification__filter-bar button,
 .account__section-headline button {
-    background: #223;
+  background: #223;
 }
 
 .status .status__relative-time {
-    color: #ccc;
+  color: #ccc;
 }
 
 .status__content a .fa,
 .status__content a .fa:hover {
-    color: #3aaacf;
+  color: #3aaacf;
 }
 
 .status__content a,
@@ -332,84 +333,84 @@ $highlight-text-color: $ui-highlight-color;
 .getting-started a,
 .muted .status__content a,
 .account__header .account__header__username {
-    color: #3aaacf;
+  color: #3aaacf;
 }
 
 .muted .status__display-name strong {
-    color: #ccc;
+  color: #ccc;
 }
 
 .status__prepend .status__display-name strong {
-    color: #fff;
-    outline: none;
+  color: #fff;
+  outline: none;
 }
 
 .muted .status__content p {
-    color: #ccc;
+  color: #ccc;
 }
 
 .column-link,
 .column {
-    background-color: #223;
+  background-color: #223;
 }
 
 .account__action-bar,
 .account__action-bar__tab,
 .detailed-status__action-bar {
-    border: 0;
-    background: #223;
+  border: 0;
+  background: #223;
 }
 
 .account__section-headline {
-    background: #223;
+  background: #223;
 }
 
 .account {
-    border-bottom: 0;
+  border-bottom: 0;
 }
 
 .column-back-button {
-    background-color: #223;
-    color: #ff9800;
+  background-color: #223;
+  color: #ff9800;
 }
 
 .status__content .status__content__spoiler-link,
 .reply-indicator__content .status__content__spoiler-link {
-    background: #29293d;
+  background: #29293d;
 }
 
 .autosuggest-textarea__suggestions {
-    background: #fff;
+  background: #fff;
 }
 
 .autosuggest-textarea__suggestions__item:hover {
-    background: #3aaacf;
-    color: #fff;
+  background: #3aaacf;
+  color: #fff;
 }
 
 .autosuggest-textarea__suggestions__item.selected {
-    background: #3aaacf;
-    color: #fff;
+  background: #3aaacf;
+  color: #fff;
 }
 
 .reply-indicator {
-    background: #29293d;
+  background: #29293d;
 }
 
 .reply-indicator__content {
-    color: #fff
+  color: #fff;
 }
 
 .reply-indicator .reply-indicator__display-name {
-    color: #fff
+  color: #fff;
 }
 
 .search__icon .fa {
-    color: #ff9800;
+  color: #ff9800;
 }
 
 .detailed-status {
-    background: #223;
+  background: #223;
 }
 
 /*
@@ -430,85 +431,85 @@ $highlight-text-color: $ui-highlight-color;
 */
 
 .icon-button.inverted {
-    color: #3aaacf
+  color: #3aaacf;
 }
 
 .icon-button.inverted.active {
-    color: #3aaacf
+  color: #3aaacf;
 }
 
 .icon-button.inverted:hover,
 .icon-button.inverted:active,
 .icon-button.inverted:focus {
-    color: #61b4cf
+  color: #61b4cf;
 }
 
 .text-icon-button.active {
-    color: #ff9800
+  color: #ff9800;
 }
 
 .privacy-dropdown__option.active {
-    background: #3aaacf;
+  background: #3aaacf;
 }
 
 .privacy-dropdown__option:hover {
-    background: #3aaacf;
+  background: #3aaacf;
 }
 
 .privacy-dropdown__option.active:hover {
-    background: #3aaacf;
+  background: #3aaacf;
 }
 
 .column-header__button {
-    background: #223;
+  background: #223;
 }
 
 .column-header__button.active,
 .column-header__button.active:hover {
-    background: #3aaacf;
+  background: #3aaacf;
 }
 
 .column-header__collapsible-inner {
-    background: #3aaacf;
-    color: #fff !important;
+  background: #3aaacf;
+  color: #fff !important;
 }
 
 .column-settings__section {
-    color: #fff;
+  color: #fff;
 }
 
 .setting-meta__label,
 .setting-toggle__label {
-    color: #fff;
+  color: #fff;
 }
 
 .column-subheading {
-    background: #223;
+  background: #223;
 }
 
 button.active .fa-retweet::after {
-    color: #ff9800;
-    content: "\f079";
+  color: #ff9800;
+  content: '\f079';
 }
 
 .icon-button:hover,
 .icon-button:focus,
 .icon-button:active,
 .icon-button.active {
-    color: #3aaacf;
+  color: #3aaacf;
 }
 
 .active .fa-star::before,
 .fa.fa-fw.fa-star.star-icon::before,
 .fa.fa-fw.fa-user-times {
-    color: #3aaacf;
+  color: #3aaacf;
 }
 
 .column-header__back-button {
-    background: #223;
-    color: #ff9800;
+  background: #223;
+  color: #ff9800;
 }
 
 .column-header__back-button:hover {
-    color: #ffa51f;
+  color: #ffa51f;
 }

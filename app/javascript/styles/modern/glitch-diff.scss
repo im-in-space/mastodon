@@ -13,11 +13,11 @@
 .status--in-thread .status__content,
 .status--in-thread .status__action-bar {
   margin-inline-start: 0 !important;
-  padding-inline: 0px !important;
+  padding-inline: 0 !important;
   width: 100%;
 }
 
-// While we wait for glitch update
+// Fix for the new bio fields
 .account__header__bio .account__header__fields {
   margin-left: 15px !important;
   margin-right: 15px !important;
@@ -27,6 +27,8 @@
 .account__header__bio {
   .account__header__fields {
     max-width: calc(100% - 30px) !important;
+    margin-left: 15px !important;
+    margin-right: 15px !important;
 
     dl {
       display: block;
@@ -49,6 +51,19 @@
 }
 
 #mastodon {
+  // User profiles were not clickable when opening a status
+  .detailed-status.detailed-status__wrapper,
+  .detailed-status__wrapper.detailed-status__wrapper,
+  .picture-in-picture.detailed-status__wrapper {
+    margin-block: initial !important;
+  }
+
+  // Unread indicator not visible
+  .notification.unread::before,
+  .status.unread::before {
+    inset: 0 !important;
+  }
+
   // Leave the roles under the profile picture
   .account-timeline__header .account__header__bar .avatar .account-role {
     margin-left: 0;
@@ -104,7 +119,10 @@
 
   // Don't make the profile header sticky, content goes thru it
   .account-timeline__header .account__header__image,
-  .account-timeline__header .account__header__image .account__header__info > span {
+  .account-timeline__header
+    .account__header__image
+    .account__header__info
+    > span {
     position: relative !important;
   }
 
@@ -127,7 +145,8 @@
     margin-left: 30px !important;
   }
 
-  .status__info .notification__message { // Here it's only the notifications with a post attached to them
+  .status__info .notification__message {
+    // Here it's only the notifications with a post attached to them
     // Reduce padding
     padding-top: 0 !important;
   }
@@ -149,12 +168,12 @@
   // I'm reducing the padding a bit
   .detailed-status__action-bar .icon-button,
   .status__action-bar .icon-button {
-    padding: .2em !important;
+    padding: 0.2em !important;
     min-width: 0 !important;
   }
 
   .status__action-bar-button {
-    margin-right: 8px
+    margin-right: 8px;
   }
 
   // Stop showing the text next to action buttons
@@ -169,7 +188,7 @@
     border-radius: var(--radius-round);
     margin-inline: 5px;
     overflow: hidden;
-    border: 0!important;
+    border: 0 !important;
 
     & > * {
       border-bottom: none;
@@ -188,7 +207,7 @@
     margin-bottom: -5px;
 
     .account {
-      border-radius: 0!important; // Fix weird radius
+      border-radius: 0 !important; // Fix weird radius
       display: inline-block;
       width: calc(100% - 1.28571em - 10px);
     }
@@ -207,7 +226,7 @@
   }
 }
 
-@media (max-width: 895px) {
+@media (width < 895px) {
   #mastodon .status__action-bar {
     // Reverting the margin on elements that were negative due to the
     // big padding the theme used to have
@@ -219,9 +238,12 @@
 // (like the spoiler media button or profile pictures)
 .privacy-dropdown__dropdown,
 .language-dropdown__dropdown,
-.emoji-picker-dropdown__menu,
-.picture-in-picture {
+.emoji-picker-dropdown__menu {
   z-index: 500;
+}
+
+.picture-in-picture {
+  z-index: 501;
 }
 
 // Fix alignement in the sharing/following popups
