@@ -35,7 +35,8 @@ cp Cyberpunk-Neon/CSS/mastodon-cyberpunk-neon.css ../app/javascript/styles/_cybe
 
 ## - mastodon-bird-ui
 pullOrClone "mastodon-bird-ui" "https://github.com/ronilaukkarinen/mastodon-bird-ui.git"
-cp mastodon-bird-ui/style.css ../app/javascript/styles/_mastodon-bird-ui.scss
+cp mastodon-bird-ui/layout-single-column.css ../app/javascript/styles/_mastodon-bird-ui-single.scss
+cp mastodon-bird-ui/layout-multiple-columns.css ../app/javascript/styles/_mastodon-bird-ui-multi.scss
 
 ## - Modern
 pullOrClone "Mastodon-Modern" "https://codeberg.org/Freeplay/Mastodon-Modern.git"
