@@ -4,7 +4,7 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 import { connect } from 'react-redux';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { giphySet, uploadCompose } from 'flavours/glitch/actions/compose';
-import IconButton from 'flavours/glitch/components/icon_button';
+import { IconButton } from 'flavours/glitch/components/icon_button';
 import ReactGiphySearchbox from 'react-giphy-searchbox';
 import { defineMessages, injectIntl } from 'react-intl';
 
@@ -32,9 +32,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  /** Set options in the redux store */
+  /**
+   * Set options in the redux store
+   * @param opts
+   */
   setOpt: (opts) => dispatch(giphySet(opts)),
-  /** Submit GIF for upload */
+  /**
+   * Submit GIF for upload
+   * @param file
+   */
   submit: (file) => dispatch(uploadCompose([file])),
 });
 
