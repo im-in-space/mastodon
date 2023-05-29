@@ -7,7 +7,7 @@ import Button from 'flavours/glitch/components/button';
 import StatusContent from 'flavours/glitch/components/status_content';
 import { Avatar } from 'flavours/glitch/components/avatar';
 import { RelativeTimestamp } from 'flavours/glitch/components/relative_timestamp';
-import DisplayName from 'flavours/glitch/components/display_name';
+import { DisplayName } from 'flavours/glitch/components/display_name';
 import AttachmentList from 'flavours/glitch/components/attachment_list';
 import { Icon } from 'flavours/glitch/components/icon';
 import ImmutablePureComponent from 'react-immutable-pure-component';
@@ -62,9 +62,7 @@ class BoostModal extends ImmutablePureComponent {
     if (e.button === 0) {
       e.preventDefault();
       this.props.onClose();
-      let state = { ...this.context.router.history.location.state };
-      state.mastodonBackSteps = (state.mastodonBackSteps || 0) + 1;
-      this.context.router.history.push(`/@${this.props.status.getIn(['account', 'acct'])}`, state);
+      this.context.router.history.push(`/@${this.props.status.getIn(['account', 'acct'])}`);
     }
   };
 

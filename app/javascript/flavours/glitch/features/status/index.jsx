@@ -392,12 +392,12 @@ class Status extends ImmutablePureComponent {
     this.props.dispatch(mentionCompose(account, router));
   };
 
-  handleOpenMedia = (media, index) => {
-    this.props.dispatch(openModal('MEDIA', { statusId: this.props.status.get('id'), media, index }));
+  handleOpenMedia = (media, index, lang) => {
+    this.props.dispatch(openModal('MEDIA', { statusId: this.props.status.get('id'), media, index, lang }));
   };
 
-  handleOpenVideo = (media, options) => {
-    this.props.dispatch(openModal('VIDEO', { statusId: this.props.status.get('id'), media, options }));
+  handleOpenVideo = (media, lang, options) => {
+    this.props.dispatch(openModal('VIDEO', { statusId: this.props.status.get('id'), media, lang, options }));
   };
 
   handleHotkeyOpenMedia = e => {
@@ -502,9 +502,7 @@ class Status extends ImmutablePureComponent {
   };
 
   handleHotkeyOpenProfile = () => {
-    let state = { ...this.context.router.history.location.state };
-    state.mastodonBackSteps = (state.mastodonBackSteps || 0) + 1;
-    this.context.router.history.push(`/@${this.props.status.getIn(['account', 'acct'])}`, state);
+    this.context.router.history.push(`/@${this.props.status.getIn(['account', 'acct'])}`);
   };
 
   handleMoveUp = id => {

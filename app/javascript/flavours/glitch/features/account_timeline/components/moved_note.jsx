@@ -4,7 +4,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { FormattedMessage } from 'react-intl';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import AvatarOverlay from '../../../components/avatar_overlay';
-import DisplayName from '../../../components/display_name';
+import { DisplayName } from '../../../components/display_name';
 import { Icon } from 'flavours/glitch/components/icon';
 
 export default class MovedNote extends ImmutablePureComponent {
@@ -21,9 +21,7 @@ export default class MovedNote extends ImmutablePureComponent {
   handleAccountClick = e => {
     if (e.button === 0) {
       e.preventDefault();
-      let state = { ...this.context.router.history.location.state };
-      state.mastodonBackSteps = (state.mastodonBackSteps || 0) + 1;
-      this.context.router.history.push(`/@${this.props.to.get('acct')}`, state);
+      this.context.router.history.push(`/@${this.props.to.get('acct')}`);
     }
 
     e.stopPropagation();
