@@ -32,6 +32,8 @@ class Api::V1::Admin::Trends::StatusesController < Api::V1::Trends::StatusesCont
     render json: status, serializer: REST::Admin::Trends::StatusSerializer
   end
 
+  private
+
   def enabled?
     super || current_user&.can?(:manage_taxonomies)
   end
