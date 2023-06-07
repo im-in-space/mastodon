@@ -39,7 +39,6 @@ const messages = defineMessages({
   admin_account: { id: 'status.admin_account', defaultMessage: 'Open moderation interface for @{name}' },
   admin_status: { id: 'status.admin_status', defaultMessage: 'Open this post in the moderation interface' },
   admin_domain: { id: 'status.admin_domain', defaultMessage: 'Open moderation interface for {domain}' },
-  copy: { id: 'status.copy', defaultMessage: 'Copy link to status' },
   copy: { id: 'status.copy', defaultMessage: 'Copy link to post' },
   translate: { id: 'status.translate', defaultMessage: 'Translate' },
   openOriginalPage: { id: 'account.open_original_page', defaultMessage: 'Open original page' },
