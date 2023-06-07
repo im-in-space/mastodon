@@ -1,12 +1,14 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { connect } from 'react-redux';
-import ImmutablePropTypes from 'react-immutable-proptypes';
-import { giphySet, uploadCompose } from 'flavours/glitch/actions/compose';
-import { IconButton } from 'flavours/glitch/components/icon_button';
+
 import ReactGiphySearchbox from 'react-giphy-searchbox';
 import { defineMessages, injectIntl } from 'react-intl';
+
+import { giphySet, uploadCompose } from 'flavours/glitch/actions/compose';
+import { IconButton } from 'flavours/glitch/components/icon_button';
 
 const messages = defineMessages({
   search:    { id: 'giphy.search', defaultMessage: 'Search for GIFs' },

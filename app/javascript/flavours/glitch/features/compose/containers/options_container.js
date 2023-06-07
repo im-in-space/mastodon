@@ -53,7 +53,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   onEmbedGiphy() {
-    dispatch(openModal('GIPHY', { noEsc: true }));
+    dispatch(openModal({
+      modalType: 'GIPHY',
+      modalProps: { noEsc: true, noClose: true },
+    }));
   },
 });
 
