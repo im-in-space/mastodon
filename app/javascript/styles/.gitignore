@@ -2,4 +2,6 @@
 mfc/
 _cyberpunk-neon.scss
 _mastodon-bird-ui.scss
+_mastodon-bird-ui-multi.scss
+_mastodon-bird-ui-single.scss
 modern/style.scss
