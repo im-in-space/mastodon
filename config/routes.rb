@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     /home
     /public
     /public/local
+    /public/remote
     /conversations
     /lists/(*any)
     /notifications
@@ -104,8 +105,6 @@ Rails.application.routes.draw do
 
     resources :followers, only: [:index], controller: :follower_accounts
     resources :following, only: [:index], controller: :following_accounts
-    resource :follow, only: [:create], controller: :account_follow
-    resource :unfollow, only: [:create], controller: :account_unfollow
 
     resource :outbox, only: [:show], module: :activitypub
     resource :inbox, only: [:create], module: :activitypub
@@ -165,7 +164,7 @@ Rails.application.routes.draw do
   get '/backups/:id/download', to: 'backups#download', as: :download_backup, format: false
 
   resource :authorize_interaction, only: [:show, :create]
-  resource :share, only: [:show, :create]
+  resource :share, only: [:show]
 
   draw(:admin)
 
