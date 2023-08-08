@@ -6,16 +6,16 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { connect } from 'react-redux';
 
-import ReactGiphySearchbox from 'react-giphy-searchbox';
+import Tenor from 'react-tenor';
 
-import { giphySet, uploadCompose } from 'flavours/glitch/actions/compose';
+import { tenorSet, uploadCompose } from 'flavours/glitch/actions/compose';
 import { IconButton } from 'flavours/glitch/components/icon_button';
 
 const messages = defineMessages({
-  search:    { id: 'giphy.search', defaultMessage: 'Search for GIFs' },
-  error:     { id: 'giphy.error', defaultMessage: 'Oops! Something went wrong. Please, try again.' },
-  loading:   { id: 'giphy.loading', defaultMessage: 'Loading...' },
-  nomatches: { id: 'giphy.nomatches', defaultMessage: 'No matches found.' },
+  search:    { id: 'tenor.search', defaultMessage: 'Search for GIFs' },
+  error:     { id: 'tenor.error', defaultMessage: 'Oops! Something went wrong. Please, try again.' },
+  loading:   { id: 'tenor.loading', defaultMessage: 'Loading...' },
+  nomatches: { id: 'tenor.nomatches', defaultMessage: 'No matches found.' },
   close:     { id: 'settings.close', defaultMessage: 'Close' },
 });
 
@@ -31,12 +31,12 @@ function dataURLtoFile(dataurl, filename) {
 }
 
 const mapStateToProps = state => ({
-  options: state.getIn(['compose', 'giphy']),
+  options: state.getIn(['compose', 'tenor']),
 });
 
 const mapDispatchToProps = dispatch => ({
-  setOpt: (opts) => dispatch(giphySet(opts)),
-  submit: (file) => dispatch(uploadCompose([file])),
+  setOpt: (opts) => dispatch(tenorSet(opts)),
+  submit: (file, alt) => dispatch(uploadCompose([file], alt)),
 });
 
 class GIFModal extends ImmutablePureComponent {
@@ -49,16 +49,17 @@ class GIFModal extends ImmutablePureComponent {
     submit: PropTypes.func.isRequired,
   };
 
-  handleSelect = item => {
-    const url = item.images.original.mp4;
+  handleSelect = result => {
+    const url = result.media[0].mp4.url;
+    const alt = result.content_description;
     var modal = this;
     fetch(url).then(res => res.blob()).then(blob => {
       const reader = new FileReader();
       reader.readAsDataURL(blob);
       reader.onloadend = function() {
         var dataUrl = reader.result;
-        const file = dataURLtoFile(dataUrl, 'giphy.mp4');
-        modal.props.submit(file);
+        const file = dataURLtoFile(dataUrl, 'tenor.mp4');
+        modal.props.submit(file, alt);
         modal.props.onClose(); // close dialog
       };
     }).catch(err => {
@@ -70,23 +71,20 @@ class GIFModal extends ImmutablePureComponent {
     const { intl } = this.props;
 
     return (
-      <div className='modal-root__modal giphy-modal'>
-        <div className='giphy-modal__container'>
-          <IconButton title={intl.formatMessage(messages.close)} icon='close' size='16' onClick={this.props.onClose}  style={{ float: 'right' }} /><br />
-          <ReactGiphySearchbox
-            apiKey='1ttK05MF98dLllFFknTAVo0U4CGcQb4J'
+      <div className='modal-root__modal tenor-modal'>
+        <div className='tenor-modal__container'>
+          <IconButton title={intl.formatMessage(messages.close)} icon='close' size='16' onClick={this.props.onClose} style={{ float: 'right' }} />
+          <Tenor
+            token='FJBKNQSVF2DD'
             onSelect={this.handleSelect}
-            masonryConfig={[
-              { columns: 2, imageWidth: 190, gutter: 5 },
-              { mq: '700px', columns: 2, imageWidth: 210, gutter: 5 },
-            ]}
             autoFocus='true'
             searchPlaceholder={intl.formatMessage(messages.search)}
             messageError={intl.formatMessage(messages.error)}
             messageLoading={intl.formatMessage(messages.loading)}
             messageNoMatches={intl.formatMessage(messages.nomatches)}
-            wrapperClassName='giphy-modal__searchbox'
+            contentFilter='off'
           />
+          <br /><img src='/tenor.svg' alt='Tenor logo' />
         </div>
       </div>
     );

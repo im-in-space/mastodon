@@ -52,9 +52,9 @@ const mapDispatchToProps = (dispatch) => ({
     }));
   },
 
-  onEmbedGiphy() {
+  onEmbedTenor() {
     dispatch(openModal({
-      modalType: 'GIPHY',
+      modalType: 'TENOR',
       modalProps: { noEsc: true, noClose: true },
     }));
   },
