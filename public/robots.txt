@@ -3,6 +3,9 @@ User-agent: ia_archiver
 Disallow: /media_proxy/
 Disallow:
 
+User-agent: GPTBot
+Disallow: /
+
 User-agent: *
 Disallow: /media_proxy/
 Disallow: /interact/
