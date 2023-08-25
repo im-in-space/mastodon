@@ -41,6 +41,7 @@ cp mastodon-bird-ui/layout-multiple-columns.css ../app/javascript/styles/_mastod
 ## - Modern
 pullOrClone "Mastodon-Modern" "https://codeberg.org/Freeplay/Mastodon-Modern.git"
 cp Mastodon-Modern/modern.css ../app/javascript/styles/modern/style.scss
+cp Mastodon-Modern/glitch-fixes.css ../app/javascript/styles/modern/glitch-fixes.scss
 
 ## - TangerineUI-for-Mastodon
 pullOrClone "TangerineUI-for-Mastodon" "https://github.com/nileane/TangerineUI-for-Mastodon.git"
