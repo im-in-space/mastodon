@@ -16,6 +16,7 @@ pullOrClone () {
 
 # Create destination dirs (i.e. for Docker build)
 mkdir -p app/javascript/styles/modern
+mkdir -p app/javascript/styles/mastodon-bird-ui
 
 # Create our working dir
 mkdir -p .themes
@@ -35,8 +36,12 @@ cp Cyberpunk-Neon/CSS/mastodon-cyberpunk-neon.css ../app/javascript/styles/_cybe
 
 ## - mastodon-bird-ui
 pullOrClone "mastodon-bird-ui" "https://github.com/ronilaukkarinen/mastodon-bird-ui.git"
-cp mastodon-bird-ui/layout-single-column.css ../app/javascript/styles/_mastodon-bird-ui-single.scss
-cp mastodon-bird-ui/layout-multiple-columns.css ../app/javascript/styles/_mastodon-bird-ui-multi.scss
+cp mastodon-bird-ui/layout-single-column.css ../app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+cp mastodon-bird-ui/layout-multiple-columns.css ../app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' ../app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' ../app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' ../app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' ../app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
 
 ## - Modern
 pullOrClone "Mastodon-Modern" "https://codeberg.org/Freeplay/Mastodon-Modern.git"

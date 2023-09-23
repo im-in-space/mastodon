@@ -2,5 +2,5 @@
 @import 'application';
 
 // Import our theme
-@import 'mastodon-bird-ui-single';
-@import 'mastodon-bird-ui-multi';
+@import 'mastodon-bird-ui/layout-single-column.scss';
+@import 'mastodon-bird-ui/layout-multiple-columns.scss';

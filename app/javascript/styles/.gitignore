@@ -1,9 +1,7 @@
 # im-in.space - see ~/cloneThemes.sh
+mastodon-bird-ui/
 mfc/
 _cyberpunk-neon.scss
-_mastodon-bird-ui.scss
-_mastodon-bird-ui-multi.scss
-_mastodon-bird-ui-single.scss
 modern/glitch-fixes.scss
 modern/style.scss
 tangerineui*
