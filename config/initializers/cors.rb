@@ -14,7 +14,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     with_options headers: :any, credentials: false do
       with_options methods: [:get] do
         resource '/.well-known/*'
-        resource '/nodeinfo/2.0'
+        resource '/nodeinfo/*'
         resource '/@:username'
         resource '/users/:username'
       end
