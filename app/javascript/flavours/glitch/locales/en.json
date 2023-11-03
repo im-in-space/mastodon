@@ -186,5 +186,6 @@
   "status.is_poll": "This toot is a poll",
   "status.local_only": "Only visible from your instance",
   "status.sensitive_toggle": "Click to view",
-  "status.uncollapse": "Uncollapse"
+  "status.uncollapse": "Uncollapse",
+  "suggestions.dismiss": "Dismiss suggestion"
 }
