@@ -50,4 +50,6 @@ cp Mastodon-Modern/glitch-fixes.css ../app/javascript/styles/modern/glitch-fixes
 
 ## - TangerineUI-for-Mastodon
 pullOrClone "TangerineUI-for-Mastodon" "https://github.com/nileane/TangerineUI-for-Mastodon.git"
+# Temp: use 4.3.0 branch
+cd TangerineUI-for-Mastodon && git checkout Mastodon-v4.3.0 && cd ..
 cp -r TangerineUI-for-Mastodon/mastodon/app/javascript/styles/* ../app/javascript/styles/
