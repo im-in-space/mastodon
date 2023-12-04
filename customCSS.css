@@ -1,10 +1,15 @@
-@import 'https://lucy.im-in.space/LargePreviews.css';
+@import 'https://lucy.im-in.space/LargePreviews.css?v=202308132106';
 
-/* Borked checkboxes in chosen languages with Modern, esp. on mobile */
-body[class*='skin-modern'].admin .user_chosen_languages input {
-  margin-right: 5px !important;
-  position: static !important;
-  vertical-align: -2px;
+/* z-index fix so the spoiler button doesn't go over the emoji picker  */
+body > [data-popper-placement] {
+  z-index: 150 !important;
+}
+
+/* Weird flex but ok - actions under posts with Modern */
+.layout-multiple-columns[class*="skin-modern"] #mastodon .columns-area .detailed-status__action-bar,
+.layout-multiple-columns[class*="skin-modern"] #mastodon .columns-area .picture-in-picture__footer,
+.layout-multiple-columns[class*="skin-modern"] #mastodon .columns-area .status__action-bar {
+  flex-wrap: nowrap;
 }
 
 /* Global fixes */
@@ -49,7 +54,6 @@ body[class*='skin-modern'].admin .user_chosen_languages input {
 }
 
 /* Ported from https://github.com/koyuspace/styles/blob/master/stickers.scss */
-
 /*
 .status__content .emojione:not([alt^=':sticker_']) {
   width: 32px !important;
@@ -109,6 +113,32 @@ span.reactions-bar__item__emoji > img[alt^=':sticker_'] {
   height: 150px;
   margin: 15px auto 30px;
   width: 150px;
+}
+
+@-webkit-keyframes rotate-core {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  20% {
+    transform: rotate(20deg);
+  }
+
+  40% {
+    transform: rotate(100deg);
+  }
+
+  60% {
+    transform: rotate(220deg);
+  }
+
+  80% {
+    transform: rotate(300deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes rotate-core {
