@@ -6,9 +6,18 @@ body > [data-popper-placement] {
 }
 
 /* Weird flex but ok - actions under posts with Modern */
-.layout-multiple-columns[class*="skin-modern"] #mastodon .columns-area .detailed-status__action-bar,
-.layout-multiple-columns[class*="skin-modern"] #mastodon .columns-area .picture-in-picture__footer,
-.layout-multiple-columns[class*="skin-modern"] #mastodon .columns-area .status__action-bar {
+.layout-multiple-columns[class*='skin-modern']
+  #mastodon
+  .columns-area
+  .detailed-status__action-bar,
+.layout-multiple-columns[class*='skin-modern']
+  #mastodon
+  .columns-area
+  .picture-in-picture__footer,
+.layout-multiple-columns[class*='skin-modern']
+  #mastodon
+  .columns-area
+  .status__action-bar {
   flex-wrap: nowrap;
 }
 
@@ -54,6 +63,7 @@ body > [data-popper-placement] {
 }
 
 /* Ported from https://github.com/koyuspace/styles/blob/master/stickers.scss */
+
 /*
 .status__content .emojione:not([alt^=':sticker_']) {
   width: 32px !important;
@@ -113,32 +123,6 @@ span.reactions-bar__item__emoji > img[alt^=':sticker_'] {
   height: 150px;
   margin: 15px auto 30px;
   width: 150px;
-}
-
-@-webkit-keyframes rotate-core {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  20% {
-    transform: rotate(20deg);
-  }
-
-  40% {
-    transform: rotate(100deg);
-  }
-
-  60% {
-    transform: rotate(220deg);
-  }
-
-  80% {
-    transform: rotate(300deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 @keyframes rotate-core {
