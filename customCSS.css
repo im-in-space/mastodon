@@ -1,4 +1,5 @@
 @import 'https://lucy.im-in.space/LargePreviews.css?v=202308132106';
+@import 'https://lucy.im-in.space/fonts/IosevkaCodeMin.css?v=28.0.1';
 
 /* z-index fix so the spoiler button doesn't go over the emoji picker  */
 body > [data-popper-placement] {
@@ -19,6 +20,20 @@ body > [data-popper-placement] {
   .columns-area
   .status__action-bar {
   flex-wrap: nowrap;
+}
+
+/* Style code and pre>code */
+.status__content code {
+  background-color: var(--border-color, rgba(0, 0, 0, 0.2));
+  border-radius: var(--radius);
+  font-family: "Iosevka Nerd Font", "Iosevka", "Iosevka Web", "mastodon-font-monospace", monospace;
+  font-size: 0.9rem;
+  font-stretch: expanded;
+  padding: 0.1rem 0.3rem;
+}
+.status__content pre > code {
+  display: block;
+  padding: 0.5rem;
 }
 
 /* Global fixes */
@@ -112,6 +127,15 @@ span.reactions-bar__item__emoji > img[alt^=':sticker_'] {
 .status[data-status-by='@status'],
 .status[data-status-by^='@status@'] {
   box-shadow: inset 0 40px 40px 0 rgba(255, 165, 31, 20%);
+}
+
+.status[data-status-by*='@bird.makeup'] {
+  box-shadow: inset 0 40px 40px 0 rgba(23, 120, 179, 15%);
+}
+
+
+.status[data-status-by*='@threads.net'] {
+  box-shadow: inset 0 40px 40px 0 rgba(0, 0, 0, 20%);
 }
 
 /* Rotating space core */
