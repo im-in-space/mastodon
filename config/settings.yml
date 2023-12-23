@@ -2,7 +2,7 @@
 # important settings can be changed from the admin interface.
 
 defaults: &defaults
-  site_title: 'im-in.space'
+  site_title: "I'm in Space"
   site_short_description: ''
   site_description: ''
   site_extended_description: ''
@@ -17,7 +17,7 @@ defaults: &defaults
   preview_sensitive_media: false
   noindex: false
   flavour: 'glitch'
-  skin: 'space'
+  skin: 'modern'
   trends: true
   trends_as_landing_page: true
   trendable_by_default: false
