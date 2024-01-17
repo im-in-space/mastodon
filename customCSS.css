@@ -1,4 +1,4 @@
-@import 'https://lucy.im-in.space/LargePreviews.css?v=202308132106';
+@import 'https://lucy.im-in.space/LargePreviews.css?v=202401151710';
 @import 'https://lucy.im-in.space/fonts/IosevkaCodeMin.css?v=28.0.1';
 
 /* z-index fix so the spoiler button doesn't go over the emoji picker  */
@@ -54,6 +54,10 @@ body > [data-popper-placement] {
 
 .drawer .drawer__inner__mastodon {
   pointer-events: none;
+}
+
+.about__domain-blocks__domain > p {
+  display: none !important;
 }
 
 /* When the "content-type" button is shown we don't have too much space
