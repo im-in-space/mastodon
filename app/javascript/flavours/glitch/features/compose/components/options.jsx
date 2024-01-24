@@ -12,6 +12,7 @@ import AttachFileIcon from '@/material-icons/400-24px/attach_file.svg?react';
 import BrushIcon from '@/material-icons/400-24px/brush.svg?react';
 import CodeIcon from '@/material-icons/400-24px/code.svg?react';
 import DescriptionIcon from '@/material-icons/400-24px/description.svg?react';
+import ImageIcon from '@/material-icons/400-24px/image.svg?react';
 import InsertChartIcon from '@/material-icons/400-24px/insert_chart.svg?react';
 import MarkdownIcon from '@/material-icons/400-24px/markdown.svg?react';
 import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
@@ -263,7 +264,8 @@ class ComposerOptions extends ImmutablePureComponent {
               text: formatMessage(messages.doodle),
             },
             {
-              icon: 'file-image-o',
+              icon: 'picture-o',
+              iconComponent: ImageIcon,
               name: 'gif',
               text: formatMessage(messages.gif),
             },
