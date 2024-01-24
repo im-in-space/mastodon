@@ -13,13 +13,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: Max, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, AllowedPatterns.
-# URISchemes: http, https
-Layout/LineLength:
-  Exclude:
-    - 'app/models/account.rb'
-
 Lint/NonLocalExitFromIterator:
   Exclude:
     - 'app/helpers/jsonld_helper.rb'
@@ -68,18 +61,6 @@ Rails/OutputSafety:
   Exclude:
     - 'config/initializers/simple_form.rb'
 
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: Include.
-# Include: **/Rakefile, **/*.rake
-Rails/RakeEnvironment:
-  Exclude:
-    - 'lib/tasks/auto_annotate_models.rake'
-    - 'lib/tasks/db.rake'
-    - 'lib/tasks/emojis.rake'
-    - 'lib/tasks/mastodon.rake'
-    - 'lib/tasks/repo.rake'
-    - 'lib/tasks/statistics.rake'
-
 # Configuration parameters: Include.
 # Include: app/models/**/*.rb
 Rails/UniqueValidationWithoutIndex:
@@ -99,17 +80,12 @@ Rails/WhereExists:
     - 'app/lib/activitypub/activity/create.rb'
     - 'app/lib/delivery_failure_tracker.rb'
     - 'app/lib/feed_manager.rb'
-    - 'app/lib/status_cache_hydrator.rb'
     - 'app/lib/suspicious_sign_in_detector.rb'
-    - 'app/models/concerns/account/interactions.rb'
-    - 'app/models/featured_tag.rb'
     - 'app/models/poll.rb'
     - 'app/models/session_activation.rb'
     - 'app/models/status.rb'
-    - 'app/models/user.rb'
     - 'app/policies/status_policy.rb'
     - 'app/serializers/rest/announcement_serializer.rb'
-    - 'app/serializers/rest/tag_serializer.rb'
     - 'app/services/activitypub/fetch_remote_status_service.rb'
     - 'app/services/vote_service.rb'
     - 'app/validators/reaction_validator.rb'
@@ -159,7 +135,6 @@ Style/FetchEnvVar:
 # AllowedMethods: redirect
 Style/FormatStringToken:
   Exclude:
-    - 'app/models/privacy_policy.rb'
     - 'config/initializers/devise.rb'
     - 'lib/paperclip/color_extractor.rb'
 

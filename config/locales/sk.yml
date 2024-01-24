@@ -633,6 +633,7 @@ sk:
       documentation_link: Zisti viac
       release_notes: Poznámky k vydaniu
       title: Dostupné aktualizácie
+      type: Druh
       types:
         major: Hlavné vydanie
         patch: Opravné vydanie - opravy a jednoducho uplatniteľné zmeny
@@ -641,6 +642,7 @@ sk:
       account: Autor
       application: Aplikácia
       back_to_account: Späť na účet
+      back_to_report: Späť na stránku hlásenia
       batch:
         remove_from_report: Vymaž z hlásenia
         report: Hlásenie
@@ -730,6 +732,7 @@ sk:
     new_appeal:
       actions:
         none: varovanie
+        silence: obmedziť ich účet
     new_pending_account:
       body: Podrobnosti o novom účte sú uvedené nižšie. Môžeš túto registračnú požiadavku buď prijať, alebo zamietnúť.
       subject: Nový účet očakáva preverenie na %{instance} (%{username})
@@ -1138,6 +1141,7 @@ sk:
       unknown_browser: Neznámy prehliadač
       weibo: Sina/Tencent Weibo
     current_session: Aktuálna sezóna
+    date: Dátum
     description: "%{browser} na %{platform}"
     explanation: Tieto sú prehliadače ktoré sú teraz prihlásené na tvoj Mastodon účet.
     ip: IP adresa
@@ -1245,9 +1249,12 @@ sk:
     recovery_instructions_html: Keď hocikedy stratíš prístup k svojmu telefónu, môžeš použiť jeden z prístupových kódov nižšie pre obnovenie prístupu k svojmu účtu. <strong>Skladuj tieto prístupové kódy na bezpečnom mieste</strong>. Napríklad ich môžeš vytlačiť a uložiť ich spolu s inými dôležitými dokumentami.
   user_mailer:
     appeal_approved:
-      action: Choď na svoj účet
+      action: Nastavenia účtu
+    appeal_rejected:
+      subtitle: Tvoje odvolanie bolo zamietnuté.
     backup_ready:
-      explanation: Vyžiadal/a si si úplnú zálohu svojho Mastodon účtu. Táto záloha je teraz pripravená na stiahnutie!
+      explanation: Vyžiadal/a si si úplnú zálohu svojho Mastodon účtu.
+      extra: Teraz je pripravená na stiahnutie!
       subject: Tvoj archív je pripravený na stiahnutie
       title: Odber archívu
     warning:
@@ -1273,6 +1280,7 @@ sk:
     follow_limit_reached: Nemôžeš následovať viac ako %{limit} ľudí
     invalid_otp_token: Neplatný kód pre dvojfaktorovú autentikáciu
     otp_lost_help_html: Pokiaľ si stratil/a prístup k obom, môžeš dať vedieť %{email}
+    rate_limited: Príliš veľa pokusov o overenie, skús to znova neskôr.
     seamless_external_login: Si prihlásená/ý cez externú službu, takže nastavenia hesla a emailu ti niesú prístupné.
     signed_in_as: 'Prihlásená/ý ako:'
   verification:
