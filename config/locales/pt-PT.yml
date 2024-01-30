@@ -1546,6 +1546,9 @@ pt-PT:
     errors:
       limit_reached: Alcançado limite de reações diferentes
       unrecognized_emoji: não é um emoji reconhecido
+  redirects:
+    prompt: Se confia nesta hiperligação, clique nela para continuar.
+    title: Está a deixar %{instance}.
   relationships:
     activity: Atividade da conta
     confirm_follow_selected_followers: Tem a certeza que deseja seguir os seguidores selecionados?
@@ -1790,6 +1793,12 @@ pt-PT:
       extra: Está pronta para transferir!
       subject: O seu arquivo está pronto para descarregar
       title: Arquivo de ficheiros
+    failed_2fa:
+      details: 'Aqui estão os detalhes da tentativa de entrada:'
+      explanation: Alguém tentou entrar em sua conta mas forneceu um segundo fator de autenticação inválido.
+      further_actions_html: Se não foi você, recomendamos que %{action} imediatamente, pois pode ter sido comprometido.
+      subject: Falha na autenticação do segundo fator
+      title: Falha na autenticação do segundo fator
     suspicious_sign_in:
       change_password: alterar a sua palavra-passe
       details: 'Eis os pormenores do início de sessão:'

@@ -1546,6 +1546,8 @@ hu:
     errors:
       limit_reached: A különböző reakciók száma elérte a határértéket
       unrecognized_emoji: nem ismert emodzsi
+  redirects:
+    prompt: Ha megbízunk ebben a hivatkozásban, kattintsunk rá a folytatáshoz.
   relationships:
     activity: Fiók aktivitás
     confirm_follow_selected_followers: Biztos, hogy követni akarod a kiválasztott követőket?
@@ -1790,6 +1792,12 @@ hu:
       extra: Már letöltésre kész!
       subject: Az adataidról készült archív letöltésre kész
       title: Archiválás
+    failed_2fa:
+      details: 'Itt vannak a bejelentkezési kísérlet részletei:'
+      explanation: Valaki megpróbált bejelentkezni a fiókodba, de a második hitelesítési lépése érvénytelen volt.
+      further_actions_html: Ha ez nem te voltál, azt javasoljuk, hogy azonnal %{action}, mivel lehetséges, hogy az rossz kezekbe került.
+      subject: Második körös hitelesítés sikertelen
+      title: Sikertelen a második körös hitelesítés
     suspicious_sign_in:
       change_password: módosítsd a jelszavad
       details: 'Itt vannak a bejelentkezés részletei:'
