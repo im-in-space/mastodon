@@ -9,12 +9,3 @@
     background: #ecf0f4;
   }
 }
-
-body.app-body.flavour-glitch>#mastodon .status__info .notification__message, body.app-body.flavour-glitch>#mastodon .status__prepend {
-  margin-top: 10px!important;
-  padding-bottom: 0px!important;
-}
-
-#mastodon .account__header__account-note.account__header__fields:not(:first-child), #mastodon :not(.admin-account-bio)>div>.account__header__fields.account__header__fields:not(:first-child) {
-  margin-bottom: 20px !important;
-}
