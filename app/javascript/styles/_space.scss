@@ -213,6 +213,7 @@ $highlight-text-color: $ui-highlight-color;
   padding-bottom: 13px !important;
 }
 
+/*
 .column-settings--outer,
 .column-settings--section,
 .setting-toggle {
@@ -226,6 +227,7 @@ $highlight-text-color: $ui-highlight-color;
   color: #fff;
   border-bottom: 2px solid #fff;
 }
+*/
 
 .react-toggle--checked .react-toggle-track,
 .react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
@@ -469,10 +471,12 @@ $highlight-text-color: $ui-highlight-color;
   background: #3aaacf;
 }
 
+/*
 .column-header__collapsible-inner {
   background: #3aaacf;
   color: #fff !important;
 }
+*/
 
 .column-settings__section {
   color: #fff;
