@@ -1,5 +1,5 @@
-@import 'https://lucy.im-in.space/LargePreviews.css?v=202401151710';
-@import 'https://lucy.im-in.space/fonts/IosevkaCodeMin.css?v=28.0.1';
+@import 'https://lucy.im-in.space/LargePreviews.css?v=202402211714';
+@import 'https://lucy.im-in.space/fonts/IosevkaCodeMin.css?v=28.1.0';
 
 /* z-index fix so the spoiler button doesn't go over the emoji picker  */
 body > [data-popper-placement] {
