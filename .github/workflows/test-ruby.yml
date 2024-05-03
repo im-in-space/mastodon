@@ -28,6 +28,9 @@ jobs:
     env:
       RAILS_ENV: ${{ matrix.mode }}
       BUNDLE_WITH: ${{ matrix.mode }}
+      ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: precompile_placeholder
+      ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: precompile_placeholder
+      ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: precompile_placeholder
       OTP_SECRET: precompile_placeholder
       SECRET_KEY_BASE: precompile_placeholder
 
@@ -114,7 +117,6 @@ jobs:
       fail-fast: false
       matrix:
         ruby-version:
-          - '3.0'
           - '3.1'
           - '.ruby-version'
           - '3.3'
@@ -190,7 +192,6 @@ jobs:
       fail-fast: false
       matrix:
         ruby-version:
-          - '3.0'
           - '3.1'
           - '.ruby-version'
           - '3.3'
@@ -290,7 +291,6 @@ jobs:
       fail-fast: false
       matrix:
         ruby-version:
-          - '3.0'
           - '3.1'
           - '.ruby-version'
           - '3.3'

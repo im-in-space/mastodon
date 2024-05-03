@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.4
+# syntax=docker/dockerfile:1.7
 
 # Please see https://docs.docker.com/engine/reference/builder for information about
 # the extended buildx capabilities used in this file.
@@ -207,7 +207,12 @@ RUN \
 # Clone themes for im-in.space
   bash cloneThemes.sh; \
 # Use Ruby on Rails to create Mastodon assets
-  OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder bundle exec rails assets:precompile; \
+  ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY=precompile_placeholder \
+  ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT=precompile_placeholder \
+  ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY=precompile_placeholder \
+  OTP_SECRET=precompile_placeholder \
+  SECRET_KEY_BASE=precompile_placeholder \
+  bundle exec rails assets:precompile; \
 # Cleanup temporary files
   rm -fr /opt/mastodon/tmp;
 
