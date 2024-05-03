@@ -7,7 +7,7 @@ $ui-highlight-color: $classic-highlight-color;
 $highlight-text-color: $ui-highlight-color;
 
 // Import default (glitch) styles
-@import '../flavours/glitch/styles/index';
+@import '../flavours/glitch/styles/application';
 
 // Import our theme
 @import 'space';
