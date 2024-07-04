@@ -25,7 +25,7 @@ describe 'ShareEntrypoint', :js, :streaming do
 
     within('.compose-form') do
       fill_in "What's on your mind?", with: status_text
-      click_on 'Post'
+      click_on 'Launch'
     end
 
     expect(subject).to have_css('.notification-bar-message', text: 'Post published.')
