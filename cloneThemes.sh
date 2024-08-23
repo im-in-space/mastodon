@@ -51,5 +51,3 @@ cp Mastodon-Modern/glitch-fixes.css ../app/javascript/styles/modern/glitch-fixes
 ## - TangerineUI-for-Mastodon
 pullOrClone "TangerineUI-for-Mastodon" "https://github.com/nileane/TangerineUI-for-Mastodon.git"
 cp -r TangerineUI-for-Mastodon/mastodon/app/javascript/styles/* ../app/javascript/styles/
-### Temp fix
-sed -is 's/\[href\*="article" i\],/[href*="article" i]/g' ../app/javascript/styles/tangerine*/*.scss
