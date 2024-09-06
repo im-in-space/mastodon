@@ -72,5 +72,8 @@ docker-compose.override.yml
 # Ignore dotenv .local files
 .env*.local
 
+# Ignore local-only rspec configuration
+.rspec-local
+
 # im-in.space - 3rd party themes repos
 .themes

@@ -343,7 +343,7 @@ gl:
       title: Emoticonas personalizadas
       uncategorized: Sen categoría
       unlist: Non listar
-      unlisted: Sen listar
+      unlisted: Fóra das listas
       update_failed_msg: Non foi posíbel actualizar a emoticona
       updated_msg: Actualizouse a emoticona de xeito correcto!
       upload: Subir
@@ -1454,6 +1454,7 @@ gl:
   media_attachments:
     validations:
       images_and_video: Non podes anexar un vídeo a unha publicación que xa contén imaxes
+      not_found: Non se atopou o multimedia %{ids} ou xa é adxunto noutra publicación
       not_ready: Non se poden anexar ficheiros que aínda se están a procesar. Agarda un intre!
       too_many: Non pode anexar máis de 4 ficheiros
   migrations:
@@ -1755,7 +1756,7 @@ gl:
       private_long: Mostrar só as seguidoras
       public: Público
       public_long: Visible para calquera
-      unlisted: Sen listar
+      unlisted: Fóra das listas
       unlisted_long: Visible para calquera, pero non en cronoloxías públicas
   statuses_cleanup:
     enabled: Borrar automáticamente publicacións antigas

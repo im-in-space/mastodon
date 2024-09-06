@@ -66,7 +66,7 @@ export default class StatusPrepend extends PureComponent {
       return (
         <FormattedMessage
           id='notification.favourite'
-          defaultMessage='{name} favorited your status'
+          defaultMessage='{name} favorited your post'
           values={{ name : link }}
         />
       );
@@ -74,7 +74,7 @@ export default class StatusPrepend extends PureComponent {
       return (
         <FormattedMessage
           id='notification.reblog'
-          defaultMessage='{name} boosted your status'
+          defaultMessage='{name} boosted your post'
           values={{ name : link }}
         />
       );
