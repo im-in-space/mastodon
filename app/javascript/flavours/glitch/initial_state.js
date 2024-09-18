@@ -46,7 +46,6 @@
  * @property {boolean=} use_pending_items
  * @property {string} version
  * @property {string} sso_redirect
- * @property {boolean} force_grouped_notifications
  * @property {string} status_page_url
  * @property {boolean} system_emoji_font
  * @property {string} default_content_type
@@ -90,7 +89,7 @@ if (initialState) {
   try {
     // @ts-expect-error
     initialState.local_settings = JSON.parse(localStorage.getItem('mastodon-settings'));
-  } catch (e) {
+  } catch {
     initialState.local_settings = {};
   }
 }
@@ -138,7 +137,6 @@ export const languages = initialState?.languages;
 export const criticalUpdatesPending = initialState?.critical_updates_pending;
 export const statusPageUrl = getMeta('status_page_url');
 export const sso_redirect = getMeta('sso_redirect');
-export const forceGroupedNotifications = getMeta('force_grouped_notifications');
 
 // Glitch-soc-specific settings
 export const maxFeedHashtags = (initialState && initialState.max_feed_hashtags) || 4;
