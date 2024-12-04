@@ -1,6 +1,12 @@
 @import 'https://lucy.im-in.space/LargePreviews.css?v=202402211714';
 @import 'https://lucy.im-in.space/fonts/IosevkaCodeMin.css?v=28.1.0';
 
+/* temp fixes */
+/* put back some margin to the top */
+body.flavour-glitch[class*="skin-modern"] .drawer__pager {
+  margin-top: 1.5em;
+}
+
 /* z-index fix so the spoiler button doesn't go over the emoji picker  */
 body > [data-popper-placement] {
   z-index: 150 !important;
@@ -38,6 +44,12 @@ body > [data-popper-placement] {
   padding: 0.5rem;
 }
 
+/* Cleaner CW borders */
+.flavour-vanilla .content-warning::before,
+.flavour-vanilla .content-warning::after{
+    background: #e7b01c;
+}
+
 /* Global fixes */
 .status__prepend {
   background-color: transparent !important;
@@ -58,6 +70,12 @@ body > [data-popper-placement] {
 
 .about__domain-blocks__domain > p {
   display: none !important;
+}
+
+/* blockquote quote icon removal */
+.status__content__text blockquote::before {
+  background-color: transparent;
+  mask-image: none;
 }
 
 /* When the "content-type" button is shown we don't have too much space
