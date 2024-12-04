@@ -45,15 +45,17 @@ namespace :api, format: false do
       resources :list, only: :show
     end
 
-    get '/streaming', to: 'streaming#index'
-    get '/streaming/(*any)', to: 'streaming#index'
+    with_options to: 'streaming#index' do
+      get '/streaming'
+      get '/streaming/(*any)'
+    end
 
     resources :custom_emojis, only: [:index]
     resources :suggestions, only: [:index, :destroy]
     resources :scheduled_statuses, only: [:index, :show, :update, :destroy]
     resources :preferences, only: [:index]
 
-    resources :annual_reports, only: [:index] do
+    resources :annual_reports, only: [:index, :show] do
       member do
         post :read
       end
@@ -225,7 +227,7 @@ namespace :api, format: false do
 
     resources :featured_tags, only: [:index, :create, :destroy]
 
-    resources :polls, only: [:create, :show] do
+    resources :polls, only: [:show] do
       resources :votes, only: :create, module: :polls
     end
 
@@ -348,7 +350,7 @@ namespace :api, format: false do
   namespace :web do
     resource :settings, only: [:update]
     resources :embeds, only: [:show]
-    resources :push_subscriptions, only: [:create] do
+    resources :push_subscriptions, only: [:create, :destroy] do
       member do
         put :update
       end
