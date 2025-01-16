@@ -72,12 +72,6 @@ body > [data-popper-placement] {
   display: none !important;
 }
 
-/* blockquote quote icon removal */
-.status__content__text blockquote::before {
-  background-color: transparent;
-  mask-image: none;
-}
-
 /* When the "content-type" button is shown we don't have too much space
    for the composers actions, so let's make some. */
 .flavour-glitch .compose-form__buttons {
