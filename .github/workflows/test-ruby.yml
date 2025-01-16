@@ -128,6 +128,7 @@ jobs:
       matrix:
         ruby-version:
           - '3.2'
+          - '3.3'
           - '.ruby-version'
     steps:
       - uses: actions/checkout@v4
@@ -169,7 +170,7 @@ jobs:
 
       - name: Upload coverage reports to Codecov
         if: matrix.ruby-version == '.ruby-version'
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           files: coverage/lcov/*.lcov
         env:
@@ -177,7 +178,7 @@ jobs:
 
   test-libvips:
     name: Libvips tests
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
 
     needs:
       - build
@@ -229,6 +230,7 @@ jobs:
       matrix:
         ruby-version:
           - '3.2'
+          - '3.3'
           - '.ruby-version'
     steps:
       - uses: actions/checkout@v4
@@ -255,7 +257,7 @@ jobs:
 
       - name: Upload coverage reports to Codecov
         if: matrix.ruby-version == '.ruby-version'
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           files: coverage/lcov/mastodon.lcov
         env:
@@ -307,6 +309,7 @@ jobs:
       matrix:
         ruby-version:
           - '3.2'
+          - '3.3'
           - '.ruby-version'
 
     steps:
@@ -423,6 +426,7 @@ jobs:
       matrix:
         ruby-version:
           - '3.2'
+          - '3.3'
           - '.ruby-version'
         search-image:
           - docker.elastic.co/elasticsearch/elasticsearch:7.17.13
