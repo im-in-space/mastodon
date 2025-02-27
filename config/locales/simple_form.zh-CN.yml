@@ -3,6 +3,7 @@ zh-CN:
   simple_form:
     hints:
       account:
+        attribution_domains: 每行一个域名。这样就可以保护作品免受虚假署名。
         discoverable: 你的公开嘟文和个人资料可能会在 Mastodon 的多个位置展示，你的个人资料可能会被推荐给其他用户。
         display_name: 你的全名或昵称。
         fields: 你的主页、人称代词、年龄，以及任何你想要添加的内容。
@@ -46,7 +47,7 @@ zh-CN:
         current_username: 请输入当前账号的用户名以确认
         digest: 仅在你长时间未登录，且收到了私信时发送
         email: 我们会向你发送一封确认邮件
-        header: 支持WEBP、PNG、GIF 或 JPG。最大 %{size}。分辨率将被压缩至 %{dimensions}px
+        header: 支持 WEBP、PNG、GIF 或 JPG。最大 %{size}。分辨率将被压缩至 %{dimensions}px
         inbox_url: 从你想要使用的中继站的主页上复制 URL
         irreversible: 被过滤的嘟文会永久消失，移除过滤规则后也不会恢复
         locale: 在用户界面、电子邮件和推送通知中使用的语言
@@ -136,6 +137,7 @@ zh-CN:
         admin_email: 法务通知包括反通知、法院命令、内容下架要求与执法机关的要求。
         arbitration_address: 可以与上面的实际地址相同，若使用邮箱，则填写“N/A”
         arbitration_website: 可以为网页表单，若使用邮箱，则填写“N/A”
+        choice_of_law: 适用内部实质法律以管辖任何及所有索赔的城市、地区、领土或州。
         dmca_address: 如果你是位于美国的运营者，请使用在 DMCA 指定代表名录中注册的地址。如果你需要使用邮政信箱，可以直接申请。请使用 DMCA 指定代表邮政信箱豁免申请表，通过电子邮件联系版权办公室，并声明你是居家内容审核员，因担心审核操作会招致报复或打击报复，需要使用邮政信箱以避免公开家庭住址。
         dmca_email: 可使用与上方“法务通知接收邮箱地址”相同的邮箱地址。
         domain: 你所提供的在线服务的唯一标识。
@@ -155,6 +157,7 @@ zh-CN:
         url: 事件将被发往的目的地
     labels:
       account:
+        attribution_domains: 授权展示你的署名的网站
         discoverable: 在发现算法中展示你的账号与嘟文
         fields:
           name: 标签
@@ -231,6 +234,7 @@ zh-CN:
         setting_display_media_show_all: 显示全部
         setting_expand_spoilers: 一律展开具有内容警告的嘟文
         setting_hide_network: 隐藏你的社交网络
+        setting_missing_alt_text_modal: 发布媒体时若未为其设置替代文本，则显示确认对话框
         setting_reduce_motion: 降低过渡动画效果
         setting_system_font_ui: 使用系统默认字体
         setting_system_scrollbars_ui: 使用系统默认样式的滚动条
@@ -335,6 +339,7 @@ zh-CN:
         admin_email: 接收法务通知的邮箱地址
         arbitration_address: 仲裁通知的实际送达地址
         arbitration_website: 仲裁通知的在线提交入口
+        choice_of_law: 法律适用选择
         dmca_address: 接收DMCA/版权通知的实际地址
         dmca_email: 接收DMCA/版权通知的邮箱地址
         domain: 域名
