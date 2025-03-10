@@ -7182,6 +7182,8 @@ img.modal-warning {
   }
 
   &--layout-3 {
+    min-height: calc(64px * 2 + 8px);
+
     & > .media-gallery__item:nth-child(1) {
       border-end-end-radius: 0;
       border-start-end-radius: 0;
@@ -7201,6 +7203,8 @@ img.modal-warning {
   }
 
   &--layout-4 {
+    min-height: calc(64px * 2 + 8px);
+
     & > .media-gallery__item:nth-child(1) {
       border-end-end-radius: 0;
       border-start-end-radius: 0;
@@ -7806,7 +7810,8 @@ img.modal-warning {
     border-radius: 0;
   }
 
-  .load-more {
+  .load-more,
+  .timeline-hint {
     grid-column: span 3;
   }
 }
