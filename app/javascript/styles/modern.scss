@@ -1,4 +1,3 @@
-@import 'modern/variables';
-@import 'application';
-@import 'modern/style';
-@import 'modern/vanilla-diff';
+@use 'application';
+@use 'modern/style';
+@use 'modern/vanilla-diff';

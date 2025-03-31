@@ -7,7 +7,7 @@ $ui-highlight-color: $classic-highlight-color;
 $highlight-text-color: $ui-highlight-color;
 
 // Import default (vanilla) styles
-@import 'application';
+@use 'application';
 
 // Import our theme
-@import 'space';
+@use 'space';

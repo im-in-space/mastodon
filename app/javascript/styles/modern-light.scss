@@ -1,5 +1,4 @@
-@import 'modern-light/variables';
-@import 'application';
-@import 'modern/style';
-@import 'mastodon-light/diff';
-@import 'modern/vanilla-diff';
+@use 'application';
+@use 'modern/style';
+@use 'mastodon-light/diff';
+@use 'modern/vanilla-diff';

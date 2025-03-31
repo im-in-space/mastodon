@@ -1,6 +1,6 @@
 // Import default (vanilla) styles
-@import 'application';
+@use 'application';
 
 // Import our theme
-@import 'mastodon-bird-ui/layout-single-column';
-@import 'mastodon-bird-ui/layout-multiple-columns';
+@use 'mastodon-bird-ui/layout-single-column';
+@use 'mastodon-bird-ui/layout-multiple-columns';

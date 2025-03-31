@@ -1,5 +1,5 @@
 // Import default (vanilla) styles
-@import 'application';
+@use 'application';
 
 // Import our theme
-@import 'mfc/mastodonFlat';
+@use 'mfc/mastodonFlat';

@@ -1,7 +1,6 @@
-@import 'modern-light/variables';
-@import '../flavours/glitch/styles/mastodon-light';
-@import 'modern/style';
-@import 'modern/glitch-fixes';
+@use '../flavours/glitch/styles/mastodon-light';
+@use 'modern/style';
+@use 'modern/glitch-fixes';
 
 #mastodon {
   .compose-form .autosuggest-textarea__suggestions,

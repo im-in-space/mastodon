@@ -1,5 +1,5 @@
 // Import default (vanilla) styles
-@import 'application';
+@use 'application';
 
 // Import our theme
-@import 'cyberpunk-neon';
+@use 'cyberpunk-neon';
