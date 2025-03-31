@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_05_074104) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_13_123400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -443,6 +443,32 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_074104) do
     t.bigint "parent_id"
     t.boolean "allow_with_approval", default: false, null: false
     t.index ["domain"], name: "index_email_domain_blocks_on_domain", unique: true
+  end
+
+  create_table "fasp_debug_callbacks", force: :cascade do |t|
+    t.bigint "fasp_provider_id", null: false
+    t.string "ip", null: false
+    t.text "request_body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fasp_provider_id"], name: "index_fasp_debug_callbacks_on_fasp_provider_id"
+  end
+
+  create_table "fasp_providers", force: :cascade do |t|
+    t.boolean "confirmed", default: false, null: false
+    t.string "name", null: false
+    t.string "base_url", null: false
+    t.string "sign_in_url"
+    t.string "remote_identifier", null: false
+    t.string "provider_public_key_pem", null: false
+    t.string "server_private_key_pem", null: false
+    t.jsonb "capabilities", default: [], null: false
+    t.jsonb "privacy_policy"
+    t.string "contact_email"
+    t.string "fediverse_account"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["base_url"], name: "index_fasp_providers_on_base_url", unique: true
   end
 
   create_table "favourites", force: :cascade do |t|
@@ -1191,6 +1217,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_074104) do
     t.text "settings"
     t.string "time_zone"
     t.string "otp_secret"
+    t.datetime "age_verified_at"
     t.index ["account_id"], name: "index_users_on_account_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["created_by_application_id"], name: "index_users_on_created_by_application_id", where: "(created_by_application_id IS NOT NULL)"
@@ -1291,6 +1318,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_074104) do
   add_foreign_key "custom_filter_statuses", "statuses", on_delete: :cascade
   add_foreign_key "custom_filters", "accounts", on_delete: :cascade
   add_foreign_key "email_domain_blocks", "email_domain_blocks", column: "parent_id", on_delete: :cascade
+  add_foreign_key "fasp_debug_callbacks", "fasp_providers"
   add_foreign_key "favourites", "accounts", name: "fk_5eb6c2b873", on_delete: :cascade
   add_foreign_key "favourites", "statuses", name: "fk_b0e856845e", on_delete: :cascade
   add_foreign_key "featured_tags", "accounts", on_delete: :cascade

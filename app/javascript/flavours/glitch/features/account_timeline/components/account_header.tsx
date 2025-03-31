@@ -36,6 +36,7 @@ import {
 } from 'flavours/glitch/components/badge';
 import { Button } from 'flavours/glitch/components/button';
 import { CopyIconButton } from 'flavours/glitch/components/copy_icon_button';
+import { FormattedDateWrapper } from 'flavours/glitch/components/formatted_date';
 import { Icon } from 'flavours/glitch/components/icon';
 import { IconButton } from 'flavours/glitch/components/icon_button';
 import { LoadingIndicator } from 'flavours/glitch/components/loading_indicator';
@@ -932,7 +933,7 @@ export const AccountHeader: React.FC<{
                 onClickCapture={handleLinkClick}
               >
                 {account.id !== me && signedIn && (
-                  <AccountNoteContainer account={account} />
+                  <AccountNoteContainer accountId={accountId} />
                 )}
 
                 {account.note.length > 0 && account.note !== '<p></p>' && (
@@ -951,11 +952,12 @@ export const AccountHeader: React.FC<{
                       />
                     </dt>
                     <dd>
-                      {intl.formatDate(account.created_at, {
-                        year: 'numeric',
-                        month: 'short',
-                        day: '2-digit',
-                      })}
+                      <FormattedDateWrapper
+                        value={account.created_at}
+                        year='numeric'
+                        month='short'
+                        day='2-digit'
+                      />
                     </dd>
                   </dl>
 
