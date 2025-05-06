@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_13_123400) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_28_095029) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -555,19 +555,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_13_123400) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
-  create_table "imports", force: :cascade do |t|
-    t.integer "type", null: false
-    t.boolean "approved", default: false, null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "data_file_name"
-    t.string "data_content_type"
-    t.integer "data_file_size"
-    t.datetime "data_updated_at", precision: nil
-    t.bigint "account_id", null: false
-    t.boolean "overwrite", default: false, null: false
-  end
-
   create_table "invites", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "code", default: "", null: false
@@ -884,6 +871,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_13_123400) do
     t.string "url"
   end
 
+  create_table "quotes", id: :bigint, default: -> { "timestamp_id('quotes'::text)" }, force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "status_id", null: false
+    t.bigint "quoted_status_id"
+    t.bigint "quoted_account_id"
+    t.integer "state", default: 0, null: false
+    t.string "approval_uri"
+    t.string "activity_uri"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "quoted_account_id"], name: "index_quotes_on_account_id_and_quoted_account_id"
+    t.index ["activity_uri"], name: "index_quotes_on_activity_uri", unique: true, where: "(activity_uri IS NOT NULL)"
+    t.index ["approval_uri"], name: "index_quotes_on_approval_uri", where: "(approval_uri IS NOT NULL)"
+    t.index ["quoted_account_id"], name: "index_quotes_on_quoted_account_id"
+    t.index ["quoted_status_id"], name: "index_quotes_on_quoted_status_id"
+    t.index ["status_id"], name: "index_quotes_on_status_id", unique: true
+  end
+
   create_table "relationship_severance_events", force: :cascade do |t|
     t.integer "type", null: false
     t.string "target_name", null: false
@@ -1021,6 +1026,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_13_123400) do
     t.text "media_descriptions", array: true
     t.string "poll_options", array: true
     t.boolean "sensitive"
+    t.bigint "quote_id"
     t.index ["account_id"], name: "index_status_edits_on_account_id"
     t.index ["status_id"], name: "index_status_edits_on_status_id"
   end
@@ -1083,6 +1089,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_13_123400) do
     t.boolean "trendable"
     t.bigint "ordered_media_attachment_ids", array: true
     t.datetime "fetched_replies_at"
+    t.integer "quote_approval_policy", default: 0, null: false
     t.index ["account_id", "id", "visibility", "updated_at"], name: "index_statuses_20190820", order: { id: :desc }, where: "(deleted_at IS NULL)"
     t.index ["account_id"], name: "index_statuses_on_account_id"
     t.index ["deleted_at"], name: "index_statuses_on_deleted_at", where: "(deleted_at IS NOT NULL)"
@@ -1234,8 +1241,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_13_123400) do
     t.json "data"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.bigint "access_token_id"
-    t.bigint "user_id"
+    t.bigint "access_token_id", null: false
+    t.bigint "user_id", null: false
     t.boolean "standard", default: false, null: false
     t.index ["access_token_id"], name: "index_web_push_subscriptions_on_access_token_id", where: "(access_token_id IS NOT NULL)"
     t.index ["user_id"], name: "index_web_push_subscriptions_on_user_id"
@@ -1332,7 +1339,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_13_123400) do
   add_foreign_key "follows", "accounts", name: "fk_32ed1b5560", on_delete: :cascade
   add_foreign_key "generated_annual_reports", "accounts"
   add_foreign_key "identities", "users", name: "fk_bea040f377", on_delete: :cascade
-  add_foreign_key "imports", "accounts", name: "fk_6db1b6e408", on_delete: :cascade
   add_foreign_key "invites", "users", on_delete: :cascade
   add_foreign_key "list_accounts", "accounts", on_delete: :cascade
   add_foreign_key "list_accounts", "follow_requests", on_delete: :cascade
@@ -1367,6 +1373,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_13_123400) do
   add_foreign_key "polls", "statuses", on_delete: :cascade
   add_foreign_key "preview_card_trends", "preview_cards", on_delete: :cascade
   add_foreign_key "preview_cards", "accounts", column: "author_account_id", on_delete: :nullify
+  add_foreign_key "quotes", "accounts", column: "quoted_account_id", on_delete: :nullify
+  add_foreign_key "quotes", "accounts", on_delete: :cascade
+  add_foreign_key "quotes", "statuses", column: "quoted_status_id", on_delete: :nullify
+  add_foreign_key "quotes", "statuses", on_delete: :cascade
   add_foreign_key "report_notes", "accounts", on_delete: :cascade
   add_foreign_key "report_notes", "reports", on_delete: :cascade
   add_foreign_key "reports", "accounts", column: "action_taken_by_account_id", name: "fk_bca45b75fd", on_delete: :nullify
