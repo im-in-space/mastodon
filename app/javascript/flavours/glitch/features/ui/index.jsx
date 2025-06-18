@@ -32,7 +32,7 @@ import { expandHomeTimeline } from '../../actions/timelines';
 import initialState, { me, owner, singleUserMode, trendsEnabled, trendsAsLanding, disableHoverCards } from '../../initial_state';
 
 import BundleColumnError from './components/bundle_column_error';
-import Header from './components/header';
+import { NavigationBar } from './components/navigation_bar';
 import { UploadArea } from './components/upload_area';
 import { HashtagMenuController } from './components/hashtag_menu_controller';
 import ColumnsAreaContainer from './containers/columns_area_container';
@@ -671,12 +671,11 @@ class UI extends PureComponent {
             />
           </div>)}
 
-          <Header />
-
           <SwitchingColumnsArea identity={this.props.identity} location={location} singleColumn={layout === 'mobile' || layout === 'single-column'} forceOnboarding={firstLaunch && newAccount}>
             {children}
           </SwitchingColumnsArea>
 
+          <NavigationBar />
           {layout !== 'mobile' && <PictureInPicture />}
           <AlertsController />
           {!disableHoverCards && <HoverCardController />}

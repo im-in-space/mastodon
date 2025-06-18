@@ -1,5 +1,7 @@
 // @ts-check
 
+import path from 'node:path';
+
 import js from '@eslint/js';
 import { globalIgnores } from 'eslint/config';
 import formatjs from 'eslint-plugin-formatjs';
@@ -10,6 +12,7 @@ import jsxA11Y from 'eslint-plugin-jsx-a11y';
 import promisePlugin from 'eslint-plugin-promise';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
+import storybook from 'eslint-plugin-storybook';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
@@ -204,6 +207,7 @@ export default tseslint.config([
   importPlugin.flatConfigs.react,
   // @ts-expect-error -- For some reason the formatjs package exports an empty object?
   formatjs.configs.strict,
+  storybook.configs['flat/recommended'],
   {
     languageOptions: {
       globals: {
@@ -223,7 +227,9 @@ export default tseslint.config([
       'import/ignore': ['node_modules', '\\.(css|scss|json)$'],
 
       'import/resolver': {
-        typescript: {},
+        typescript: {
+          project: path.resolve(import.meta.dirname, './tsconfig.json'),
+        },
       },
     },
 
@@ -263,14 +269,24 @@ export default tseslint.config([
         {
           devDependencies: [
             'eslint.config.mjs',
-            'config/webpack/**',
             'app/javascript/mastodon/performance.js',
             'app/javascript/mastodon/test_setup.js',
+            'app/javascript/mastodon/test_helpers.tsx',
             'app/javascript/**/__tests__/**',
+            'app/javascript/**/*.stories.ts',
+            'app/javascript/**/*.stories.tsx',
+            'app/javascript/**/*.test.ts',
+            'app/javascript/**/*.test.tsx',
+            '.storybook/**/*.ts',
           ],
         },
       ],
-      'import/no-webpack-loader-syntax': 'error',
+      'import/no-unresolved': [
+        'error',
+        {
+          ignore: ['vite/modulepreload-polyfill', '^virtual:.+'],
+        },
+      ],
 
       'react/jsx-filename-extension': [
         'error',
@@ -311,7 +327,6 @@ export default tseslint.config([
       '**/*.config.js',
       '**/.*rc.js',
       '**/ide-helper.js',
-      'config/webpack/**/*',
       'config/formatjs-formatter.js',
     ],
 
@@ -411,9 +426,21 @@ export default tseslint.config([
     files: ['**/__tests__/*.js', '**/__tests__/*.jsx'],
 
     languageOptions: {
-      globals: {
-        ...globals.jest,
-      },
+      globals: globals.vitest,
+    },
+  },
+  {
+    files: ['**/*.stories.ts', '**/*.stories.tsx', '.storybook/**/*.ts'],
+    rules: {
+      'import/no-default-export': 'off',
+    },
+  },
+  {
+    files: ['vitest.shims.d.ts'],
+    rules: {
+      '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
+      '@typescript-eslint/no-unnecessary-condition': 'off',
+      '@typescript-eslint/prefer-nullish-coalescing': 'off',
     },
   },
 ]);

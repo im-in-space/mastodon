@@ -818,7 +818,6 @@ fy:
         preamble: It toanen fan ynteressante ynhâld is fan essinsjeel belang foar it oan board heljen fan nije brûkers dy’t mooglik net ien fan Mastodon kinne. Bepaal hoe’t ferskate funksjes foar it ûntdekken fan ynhâld en brûkers op jo server wurkje.
         profile_directory: Profylmap
         public_timelines: Iepenbiere tiidlinen
-        publish_discovered_servers: Untdekte servers publisearje
         publish_statistics: Statistiken publisearje
         title: Untdekke
         trends: Trends
@@ -2050,7 +2049,6 @@ fy:
       post_action: Opstelle
       post_step: Sis hallo tsjin de wrâld mei tekst, foto’s, fideo’s of peilingen.
       post_title: Jo earste berjocht meitsje
-      share_action: Diele
       share_step: Lit jo freonen witte hoe’t jo te finen binne op Mastodon.
       share_title: Jo Mastodon-profyl diele
       sign_in_action: Oanmelde

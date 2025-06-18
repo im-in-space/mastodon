@@ -27,6 +27,7 @@ import { MentionsPlaceholder } from 'flavours/glitch/components/mentions_placeho
 import { Permalink } from 'flavours/glitch/components/permalink';
 import { PictureInPicturePlaceholder } from 'flavours/glitch/components/picture_in_picture_placeholder';
 import StatusContent from 'flavours/glitch/components/status_content';
+import { QuotedStatus } from 'flavours/glitch/components/status_quoted';
 import { VisibilityIcon } from 'flavours/glitch/components/visibility_icon';
 import { Audio } from 'flavours/glitch/features/audio';
 import scheduleIdleTask from 'flavours/glitch/features/ui/util/schedule_idle_task';
@@ -265,7 +266,7 @@ export const DetailedStatus: React.FC<{
       );
       mediaIcons.push('video-camera');
     }
-  } else if (status.get('card')) {
+  } else if (status.get('card') && !status.get('quote')) {
     media = (
       <Card
         sensitive={status.get('sensitive')}
@@ -355,6 +356,9 @@ export const DetailedStatus: React.FC<{
         className={classNames(
           'detailed-status',
           `detailed-status-${status.get('visibility')}`,
+          {
+            'status--has-quote': !!status.get('quote'),
+          },
         )}
         data-status-by={status.getIn(['account', 'acct'])}
       >
@@ -412,6 +416,10 @@ export const DetailedStatus: React.FC<{
 
             {media}
             {hashtagBar}
+
+            {status.get('quote') && (
+              <QuotedStatus quote={status.get('quote')} />
+            )}
           </>
         )}
 
