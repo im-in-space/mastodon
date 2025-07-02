@@ -22,7 +22,7 @@ import { registrationsOpen, sso_redirect } from 'flavours/glitch/initial_state';
 import { selectUnreadNotificationGroupsCount } from 'flavours/glitch/selectors/notifications';
 import { useAppDispatch, useAppSelector } from 'flavours/glitch/store';
 
-const messages = defineMessages({
+export const messages = defineMessages({
   home: { id: 'tabs_bar.home', defaultMessage: 'Home' },
   search: { id: 'tabs_bar.search', defaultMessage: 'Search' },
   publish: { id: 'tabs_bar.publish', defaultMessage: 'New Post' },

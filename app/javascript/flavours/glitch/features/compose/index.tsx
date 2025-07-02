@@ -24,33 +24,28 @@ import { Icon } from 'flavours/glitch/components/icon';
 import glitchedElephant1 from 'flavours/glitch/images/mbstobon-ui-0.png';
 import glitchedElephant2 from 'flavours/glitch/images/mbstobon-ui-1.png';
 import glitchedElephant3 from 'flavours/glitch/images/mbstobon-ui-2.png';
-import { mascot } from 'flavours/glitch/initial_state';
+import { mascot, reduceMotion } from 'flavours/glitch/initial_state';
 import { useAppDispatch, useAppSelector } from 'flavours/glitch/store';
+
+import { messages as navbarMessages } from '../ui/components/navigation_bar';
 
 import { Search } from './components/search';
 import ComposeFormContainer from './containers/compose_form_container';
 
 const messages = defineMessages({
-  start: { id: 'getting_started.heading', defaultMessage: 'Getting started' },
-  home_timeline: { id: 'tabs_bar.home', defaultMessage: 'Home' },
-  notifications: {
-    id: 'tabs_bar.notifications',
-    defaultMessage: 'Notifications',
+  live_feed_public: {
+    id: 'navigation_bar.live_feed_public',
+    defaultMessage: 'Live feed (public)',
   },
-  public: {
-    id: 'navigation_bar.public_timeline',
-    defaultMessage: 'Federated timeline',
-  },
-  community: {
-    id: 'navigation_bar.community_timeline',
-    defaultMessage: 'Local timeline',
+  live_feed_local: {
+    id: 'navigation_bar.live_feed_local',
+    defaultMessage: 'Live feed (local)',
   },
   settings: {
     id: 'navigation_bar.app_settings',
     defaultMessage: 'App settings',
   },
   logout: { id: 'navigation_bar.logout', defaultMessage: 'Logout' },
-  compose: { id: 'navigation_bar.compose', defaultMessage: 'Compose new post' },
 });
 
 type ColumnMap = ImmutableMap<'id' | 'uuid' | 'params', string>;
@@ -127,19 +122,27 @@ const Compose: React.FC<{ multiColumn: boolean }> = ({ multiColumn }) => {
     elephantUIPlane,
   ][elefriend];
 
+  const scrollNavbarIntoView = useCallback(() => {
+    const navbar = document.querySelector('.navigation-panel');
+    navbar?.scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
+    });
+  }, []);
+
   if (multiColumn) {
     return (
       <div
         className='drawer'
         role='region'
-        aria-label={intl.formatMessage(messages.compose)}
+        aria-label={intl.formatMessage(navbarMessages.publish)}
       >
         <nav className='drawer__header'>
           <Link
             to='/getting-started'
             className='drawer__tab'
-            title={intl.formatMessage(messages.start)}
-            aria-label={intl.formatMessage(messages.start)}
+            title={intl.formatMessage(navbarMessages.menu)}
+            aria-label={intl.formatMessage(navbarMessages.menu)}
+            onClick={scrollNavbarIntoView}
           >
             <Icon id='bars' icon={MenuIcon} />
           </Link>
@@ -147,8 +150,8 @@ const Compose: React.FC<{ multiColumn: boolean }> = ({ multiColumn }) => {
             <Link
               to='/home'
               className='drawer__tab'
-              title={intl.formatMessage(messages.home_timeline)}
-              aria-label={intl.formatMessage(messages.home_timeline)}
+              title={intl.formatMessage(navbarMessages.home)}
+              aria-label={intl.formatMessage(navbarMessages.home)}
             >
               <Icon id='home' icon={HomeIcon} />
             </Link>
@@ -157,8 +160,8 @@ const Compose: React.FC<{ multiColumn: boolean }> = ({ multiColumn }) => {
             <Link
               to='/notifications'
               className='drawer__tab'
-              title={intl.formatMessage(messages.notifications)}
-              aria-label={intl.formatMessage(messages.notifications)}
+              title={intl.formatMessage(navbarMessages.notifications)}
+              aria-label={intl.formatMessage(navbarMessages.notifications)}
             >
               <span className='icon-badge-wrapper'>
                 <Icon id='bell' icon={NotificationsIcon} />
@@ -172,8 +175,8 @@ const Compose: React.FC<{ multiColumn: boolean }> = ({ multiColumn }) => {
             <Link
               to='/public/local'
               className='drawer__tab'
-              title={intl.formatMessage(messages.community)}
-              aria-label={intl.formatMessage(messages.community)}
+              title={intl.formatMessage(messages.live_feed_local)}
+              aria-label={intl.formatMessage(messages.live_feed_local)}
             >
               <Icon id='users' icon={PeopleIcon} />
             </Link>
@@ -182,8 +185,8 @@ const Compose: React.FC<{ multiColumn: boolean }> = ({ multiColumn }) => {
             <Link
               to='/public'
               className='drawer__tab'
-              title={intl.formatMessage(messages.public)}
-              aria-label={intl.formatMessage(messages.public)}
+              title={intl.formatMessage(messages.live_feed_public)}
+              aria-label={intl.formatMessage(messages.live_feed_public)}
             >
               <Icon id='globe' icon={PublicIcon} />
             </Link>
@@ -230,12 +233,12 @@ const Compose: React.FC<{ multiColumn: boolean }> = ({ multiColumn }) => {
   return (
     <Column
       bindToDocument={!multiColumn}
-      label={intl.formatMessage(messages.compose)}
+      label={intl.formatMessage(navbarMessages.publish)}
     >
       <ColumnHeader
         icon='pencil'
         iconComponent={EditIcon}
-        title={intl.formatMessage(messages.compose)}
+        title={intl.formatMessage(navbarMessages.publish)}
         multiColumn={multiColumn}
         showBackButton
       />
