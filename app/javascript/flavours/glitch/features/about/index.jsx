@@ -46,20 +46,6 @@ const mapStateToProps = state => ({
   domainBlocks: state.getIn(['server', 'domainBlocks']),
 });
 
-// START - im-in.space hardcoded additonal rules
-const customRules = {
-  bots: [
-    { id: 1, text: 'If the bot posts a lot (like RSS bots with 10+ posts per day), they should not post in the public timeline.' },
-    { id: 2, text: 'They should not randomly follow users and should not mention people unless the bot was explicitly solicited.' },
-    { id: 3, text: 'No NSFW at all.' },
-  ],
-  crossposting: [
-    { id: 1, text: 'Retweets shouldn\'t be posted in the public timeline. Use a more private privacy rule (like "unlisted" or "private"). Regular tweets and quotes-tweets are not limited. Note that you can use CWs on Twitter, start the tweet with "CW: [subject]".' },
-    { id: 2, text: 'If all you do is shitposting and it gets into the public timelines, you will get silenced, requiring people to follow you to see yours posts. Set a more private privacy rule like said above.' },
-  ],
-};
-// END - im-in.space hardcoded additonal rules
-
 class About extends PureComponent {
 
   static propTypes = {
@@ -138,28 +124,6 @@ class About extends PureComponent {
           </Section>
 
           <RulesSection />
-
-          {/* START - im-in.space hardcoded additonal rules */}
-          <Section title={intl.formatMessage(messages.rules) + ' (Bots)'}>
-            <ol className='rules-list'>
-              {customRules.bots.map(rule => (
-                <li key={rule.id}>
-                  <span className='rules-list__text'>{rule.text}</span>
-                </li>
-              ))}
-            </ol>
-          </Section>
-
-          <Section title={intl.formatMessage(messages.rules) + ' (Crossposting)'}>
-            <ol className='rules-list'>
-              {customRules.crossposting.map(rule => (
-                <li key={rule.id}>
-                  <span className='rules-list__text'>{rule.text}</span>
-                </li>
-              ))}
-            </ol>
-          </Section>
-          {/* END - im-in.space hardcoded additonal rules */}
 
           <Section title={intl.formatMessage(messages.blocks)} onOpen={this.handleDomainBlocksOpen}>
             {domainBlocks.get('isLoading') ? (
