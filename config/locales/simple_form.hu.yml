@@ -61,6 +61,7 @@ hu:
         setting_display_media_default: Kényes tartalomnak jelölt média elrejtése
         setting_display_media_hide_all: Média elrejtése mindig
         setting_display_media_show_all: Média megjelenítése mindig
+        setting_emoji_style: Az emodzsik megjelenítési módja. Az „Automatikus” megpróbálja a natív emodzsikat használni, de az örökölt böngészők esetén a Twemojira vált vissza.
         setting_system_scrollbars_ui: Csak Chrome és Safari alapú asztali böngészőkre vonatkozik
         setting_use_blurhash: A kihomályosítás az eredeti képből történik, de minden részletet elrejt
         setting_use_pending_items: Idővonal frissítése csak kattintásra automatikus görgetés helyett
@@ -150,8 +151,8 @@ hu:
       user:
         chosen_languages: Ha aktív, csak a kiválasztott nyelvű bejegyzések jelennek majd meg a nyilvános idővonalon
         date_of_birth:
-          one: Ahhoz, hogy a Mastodont használd, meg kell győződnünk arról, hogy legalább %{count} éves vagy. Ezt nem tároljuk.
-          other: Ahhoz, hogy a Mastodont használd, meg kell győződnünk arról, hogy legalább %{count} éves vagy. Ezt nem tároljuk.
+          one: Ahhoz, hogy a(z) %{domain} weboldalt használd, meg kell győződnünk arról, hogy legalább %{count} éves vagy. Ezt nem tároljuk.
+          other: Ahhoz, hogy a(z) %{domain} weboldalt használd, meg kell győződnünk arról, hogy legalább %{count} éves vagy. Ezt nem tároljuk.
         role: A szerep szabályozza, hogy a felhasználó milyen jogosultságokkal rendelkezik.
       user_role:
         color: A szerephez használandó szín mindenhol a felhasználói felületen, hexa RGB formátumban
@@ -241,6 +242,7 @@ hu:
         setting_display_media_default: Alapértelmezés
         setting_display_media_hide_all: Mindent elrejt
         setting_display_media_show_all: Mindent mutat
+        setting_emoji_style: Emodzsistílus
         setting_expand_spoilers: Tartalmi figyelmeztetéssel ellátott bejegyzések automatikus kinyitása
         setting_hide_network: Hálózatod elrejtése
         setting_missing_alt_text_modal: Megerősítési párbeszédablak megjelenítése a helyettesítő szöveg nélküli média közzététele előtt
