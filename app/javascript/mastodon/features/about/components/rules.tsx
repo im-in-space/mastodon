@@ -97,68 +97,70 @@ export const RulesSection: FC<RulesSectionProps> = ({ isLoading = false }) => {
     );
   }
 
-  return [
-    <Section key='rules-native' title={intl.formatMessage(messages.rules)}>
-      <ol className='rules-list'>
-        {rules.map((rule) => (
-          <li key={rule.id}>
-            <div className='rules-list__text'>{rule.text}</div>
-            {!!rule.hint && <div className='rules-list__hint'>{rule.hint}</div>}
-          </li>
-        ))}
-      </ol>
-
-      <div className='rules-languages'>
-        <label htmlFor='language-select'>
-          <FormattedMessage
-            id='about.language_label'
-            defaultMessage='Language'
-          />
-        </label>
-        <select onChange={handleLocaleChange} id='language-select'>
-          {localeOptions.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-              selected={option.value === locale}
-            >
-              {option.text}
-            </option>
+  return (
+    <>
+      <Section title={intl.formatMessage(messages.rules)}>
+        <ol className='rules-list'>
+          {rules.map((rule) => (
+            <li key={rule.id}>
+              <div className='rules-list__text'>{rule.text}</div>
+              {!!rule.hint && (
+                <div className='rules-list__hint'>{rule.hint}</div>
+              )}
+            </li>
           ))}
-        </select>
-      </div>
-    </Section>,
+        </ol>
 
-    /* START - im-in.space hardcoded additonal rules */
-    <Section
-      key='rules-hardcoded-bots'
-      title={intl.formatMessage(messages.rules) + ' (Bots)'}
-    >
-      <ol className='rules-list'>
-        {customRules.bots.map((rule) => (
-          <li key={rule.id}>
-            <div className='rules-list__text'>{rule.text}</div>
-            {!!rule.hint && <div className='rules-list__hint'>{rule.hint}</div>}
-          </li>
-        ))}
-      </ol>
-    </Section>,
+        <div className='rules-languages'>
+          <label htmlFor='language-select'>
+            <FormattedMessage
+              id='about.language_label'
+              defaultMessage='Language'
+            />
+          </label>
+          <select onChange={handleLocaleChange} id='language-select'>
+            {localeOptions.map((option) => (
+              <option
+                key={option.value}
+                value={option.value}
+                selected={option.value === locale}
+              >
+                {option.text}
+              </option>
+            ))}
+          </select>
+        </div>
+      </Section>
 
-    <Section
-      key='rules-hardcoded-crossposting'
-      title={intl.formatMessage(messages.rules) + ' (Crossposting)'}
-    >
-      <ol className='rules-list'>
-        {customRules.crossposting.map((rule) => (
-          <li key={rule.id}>
-            <div className='rules-list__text'>{rule.text}</div>
-            {!!rule.hint && <div className='rules-list__hint'>{rule.hint}</div>}
-          </li>
-        ))}
-      </ol>
-    </Section>,
-    /* END - im-in.space hardcoded additonal rules */
-  ];
+      {/* START - im-in.space hardcoded additonal rules */}
+      <Section title={intl.formatMessage(messages.rules) + ' (Bots)'}>
+        <ol className='rules-list'>
+          {customRules.bots.map((rule) => (
+            <li key={rule.id}>
+              <div className='rules-list__text'>{rule.text}</div>
+              {!!rule.hint && (
+                <div className='rules-list__hint'>{rule.hint}</div>
+              )}
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section title={intl.formatMessage(messages.rules) + ' (Crossposting)'}>
+        <ol className='rules-list'>
+          {customRules.crossposting.map((rule) => (
+            <li key={rule.id}>
+              <div className='rules-list__text'>{rule.text}</div>
+              {!!rule.hint && (
+                <div className='rules-list__hint'>{rule.hint}</div>
+              )}
+            </li>
+          ))}
+        </ol>
+      </Section>
+      {/* END - im-in.space hardcoded additonal rules */}
+    </>
+  );
 };
 
 const selectRules = (state: RootState) => {
