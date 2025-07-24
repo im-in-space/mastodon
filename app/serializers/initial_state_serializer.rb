@@ -47,6 +47,7 @@ class InitialStateSerializer < ActiveModel::Serializer
       store[:default_content_type] = object_account_user.setting_default_content_type
       store[:system_emoji_font] = object_account_user.setting_system_emoji_font
       store[:show_trends]       = Setting.trends && object_account_user.setting_trends
+      store[:emoji_style]       = object_account_user.settings['web.emoji_style'] if Mastodon::Feature.modern_emojis_enabled?
     else
       store[:auto_play_gif] = Setting.auto_play_gif
       store[:display_media] = Setting.display_media

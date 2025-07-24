@@ -8,13 +8,13 @@ import { withRouter } from 'react-router-dom';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 
-import { HotKeys } from 'react-hotkeys';
 
 import FlagIcon from '@/material-icons/400-24px/flag-fill.svg?react';
 import PersonIcon from '@/material-icons/400-24px/person-fill.svg?react';
 import PersonAddIcon from '@/material-icons/400-24px/person_add-fill.svg?react';
 import { Account } from 'flavours/glitch/components/account';
 import { Icon }  from 'flavours/glitch/components/icon';
+import { Hotkeys } from 'flavours/glitch/components/hotkeys';
 import { Permalink } from 'flavours/glitch/components/permalink';
 import { StatusQuoteManager } from 'flavours/glitch/components/status_quoted';
 import { WithRouterPropTypes } from 'flavours/glitch/utils/react_router';
@@ -121,7 +121,7 @@ class Notification extends ImmutablePureComponent {
     const { intl, unread } = this.props;
 
     return (
-      <HotKeys handlers={this.getHandlers()}>
+      <Hotkeys handlers={this.getHandlers()}>
         <div className={classNames('notification notification-follow focusable', { unread })} tabIndex={0} aria-label={notificationForScreenReader(intl, intl.formatMessage(messages.follow, { name: account.get('acct') }), notification.get('created_at'))}>
           <div className='notification__message'>
             <Icon id='user-plus' icon={PersonAddIcon} />
@@ -133,7 +133,7 @@ class Notification extends ImmutablePureComponent {
 
           <Account id={account.get('id')} hidden={this.props.hidden} />
         </div>
-      </HotKeys>
+      </Hotkeys>
     );
   }
 
@@ -141,7 +141,7 @@ class Notification extends ImmutablePureComponent {
     const { intl, unread } = this.props;
 
     return (
-      <HotKeys handlers={this.getHandlers()}>
+      <Hotkeys handlers={this.getHandlers()}>
         <div className={classNames('notification notification-follow-request focusable', { unread })} tabIndex={0} aria-label={notificationForScreenReader(intl, intl.formatMessage({ id: 'notification.follow_request', defaultMessage: '{name} has requested to follow you' }, { name: account.get('acct') }), notification.get('created_at'))}>
           <div className='notification__message'>
             <Icon id='user' icon={PersonIcon} />
@@ -153,7 +153,7 @@ class Notification extends ImmutablePureComponent {
 
           <FollowRequestContainer id={account.get('id')} withNote={false} hidden={this.props.hidden} />
         </div>
-      </HotKeys>
+      </Hotkeys>
     );
   }
 
@@ -313,7 +313,7 @@ class Notification extends ImmutablePureComponent {
     }
 
     return (
-      <HotKeys handlers={this.getHandlers()}>
+      <Hotkeys handlers={this.getHandlers()}>
         <div className={classNames('notification notification-severed-relationships focusable', { unread })} tabIndex={0} aria-label={notificationForScreenReader(intl, intl.formatMessage(messages.relationshipsSevered, { name: notification.getIn(['event', 'target_name']) }), notification.get('created_at'))}>
           <RelationshipsSeveranceEvent
             type={event.get('type')}
@@ -323,7 +323,7 @@ class Notification extends ImmutablePureComponent {
             hidden={hidden}
           />
         </div>
-      </HotKeys>
+      </Hotkeys>
     );
   }
 
@@ -336,7 +336,7 @@ class Notification extends ImmutablePureComponent {
     }
 
     return (
-      <HotKeys handlers={this.getHandlers()}>
+      <Hotkeys handlers={this.getHandlers()}>
         <div className={classNames('notification notification-moderation-warning focusable', { unread })} tabIndex={0} aria-label={notificationForScreenReader(intl, intl.formatMessage(messages.moderationWarning), notification.get('created_at'))}>
           <ModerationWarning
             action={warning.get('action')}
@@ -344,7 +344,7 @@ class Notification extends ImmutablePureComponent {
             hidden={hidden}
           />
         </div>
-      </HotKeys>
+      </Hotkeys>
     );
   }
 
@@ -352,7 +352,7 @@ class Notification extends ImmutablePureComponent {
     const { intl, unread } = this.props;
 
     return (
-      <HotKeys handlers={this.getHandlers()}>
+      <Hotkeys handlers={this.getHandlers()}>
         <div className={classNames('notification notification-admin-sign-up focusable', { unread })} tabIndex={0} aria-label={notificationForScreenReader(intl, intl.formatMessage(messages.adminSignUp, { name: account.get('acct') }), notification.get('created_at'))}>
           <div className='notification__message'>
             <Icon id='user-plus' icon={PersonAddIcon} />
@@ -364,7 +364,7 @@ class Notification extends ImmutablePureComponent {
 
           <Account id={account.get('id')} hidden={this.props.hidden} />
         </div>
-      </HotKeys>
+      </Hotkeys>
     );
   }
 
@@ -391,7 +391,7 @@ class Notification extends ImmutablePureComponent {
     );
 
     return (
-      <HotKeys handlers={this.getHandlers()}>
+      <Hotkeys handlers={this.getHandlers()}>
         <div className={classNames('notification notification-admin-report focusable', { unread })} tabIndex={0} aria-label={notificationForScreenReader(intl, intl.formatMessage(messages.adminReport, { name: account.get('acct'), target: notification.getIn(['report', 'target_account', 'acct']) }), notification.get('created_at'))}>
           <div className='notification__message'>
             <Icon id='flag' icon={FlagIcon} />
@@ -403,7 +403,7 @@ class Notification extends ImmutablePureComponent {
 
           <Report account={account} report={notification.get('report')} hidden={this.props.hidden} />
         </div>
-      </HotKeys>
+      </Hotkeys>
     );
   }
 

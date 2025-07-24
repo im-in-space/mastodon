@@ -4,7 +4,11 @@ import { Globals } from '@react-spring/web';
 
 import { setupBrowserNotifications } from 'flavours/glitch/actions/notifications';
 import Mastodon from 'flavours/glitch/containers/mastodon';
-import { me, reduceMotion } from 'flavours/glitch/initial_state';
+import {
+  isFeatureEnabled,
+  me,
+  reduceMotion,
+} from 'flavours/glitch/initial_state';
 import * as perf from 'flavours/glitch/performance';
 import ready from 'flavours/glitch/ready';
 import { store } from 'flavours/glitch/store';
@@ -27,6 +31,13 @@ function main() {
       Globals.assign({
         skipAnimation: true,
       });
+    }
+
+    if (isFeatureEnabled('modern_emojis')) {
+      const { initializeEmoji } = await import(
+        '@/flavours/glitch/features/emoji'
+      );
+      await initializeEmoji();
     }
 
     const root = createRoot(mountNode);
