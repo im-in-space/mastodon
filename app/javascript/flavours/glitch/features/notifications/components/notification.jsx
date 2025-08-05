@@ -8,8 +8,8 @@ import { withRouter } from 'react-router-dom';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 
-
 import FlagIcon from '@/material-icons/400-24px/flag-fill.svg?react';
+import FormatQuoteIcon from '@/material-icons/400-24px/format_quote.svg?react';
 import PersonIcon from '@/material-icons/400-24px/person-fill.svg?react';
 import PersonAddIcon from '@/material-icons/400-24px/person_add-fill.svg?react';
 import { Account } from 'flavours/glitch/components/account';
@@ -229,6 +229,31 @@ class Notification extends ImmutablePureComponent {
     );
   }
 
+  renderQuote (notification) {
+    return (
+      <StatusQuoteManager
+        containerId={notification.get('id')}
+        hidden={!!this.props.hidden}
+        id={notification.get('status')}
+        account={notification.get('account')}
+        prepend='quote'
+        muted
+        notification={notification}
+        onMoveDown={this.handleMoveDown}
+        onMoveUp={this.handleMoveUp}
+        onMention={this.props.onMention}
+        contextType='notifications'
+        getScrollPosition={this.props.getScrollPosition}
+        updateScrollBottom={this.props.updateScrollBottom}
+        cachedMediaWidth={this.props.cachedMediaWidth}
+        cacheMediaWidth={this.props.cacheMediaWidth}
+        onUnmount={this.props.onUnmount}
+        withDismiss
+        unread={this.props.unread}
+      />
+    );
+  }
+
   renderStatus (notification) {
     return (
       <StatusQuoteManager
@@ -431,6 +456,8 @@ class Notification extends ImmutablePureComponent {
       return this.renderFollowRequest(notification, account, link);
     case 'mention':
       return this.renderMention(notification);
+    case 'quote':
+      return this.renderQuote(notification);
     case 'favourite':
       return this.renderFavourite(notification);
     case 'reblog':

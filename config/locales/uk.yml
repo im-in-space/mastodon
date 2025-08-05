@@ -1072,6 +1072,11 @@ uk:
           other: Використали %{count} людей за минулий тиждень
       title: Рекомендації та тренди
       trending: Популярне
+    username_blocks:
+      comparison:
+        contains: Містить
+        equals: Дорівнює
+      delete: Видалити
     warning_presets:
       add_new: Додати новий
       delete: Видалити
@@ -1628,6 +1633,8 @@ uk:
       title: Нова згадка
     poll:
       subject: Опитування від %{name} завершено
+    quote:
+      body: 'Ваш пост був процитований %{name}:'
     reblog:
       body: "%{name} поширює ваш допис:"
       subject: "%{name} поширив ваш статус"
@@ -1846,6 +1853,7 @@ uk:
     edited_at_html: Відредаговано %{date}
     errors:
       in_reply_not_found: Допису, на який ви намагаєтеся відповісти, не існує.
+      quoted_status_not_found: Повідомлення, яке ви намагаєтеся цитувати, не існує.
     over_character_limit: перевищено ліміт символів %{max}
     pin_errors:
       direct: Не можливо прикріпити дописи, які видимі лише згаданим користувачам

@@ -23,28 +23,6 @@ defaults: &defaults
   trendable_by_default: false
   trending_status_cw: true
   hide_followers_count: false
-  reserved_usernames:
-    - abuse
-    - account
-    - accounts
-    - admin
-    - administration
-    - administrator
-    - admins
-    - help
-    - helpdesk
-    - instance
-    - mod
-    - moderator
-    - moderators
-    - mods
-    - owner
-    - root
-    - security
-    - server
-    - staff
-    - support
-    - webmaster
   disallowed_hashtags: # space separated string or list of hashtags without the hash
   bootstrap_timeline_accounts: ''
   activity_api_enabled: true
