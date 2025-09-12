@@ -26,7 +26,7 @@ class InitialStateSerializer < ActiveModel::Serializer
     }
   end
 
-  def meta # rubocop:disable Metrics/AbcSize
+  def meta
     store = default_meta_store
 
     if object.current_account
@@ -71,6 +71,7 @@ class InitialStateSerializer < ActiveModel::Serializer
       store[:default_privacy]   = object.visibility || object_account_user.setting_default_privacy
       store[:default_sensitive] = object_account_user.setting_default_sensitive
       store[:default_language]  = object_account_user.preferred_posting_language
+      store[:default_quote_policy] = object_account_user.setting_default_quote_policy
     end
 
     store[:text] = object.text if object.text

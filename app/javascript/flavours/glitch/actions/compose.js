@@ -90,6 +90,7 @@ export const COMPOSE_FOCUS = 'COMPOSE_FOCUS';
 const messages = defineMessages({
   uploadErrorLimit: { id: 'upload_error.limit', defaultMessage: 'File upload limit exceeded.' },
   uploadErrorPoll:  { id: 'upload_error.poll', defaultMessage: 'File upload not allowed with polls.' },
+  uploadQuote: { id: 'upload_error.quote', defaultMessage: 'File upload not allowed with quotes.' },
   open: { id: 'compose.published.open', defaultMessage: 'Open' },
   published: { id: 'compose.published.body', defaultMessage: 'Post published.' },
   saved: { id: 'compose.saved.body', defaultMessage: 'Post saved.' },
@@ -102,13 +103,18 @@ export const ensureComposeIsVisible = (getState) => {
 };
 
 export function setComposeToStatus(status, text, spoiler_text, content_type) {
-  return{
-    type: COMPOSE_SET_STATUS,
-    status,
-    text,
-    spoiler_text,
-    content_type,
-  };
+  return (dispatch, getState) => {
+    const maxOptions = getState().server.getIn(['server', 'configuration', 'polls', 'max_options']);
+
+    dispatch({
+      type: COMPOSE_SET_STATUS,
+      status,
+      text,
+      spoiler_text,
+      content_type,
+      maxOptions,
+    });
+  }
 }
 
 export function changeCompose(text) {
@@ -155,7 +161,7 @@ export function resetCompose() {
   };
 }
 
-export const focusCompose = (defaultText) => (dispatch, getState) => {
+export const focusCompose = (defaultText = '') => (dispatch, getState) => {
   dispatch({
     type: COMPOSE_FOCUS,
     defaultText,
@@ -194,8 +200,9 @@ export function directCompose(account) {
 
 /**
  * @param {null | string} overridePrivacy
+ * @param {undefined | Function} successCallback
  */
-export function submitCompose(overridePrivacy = null) {
+export function submitCompose(overridePrivacy = null, successCallback = undefined) {
   return function (dispatch, getState) {
     let status     = getState().getIn(['compose', 'text'], '');
     const media    = getState().getIn(['compose', 'media_attachments']);
@@ -233,6 +240,7 @@ export function submitCompose(overridePrivacy = null) {
       });
     }
 
+    const visibility = overridePrivacy || getState().getIn(['compose', 'privacy']);
     api().request({
       url: statusId === null ? '/api/v1/statuses' : `/api/v1/statuses/${statusId}`,
       method: statusId === null ? 'post' : 'put',
@@ -244,9 +252,11 @@ export function submitCompose(overridePrivacy = null) {
         media_attributes,
         sensitive: getState().getIn(['compose', 'sensitive']) || (spoilerText.length > 0 && media.size !== 0),
         spoiler_text: spoilerText,
-        visibility: overridePrivacy || getState().getIn(['compose', 'privacy']),
+        visibility: visibility,
         poll: getState().getIn(['compose', 'poll'], null),
         language: getState().getIn(['compose', 'language']),
+        quoted_status_id: getState().getIn(['compose', 'quoted_status_id']),
+        quote_approval_policy: visibility === 'private' || visibility === 'direct' ? 'nobody' : getState().getIn(['compose', 'quote_policy']),
       },
       headers: {
         'Idempotency-Key': getState().getIn(['compose', 'idempotencyKey']),
@@ -260,6 +270,9 @@ export function submitCompose(overridePrivacy = null) {
 
       dispatch(insertIntoTagHistory(response.data.tags, status));
       dispatch(submitComposeSuccess({ ...response.data }));
+      if (typeof successCallback === 'function') {
+        successCallback(response.data);
+      }
 
       // To make the app more responsive, immediately push the status
       // into the columns
@@ -338,6 +351,11 @@ export function tenorSet(options) {
 
 export function uploadCompose(files, alt = '') {
   return function (dispatch, getState) {
+    // Exit if there's a quote.
+    if (getState().compose.get('quoted_status_id')) {
+      dispatch(showAlert({ message: messages.uploadQuote }));
+      return;
+    }
     const uploadLimit = getState().getIn(['server', 'server', 'configuration', 'statuses', 'max_media_attachments']);
     const media = getState().getIn(['compose', 'media_attachments']);
     const pending = getState().getIn(['compose', 'pending_media_attachments']);

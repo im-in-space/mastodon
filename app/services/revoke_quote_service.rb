@@ -8,10 +8,17 @@ class RevokeQuoteService < BaseService
     @account = quote.quoted_account
 
     @quote.reject!
+    distribute_update!
     distribute_stamp_deletion!
   end
 
   private
+
+  def distribute_update!
+    return if @quote.status_id.nil?
+
+    DistributionWorker.perform_async(@quote.status_id, { 'update' => true })
+  end
 
   def distribute_stamp_deletion!
     ActivityPub::DeliveryWorker.push_bulk(inboxes, limit: 1_000) do |inbox_url|
@@ -27,6 +34,6 @@ class RevokeQuoteService < BaseService
   end
 
   def signed_activity_json
-    @signed_activity_json ||= Oj.dump(serialize_payload(@quote, ActivityPub::DeleteQuoteAuthorizationSerializer, signer: @account, always_sign: true))
+    @signed_activity_json ||= Oj.dump(serialize_payload(@quote, ActivityPub::DeleteQuoteAuthorizationSerializer, signer: @account, always_sign: true, force_approval_id: true))
   end
 end

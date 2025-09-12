@@ -159,6 +159,10 @@ pt-PT:
         name: Nome público da função, se esta estiver definida para ser apresentada com um emblema
         permissions_as_keys: Utilizadores com esta função terão acesso a...
         position: Funções mais altas decidem a resolução de conflitos em certas situações. Certas ações só podem ser executadas com certas funções com uma menor prioridade
+      username_block:
+        allow_with_approval: Em vez de impedir totalmente a inscrição, as inscrições correspondentes exigirão a sua aprovação
+        comparison: Tenha em atenção o Problema de Scunthorpe ao bloquear correspondências parciais
+        username: Terá correspondência independentemente das maiúsculas e minúsculas e de homógrafos comuns, como "4" para "a" ou "3" para "e"
       webhook:
         events: Selecione os eventos a enviar
         template: Componha o seu próprio conteúdo JSON utilizando a interpolação de variáveis. Deixar em branco para o JSON predefinido.
@@ -231,7 +235,7 @@ pt-PT:
         setting_auto_play_gif: Reproduzir GIF automaticamente
         setting_boost_modal: Mostrar caixa de diálogo de confirmação antes de impulsionar
         setting_default_language: Idioma de publicação
-        setting_default_privacy: Privacidade da publicação
+        setting_default_privacy: Visibilidade da publicação
         setting_default_quote_policy: Quem pode citar
         setting_default_sensitive: Marcar sempre os multimédia como sensíveis
         setting_delete_modal: Solicitar confirmação antes de eliminar uma publicação
@@ -324,6 +328,7 @@ pt-PT:
         follow_request: Alguém pediu para ser seu seguidor
         mention: Alguém o mencionou
         pending_account: Uma nova conta aguarda aprovação
+        quote: Alguém o citou
         reblog: Alguém impulsionou uma publicação sua
         report: Uma nova denúncia foi submetida
         software_updates:
@@ -370,6 +375,10 @@ pt-PT:
         name: Nome
         permissions_as_keys: Permissões
         position: Prioridade
+      username_block:
+        allow_with_approval: Permitir inscrições com aprovação
+        comparison: Método de comparação
+        username: Palavra a corresponder
       webhook:
         events: Eventos ativados
         template: Modelo de conteúdo
