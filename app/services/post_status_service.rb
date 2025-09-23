@@ -65,7 +65,7 @@ class PostStatusService < BaseService
   private
 
   def fill_blank_text!
-    return unless @text.blank? && @options[:spoiler_text].present?
+    return unless @text.blank? && @options[:spoiler_text].present? && @quoted_status.blank?
 
     @text = begin
       if @media&.any?(&:video?) || @media&.any?(&:gifv?)

@@ -1,48 +1,33 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-
-import classNames from 'classnames';
 
 import type { Map as ImmutableMap } from 'immutable';
 
 import { LearnMoreLink } from 'mastodon/components/learn_more_link';
 import StatusContainer from 'mastodon/containers/status_container';
+import { domain } from 'mastodon/initial_state';
+import type { Account } from 'mastodon/models/account';
 import type { Status } from 'mastodon/models/status';
 import type { RootState } from 'mastodon/store';
 import { useAppDispatch, useAppSelector } from 'mastodon/store';
 
+import { revealAccount } from '../actions/accounts_typed';
 import { fetchStatus } from '../actions/statuses';
 import { makeGetStatusWithExtraInfo } from '../selectors';
+import { getAccountHidden } from '../selectors/accounts';
 
 import { Button } from './button';
 
 const MAX_QUOTE_POSTS_NESTING_LEVEL = 1;
 
-const QuoteWrapper: React.FC<{
-  isError?: boolean;
-  contextType?: string;
-  onQuoteCancel?: () => void;
-  children: React.ReactElement;
-}> = ({ isError, contextType, onQuoteCancel, children }) => {
-  return (
-    <div
-      className={classNames('status__quote', {
-        'status__quote--error': isError,
-      })}
-    >
-      {children}
-      {contextType === 'composer' && (
-        <Button compact plain onClick={onQuoteCancel}>
-          <FormattedMessage id='status.remove_quote' defaultMessage='Remove' />
-        </Button>
-      )}
-    </div>
-  );
-};
-
 const NestedQuoteLink: React.FC<{ status: Status }> = ({ status }) => {
-  const accountId = status.get('account') as string;
+  const accountObjectOrId = status.get('account') as string | Account;
+  const accountId =
+    typeof accountObjectOrId === 'string'
+      ? accountObjectOrId
+      : accountObjectOrId.id;
+
   const account = useAppSelector((state) =>
     accountId ? state.accounts.get(accountId) : undefined,
   );
@@ -73,6 +58,29 @@ type GetStatusSelector = (
 };
 
 type QuoteMap = ImmutableMap<'state' | 'quoted_status', string | null>;
+
+const LimitedAccountHint: React.FC<{ accountId: string }> = ({ accountId }) => {
+  const dispatch = useAppDispatch();
+  const reveal = useCallback(() => {
+    dispatch(revealAccount({ id: accountId }));
+  }, [dispatch, accountId]);
+
+  return (
+    <>
+      <FormattedMessage
+        id='status.quote_error.limited_account_hint.title'
+        defaultMessage='This account has been hidden by the moderators of {domain}.'
+        values={{ domain }}
+      />
+      <button onClick={reveal} className='link-button'>
+        <FormattedMessage
+          id='status.quote_error.limited_account_hint.action'
+          defaultMessage='Show anyway'
+        />
+      </button>
+    </>
+  );
+};
 
 interface QuotedStatusProps {
   quote: QuoteMap;
@@ -105,6 +113,13 @@ export const QuotedStatus: React.FC<QuotedStatusProps> = ({
   );
   const { status, loadingState } = useAppSelector((state) =>
     getStatusSelector(state, { id: quotedStatusId, contextType }),
+  );
+
+  const accountId: string | null = status?.get('account')
+    ? (status.get('account') as Account).id
+    : null;
+  const hiddenAccount = useAppSelector(
+    (state) => accountId && getAccountHidden(state, accountId),
   );
 
   const shouldFetchQuote =
@@ -182,17 +197,25 @@ export const QuotedStatus: React.FC<QuotedStatusProps> = ({
         defaultMessage='Post unavailable'
       />
     );
+  } else if (hiddenAccount && accountId) {
+    quoteError = <LimitedAccountHint accountId={accountId} />;
   }
 
   if (quoteError) {
+    const hasRemoveButton = contextType === 'composer' && !!onQuoteCancel;
+
     return (
-      <QuoteWrapper
-        isError
-        contextType={contextType}
-        onQuoteCancel={onQuoteCancel}
-      >
+      <div className='status__quote status__quote--error'>
         {quoteError}
-      </QuoteWrapper>
+        {hasRemoveButton && (
+          <Button compact plain onClick={onQuoteCancel}>
+            <FormattedMessage
+              id='status.remove_quote'
+              defaultMessage='Remove'
+            />
+          </Button>
+        )}
+      </div>
     );
   }
 
@@ -205,7 +228,7 @@ export const QuotedStatus: React.FC<QuotedStatusProps> = ({
     childQuote && nestingLevel <= MAX_QUOTE_POSTS_NESTING_LEVEL;
 
   return (
-    <QuoteWrapper>
+    <div className='status__quote'>
       {/* @ts-expect-error Status is not yet typed */}
       <StatusContainer
         isQuotedPost
@@ -226,7 +249,7 @@ export const QuotedStatus: React.FC<QuotedStatusProps> = ({
           />
         )}
       </StatusContainer>
-    </QuoteWrapper>
+    </div>
   );
 };
 

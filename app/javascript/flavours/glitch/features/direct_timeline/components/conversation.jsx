@@ -20,12 +20,12 @@ import { Hotkeys } from 'flavours/glitch/components/hotkeys';
 import AttachmentList from 'flavours/glitch/components/attachment_list';
 import AvatarComposite from 'flavours/glitch/components/avatar_composite';
 import { IconButton } from 'flavours/glitch/components/icon_button';
-import { Permalink } from 'flavours/glitch/components/permalink';
 import { RelativeTimestamp } from 'flavours/glitch/components/relative_timestamp';
 import StatusContent from 'flavours/glitch/components/status_content';
 import { Dropdown } from 'flavours/glitch/components/dropdown_menu';
 import { autoPlayGif } from 'flavours/glitch/initial_state';
 import { makeGetStatus } from 'flavours/glitch/selectors';
+import { LinkedDisplayName } from '@/flavours/glitch/components/display_name';
 
 const messages = defineMessages({
   more: { id: 'status.more', defaultMessage: 'More' },
@@ -148,15 +148,8 @@ export const Conversation = ({ conversation, scrollKey }) => {
 
   menu.push({ text: intl.formatMessage(messages.delete), action: handleDelete });
 
-  const names = accounts.map(a => (
-    <Permalink to={`/@${a.get('acct')}`} href={a.get('url')} key={a.get('id')} data-hover-card-account={a.get('id')}>
-      <bdi>
-        <strong
-          className='display-name__html'
-          dangerouslySetInnerHTML={{ __html: a.get('display_name_html') }}
-        />
-      </bdi>
-    </Permalink>
+  const names = accounts.map((account) => (
+    <LinkedDisplayName displayProps={{account, variant: 'simple'}} key={account.get('id')} />
   )).reduce((prev, cur) => [prev, ', ', cur]);
 
   const handlers = {

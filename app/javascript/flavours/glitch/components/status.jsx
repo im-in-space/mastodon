@@ -25,10 +25,9 @@ import { displayMedia } from '../initial_state';
 import AttachmentList from './attachment_list';
 import { Avatar } from './avatar';
 import { AvatarOverlay } from './avatar_overlay';
-import { DisplayName } from './display_name';
+import { LinkedDisplayName } from './display_name';
 import { getHashtagBarForStatus } from './hashtag_bar';
 import { MentionsPlaceholder } from './mentions_placeholder';
-import { Permalink } from './permalink';
 import StatusActionBar from './status_action_bar';
 import StatusContent from './status_content';
 import StatusIcons from './status_icons';
@@ -713,14 +712,11 @@ class Status extends ImmutablePureComponent {
 
             {(!muted) && (
               <header onClick={this.handleHeaderClick} onAuxClick={this.handleHeaderClick} className='status__info'>
-                <Permalink href={status.getIn(['account', 'url'])} to={`/@${status.getIn(['account', 'acct'])}`} title={status.getIn(['account', 'acct'])} data-hover-card-account={status.getIn(['account', 'id'])} className='status__display-name'>
+                <LinkedDisplayName displayProps={{account: status.get('account')}} className='status__display-name'>
                   <div className='status__avatar'>
                     {statusAvatar}
                   </div>
-
-                  <DisplayName account={status.get('account')} />
-                </Permalink>
-
+                </LinkedDisplayName>
 
                 {isQuotedPost && !!this.props.onQuoteCancel ? (
                   <IconButton
