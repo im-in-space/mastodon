@@ -36,7 +36,13 @@ import { IconButton } from './icon_button';
 
 const domParser = new DOMParser();
 
-export const textForScreenReader = (intl, status, rebloggedByText = false, expanded = false) => {
+const messages = defineMessages({
+  quote_noun: { id: 'status.quote_noun', defaultMessage: 'Quote', description: 'Quote as a noun' },
+  contains_quote: { id: 'status.contains_quote', defaultMessage: 'Contains quote' },
+  quote_cancel: { id: 'status.quote.cancel', defaultMessage: 'Cancel quote' },
+});
+
+export const textForScreenReader = ({intl, status, rebloggedByText = false, isQuote = false, expanded = false}) => {
   const displayName = status.getIn(['account', 'display_name']);
 
   const spoilerText = status.getIn(['translation', 'spoiler_text']) || status.get('spoiler_text');
@@ -44,15 +50,14 @@ export const textForScreenReader = (intl, status, rebloggedByText = false, expan
   const contentText = domParser.parseFromString(contentHtml, 'text/html').documentElement.textContent;
 
   const values = [
+    isQuote ? intl.formatMessage(messages.quote_noun) : undefined,
     displayName.length === 0 ? status.getIn(['account', 'acct']).split('@')[0] : displayName,
     spoilerText && !expanded ? spoilerText : contentText,
+    !!status.get('quote') ? intl.formatMessage(messages.contains_quote) : undefined,
     intl.formatDate(status.get('created_at'), { hour: '2-digit', minute: '2-digit', month: 'short', day: 'numeric' }),
     status.getIn(['account', 'acct']),
-  ];
-
-  if (rebloggedByText) {
-    values.push(rebloggedByText);
-  }
+    rebloggedByText,
+  ].filter(val => !!val);
 
   return values.join(', ');
 };
@@ -72,10 +77,6 @@ export const defaultMediaVisibility = (status, settings) => {
 
   return !status.get('matched_media_filters') && (displayMedia !== 'hide_all' && !status.get('sensitive') || displayMedia === 'show_all');
 };
-
-const messages = defineMessages({
-  quote_cancel: { id: 'status.quote.cancel', defaultMessage: 'Cancel quote' },
-});
 
 class Status extends ImmutablePureComponent {
 
@@ -688,7 +689,7 @@ class Status extends ImmutablePureComponent {
           {...selectorAttribs}
           tabIndex={unfocusable ? null : 0}
           data-featured={featured ? 'true' : null}
-          aria-label={textForScreenReader(intl, status, rebloggedByText, !status.get('hidden'))}
+          aria-label={textForScreenReader({intl, status, rebloggedByText, isQuote: isQuotedPost, expanded: !status.get('hidden')})}
           ref={this.handleRef}
           data-nosnippet={status.getIn(['account', 'noindex'], true) || undefined}
         >
