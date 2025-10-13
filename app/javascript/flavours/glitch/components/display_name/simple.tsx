@@ -1,7 +1,6 @@
 import type { ComponentPropsWithoutRef, FC } from 'react';
 
-import { EmojiHTML } from '@/flavours/glitch/features/emoji/emoji_html';
-import { isModernEmojiEnabled } from '@/flavours/glitch/utils/environment';
+import { EmojiHTML } from '../emoji/html';
 
 import type { DisplayNameProps } from './index';
 
@@ -12,12 +11,15 @@ export const DisplayNameSimple: FC<
   if (!account) {
     return null;
   }
-  const accountName = isModernEmojiEnabled()
-    ? account.get('display_name')
-    : account.get('display_name_html');
+
   return (
     <bdi>
-      <EmojiHTML {...props} htmlString={accountName} shallow as='span' />
+      <EmojiHTML
+        {...props}
+        as='span'
+        htmlString={account.get('display_name_html')}
+        extraEmojis={account.get('emojis')}
+      />
     </bdi>
   );
 };

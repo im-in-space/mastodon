@@ -25,6 +25,7 @@ import StatusContent from 'flavours/glitch/components/status_content';
 import { Dropdown } from 'flavours/glitch/components/dropdown_menu';
 import { makeGetStatus } from 'flavours/glitch/selectors';
 import { LinkedDisplayName } from '@/flavours/glitch/components/display_name';
+import { AnimateEmojiProvider } from '@/flavours/glitch/components/emoji/context';
 
 const messages = defineMessages({
   more: { id: 'status.more', defaultMessage: 'More' },
@@ -144,9 +145,9 @@ export const Conversation = ({ conversation, scrollKey }) => {
               {unread && <span className='conversation__unread' />} <RelativeTimestamp timestamp={lastStatus.get('created_at')} />
             </div>
 
-            <div className='conversation__content__names animate-parent'>
+            <AnimateEmojiProvider className='conversation__content__names'>
               <FormattedMessage id='conversation.with' defaultMessage='With {names}' values={{ names: <span>{names}</span> }} />
-            </div>
+            </AnimateEmojiProvider>
           </div>
 
           <StatusContent

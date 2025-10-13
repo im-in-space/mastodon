@@ -1,5 +1,7 @@
 import React from 'react';
 
+import htmlConfig from '../../../config/html-tags.json';
+
 // NB: This function can still return unsafe HTML
 export const unescapeHTML = (html: string) => {
   const wrapper = document.createElement('div');
@@ -10,64 +12,60 @@ export const unescapeHTML = (html: string) => {
   return wrapper.textContent;
 };
 
+interface AllowedTag {
+  /* True means allow, false disallows global attributes, string renames the attribute name for React. */
+  attributes?: Record<string, boolean | string>;
+  /* If false, the tag cannot have children. Undefined or true means allowed. */
+  children?: boolean;
+}
+
+type AllowedTagsType = {
+  [Tag in keyof React.ReactHTML]?: AllowedTag;
+};
+
+const globalAttributes: Record<string, boolean | string> = htmlConfig.global;
+const defaultAllowedTags: AllowedTagsType = htmlConfig.tags;
+
 interface QueueItem {
   node: Node;
   parent: React.ReactNode[];
   depth: number;
 }
 
-interface Options {
-  maxDepth?: number;
-  onText?: (text: string) => React.ReactNode;
-  onElement?: (
-    element: HTMLElement,
-    children: React.ReactNode[],
-  ) => React.ReactNode;
-  onAttribute?: (
-    name: string,
-    value: string,
-    tagName: string,
-  ) => [string, unknown] | null;
-  allowedTags?: Set<string>;
-}
-const DEFAULT_ALLOWED_TAGS: ReadonlySet<string> = new Set([
-  'a',
-  'abbr',
-  'b',
-  'blockquote',
-  'br',
-  'cite',
-  'code',
-  'del',
-  'dfn',
-  'dl',
-  'dt',
-  'em',
-  'h1',
-  'h2',
-  'h3',
-  'h4',
-  'h5',
-  'h6',
-  'hr',
-  'i',
-  'li',
-  'ol',
-  'p',
-  'pre',
-  'small',
-  'span',
-  'strong',
-  'sub',
-  'sup',
-  'time',
-  'u',
-  'ul',
-]);
+export type OnElementHandler<
+  Arg extends Record<string, unknown> = Record<string, unknown>,
+> = (
+  element: HTMLElement,
+  props: Record<string, unknown>,
+  children: React.ReactNode[],
+  extra: Arg,
+) => React.ReactNode;
 
-export function htmlStringToComponents(
+export type OnAttributeHandler<
+  Arg extends Record<string, unknown> = Record<string, unknown>,
+> = (
+  name: string,
+  value: string,
+  tagName: string,
+  extra: Arg,
+) => [string, unknown] | undefined | null;
+
+export interface HTMLToStringOptions<
+  Arg extends Record<string, unknown> = Record<string, unknown>,
+> {
+  maxDepth?: number;
+  onText?: (text: string, extra: Arg) => React.ReactNode;
+  onElement?: OnElementHandler<Arg>;
+  onAttribute?: OnAttributeHandler<Arg>;
+  allowedTags?: AllowedTagsType;
+  extraArgs?: Arg;
+}
+
+let uniqueIdCounter = 0;
+
+export function htmlStringToComponents<Arg extends Record<string, unknown>>(
   htmlString: string,
-  options: Options = {},
+  options: HTMLToStringOptions<Arg> = {},
 ) {
   const wrapper = document.createElement('template');
   wrapper.innerHTML = htmlString;
@@ -79,10 +77,11 @@ export function htmlStringToComponents(
 
   const {
     maxDepth = 10,
-    allowedTags = DEFAULT_ALLOWED_TAGS,
+    allowedTags = defaultAllowedTags,
     onAttribute,
     onElement,
     onText,
+    extraArgs = {} as Arg,
   } = options;
 
   while (queue.length > 0) {
@@ -109,9 +108,9 @@ export function htmlStringToComponents(
       // Text can be added directly if it has any non-whitespace content.
       case Node.TEXT_NODE: {
         const text = node.textContent;
-        if (text && text.trim() !== '') {
+        if (text) {
           if (onText) {
-            parent.push(onText(text));
+            parent.push(onText(text, extraArgs));
           } else {
             parent.push(text);
           }
@@ -127,7 +126,9 @@ export function htmlStringToComponents(
         }
 
         // If the tag is not allowed, skip it and its children.
-        if (!allowedTags.has(node.tagName.toLowerCase())) {
+        const tagName = node.tagName.toLowerCase();
+        const tagInfo = allowedTags[tagName as keyof typeof allowedTags];
+        if (!tagInfo) {
           continue;
         }
 
@@ -135,9 +136,58 @@ export function htmlStringToComponents(
         const children: React.ReactNode[] = [];
         let element: React.ReactNode = undefined;
 
+        // Generate props from attributes.
+        const key = `html-${uniqueIdCounter++}`; // Get the current key and then increment it.
+        const props: Record<string, unknown> = { key };
+        for (const attr of node.attributes) {
+          let name = attr.name.toLowerCase();
+
+          // Custom attribute handler.
+          if (onAttribute) {
+            const result = onAttribute(name, attr.value, tagName, extraArgs);
+            // Rewrite this attribute.
+            if (result) {
+              const [cbName, value] = result;
+              props[cbName] = value;
+              continue;
+            } else if (result === null) {
+              // Explicitly remove this attribute.
+              continue;
+            }
+          }
+
+          // Check global attributes first, then tag-specific ones.
+          const globalAttr = globalAttributes[name];
+          const tagAttr = tagInfo.attributes?.[name];
+
+          // Exit if neither global nor tag-specific attribute is allowed.
+          if (!globalAttr && !tagAttr) {
+            continue;
+          }
+
+          // Rename if needed.
+          if (typeof tagAttr === 'string') {
+            name = tagAttr;
+          } else if (typeof globalAttr === 'string') {
+            name = globalAttr;
+          }
+
+          let value: string | boolean | number = attr.value;
+
+          // Handle boolean attributes.
+          if (value === 'true') {
+            value = true;
+          } else if (value === 'false') {
+            value = false;
+          }
+
+          props[name] = value;
+        }
+
         // If onElement is provided, use it to create the element.
         if (onElement) {
-          const component = onElement(node, children);
+          const component = onElement(node, props, children, extraArgs);
+
           // Check for undefined to allow returning null.
           if (component !== undefined) {
             element = component;
@@ -146,26 +196,10 @@ export function htmlStringToComponents(
 
         // If the element wasn't created, use the default conversion.
         if (element === undefined) {
-          const props: Record<string, unknown> = {};
-          for (const attr of node.attributes) {
-            if (onAttribute) {
-              const result = onAttribute(
-                attr.name,
-                attr.value,
-                node.tagName.toLowerCase(),
-              );
-              if (result) {
-                const [name, value] = result;
-                props[name] = value;
-              }
-            } else {
-              props[attr.name] = attr.value;
-            }
-          }
           element = React.createElement(
-            node.tagName.toLowerCase(),
+            tagName,
             props,
-            children,
+            tagInfo.children !== false ? children : undefined,
           );
         }
 

@@ -1,4 +1,4 @@
-import initialState from '../initial_state';
+import { initialState } from '../initial_state';
 
 export function isDevelopment() {
   if (typeof process !== 'undefined')
@@ -20,10 +20,7 @@ export function isFeatureEnabled(feature: Features) {
 
 export function isModernEmojiEnabled() {
   try {
-    return (
-      isFeatureEnabled('modern_emojis') &&
-      localStorage.getItem('experiments')?.split(',').includes('modern_emojis')
-    );
+    return isFeatureEnabled('modern_emojis');
   } catch {
     return false;
   }
