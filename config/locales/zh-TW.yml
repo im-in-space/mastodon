@@ -782,6 +782,8 @@ zh-TW:
         view_dashboard_description: 允許使用者存取儀表板與各種指標
         view_devops: DevOps
         view_devops_description: 允許使用者存取 Sidekiq 與 pgHero 儀表板
+        view_feeds: 檢視即時內容與主題
+        view_feeds_description: 允許使用者無論伺服器設定為何皆可存取即時內容與主題
       title: 角色
     rules:
       add_new: 新增規則
@@ -825,7 +827,7 @@ zh-TW:
         title: 預設將使用者排除於搜尋引擎索引
       discovery:
         follow_recommendations: 跟隨建議
-        preamble: 呈現有趣的內容有助於 Mastodon 上一人不識的新手上路。控制各種不同的分類於您伺服器上如何被探索到。
+        preamble: 呈現有趣的內容有助於 Mastodon 上一人不識的新手上路。控制您伺服器上各類探索功能之運作方式。
         privacy: 隱私權
         profile_directory: 個人檔案目錄
         public_timelines: 公開時間軸
@@ -839,7 +841,13 @@ zh-TW:
       feed_access:
         modes:
           authenticated: 僅限已登入之使用者
+          disabled: 需要特定使用者權限
           public: 任何人
+      landing_page:
+        values:
+          about: 關於
+          local_feed: 本站時間軸
+          trends: 熱門趨勢
       registrations:
         moderation_recommandation: 對所有人開放註冊之前，請確保您有人手充足且反應靈敏的管理員團隊！
         preamble: 控制誰能於您伺服器上建立帳號。
@@ -1894,7 +1902,7 @@ zh-TW:
       followers: 僅限跟隨者
       nobody: 僅有我
       public: 所有人
-    quote_post_author: 以引用 %{acct} 之嘟文
+    quote_post_author: 已引用 %{acct} 之嘟文
     title: "%{name}：「%{quote}」"
     visibilities:
       direct: 私訊

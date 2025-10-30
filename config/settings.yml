@@ -22,7 +22,6 @@ defaults: &defaults
   flavour: 'glitch'
   skin: 'modern'
   trends: true
-  trends_as_landing_page: true
   trendable_by_default: false
   trending_status_cw: true
   hide_followers_count: false
@@ -40,6 +39,7 @@ defaults: &defaults
   backups_retention_period: 7
   captcha_enabled: false
   allow_referrer_origin: false
+  landing_page: 'trends'
 
 development:
   <<: *defaults
