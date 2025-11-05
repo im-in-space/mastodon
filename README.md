@@ -21,7 +21,7 @@ Differences from glitch-soc ([compare source](https://github.com/glitch-soc/mast
   - [Tangerine UI by Niléane (Default, Purple, Cherry)](https://github.com/nileane/TangerineUI-for-Mastodon)
 - **HARDCODED CHANGES:**
   - Additional rules blocks added in `.../features/about/components/rules.tsx` ([Glitch](app/javascript/flavours/glitch/features/about/components/rules.tsx)/[Vanilla](app/javascript/mastodon/features/about/components/rules.tsx))
-  - Additional warning about not using anonymizer email services in [`.../registrations/new.html.haml`](app/views/auth/registrations/new.html.haml#L39-L44)
+  - Additional warning about not using anonymizer email services in [`.../registrations/new.html.haml`](app/views/auth/registrations/new.html.haml#L79-L84)
   - Logo and colors set to Portal's Space Core, image [by Terton](http://tertonda.deviantart.com/art/Space-Core-268796291)
   - String changes (at least in English (but only in certain places)):
     - `Federated timeline` => `Galactic timeline`
