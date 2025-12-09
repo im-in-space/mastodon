@@ -341,8 +341,8 @@ export const composeReducer = (state = initialState, action) => {
     const isDirect = state.get('privacy') === 'direct';
     return state
       .set('quoted_status_id', isDirect ? null : status.get('id'))
-      .set('spoiler', status.get('sensitive'))
-      .set('spoiler_text', status.get('spoiler_text'))
+      .update('spoiler', spoiler => (spoiler) || !!status.get('spoiler_text'))
+      .update('spoiler_text', (spoiler_text) => spoiler_text || status.get('spoiler_text'))
       .update('privacy', (visibility) => {
         if (['public', 'unlisted'].includes(visibility) && status.get('visibility') === 'private') {
           return 'private';
@@ -530,7 +530,7 @@ export const composeReducer = (state = initialState, action) => {
       map.set('sensitive', action.status.get('sensitive'));
       map.set('language', action.status.get('language'));
       map.set('id', null);
-      map.set('quoted_status_id', action.status.getIn(['quote', 'quoted_status']));
+      map.set('quoted_status_id', action.status.getIn(['quote', 'quoted_status'], null));
       // Mastodon-authored posts can be expected to have at most one automatic approval policy
       map.set('quote_policy', action.status.getIn(['quote_approval', 'automatic', 0]) || 'nobody');
 
@@ -567,7 +567,7 @@ export const composeReducer = (state = initialState, action) => {
       map.set('idempotencyKey', uuid());
       map.set('sensitive', action.status.get('sensitive'));
       map.set('language', action.status.get('language'));
-      map.set('quoted_status_id', action.status.getIn(['quote', 'quoted_status']));
+      map.set('quoted_status_id', action.status.getIn(['quote', 'quoted_status'], null));
       // Mastodon-authored posts can be expected to have at most one automatic approval policy
       map.set('quote_policy', action.status.getIn(['quote_approval', 'automatic', 0]) || 'nobody');
 
