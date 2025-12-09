@@ -44,8 +44,7 @@ sed -i 's/theme-contrast/skin-mastodon-bird-ui-contrast/g' ../app/javascript/sty
 sed -i 's/theme-mastodon-light/skin-mastodon-bird-ui-light/g' ../app/javascript/styles/mastodon-bird-ui/_layout-multiple-columns.scss
 
 ## - Modern
-#pullOrClone "Mastodon-Modern" "https://git.gay/freeplay/Mastodon-Modern.git"
-pullOrClone "Mastodon-Modern" "https://git.gay/neatchee/Mastodon-Modern.git"
+pullOrClone "Mastodon-Modern" "https://git.gay/freeplay/Mastodon-Modern.git"
 cp Mastodon-Modern/modern.css ../app/javascript/styles/modern/style.scss
 cp Mastodon-Modern/glitch-fixes.css ../app/javascript/styles/modern/glitch-fixes.scss
 
