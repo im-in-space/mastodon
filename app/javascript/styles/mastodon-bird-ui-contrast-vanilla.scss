@@ -1,7 +1,6 @@
 // Import default (vanilla) styles
-@use 'contrast/variables';
 @use 'application';
-@use 'contrast/diff';
+@use 'mastodon/high-contrast';
 
 // Import our theme
 @use 'mastodon-bird-ui/layout-single-column';

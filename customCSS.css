@@ -2,35 +2,15 @@
 @import 'https://lucy.im-in.space/fonts/IosevkaCodeMin.css?v=28.1.0';
 
 /* temp fixes */
-/* put back some margin to the top */
-body.flavour-glitch[class*="skin-modern"] .drawer__pager {
-  margin-top: 1.5em;
-}
-
-/* z-index fix so the spoiler button doesn't go over the emoji picker  */
-body > [data-popper-placement] {
-  z-index: 150 !important;
-}
-
-/* Weird flex but ok - actions under posts with Modern */
-.layout-multiple-columns[class*='skin-modern']
-  #mastodon
-  .columns-area
-  .detailed-status__action-bar,
-.layout-multiple-columns[class*='skin-modern']
-  #mastodon
-  .columns-area
-  .picture-in-picture__footer,
-.layout-multiple-columns[class*='skin-modern']
-  #mastodon
-  .columns-area
-  .status__action-bar {
-  flex-wrap: nowrap;
+/* An important is overriding this */
+.layout-multiple-columns[class*='skin-modern'] .announcements__mastodon,
+html[data-user-theme*="modern"] .announcements__mastodon {
+  display: none !important;
 }
 
 /* Style code and pre>code */
 .status__content code {
-  background-color: var(--border-color, rgba(0, 0, 0, 20%));
+  background-color: var(--rich-text-container-color, rgba(0, 0, 0, 20%));
   border-radius: var(--radius);
   font-family: 'Iosevka Nerd Font', Iosevka, 'Iosevka Web',
     mastodon-font-monospace, monospace;
@@ -45,8 +25,8 @@ body > [data-popper-placement] {
 }
 
 /* Cleaner CW borders */
-.flavour-vanilla .content-warning::before,
-.flavour-vanilla .content-warning::after{
+html[data-user-flavour="glitch"] .content-warning::before,
+html[data-user-flavour="glitch"] .content-warning::after{
     background: #e7b01c;
 }
 
@@ -74,7 +54,7 @@ body > [data-popper-placement] {
 
 /* When the "content-type" button is shown we don't have too much space
    for the composers actions, so let's make some. */
-.flavour-glitch .compose-form__buttons {
+html[data-user-flavour="glitch"] .compose-form__buttons {
   align-items: center;
   display: flex;
   flex: 1 1 auto;
@@ -136,20 +116,20 @@ span.reactions-bar__item__emoji > img[alt^=':sticker_'] {
 }
 
 /* Color some status */
-.status[data-status-by='@kdy'] {
+.status__wrapper[data-status-by='@kdy'] {
   box-shadow: inset 0 40px 40px 0 rgba(233, 30, 99, 20%);
 }
 
-.status[data-status-by='@status'],
-.status[data-status-by^='@status@'] {
+.status__wrapper[data-status-by='@status'],
+.status__wrapper[data-status-by^='@status@'] {
   box-shadow: inset 0 40px 40px 0 rgba(255, 165, 31, 20%);
 }
 
-.status[data-status-by*='@bird.makeup'] {
+.status__wrapper[data-status-by*='@bird.makeup'] {
   box-shadow: inset 0 40px 40px 0 rgba(23, 120, 179, 15%);
 }
 
-.status[data-status-by*='@threads.net'] {
+.status__wrapper[data-status-by*='@threads.net'] {
   box-shadow: inset 0 40px 40px 0 rgba(0, 0, 0, 20%);
 }
 

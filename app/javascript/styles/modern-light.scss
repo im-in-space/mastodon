@@ -3,5 +3,5 @@ $ui-highlight-color: $classic-highlight-color !default;
 
 @use 'application';
 @use 'modern/style';
-@use 'mastodon-light/diff';
+@use 'mastodon-light';
 @use 'modern/vanilla-diff';
