@@ -115,6 +115,7 @@ class Status extends ImmutablePureComponent {
     muted: PropTypes.bool,
     hidden: PropTypes.bool,
     unread: PropTypes.bool,
+    showActions: PropTypes.bool,
     prepend: PropTypes.string,
     withDismiss: PropTypes.bool,
     isQuotedPost: PropTypes.bool,
@@ -465,7 +466,8 @@ class Status extends ImmutablePureComponent {
       onOpenMedia,
       notification,
       history,
-      isQuotedPost,
+      showActions = true,
+      isQuotedPost = false,
       ...other
     } = this.props;
     let attachments = null;
@@ -763,7 +765,7 @@ class Status extends ImmutablePureComponent {
             {/* This is a glitch-soc addition to have a placeholder */}
             {!expanded && <MentionsPlaceholder status={status} />}
 
-            {!isQuotedPost &&
+            {(showActions && !isQuotedPost) &&
               <StatusActionBar
                 status={status}
                 account={status.get('account')}
