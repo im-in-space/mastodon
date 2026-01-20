@@ -41,6 +41,7 @@ git reset --hard HEAD
 git checkout nightly && git pull
 git apply ../../_fix-mastodon-bird-ui.patch
 bash scripts/install-to-mastodon.sh --path ../..
+cd ..
 
 ## - Modern
 pullOrClone "Mastodon-Modern" "https://git.gay/freeplay/Mastodon-Modern.git"
