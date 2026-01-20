@@ -183,7 +183,7 @@ class ApplicationController < ActionController::Base
     return 'dark' if current_skin.include?('default') || current_skin.include?('contrast')
     return 'light' if current_skin.include?('light')
 
-    'auto'
+    'dark'
   end
 
   def contrast
