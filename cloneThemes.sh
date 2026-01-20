@@ -36,12 +36,11 @@ cp Cyberpunk-Neon/CSS/mastodon-cyberpunk-neon.css ../app/javascript/styles/_cybe
 
 ## - mastodon-bird-ui
 pullOrClone "mastodon-bird-ui" "https://github.com/ronilaukkarinen/mastodon-bird-ui.git"
-cp mastodon-bird-ui/layout-single-column.css ../app/javascript/styles/mastodon-bird-ui/_layout-single-column.scss
-cp mastodon-bird-ui/layout-multiple-columns.css ../app/javascript/styles/mastodon-bird-ui/_layout-multiple-columns.scss
-sed -i 's/theme-contrast/skin-mastodon-bird-ui-contrast/g' ../app/javascript/styles/mastodon-bird-ui/_layout-single-column.scss
-sed -i 's/theme-mastodon-light/skin-mastodon-bird-ui-light/g' ../app/javascript/styles/mastodon-bird-ui/_layout-single-column.scss
-sed -i 's/theme-contrast/skin-mastodon-bird-ui-contrast/g' ../app/javascript/styles/mastodon-bird-ui/_layout-multiple-columns.scss
-sed -i 's/theme-mastodon-light/skin-mastodon-bird-ui-light/g' ../app/javascript/styles/mastodon-bird-ui/_layout-multiple-columns.scss
+cd mastodon-bird-ui
+git reset --hard HEAD
+git checkout nightly && git pull
+git apply ../../_fix-mastodon-bird-ui.patch
+bash scripts/install-to-mastodon.sh --path ../..
 
 ## - Modern
 pullOrClone "Mastodon-Modern" "https://git.gay/freeplay/Mastodon-Modern.git"
