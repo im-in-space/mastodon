@@ -8,6 +8,7 @@
 #  description              :text             not null
 #  discoverable             :boolean          not null
 #  item_count               :integer          default(0), not null
+#  language                 :string
 #  local                    :boolean          not null
 #  name                     :string           not null
 #  original_number_of_items :integer
@@ -36,6 +37,7 @@ class Collection < ApplicationRecord
             presence: true,
             numericality: { greater_than_or_equal: 0 },
             if: :remote?
+  validates :language, language: { if: :local?, allow_nil: true }
   validate :tag_is_usable
   validate :items_do_not_exceed_limit
 
@@ -58,6 +60,10 @@ class Collection < ApplicationRecord
 
   def tag_name=(new_name)
     self.tag = Tag.find_or_create_by_names(new_name).first
+  end
+
+  def object_type
+    :featured_collection
   end
 
   private
