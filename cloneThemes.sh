@@ -37,7 +37,7 @@ cp Cyberpunk-Neon/CSS/mastodon-cyberpunk-neon.css ../app/javascript/styles/_cybe
 ## - mastodon-bird-ui
 pullOrClone "mastodon-bird-ui" "https://github.com/ronilaukkarinen/mastodon-bird-ui.git"
 cd mastodon-bird-ui
-git reset --hard HEAD
+git reset --hard HEAD^
 git checkout nightly && git pull
 git apply ../../_fix-mastodon-bird-ui.patch
 bash scripts/install-to-mastodon.sh --path ../..

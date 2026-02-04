@@ -1,5 +1,5 @@
 diff --git a/scripts/install-to-mastodon.sh b/scripts/install-to-mastodon.sh
-index 0cfaafb..9471095 100644
+index 4be71b0..b9c9778 100644
 --- a/scripts/install-to-mastodon.sh
 +++ b/scripts/install-to-mastodon.sh
 @@ -19,7 +19,7 @@ NC='\033[0m' # No Color
@@ -35,7 +35,7 @@ index 0cfaafb..9471095 100644
  
  echo -e "${GREEN}Mastodon Bird UI $VERSION${NC}"
  echo ""
-@@ -334,7 +334,8 @@ EOF
+@@ -330,7 +330,8 @@ EOF
  fi
  
  # Update themes.yml (for both new and update modes)
