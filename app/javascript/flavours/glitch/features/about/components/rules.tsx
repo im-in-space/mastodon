@@ -8,6 +8,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import type { List as ImmutableList } from 'immutable';
 
 import type { SelectItem } from '@/flavours/glitch/components/dropdown_selector';
+import { Select } from '@/flavours/glitch/components/form_fields';
 import type { RootState } from '@/flavours/glitch/store';
 import { useAppSelector } from '@/flavours/glitch/store';
 
@@ -139,7 +140,7 @@ export const RulesSection: FC<RulesSectionProps> = ({ isLoading = false }) => {
                 defaultMessage='Language'
               />
             </label>
-            <select onChange={handleLocaleChange} id='language-select'>
+            <Select onChange={handleLocaleChange} id='language-select'>
               {localeOptions.map((option) => (
                 <option
                   key={option.value}
@@ -149,7 +150,7 @@ export const RulesSection: FC<RulesSectionProps> = ({ isLoading = false }) => {
                   {option.text}
                 </option>
               ))}
-            </select>
+            </Select>
           </div>
         )}
       </Section>
