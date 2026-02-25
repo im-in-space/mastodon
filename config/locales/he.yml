@@ -14,7 +14,11 @@ he:
       one: עוקב
       other: עוקבים
       two: עוקבים
-    following: נעקבים
+    following:
+      many: נעקבים
+      one: נעקבים
+      other: נעקבים
+      two: נעקביים
     instance_actor_flash: חשבון זה הינו פועל וירטואלי המשמש לייצוג השרת עצמו ולא אף משתמש ספציפי. הוא משמש למטרות פדרציה ואין להשעותו.
     last_active: פעילות אחרונה
     link_verified_on: בעלות על קישורית זו נבדקה לאחרונה ב-%{date}
@@ -58,6 +62,7 @@ he:
         label: שינוי תפקיד
         no_role: ללא תפקיד
         title: שינוי תפקיד עבור %{username}
+      collections: אוספים
       confirm: אישור
       confirmed: אושר
       confirming: בתהליך אישור
@@ -344,6 +349,17 @@ he:
       unpublish: ביטול פרסום
       unpublished_msg: פרסום ההכרזה בוטל בהצלחה!
       updated_msg: ההכרזה עודכנה בהצלחה!
+    collections:
+      accounts: חשבונות
+      collection_title: אוספים מאת %{name}
+      contents: תוכן
+      number_of_accounts:
+        many: "%{count} חשבונות"
+        one: חשבון אחד
+        other: "%{count} חשבונות"
+        two: חשבונותיים
+      open: פתיחה
+      view_publicly: צפיה בפומבי
     critical_update_pending: עידכון קריטי ממתין
     custom_emojis:
       assign_category: הקצאת קטגוריה
@@ -701,6 +717,7 @@ he:
       cancel: ביטול
       category: קטגוריה
       category_description_html: הסיבה בגללה חשבון זה ו/או תוכנו דווחו תצוטט בתקשורת עם החשבון המדווח
+      collections: אוספים (%{count})
       comment:
         none: ללא
       comment_description_html: 'על מנת לספק עוד מידע, %{name} כתב\ה:'
@@ -730,12 +747,13 @@ he:
       report: 'דווח על #%{id}'
       reported_account: חשבון מדווח
       reported_by: דווח על ידי
+      reported_content: התוכן עליו דווח
       reported_with_application: דיווחים באמצעות יישומון
       resolved: פתור
       resolved_msg: הדו"ח נפתר בהצלחה!
       skip_to_actions: דלג/י לפעולות
       status: מצב
-      statuses: התוכן עליו דווח
+      statuses: הודעות (%{count})
       statuses_description_html: התוכן הפוגע יצוטט בתקשורת עם החשבון המדווח
       summary:
         action_preambles:
@@ -828,6 +846,7 @@ he:
         view_devops_description: מאפשר למשתמשים לגשת ללוחות המחוונים של Sidekiq ושל pgHero
         view_feeds: צפיה בפיד החי ונושאים
         view_feeds_description: מאפשר למשמתמשיםות גישה לפיד החי ופיד נושאים בלי קשר להגדרות השרת
+      requires_2fa: נדרשת הזדהות בשני גורמים
       title: תפקידים
     rules:
       add_new: הוספת כלל
@@ -2105,10 +2124,7 @@ he:
     review_link: קריאת תנאי השירות
     title: תנאי השירות של %{domain} משתנים
   themes:
-    contrast: מסטודון (ניגודיות גבוהה)
-    default: מסטודון (כהה)
-    mastodon-light: מסטודון (בהיר)
-    system: אוטומטי (לפי המערכת)
+    default: מסטודון
   time:
     formats:
       default: "%d %b %Y, %H:%M"
@@ -2133,6 +2149,8 @@ he:
     recovery_codes: קודי אחזור
     recovery_codes_regenerated: קודי האחזור יוצרו בהצלחה
     recovery_instructions_html: במידה והגישה למכשירך תאבד, ניתן לייצר קודי אחזור למטה על מנת לאחזר גישה לחשבונך בכל עת. <strong>נא לשמור על קודי הגישה במקום בטוח</strong>. לדוגמא על ידי הדפסתם ושמירתם עם מסמכים חשובים אחרים, או שימוש בתוכנה ייעודית לניהול סיסמאות וסודות.
+    resume_app_authorization: חזרה לאישור יישומון
+    role_requirement: "%{domain} דורש ממך להקים הזדהות בשני גורמים לפני שתוכלו להשתמש במסטודון."
     webauthn: מפתחות אבטחה
   user_mailer:
     announcement_published:
