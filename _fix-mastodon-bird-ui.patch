@@ -1,47 +1,15 @@
-diff --git a/scripts/install-to-mastodon.sh b/scripts/install-to-mastodon.sh
-index 4be71b0..b9c9778 100644
+diff --cc scripts/install-to-mastodon.sh
+index b62d8e1,b9c9778..0000000
 --- a/scripts/install-to-mastodon.sh
 +++ b/scripts/install-to-mastodon.sh
-@@ -19,7 +19,7 @@ NC='\033[0m' # No Color
- 
- # Default values
- MASTODON_PATH="${MASTODON_PATH:-}"
--ADD_VARIATIONS=""
-+ADD_VARIATIONS="n"
- 
- # Get script directory and version
- SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-@@ -77,7 +77,7 @@ if [ ! -d "$MASTODON_PATH" ]; then
- fi
- 
- STYLES_PATH="$MASTODON_PATH/app/javascript/styles"
--THEMES_FILE="$MASTODON_PATH/config/themes.yml"
-+#THEMES_FILE="$MASTODON_PATH/config/themes.yml"
- BIRD_UI_PATH="$STYLES_PATH/mastodon-bird-ui"
- 
- if [ ! -d "$STYLES_PATH" ]; then
-@@ -85,10 +85,10 @@ if [ ! -d "$STYLES_PATH" ]; then
-   exit 1
- fi
- 
--if [ ! -f "$THEMES_FILE" ]; then
--  echo -e "${RED}Error: themes.yml not found: $THEMES_FILE${NC}"
--  exit 1
--fi
-+#if [ ! -f "$THEMES_FILE" ]; then
-+#  echo -e "${RED}Error: themes.yml not found: $THEMES_FILE${NC}"
-+#  exit 1
-+#fi
- 
- echo -e "${GREEN}Mastodon Bird UI $VERSION${NC}"
- echo ""
-@@ -330,7 +330,8 @@ EOF
- fi
- 
- # Update themes.yml (for both new and update modes)
--if [[ "$ADD_VARIATIONS" =~ ^[Yy]$ ]] || [ -z "$UPDATE_MODE" ]; then
-+#if [[ "$ADD_VARIATIONS" =~ ^[Yy]$ ]] || [ -z "$UPDATE_MODE" ]; then
-+if false; then
-   echo ""
-   echo "Updating themes.yml..."
-   cp "$THEMES_FILE" "$THEMES_FILE.bak"
+@@@ -23,8 -19,7 +23,8 @@@ NC='\033[0m' # No Colo
+  
+  # Default values
+  MASTODON_PATH="${MASTODON_PATH:-}"
+- ADD_VARIATIONS=""
+- SET_DEFAULT=""
++ ADD_VARIATIONS="n"
+++SET_DEFAULT="n"
+  
+  # Get script directory and version
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
