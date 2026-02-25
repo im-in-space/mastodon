@@ -1,13 +1,6 @@
 $classic-highlight-color: #e7b01c;
 $ui-highlight-color: $classic-highlight-color !default;
 
-@use '@/flavours/glitch/styles/mastodon-light';
+@use '@/flavours/glitch/styles/application';
 @use 'modern/style';
 @use 'modern/glitch-fixes';
-
-#mastodon {
-  .compose-form .autosuggest-textarea__suggestions,
-  .compose-form .compose-form__buttons-wrapper {
-    background: #ecf0f4;
-  }
-}

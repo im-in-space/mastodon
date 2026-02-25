@@ -64,7 +64,7 @@ module ThemeHelper
   end
 
   def color_scheme
-    current_user&.setting_color_scheme || 'auto'
+    current_user&.setting_color_scheme || 'dark'
   end
 
   def contrast

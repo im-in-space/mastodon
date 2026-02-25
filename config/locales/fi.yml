@@ -2034,6 +2034,8 @@ fi:
     review_link: Käy käyttöehdot läpi
     title: Palvelimen %{domain} käyttöehdot muuttuvat
   themes:
+    mastodon-bird-ui-light: Mastodon Bird UI (vaalea)
+    mastodon-bird-ui-dark: Mastodon Bird UI (tumma)
     default: Mastodon
   time:
     formats:
