@@ -267,6 +267,7 @@ nl:
         demote_user_html: Gebruiker %{target} is door %{name} gedegradeerd
         destroy_announcement_html: "%{name} heeft de mededeling %{target} verwijderd"
         destroy_canonical_email_block_html: "%{name} deblokkeerde e-mail met de hash %{target}"
+        destroy_collection_html: "%{name} heeft een verzameling van %{target} verwijderd"
         destroy_custom_emoji_html: "%{name} verwijderde de emoji %{target}"
         destroy_domain_allow_html: "%{name} heeft de federatie met het domein %{target} afgekeurd"
         destroy_domain_block_html: Domein %{target} is door %{name} gedeblokkeerd
@@ -306,6 +307,7 @@ nl:
         unsilence_account_html: Beperking van account %{target} is door %{name} opgeheven
         unsuspend_account_html: Opschorten van account %{target} is door %{name} opgeheven
         update_announcement_html: "%{name} heeft de mededeling %{target} bijgewerkt"
+        update_collection_html: "%{name} heeft een verzameling van %{target} bijgewerkt"
         update_custom_emoji_html: Emoji %{target} is door %{name} bijgewerkt
         update_domain_block_html: "%{name} heeft de domeinblokkade bijgewerkt voor %{target}"
         update_ip_block_html: "%{name} wijzigde de IP-regel voor %{target}"
@@ -349,7 +351,7 @@ nl:
         one: 1 account
         other: "%{count} accounts"
       open: Openen
-      view_publicly: Openbaar bericht bekijken
+      view_publicly: Openbare verzameling bekijken
     critical_update_pending: Kritieke update in behandeling
     custom_emojis:
       assign_category: Categorie toewijzen
@@ -776,6 +778,8 @@ nl:
         administrator_description: Deze gebruikers hebben volledige rechten en kun dus overal bij
         delete_user_data: Gebruikersgegevens verwijderen
         delete_user_data_description: Staat gebruikers toe om de gegevens van andere gebruikers zonder vertraging te verwijderen
+        invite_bypass_approval: Gebruikers uitnodigen zonder beoordeling
+        invite_bypass_approval_description: Staat het toe dat mensen die door deze gebruikers voor deze server zijn uitgenodigd, niet door moderatoren beoordeeld hoeven te worden
         invite_users: Gebruikers uitnodigen
         invite_users_description: Staat gebruikers toe om nieuwe mensen voor de server uit te nodigen
         manage_announcements: Aankondigingen beheren
@@ -1277,6 +1281,7 @@ nl:
     progress:
       confirm: E-mailadres bevestigen
       details: Jouw gegevens
+      list: Voortgang registratie
       review: Onze beoordeling
       rules: Regels accepteren
     providers:
@@ -1292,6 +1297,7 @@ nl:
       invited_by: 'Je kunt je registreren op %{domain} dankzij de uitnodiging die je hebt ontvangen van:'
       preamble: Deze zijn vastgesteld en worden gehandhaafd door de moderatoren van %{domain}.
       preamble_invited: Voordat je verder gaat, moet je eerst kennisnemen van de basisregels die door de moderatoren van %{domain} zijn vastgesteld.
+      read_more: Meer lezen
       title: Enkele basisregels.
       title_invited: Je bent uitgenodigd.
     security: Beveiliging

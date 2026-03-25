@@ -160,8 +160,8 @@ class Status extends ImmutablePureComponent {
   };
 
   componentDidMount () {
-    attachFullscreenListener(this.onFullScreenChange);
     this.props.dispatch(fetchStatus(this.props.params.statusId, { forceFetch: true }));
+    attachFullscreenListener(this.onFullScreenChange);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -169,7 +169,6 @@ class Status extends ImmutablePureComponent {
     let updated = false;
 
     if (props.params.statusId && state.statusId !== props.params.statusId) {
-      props.dispatch(fetchStatus(props.params.statusId, { forceFetch: true }));
       update.threadExpanded = undefined;
       update.statusId = props.params.statusId;
       updated = true;
@@ -221,6 +220,7 @@ class Status extends ImmutablePureComponent {
       dispatch(openModal({
         modalType: 'INTERACTION',
         modalProps: {
+          intent: 'favourite',
           accountId: status.getIn(['account', 'id']),
           url: status.get('uri'),
         },
@@ -250,6 +250,7 @@ class Status extends ImmutablePureComponent {
       dispatch(openModal({
         modalType: 'INTERACTION',
         modalProps: {
+          intent: 'reply',
           accountId: status.getIn(['account', 'id']),
           url: status.get('uri'),
         },
@@ -267,6 +268,7 @@ class Status extends ImmutablePureComponent {
       dispatch(openModal({
         modalType: 'INTERACTION',
         modalProps: {
+          intent: 'reblog',
           accountId: status.getIn(['account', 'id']),
           url: status.get('uri'),
         },
@@ -286,7 +288,12 @@ class Status extends ImmutablePureComponent {
     const { dispatch, history } = this.props;
 
     const handleDeleteSuccess = () => {
-      history.push('/');
+      history.push('/', {
+        // Preventing the default "scroll to right" on
+        // location change in advanced UI to avoid conflict
+        // with the composer being focused
+        preventMultiColumnAutoScroll: true
+      });
     };
 
     if (!deleteModal) {
@@ -300,13 +307,13 @@ class Status extends ImmutablePureComponent {
           // Error handling - could show error message
         });
     } else {
-      dispatch(openModal({ 
-        modalType: 'CONFIRM_DELETE_STATUS', 
-        modalProps: { 
-          statusId: status.get('id'), 
+      dispatch(openModal({
+        modalType: 'CONFIRM_DELETE_STATUS',
+        modalProps: {
+          statusId: status.get('id'),
           withRedraft,
           onDeleteSuccess: handleDeleteSuccess
-        } 
+        }
       }));
     }
   };
@@ -511,18 +518,26 @@ class Status extends ImmutablePureComponent {
     this.statusNode = c;
   };
 
-  componentDidUpdate (prevProps) {
-    const { status, descendantsIds } = this.props;
+  componentDidUpdate(prevProps) {
+    const { status, descendantsIds, params } = this.props;
 
     const isSameStatus = status && (prevProps.status?.get('id') === status.get('id'));
 
     // Only highlight replies after the initial load
     if (prevProps.descendantsIds.length && isSameStatus) {
       const newRepliesIds = difference(descendantsIds, prevProps.descendantsIds);
-      
+
       if (newRepliesIds.length) {
         this.setState({newRepliesIds});
       }
+    }
+
+    if (params.statusId && prevProps.params.statusId !== params.statusId) {
+      this.props.dispatch(fetchStatus(params.statusId, { forceFetch: true }));
+    }
+
+    if (status && status.get('id') !== this.state.loadedStatusId) {
+      this.setState({ showMedia: defaultMediaVisibility(this.props.status), loadedStatusId: status.get('id') });
     }
   }
 
@@ -657,7 +672,7 @@ class Status extends ImmutablePureComponent {
             </Hotkeys>
 
             {descendants}
-            
+
             <RefreshController
               isLocal={isLocal}
               statusId={status.get('id')}

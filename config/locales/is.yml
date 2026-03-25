@@ -267,6 +267,7 @@ is:
         demote_user_html: "%{name} lækkaði notandann %{target} í tign"
         destroy_announcement_html: "%{name} eyddi tilkynninguni %{target}"
         destroy_canonical_email_block_html: "%{name} tók af útilokun á tölvupósti með tætigildið %{target}"
+        destroy_collection_html: "%{name} fjarlægði safn frá %{target}"
         destroy_custom_emoji_html: "%{name} eyddi emoji-tákni %{target}"
         destroy_domain_allow_html: "%{name} bannaði skýjasamband með léninu %{target}"
         destroy_domain_block_html: "%{name} aflétti útilokun af léninu %{target}"
@@ -306,6 +307,7 @@ is:
         unsilence_account_html: "%{name} hætti að hylja notandaaðganginn %{target}"
         unsuspend_account_html: "%{name} tók notandaaðganginn %{target} úr frysti"
         update_announcement_html: "%{name} uppfærði tilkynningu %{target}"
+        update_collection_html: "%{name} uppfærði safn frá %{target}"
         update_custom_emoji_html: "%{name} uppfærði lyndistáknið %{target}"
         update_domain_block_html: "%{name} uppfærði útilokun lénsins %{target}"
         update_ip_block_html: "%{name} breytti reglu fyrir IP-vistfangið %{target}"
@@ -776,6 +778,8 @@ is:
         administrator_description: Notendur með þessa heimild fara framhjá öllum öðrum heimildum
         delete_user_data: Eyða gögnum notanda
         delete_user_data_description: Leyfir notendum að eyða gögnum annarra notenda án tafar
+        invite_bypass_approval: Bjóða notendum án samþykktar
+        invite_bypass_approval_description: Leyfir fólki sem boðið er á netþjóninn af þessum notendum að sleppa við samþykki umsjónaraðila
         invite_users: Bjóða notendum
         invite_users_description: Leyfir notendum að bjóða nýju fólki inn á netþjóninn
         manage_announcements: Sýsla með tilkynningar
@@ -1281,6 +1285,7 @@ is:
     progress:
       confirm: Staðfesta tölvupóstfang
       details: Nánari upplýsingar þínar
+      list: Nýskráningarferli
       review: Yfirferð okkar
       rules: Samþykkja reglur
     providers:
@@ -1296,6 +1301,7 @@ is:
       invited_by: 'Þú getur tekið þátt í %{domain} þökk sé boði sem þú fékkst frá:'
       preamble: Þær eru settar og þeim framfylgt af umsjónarmönnum %{domain}.
       preamble_invited: Áður en haldið er lengra, vinsamlegast kynntu þér reglurnar sem stjórnendur %{domain} hafa sett.
+      read_more: Lesa meira
       title: Nokkrar grunnreglur.
       title_invited: Þér hefur verið boðið.
     security: Öryggi

@@ -15,6 +15,7 @@
 #  avatar_remote_url             :string
 #  avatar_storage_schema_version :integer
 #  avatar_updated_at             :datetime
+#  collections_url               :string
 #  discoverable                  :boolean
 #  display_name                  :string           default(""), not null
 #  domain                        :string
@@ -465,8 +466,11 @@ class Account < ApplicationRecord
     save!
   end
 
-  def featureable?
-    local? && discoverable?
+  def featureable_by?(other_account)
+    return discoverable? if local?
+    return false unless Mastodon::Feature.collections_federation_enabled?
+
+    feature_policy_for_account(other_account).in?(%i(automatic manual))
   end
 
   private

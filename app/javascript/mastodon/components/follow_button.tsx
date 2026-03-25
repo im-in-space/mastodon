@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { useIdentity } from '@/mastodon/identity_context';
-import { isClientFeatureEnabled } from '@/mastodon/utils/environment';
+import { isServerFeatureEnabled } from '@/mastodon/utils/environment';
 import {
   fetchRelationships,
   followAccount,
@@ -92,6 +92,7 @@ export const FollowButton: React.FC<{
         openModal({
           modalType: 'INTERACTION',
           modalProps: {
+            intent: 'follow',
             accountId: accountId,
             url: account?.url,
           },
@@ -138,6 +139,8 @@ export const FollowButton: React.FC<{
     : messages.follow;
 
   let label;
+  let disabled =
+    relationship?.blocked_by || account?.suspended || !!account?.moved;
 
   if (!signedIn) {
     label = intl.formatMessage(followMessage);
@@ -147,12 +150,16 @@ export const FollowButton: React.FC<{
     label = <LoadingIndicator />;
   } else if (relationship.muting && withUnmute) {
     label = intl.formatMessage(messages.unmute);
+    disabled = false;
   } else if (relationship.following) {
     label = intl.formatMessage(messages.unfollow);
+    disabled = false;
   } else if (relationship.blocking) {
     label = intl.formatMessage(messages.unblock);
+    disabled = false;
   } else if (relationship.requested) {
     label = intl.formatMessage(messages.followRequestCancel);
+    disabled = false;
   } else if (relationship.followed_by && !account?.locked) {
     label = intl.formatMessage(messages.followBack);
   } else {
@@ -164,7 +171,7 @@ export const FollowButton: React.FC<{
       'button--compact': compact,
     });
 
-    if (isClientFeatureEnabled('profile_editing')) {
+    if (isServerFeatureEnabled('profile_redesign')) {
       return (
         <Link to='/profile/edit' className={buttonClasses}>
           {label}
@@ -187,11 +194,7 @@ export const FollowButton: React.FC<{
   return (
     <Button
       onClick={handleClick}
-      disabled={
-        relationship?.blocked_by ||
-        (!(relationship?.following || relationship?.requested) &&
-          (account?.suspended || !!account?.moved))
-      }
+      disabled={disabled}
       secondary={following || relationship?.blocking}
       compact={compact}
       className={classNames(className, { 'button--destructive': following })}

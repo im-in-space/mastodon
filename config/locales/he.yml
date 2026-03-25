@@ -275,6 +275,7 @@ he:
         demote_user_html: "%{name} הוריד/ה בדרגה את המשתמש %{target}"
         destroy_announcement_html: "%{name} מחק/ה את ההכרזה %{target}"
         destroy_canonical_email_block_html: "%{name} הסירו חסימה מדואל %{target}"
+        destroy_collection_html: האוסף של %{target} הוסר ע"י %{name}
         destroy_custom_emoji_html: "%{name} מחק אמוג'י של %{target}"
         destroy_domain_allow_html: "%{name} לא התיר/ה פדרציה עם הדומיין %{target}"
         destroy_domain_block_html: החסימה על מתחם %{target} הוסרה ע"י %{name}
@@ -314,6 +315,7 @@ he:
         unsilence_account_html: "%{name} ביטל/ה ההגבלה מהחשבון של %{target}"
         unsuspend_account_html: "%{name} ביטל/ה את ההשעיה של החשבון של %{target}"
         update_announcement_html: "%{name} עדכן/ה הכרזה %{target}"
+        update_collection_html: האוסף של %{target} עודכן ע"י %{name}
         update_custom_emoji_html: "%{name} עדכן/ה אמוג'י %{target}"
         update_domain_block_html: "%{name} עדכן/ה חסימת דומיין עבור %{target}"
         update_ip_block_html: "%{name} שינה כלל עבור IP %{target}"
@@ -808,6 +810,8 @@ he:
         administrator_description: משתמשים עם הרשאה זו יוכלו לעקוף כל הרשאה
         delete_user_data: מחיקת כל נתוני המשתמש
         delete_user_data_description: מאפשר למשתמשים למחוק נתוני משתמשים אחרים ללא דיחוי
+        invite_bypass_approval: הזמנה להרשם ללא הליך בדיקה
+        invite_bypass_approval_description: להרשות למשתמשים אלו להזמין א.נשים להרשם לשרת תוך עקיפת מנגנון הפיקוח על ההרשמה
         invite_users: הזמנת משתמשים
         invite_users_description: מאפשר למשתמשים להזמין אנשים חדשים לשרת
         manage_announcements: ניהול הכרזות
@@ -1319,6 +1323,7 @@ he:
     progress:
       confirm: אימות כתובת הדואל
       details: הפרטים שלך
+      list: התקדמות תהליך ההרשמה
       review: הבדיקה שלנו
       rules: הסכמה לתקנות
     providers:
@@ -1334,6 +1339,7 @@ he:
       invited_by: 'ניתן להצטרף אל %{domain} הודות להזמנה מאת:'
       preamble: אלו נקבעים ונאכפים ע"י המנחים של %{domain}.
       preamble_invited: לפני ההמשך יש להתחשב בחוקי המקום כפי שקבעו מנהלי הדיון על %{domain}.
+      read_more: לקריאה נוספת
       title: כמה חוקים בסיסיים.
       title_invited: קיבלת הזמנה.
     security: אבטחה

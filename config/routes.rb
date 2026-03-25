@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'sidekiq_unique_jobs/web' if ENV['ENABLE_SIDEKIQ_UNIQUE_JOBS_UI'] == true
 require 'sidekiq-scheduler/web'
 
 class RedirectWithVary < ActionDispatch::Routing::PathRedirect
@@ -12,7 +11,7 @@ class RedirectWithVary < ActionDispatch::Routing::PathRedirect
 end
 
 def redirect_with_vary(path)
-  RedirectWithVary.new(301, path)
+  RedirectWithVary.new(301, path, caller(1..1).first)
 end
 
 Rails.application.routes.draw do
@@ -125,6 +124,7 @@ Rails.application.routes.draw do
   scope path: 'ap', as: 'ap' do
     resources :accounts, path: 'users', only: [:show], param: :id, concerns: :account_resources do
       resources :collection_items, only: [:show]
+      resources :feature_authorizations, only: [:show], module: :activitypub
       resources :featured_collections, only: [:index], module: :activitypub
 
       resources :statuses, only: [:show] do
@@ -155,9 +155,7 @@ Rails.application.routes.draw do
   constraints(username: %r{[^@/.]+}) do
     with_options to: 'accounts#show' do
       get '/@:username', as: :short_account
-      get '/@:username/posts'
       get '/@:username/featured'
-      get '/@:username/about'
       get '/@:username/with_replies', as: :short_account_with_replies
       get '/@:username/media', as: :short_account_media
       get '/@:username/tagged/:tag', as: :short_account_tag
@@ -230,7 +228,7 @@ Rails.application.routes.draw do
 
   draw(:web_app)
 
-  get '/web/(*any)', to: redirect('/%{any}', status: 302), as: :web, defaults: { any: '' }, format: false
+  get '/web/(*any)', to: redirect(path: '/%{any}', status: 302), as: :web, defaults: { any: '' }, format: false
   get '/about',      to: 'about#show'
   get '/about/more', to: redirect('/about')
 

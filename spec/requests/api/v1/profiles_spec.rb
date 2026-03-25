@@ -48,7 +48,8 @@ RSpec.describe 'Profile API' do
           'note' => account.note,
           'show_featured' => account.show_featured,
           'show_media' => account.show_media,
-          'show_media_replies' => account.show_media_replies
+          'show_media_replies' => account.show_media_replies,
+          'featured_tags' => []
         )
     end
   end
@@ -61,6 +62,7 @@ RSpec.describe 'Profile API' do
     let(:params) do
       {
         avatar: fixture_file_upload('avatar.gif', 'image/gif'),
+        avatar_description: 'animated walking round cat',
         discoverable: true,
         display_name: "Alice Isn't Dead",
         header: fixture_file_upload('attachment.jpg', 'image/jpeg'),
@@ -88,7 +90,7 @@ RSpec.describe 'Profile API' do
         expect(response.parsed_body)
           .to include(
             error: /Validation failed/,
-            details: include(note: contain_exactly(include(error: 'ERR_TOO_LONG', description: /character limit/)))
+            details: include(note: contain_exactly(include(error: 'ERR_TOO_LONG', description: /too long/)))
           )
       end
     end
@@ -109,6 +111,7 @@ RSpec.describe 'Profile API' do
           display_name: eq("Alice Isn't Dead"),
           note: 'Hello!',
           avatar: exist,
+          avatar_description: 'animated walking round cat',
           header: exist,
           attribution_domains: ['example.com'],
           fields: contain_exactly(

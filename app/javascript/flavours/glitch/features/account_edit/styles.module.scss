@@ -5,6 +5,7 @@
   background: var(--color-bg-secondary);
   border-bottom: 1px solid var(--color-border-primary);
   overflow: hidden;
+  position: relative;
 
   @container (width >= 500px) {
     height: 160px;
@@ -16,12 +17,77 @@
     width: 100%;
     height: 100%;
   }
+
+  .imageButton {
+    top: 16px;
+    right: 24px;
+  }
 }
 
 .avatar {
   margin-top: -64px;
   margin-left: 18px;
-  border: 1px solid var(--color-border-primary);
+  position: relative;
+  width: 82px;
+
+  > :global(.account__avatar) {
+    border: 1px solid var(--color-border-primary);
+  }
+
+  .imageButton {
+    bottom: -8px;
+    right: -8px;
+  }
+}
+
+.bio {
+  unicode-bidi: plaintext;
+
+  p:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+.fieldButtons {
+  display: flex;
+  gap: 8px;
+  align-items: end;
+
+  @container (width < 500px) {
+    flex-direction: column;
+  }
+}
+
+.field {
+  padding: 12px 0;
+  display: flex;
+  gap: 4px;
+  align-items: start;
+
+  > div {
+    flex-grow: 1;
+  }
+}
+
+.verifiedLinkHelpButton {
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+
+  &:global(.button) {
+    color: var(--color-text-primary);
+
+    &:active,
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
 }
 
 // Featured Tags Page
@@ -31,7 +97,8 @@
 }
 
 .autoComplete,
-.tagSuggestions {
+.tagSuggestions,
+.maxTagsWarning {
   margin: 12px 0;
 }
 
@@ -54,38 +121,6 @@
   }
 
   > p {
-    color: var(--color-text-secondary);
-  }
-}
-
-// Modals
-
-.inputWrapper {
-  position: relative;
-}
-
-// Override input styles
-.inputWrapper .inputText {
-  font-size: 15px;
-  padding-right: 32px;
-}
-
-textarea.inputText {
-  min-height: 82px;
-  height: 100%;
-
-  // 160px is approx the height of the modal header and footer
-  max-height: calc(80vh - 160px);
-}
-
-.inputWrapper :global(.emoji-picker-dropdown) {
-  position: absolute;
-  bottom: 10px;
-  right: 8px;
-  height: 24px;
-  z-index: 1;
-
-  :global(.icon-button) {
     color: var(--color-text-secondary);
   }
 }
@@ -127,6 +162,11 @@ textarea.inputText {
     &:hover {
       background-color: var(--color-bg-brand-softer);
     }
+
+    &:disabled {
+      background-color: var(--color-bg-primary);
+      opacity: 0.5;
+    }
   }
 
   svg {
@@ -139,6 +179,53 @@ textarea.inputText {
   --default-icon-color: var(--color-text-error);
   --hover-bg-color: var(--color-bg-error-base-hover);
   --hover-icon-color: var(--color-text-on-error-base);
+}
+
+// Field component
+
+.fieldName {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.fieldValue {
+  color: var(--color-text-primary);
+  font-size: 15px;
+}
+
+// Image edit component
+
+.imageButton {
+  --default-bg-color: var(--color-bg-primary);
+
+  &,
+  &:global(.active) {
+    // Overrides the transparent background added by default with .active
+    --hover-bg-color: var(--color-bg-brand-softer-solid);
+  }
+
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 9999px;
+  box-sizing: border-box;
+  padding: 4px;
+  transition:
+    color 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.imageMenu {
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 // Item list component
@@ -184,15 +271,4 @@ textarea.inputText {
 
 .sectionSubtitle {
   color: var(--color-text-secondary);
-}
-
-// Counter component
-
-.counter {
-  margin-top: 4px;
-  font-size: 13px;
-}
-
-.counterError {
-  color: var(--color-text-error);
 }
