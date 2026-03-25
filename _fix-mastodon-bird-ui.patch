@@ -1,15 +1,119 @@
-diff --cc scripts/install-to-mastodon.sh
-index b62d8e1,b9c9778..0000000
+diff --git a/scripts/install-to-mastodon.sh b/scripts/install-to-mastodon.sh
+index ca6de0c..9db678a 100644
 --- a/scripts/install-to-mastodon.sh
 +++ b/scripts/install-to-mastodon.sh
-@@@ -23,8 -19,7 +23,8 @@@ NC='\033[0m' # No Colo
-  
-  # Default values
-  MASTODON_PATH="${MASTODON_PATH:-}"
-- ADD_VARIATIONS=""
-- SET_DEFAULT=""
-+ ADD_VARIATIONS="n"
-++SET_DEFAULT="n"
-  
-  # Get script directory and version
-  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+@@ -23,8 +23,8 @@ NC='\033[0m' # No Color
+ 
+ # Default values
+ MASTODON_PATH="${MASTODON_PATH:-}"
+-ADD_VARIATIONS=""
+-SET_DEFAULT=""
++ADD_VARIATIONS="n"
++SET_DEFAULT="n"
+ 
+ # Get script directory and version
+ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+@@ -86,7 +86,7 @@ if [ ! -d "$MASTODON_PATH" ]; then
+ fi
+ 
+ STYLES_PATH="$MASTODON_PATH/app/javascript/styles"
+-THEMES_FILE="$MASTODON_PATH/config/themes.yml"
++#THEMES_FILE="$MASTODON_PATH/config/themes.yml"
+ BIRD_UI_PATH="$STYLES_PATH/mastodon-bird-ui"
+ 
+ if [ ! -d "$STYLES_PATH" ]; then
+@@ -94,10 +94,10 @@ if [ ! -d "$STYLES_PATH" ]; then
+   exit 1
+ fi
+ 
+-if [ ! -f "$THEMES_FILE" ]; then
+-  echo -e "${RED}Error: themes.yml not found: $THEMES_FILE${NC}"
+-  exit 1
+-fi
++#if [ ! -f "$THEMES_FILE" ]; then
++#  echo -e "${RED}Error: themes.yml not found: $THEMES_FILE${NC}"
++#  exit 1
++#fi
+ 
+ echo -e "${GREEN}Mastodon Bird UI $VERSION${NC}"
+ echo ""
+@@ -312,31 +312,31 @@ add_theme_entry() {
+ }
+ 
+ # Set default theme entry
+-if [[ "$SET_DEFAULT" =~ ^[Yy]$ ]]; then
+-  echo "default: styles/mastodon-bird-ui-dark.scss" > "$THEMES_FILE"
+-  echo -e "  ${GREEN}Set:${NC} default: styles/mastodon-bird-ui-dark.scss (Bird UI Dark)"
+-  add_theme_entry "mastodon-dark" "styles/application.scss"
+-else
+-  echo "default: styles/application.scss" > "$THEMES_FILE"
+-  echo -e "  ${GREEN}Set:${NC} default: styles/application.scss"
+-  add_theme_entry "mastodon-bird-ui-dark" "styles/mastodon-bird-ui-dark.scss"
+-fi
+-add_theme_entry "mastodon-bird-ui-light" "styles/mastodon-bird-ui-light.scss"
++#if [[ "$SET_DEFAULT" =~ ^[Yy]$ ]]; then
++#  echo "default: styles/mastodon-bird-ui-dark.scss" > "$THEMES_FILE"
++#  echo -e "  ${GREEN}Set:${NC} default: styles/mastodon-bird-ui-dark.scss (Bird UI Dark)"
++#  add_theme_entry "mastodon-dark" "styles/application.scss"
++#else
++#  echo "default: styles/application.scss" > "$THEMES_FILE"
++#  echo -e "  ${GREEN}Set:${NC} default: styles/application.scss"
++#  add_theme_entry "mastodon-bird-ui-dark" "styles/mastodon-bird-ui-dark.scss"
++#fi
++#add_theme_entry "mastodon-bird-ui-light" "styles/mastodon-bird-ui-light.scss"
+ 
+ # Bird UI variations
+-if [[ "$ADD_VARIATIONS" =~ ^[Yy]$ ]]; then
+-  add_theme_entry "mastodon-bird-ui-dark-change-to-stars" "styles/mastodon-bird-ui-dark-change-to-stars.scss"
+-  add_theme_entry "hide-finnish" "styles/hide-finnish.scss"
+-  add_theme_entry "hide-finnish-change-to-stars" "styles/hide-finnish-change-to-stars.scss"
+-  add_theme_entry "hide-translate-links" "styles/hide-translate-links.scss"
+-  add_theme_entry "mastodon-bird-ui-light-hide-finnish" "styles/mastodon-bird-ui-light-hide-finnish.scss"
+-  add_theme_entry "mastodon-bird-ui-light-hide-finnish-change-to-stars" "styles/mastodon-bird-ui-light-hide-finnish-change-to-stars.scss"
+-  add_theme_entry "mastodon-bird-ui-light-hide-translate-links" "styles/mastodon-bird-ui-light-hide-translate-links.scss"
+-  add_theme_entry "mastodon-bird-ui-contrast" "styles/mastodon-bird-ui-contrast.scss"
+-  add_theme_entry "mastodon-bird-ui-accessible" "styles/mastodon-bird-ui-accessible.scss"
+-  add_theme_entry "mastodon-bird-ui-accessible-hide-finnish" "styles/mastodon-bird-ui-accessible-hide-finnish.scss"
+-  add_theme_entry "mastodon-bird-ui-accessible-plus" "styles/mastodon-bird-ui-accessible-plus.scss"
+-fi
++#if [[ "$ADD_VARIATIONS" =~ ^[Yy]$ ]]; then
++#  add_theme_entry "mastodon-bird-ui-dark-change-to-stars" "styles/mastodon-bird-ui-dark-change-to-stars.scss"
++#  add_theme_entry "hide-finnish" "styles/hide-finnish.scss"
++#  add_theme_entry "hide-finnish-change-to-stars" "styles/hide-finnish-change-to-stars.scss"
++#  add_theme_entry "hide-translate-links" "styles/hide-translate-links.scss"
++#  add_theme_entry "mastodon-bird-ui-light-hide-finnish" "styles/mastodon-bird-ui-light-hide-finnish.scss"
++#  add_theme_entry "mastodon-bird-ui-light-hide-finnish-change-to-stars" "styles/mastodon-bird-ui-light-hide-finnish-change-to-stars.scss"
++#  add_theme_entry "mastodon-bird-ui-light-hide-translate-links" "styles/mastodon-bird-ui-light-hide-translate-links.scss"
++#  add_theme_entry "mastodon-bird-ui-contrast" "styles/mastodon-bird-ui-contrast.scss"
++#  add_theme_entry "mastodon-bird-ui-accessible" "styles/mastodon-bird-ui-accessible.scss"
++#  add_theme_entry "mastodon-bird-ui-accessible-hide-finnish" "styles/mastodon-bird-ui-accessible-hide-finnish.scss"
++#  add_theme_entry "mastodon-bird-ui-accessible-plus" "styles/mastodon-bird-ui-accessible-plus.scss"
++#fi
+ 
+ # --- Step 4: Update locale files ---
+ echo ""
+@@ -439,17 +439,17 @@ echo ""
+ echo "Fixing file ownership and permissions..."
+ chmod -R a+r "$BIRD_UI_PATH"
+ find "$BIRD_UI_PATH" -type d -exec chmod a+rx {} \;
+-chown -R mastodon:mastodon "$BIRD_UI_PATH"
+-chown mastodon:mastodon "$STYLES_PATH"/mastodon-bird-ui-*.scss 2>/dev/null || true
+-chown mastodon:mastodon "$STYLES_PATH"/hide-*.scss 2>/dev/null || true
+-chown mastodon:mastodon "$THEMES_FILE"
++#chown -R mastodon:mastodon "$BIRD_UI_PATH"
++#chown mastodon:mastodon "$STYLES_PATH"/mastodon-bird-ui-*.scss 2>/dev/null || true
++#chown mastodon:mastodon "$STYLES_PATH"/hide-*.scss 2>/dev/null || true
++#chown mastodon:mastodon "$THEMES_FILE"
+ 
+ echo ""
+ echo -e "${GREEN}Done!${NC}"
+ echo ""
+-echo "themes.yml contents:"
+-cat "$THEMES_FILE"
+-echo ""
++#echo "themes.yml contents:"
++#cat "$THEMES_FILE"
++#echo ""
+ echo "Next steps:"
+ echo "  cd $MASTODON_PATH"
+ echo "  RAILS_ENV=development bundle exec rails assets:precompile && sudo systemctl restart mastodon-web"
