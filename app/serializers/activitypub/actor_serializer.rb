@@ -4,7 +4,7 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
   include RoutingHelper
   include FormattingHelper
 
-  context :security
+  context :security, :webfinger
 
   context_extensions :manually_approves_followers, :featured, :also_known_as,
                      :moved_to, :property_value, :discoverable, :suspended,
@@ -12,7 +12,7 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
 
   context_extensions :interaction_policies if Mastodon::Feature.collections_enabled?
 
-  attributes :id, :type, :following, :followers,
+  attributes :id, :webfinger, :type, :following, :followers,
              :inbox, :outbox, :featured, :featured_tags,
              :preferred_username, :name, :summary,
              :url, :manually_approves_followers,
@@ -53,6 +53,10 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
 
   def id
     ActivityPub::TagManager.instance.uri_for(object)
+  end
+
+  def webfinger
+    object.local_username_and_domain
   end
 
   def type

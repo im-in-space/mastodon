@@ -7,7 +7,6 @@ import { openModal } from '@/flavours/glitch/actions/modal';
 import { AccountBio } from '@/flavours/glitch/components/account_bio';
 import { Avatar } from '@/flavours/glitch/components/avatar';
 import { AnimateEmojiProvider } from '@/flavours/glitch/components/emoji/context';
-import { AccountNote } from '@/flavours/glitch/features/account/components/account_note';
 import FollowRequestNoteContainer from '@/flavours/glitch/features/account/containers/follow_request_note_container';
 import { useLayout } from '@/flavours/glitch/hooks/useLayout';
 import { useVisibility } from '@/flavours/glitch/hooks/useVisibility';
@@ -20,19 +19,18 @@ import type { Account } from '@/flavours/glitch/models/account';
 import { getAccountHidden } from '@/flavours/glitch/selectors/accounts';
 import { useAppSelector, useAppDispatch } from '@/flavours/glitch/store';
 
-import { ActionBar } from '../../account/components/action_bar';
-import { isRedesignEnabled } from '../common';
+import { FamiliarFollowers } from '../../../components/familiar_followers';
 
 import { AccountName } from './account_name';
-import { AccountBadges } from './badges';
+import { AccountSubscriptionForm } from './account_subscription_form';
 import { AccountButtons } from './buttons';
-import { FamiliarFollowers } from './familiar_followers';
 import { AccountHeaderFields } from './fields';
 import { AccountInfo } from './info';
 import { MemorialNote } from './memorial_note';
 import { MovedNote } from './moved_note';
-import { AccountNote as AccountNoteRedesign } from './note';
-import redesignClasses from './redesign.module.scss';
+import { AccountNote } from './note';
+import { AccountNumberFields } from './number_fields';
+import classes from './styles.module.scss';
 import { AccountTabs } from './tabs';
 
 const titleFromAccount = (account: Account) => {
@@ -51,8 +49,6 @@ export const AccountHeader: React.FC<{
   accountId: string;
   hideTabs?: boolean;
 }> = ({ accountId, hideTabs }) => {
-  const isRedesign = isRedesignEnabled();
-
   const dispatch = useAppDispatch();
   const account = useAppSelector((state) => state.accounts.get(accountId));
   const relationship = useAppSelector((state) =>
@@ -77,7 +73,7 @@ export const AccountHeader: React.FC<{
           modalType: 'IMAGE',
           modalProps: {
             src: account.avatar,
-            alt: '',
+            alt: account.avatar_description,
           },
         }),
       );
@@ -116,12 +112,7 @@ export const AccountHeader: React.FC<{
           <FollowRequestNoteContainer account={account} />
         )}
 
-        <div
-          className={classNames(
-            'account__header__image',
-            isRedesign && redesignClasses.header,
-          )}
-        >
+        <div className={classNames('account__header__image', classes.header)}>
           {me !== account.id && relationship && (
             <AccountInfo relationship={relationship} />
           )}
@@ -129,22 +120,17 @@ export const AccountHeader: React.FC<{
           {!suspendedOrHidden && (
             <img
               src={autoPlayGif ? account.header : account.header_static}
-              alt=''
+              alt={account.header_description}
               className='parallax'
             />
           )}
         </div>
 
-        <div
-          className={classNames(
-            'account__header__bar',
-            isRedesign && redesignClasses.barWrapper,
-          )}
-        >
+        <div className={classNames('account__header__bar', classes.barWrapper)}>
           <div
             className={classNames(
               'account__header__tabs',
-              isRedesign && redesignClasses.avatarWrapper,
+              classes.avatarWrapper,
             )}
           >
             <a
@@ -156,89 +142,73 @@ export const AccountHeader: React.FC<{
             >
               <Avatar
                 account={suspendedOrHidden ? undefined : account}
-                size={isRedesign ? 80 : 92}
+                alt={account.avatar_description}
+                size={80}
               />
             </a>
-
-            {!isRedesign && (
-              <AccountButtons
-                accountId={accountId}
-                className='account__header__buttons--desktop'
-              />
-            )}
           </div>
 
           <div
             className={classNames(
               'account__header__tabs__name',
-              isRedesign && redesignClasses.nameWrapper,
+              classes.displayNameWrapper,
             )}
           >
             <AccountName accountId={accountId} />
-            {isRedesign && (
-              <AccountButtons
-                accountId={accountId}
-                className={redesignClasses.buttonsDesktop}
-                noShare={!isMe || 'share' in navigator}
-                forceMenu={'share' in navigator}
-              />
-            )}
+            <AccountButtons
+              accountId={accountId}
+              className={classes.buttonsDesktop}
+              noShare={!isMe || 'share' in navigator}
+              forceMenu={'share' in navigator}
+            />
           </div>
 
-          <AccountBadges accountId={accountId} />
+          <AccountNumberFields accountId={accountId} />
 
           {!isMe && !suspendedOrHidden && (
-            <FamiliarFollowers accountId={accountId} />
-          )}
-
-          {!isRedesign && (
-            <AccountButtons
-              className='account__header__buttons--mobile'
+            <FamiliarFollowers
               accountId={accountId}
-              noShare
+              className={classes.familiarFollowers}
             />
           )}
 
           {!suspendedOrHidden && (
             <div className='account__header__extra'>
               <div className='account__header__bio'>
-                {me &&
-                  account.id !== me &&
-                  (isRedesign ? (
-                    <AccountNoteRedesign accountId={accountId} />
-                  ) : (
-                    <AccountNote accountId={accountId} />
-                  ))}
+                {me && account.id !== me && (
+                  <AccountNote accountId={accountId} />
+                )}
 
                 <AccountBio
                   showDropdown
                   accountId={accountId}
                   className={classNames(
                     'account__header__content',
-                    isRedesign && redesignClasses.bio,
+                    classes.bio,
                   )}
                 />
+
                 <AccountHeaderFields accountId={accountId} />
               </div>
+
+              {!me && account.email_subscriptions && (
+                <AccountSubscriptionForm accountId={accountId} />
+              )}
             </div>
           )}
 
-          {isRedesign && (
-            <AccountButtons
-              className={classNames(
-                redesignClasses.buttonsMobile,
-                !isIntersecting && redesignClasses.buttonsMobileIsStuck,
-              )}
-              accountId={accountId}
-              noShare
-            />
-          )}
+          <AccountButtons
+            className={classNames(
+              classes.buttonsMobile,
+              !isIntersecting && classes.buttonsMobileIsStuck,
+            )}
+            accountId={accountId}
+            noShare
+          />
         </div>
       </AnimateEmojiProvider>
 
-      <ActionBar account={account} />
-
-      {!hideTabs && !hidden && <AccountTabs acct={account.acct} />}
+      {!hideTabs && !hidden && <AccountTabs />}
       <div ref={observedRef} />
 
       <Helmet>

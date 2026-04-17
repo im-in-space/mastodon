@@ -4,7 +4,6 @@ import { FormattedMessage, useIntl, defineMessages } from 'react-intl';
 
 import { List as ImmutableList, isList } from 'immutable';
 
-import { isServerFeatureEnabled } from '@/flavours/glitch/utils/environment';
 import PersonIcon from '@/material-icons/400-24px/person.svg?react';
 import { openModal } from 'flavours/glitch/actions/modal';
 import { expandAccountMediaTimeline } from 'flavours/glitch/actions/timelines';
@@ -31,8 +30,6 @@ const messages = defineMessages({
 
 const emptyList = ImmutableList<MediaAttachment>();
 
-const redesignEnabled = isServerFeatureEnabled('profile_redesign');
-
 const selectGalleryTimeline = createAppSelector(
   [
     (_state, accountId?: string | null) => accountId,
@@ -41,29 +38,39 @@ const selectGalleryTimeline = createAppSelector(
     (state) => state.statuses,
   ],
   (accountId, timelines, accounts, statuses) => {
-    if (!accountId) {
-      return null;
-    }
-    const account = accounts.get(accountId);
-    if (!account) {
-      return null;
-    }
-
     let items = emptyList;
-    const { show_media, show_media_replies } = account;
-    // If the account disabled showing media, don't display anything.
-    if (!show_media && redesignEnabled) {
+    if (!accountId) {
       return {
         items,
         hasMore: false,
         isLoading: false,
-        showingReplies: false,
+        withReplies: false,
+      };
+    }
+    const account = accounts.get(accountId);
+    if (!account) {
+      return {
+        items,
+        hasMore: false,
+        isLoading: false,
+        withReplies: false,
       };
     }
 
-    const showingReplies = show_media_replies && redesignEnabled;
+    const { show_media, show_media_replies } = account;
+    // If the account disabled showing media, don't display anything.
+    if (!show_media) {
+      return {
+        items,
+        hasMore: false,
+        isLoading: false,
+        withReplies: false,
+      };
+    }
+
+    const withReplies = show_media_replies;
     const timeline = timelines.get(
-      `account:${accountId}:media${showingReplies ? ':with_replies' : ''}`,
+      `account:${accountId}:media${withReplies ? ':with_replies' : ''}`,
     );
     const statusIds = timeline?.get('items');
 
@@ -81,8 +88,8 @@ const selectGalleryTimeline = createAppSelector(
     return {
       items,
       hasMore: !!timeline?.get('hasMore'),
-      isLoading: !!timeline?.get('isLoading'),
-      showingReplies,
+      isLoading: timeline?.get('isLoading') ? true : false,
+      withReplies,
     };
   },
 );
@@ -94,11 +101,11 @@ export const AccountGallery: React.FC<{
   const dispatch = useAppDispatch();
   const accountId = useAccountId();
   const {
-    isLoading = true,
-    hasMore = false,
-    items: attachments = emptyList,
-    showingReplies: withReplies = false,
-  } = useAppSelector((state) => selectGalleryTimeline(state, accountId)) ?? {};
+    isLoading,
+    items: attachments,
+    hasMore,
+    withReplies,
+  } = useAppSelector((state) => selectGalleryTimeline(state, accountId));
 
   const { suspended, blockedBy, hidden } = useAccountVisibility(accountId);
 

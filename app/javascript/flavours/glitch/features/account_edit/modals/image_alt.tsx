@@ -3,6 +3,7 @@ import { useCallback, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+import { CharacterCounter } from '@/flavours/glitch/components/character_counter';
 import { Details } from '@/flavours/glitch/components/details';
 import { TextAreaField } from '@/flavours/glitch/components/form_fields';
 import { LoadingIndicator } from '@/flavours/glitch/components/loading_indicator';
@@ -84,7 +85,12 @@ export const ImageAltTextField: FC<{
   const altLimit = useAppSelector(
     (state) =>
       state.server.getIn(
-        ['server', 'configuration', 'media_attachments', 'description_limit'],
+        [
+          'server',
+          'configuration',
+          'accounts',
+          'max_header_description_length',
+        ],
         150,
       ) as number,
   );
@@ -100,23 +106,26 @@ export const ImageAltTextField: FC<{
     <>
       <img src={imageSrc} alt='' className={classes.altImage} />
 
-      <TextAreaField
-        label={
-          <FormattedMessage
-            id='account_edit.image_alt_modal.text_label'
-            defaultMessage='Alt text'
-          />
-        }
-        hint={
-          <FormattedMessage
-            id='account_edit.image_alt_modal.text_hint'
-            defaultMessage='Alt text helps screen reader users to understand your content.'
-          />
-        }
-        onChange={handleChange}
-        value={altText}
-        maxLength={altLimit}
-      />
+      <div>
+        <TextAreaField
+          label={
+            <FormattedMessage
+              id='account_edit.image_alt_modal.text_label'
+              defaultMessage='Alt text'
+            />
+          }
+          hint={
+            <FormattedMessage
+              id='account_edit.image_alt_modal.text_hint'
+              defaultMessage='Alt text helps screen reader users to understand your content.'
+            />
+          }
+          onChange={handleChange}
+          value={altText}
+          maxLength={altLimit}
+        />
+        <CharacterCounter currentString={altText} maxLength={altLimit} />
+      </div>
 
       {!hideTip && (
         <Details
@@ -130,7 +139,7 @@ export const ImageAltTextField: FC<{
         >
           <FormattedMessage
             id='account_edit.image_alt_modal.details_content'
-            defaultMessage='DO: <ul> <li>Describe yourself as pictured</li> <li>Use third person language (e.g. “Alex” instead of “me”)</li> <li>Be succinct – a few words is often enough</li> </ul> DON’T: <ul> <li>Start with “Photo of” – it’s redundant for screen readers</li> </ul> EXAMPLE: <ul> <li>“Alex wearing a green shirt and glasses”</li> </ul>'
+            defaultMessage='DO: <ul> <li>Describe yourself as pictured</li> <li>Use third person language (e.g. “Alex” instead of “me”)</li> <li>Be succinct – a few words is often enough</li> </ul> DON’T: <ul> <li>Start with “Photo of” – it’s redundant for screen readers</li> </ul> EXAMPLE: <ul> <li>“Alex wearing a green shirt and glasses”</li></ul>'
             values={{
               ul: (chunks) => <ul>{chunks}</ul>,
               li: (chunks) => <li>{chunks}</li>,
