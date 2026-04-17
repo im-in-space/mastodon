@@ -32,13 +32,6 @@ const mapDispatchToProps = dispatch => ({
       modalProps: { noEsc: true, noClose: true },
     }));
   },
-
-  onEmbedTenor() {
-    dispatch(openModal({
-      modalType: 'TENOR',
-      modalProps: { noEsc: true, noClose: true },
-    }));
-  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UploadButton);

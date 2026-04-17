@@ -11,7 +11,6 @@ Differences from glitch-soc ([compare source](https://github.com/glitch-soc/mast
 - Instance admin can link to the instance URL in his profile and appear verified
 - Mentions share the appearance of regular links in posts
 - Send a post to Google Translate (to be deprectated)
-- Tenor GIF search and embed
 - Added our Space skin (based on [Flat, Dark and Colourful!](https://userstyles.org/styles/140852/mastodon-flat-dark-and-colourful) by Dia)
 - Added third-party skins, some only for Vanilla, which requires you to run [`cloneThemes.sh`](cloneThemes.sh):
   - [Cyberpunk Neon by Roboron](https://github.com/Roboron3042/Cyberpunk-Neon/tree/master/CSS#css-themes)

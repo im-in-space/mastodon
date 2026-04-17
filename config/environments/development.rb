@@ -92,9 +92,6 @@ Rails.application.configure do
   # Otherwise, use letter_opener, which launches a browser window to view sent mail.
   config.action_mailer.delivery_method = ENV['HEROKU'] || ENV['VAGRANT'] || ENV['REMOTE_DEV'] ? :letter_opener_web : :letter_opener
 
-  # Allow usage in GitHub Codespaces
-  config.hosts << /[a-z0-9\-.]+\.preview\.app\.github\.dev/
-
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
 

@@ -48,7 +48,6 @@ import {
   COMPOSE_CONTENT_TYPE_CHANGE,
   COMPOSE_EMOJI_INSERT,
   COMPOSE_DOODLE_SET,
-  COMPOSE_TENOR_SET,
   COMPOSE_RESET,
   COMPOSE_POLL_ADD,
   COMPOSE_POLL_REMOVE,
@@ -108,7 +107,6 @@ const initialState = ImmutableMap({
   resetFileKey: Math.floor((Math.random() * 0x10000)),
   idempotencyKey: null,
   tagHistory: ImmutableList(),
-  tenor: null,
   doodle: ImmutableMap({
     fg: 'rgb(  0,    0,    0)',
     bg: 'rgb(255,  255,  255)',
@@ -636,8 +634,6 @@ export const composeReducer = (state = initialState, action) => {
     return insertEmoji(state, action.position, action.emoji, action.needsSpace);
   case COMPOSE_DOODLE_SET:
     return state.mergeIn(['doodle'], action.options);
-  case COMPOSE_TENOR_SET:
-    return state.mergeIn(['tenor'], action.options);
   case REDRAFT: {
     const do_not_federate = !!action.status.get('local_only');
     let text = action.raw_text || unescapeHTML(expandMentions(action.status));
