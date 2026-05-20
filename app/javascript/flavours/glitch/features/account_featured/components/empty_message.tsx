@@ -8,13 +8,10 @@ import { Link } from 'react-router-dom';
 import { openModal } from '@/flavours/glitch/actions/modal';
 import { Button } from '@/flavours/glitch/components/button';
 import { EmptyState } from '@/flavours/glitch/components/empty_state';
-import { LimitedAccountHint } from '@/flavours/glitch/features/account_timeline/components/limited_account_hint';
+import { LimitedAccountHint } from '@/flavours/glitch/components/limited_account_hint';
 import { areCollectionsEnabled } from '@/flavours/glitch/features/collections/utils';
 import { useCurrentAccountId } from '@/flavours/glitch/hooks/useAccountId';
 import { useAppDispatch } from '@/flavours/glitch/store';
-import ElephantImage from '@/images/elephant_ui.svg?react';
-
-import classes from './empty_message.module.scss';
 
 interface EmptyMessageProps {
   suspended: boolean;
@@ -54,14 +51,11 @@ export const EmptyMessage: React.FC<EmptyMessageProps> = ({
 
   const hasCollections = areCollectionsEnabled();
 
-  const image = <ElephantImage className={classes.image} />;
-
   if (me === accountId) {
     if (hasCollections) {
       // Return only here to insert the "Create a collection" button as the action for the empty state.
       return (
         <EmptyState
-          image={image}
           title={
             <FormattedMessage
               id='empty_column.account_featured_self.showcase_accounts'
@@ -140,5 +134,5 @@ export const EmptyMessage: React.FC<EmptyMessageProps> = ({
     }
   }
 
-  return <EmptyState title={title} message={message} image={image} />;
+  return <EmptyState title={title} message={message} />;
 };

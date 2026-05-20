@@ -6,32 +6,30 @@ import { useHistory } from 'react-router';
 
 import { List as ImmutableList } from 'immutable';
 
-import AddIcon from '@/material-icons/400-24px/add.svg?react';
-import { fetchEndorsedAccounts } from 'flavours/glitch/actions/accounts';
-import { AccountListItem } from 'flavours/glitch/components/account_list_item';
-import { ColumnBackButton } from 'flavours/glitch/components/column_back_button';
-import { LoadingIndicator } from 'flavours/glitch/components/loading_indicator';
-import { RemoteHint } from 'flavours/glitch/components/remote_hint';
+import { fetchEndorsedAccounts } from '@/flavours/glitch/actions/accounts';
+import { AccountHeader } from '@/flavours/glitch/components/account_header';
+import { AccountListItem } from '@/flavours/glitch/components/account_list_item';
+import { ColumnBackButton } from '@/flavours/glitch/components/column_back_button';
+import { LoadingIndicator } from '@/flavours/glitch/components/loading_indicator';
+import { RemoteHint } from '@/flavours/glitch/components/remote_hint';
 import {
   Article,
   ItemList,
   Scrollable,
-} from 'flavours/glitch/components/scrollable_list/components';
-import type { TruncatedListItemInfo } from 'flavours/glitch/components/truncated_list';
-import { TruncatedListItems } from 'flavours/glitch/components/truncated_list';
-import { AccountHeader } from 'flavours/glitch/features/account_timeline/components/account_header';
-import BundleColumnError from 'flavours/glitch/features/ui/components/bundle_column_error';
-import Column from 'flavours/glitch/features/ui/components/column';
-import { useAccount } from 'flavours/glitch/hooks/useAccount';
-import { useAccountId } from 'flavours/glitch/hooks/useAccountId';
-import { useAccountVisibility } from 'flavours/glitch/hooks/useAccountVisibility';
-import {
-  fetchAccountCollections,
-  selectAccountCollections,
-} from 'flavours/glitch/reducers/slices/collections';
-import { useAppDispatch, useAppSelector } from 'flavours/glitch/store';
+} from '@/flavours/glitch/components/scrollable_list/components';
+import type { TruncatedListItemInfo } from '@/flavours/glitch/components/truncated_list';
+import { TruncatedListItems } from '@/flavours/glitch/components/truncated_list';
+import BundleColumnError from '@/flavours/glitch/features/ui/components/bundle_column_error';
+import Column from '@/flavours/glitch/features/ui/components/column';
+import { useAccount } from '@/flavours/glitch/hooks/useAccount';
+import { useAccountId } from '@/flavours/glitch/hooks/useAccountId';
+import { useAccountVisibility } from '@/flavours/glitch/hooks/useAccountVisibility';
+import { me } from '@/flavours/glitch/initial_state';
+import { useAppDispatch, useAppSelector } from '@/flavours/glitch/store';
+import AddIcon from '@/material-icons/400-24px/add.svg?react';
 
 import { CollectionListItem } from '../collections/components/collection_list_item';
+import { useCollectionsCreatedBy } from '../collections/overview/created_by_you';
 import { areCollectionsEnabled } from '../collections/utils';
 
 import { EmptyMessage } from './components/empty_message';
@@ -59,10 +57,6 @@ const AccountFeatured: React.FC<{ multiColumn: boolean }> = ({
   useEffect(() => {
     if (accountId) {
       void dispatch(fetchEndorsedAccounts({ accountId }));
-
-      if (collectionsEnabled) {
-        void dispatch(fetchAccountCollections({ accountId }));
-      }
     }
   }, [accountId, dispatch]);
 
@@ -73,9 +67,8 @@ const AccountFeatured: React.FC<{ multiColumn: boolean }> = ({
         ImmutableList(),
       ) as ImmutableList<string>,
   );
-  const { collections, status: collectionsLoadStatus } = useAppSelector(
-    (state) => selectAccountCollections(state, accountId ?? null),
-  );
+  const { collections, status: collectionsLoadStatus } =
+    useCollectionsCreatedBy(accountId);
 
   const { listedCollections = [], unlistedCollections = [] } = Object.groupBy(
     collections,
@@ -181,12 +174,14 @@ const AccountFeatured: React.FC<{ multiColumn: boolean }> = ({
                   defaultMessage='Collections'
                 />
               </h2>
-              <SubheadingLink to='/collections/new' icon={AddIcon}>
-                <FormattedMessage
-                  id='account.featured.new_collection'
-                  defaultMessage='New collection'
-                />
-              </SubheadingLink>
+              {accountId === me && (
+                <SubheadingLink to='/collections/new' icon={AddIcon}>
+                  <FormattedMessage
+                    id='account.featured.new_collection'
+                    defaultMessage='New collection'
+                  />
+                </SubheadingLink>
+              )}
             </Subheading>
             {hasCollections ? (
               <ItemList>

@@ -19,6 +19,7 @@ RSpec.describe ActivityPub::ProcessFeaturedItemService do
       'featuredObject' => featured_object_uri,
       'featuredObjectType' => 'Person',
       'featureAuthorization' => feature_authorization_uri,
+      'published' => '2026-04-16T01:00:00Z',
     }
   end
   let(:stubbed_service) do
@@ -32,6 +33,17 @@ RSpec.describe ActivityPub::ProcessFeaturedItemService do
   shared_examples 'non-matching URIs' do
     context "when the item's URI does not match the collection's" do
       let(:collection) { Fabricate(:remote_collection) }
+
+      it 'does not create a collection item and returns `nil`' do
+        expect do
+          expect(subject.call(collection, object, position:)).to be_nil
+        end.to_not change(CollectionItem, :count)
+      end
+    end
+
+    context 'when the actor URI does not match the approval URI' do
+      let(:featured_object_uri) { 'https://example.com/actor/1' }
+      let(:feature_authorization_uri) { 'https://other.example.com/auth/1' }
 
       it 'does not create a collection item and returns `nil`' do
         expect do
@@ -56,6 +68,7 @@ RSpec.describe ActivityPub::ProcessFeaturedItemService do
           new_item = collection.collection_items.last
           expect(new_item.object_uri).to eq 'https://example.com/actor/1'
           expect(new_item.approval_uri).to be_nil
+          expect(new_item.created_at).to eq Time.utc(2026, 4, 16, 1)
           expect(new_item.position).to eq 3
         end
       end
@@ -70,15 +83,25 @@ RSpec.describe ActivityPub::ProcessFeaturedItemService do
       end
     end
 
-    context 'when item exists at a different position' do
+    context 'when item exists' do
       let!(:collection_item) do
         Fabricate(:collection_item, collection:, uri: featured_item_json['id'], position: 2)
       end
 
-      it 'updates the position' do
-        expect { subject.call(collection, object, position:) }.to_not change(collection.collection_items, :count)
+      context 'when no position is given' do
+        it 'does not change the position' do
+          expect { subject.call(collection, object) }.to_not change(collection.collection_items, :count)
 
-        expect(collection_item.reload.position).to eq 3
+          expect(collection_item.reload.position).to eq 2
+        end
+      end
+
+      context 'when a different position is given' do
+        it 'updates the position' do
+          expect { subject.call(collection, object, position:) }.to_not change(collection.collection_items, :count)
+
+          expect(collection_item.reload.position).to eq 3
+        end
       end
     end
 
