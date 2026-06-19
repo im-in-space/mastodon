@@ -249,7 +249,11 @@ const Compose: React.FC<{ multiColumn: boolean }> = ({ multiColumn }) => {
       />
 
       <div className='scrollable'>
-        <ComposeFormContainer />
+        <ComposeFormContainer
+          // This is fine on this single-purpose view
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus
+        />
       </div>
 
       <Helmet>
