@@ -10,7 +10,7 @@ pullOrClone () {
     git pull
     cd ..
   else
-    git clone "$2"
+    git clone "$2" "$1"
   fi
 }
 
@@ -55,3 +55,5 @@ cp Mastodon-Modern/glitch-fixes.css ../app/javascript/styles/modern/glitch-fixes
 ## - TangerineUI-for-Mastodon
 pullOrClone "TangerineUI-for-Mastodon" "https://github.com/mattbirchler/Tangerine-Neue-for-Mastodon.git"
 cp -r TangerineUI-for-Mastodon/mastodon/app/javascript/styles/* ../app/javascript/styles/
+# Missing?
+cp ../_tangerineui-granite.scss ../app/javascript/styles/tangerineui-granite.scss
