@@ -345,6 +345,7 @@ es:
       notification_emails:
         appeal: Alguien ha apelado una decisión de moderación
         digest: Enviar resumen de correos electrónicos
+        end_of_support: La versión actual de Mastodon está cerca de quedarse sin soporte
         favourite: Enviar correo electrónico cuando alguien de a favorito en su publicación
         follow: Enviar correo electrónico cuando alguien te siga
         follow_request: Enviar correo electrónico cuando alguien solicita seguirte
@@ -370,7 +371,7 @@ es:
       tag:
         listable: Permitir que esta etiqueta aparezca en las búsquedas y en el directorio del perfil
         name: Etiqueta
-        trendable: Permitir que esta etiqueta aparezca bajo tendencias
+        trendable: Permitir que esta etiqueta aparezca en tendencia
         usable: Permitir a las publicaciones usar esta etiqueta localmente
       terms_of_service:
         changelog: "¿Qué ha cambiado?"
