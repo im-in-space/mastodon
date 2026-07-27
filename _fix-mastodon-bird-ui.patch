@@ -1,19 +1,34 @@
 diff --git a/scripts/install-to-mastodon.sh b/scripts/install-to-mastodon.sh
-index d64c38a..151859f 100644
+index 1eefa63..d693b7c 100644
 --- a/scripts/install-to-mastodon.sh
 +++ b/scripts/install-to-mastodon.sh
-@@ -23,8 +23,8 @@ NC='\033[0m' # No Color
+@@ -24,8 +24,8 @@ NC='\033[0m' # No Color
  
  # Default values
  MASTODON_PATH="${MASTODON_PATH:-}"
 -ADD_VARIATIONS=""
 -SET_DEFAULT=""
-+ADD_VARIATIONS="n"
-+SET_DEFAULT="n"
++#ADD_VARIATIONS=""
++#SET_DEFAULT=""
  
  # Get script directory and version
  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-@@ -86,7 +86,7 @@ if [ ! -d "$MASTODON_PATH" ]; then
+@@ -75,10 +75,10 @@ while [[ $# -gt 0 ]]; do
+ done
+ 
+ # Check if Mastodon path is provided
+-if [ -z "$MASTODON_PATH" ]; then
+-  echo -e "${YELLOW}Mastodon path not specified.${NC}"
+-  read -p "Enter your Mastodon installation path: " MASTODON_PATH
+-fi
++#if [ -z "$MASTODON_PATH" ]; then
++#  echo -e "${YELLOW}Mastodon path not specified.${NC}"
++#  read -p "Enter your Mastodon installation path: " MASTODON_PATH
++#fi
+ 
+ # Validate Mastodon path
+ if [ ! -d "$MASTODON_PATH" ]; then
+@@ -87,7 +87,7 @@ if [ ! -d "$MASTODON_PATH" ]; then
  fi
  
  STYLES_PATH="$MASTODON_PATH/app/javascript/styles"
@@ -22,7 +37,7 @@ index d64c38a..151859f 100644
  BIRD_UI_PATH="$STYLES_PATH/mastodon-bird-ui"
  
  if [ ! -d "$STYLES_PATH" ]; then
-@@ -94,10 +94,10 @@ if [ ! -d "$STYLES_PATH" ]; then
+@@ -95,10 +95,10 @@ if [ ! -d "$STYLES_PATH" ]; then
    exit 1
  fi
  
@@ -37,8 +52,104 @@ index d64c38a..151859f 100644
  
  echo -e "${GREEN}Mastodon Bird UI $VERSION${NC}"
  echo ""
-@@ -254,21 +254,21 @@ add_theme_entry() {
- }
+@@ -115,10 +115,10 @@ if [ -f "$MASTODON_PATH/app/javascript/mastodon/components/favourite_star.tsx" ]
+ fi
+ 
+ # Ask about variations if not specified via flag
+-if [ -z "$ADD_VARIATIONS" ]; then
+-  read -p "Add/update accessible theme variations (contrast, accessible, accessible-plus)? [y/N]: " ADD_VARIATIONS
+-  ADD_VARIATIONS=${ADD_VARIATIONS:-n}
+-fi
++#if [ -z "$ADD_VARIATIONS" ]; then
++#  read -p "Add/update accessible theme variations (contrast, accessible, accessible-plus)? [y/N]: " ADD_VARIATIONS
++#  ADD_VARIATIONS=${ADD_VARIATIONS:-n}
++#fi
+ 
+ # --- Step 1: Copy module files ---
+ echo -e "${BLUE}[1/4] Updating Bird UI module files...${NC}"
+@@ -257,73 +257,73 @@ EOF
+ fi
+ 
+ # --- Step 3: Rebuild themes.yml ---
+-if [ -z "$SET_DEFAULT" ]; then
+-  read -p "Set Mastodon Bird UI (Dark) as the server default theme? [y/N]: " SET_DEFAULT
+-  SET_DEFAULT=${SET_DEFAULT:-n}
+-fi
++#if [ -z "$SET_DEFAULT" ]; then
++#  read -p "Set Mastodon Bird UI (Dark) as the server default theme? [y/N]: " SET_DEFAULT
++#  SET_DEFAULT=${SET_DEFAULT:-n}
++#fi
+ 
+ echo ""
+ echo -e "${BLUE}[3/4] Rebuilding themes.yml...${NC}"
+ 
+ # Helper: add a theme entry, verifying the SCSS file actually exists
+-add_theme_entry() {
+-  local key="$1"
+-  local value="$2"
+-  local scss_file="$MASTODON_PATH/app/javascript/$value"
+-  if [ -f "$scss_file" ]; then
+-    echo "${key}: ${value}" >> "$THEMES_FILE"
+-    echo -e "  ${GREEN}Added:${NC} $key"
+-  else
+-    echo -e "  ${YELLOW}Skipped:${NC} $key (${value} not found)"
+-  fi
+-}
++#add_theme_entry() {
++#  local key="$1"
++#  local value="$2"
++#  local scss_file="$MASTODON_PATH/app/javascript/$value"
++#  if [ -f "$scss_file" ]; then
++#    echo "${key}: ${value}" >> "$THEMES_FILE"
++#    echo -e "  ${GREEN}Added:${NC} $key"
++#  else
++#    echo -e "  ${YELLOW}Skipped:${NC} $key (${value} not found)"
++#  fi
++#}
+ 
+ # Preserve existing non-Bird-UI themes (e.g. Tangerine) before we rewrite the file,
+ # so installing Bird UI does not wipe other installed themes. Bird UI's own entries
+ # (default, mastodon-dark, mastodon-bird-ui-*) are re-added below; entries whose SCSS
+ # file no longer exists are dropped as stale.
+ PRESERVED_THEMES=""
+-if [ -f "$THEMES_FILE" ]; then
+-  while IFS= read -r theme_line; do
+-    theme_key="${theme_line%%:*}"
+-    theme_key="${theme_key//[[:space:]]/}"
+-    [ -z "$theme_key" ] && continue
+-    case "$theme_key" in
+-      default|mastodon-dark|mastodon-bird-ui-auto|mastodon-bird-ui-accessible|mastodon-bird-ui-accessible-plus)
+-        continue ;;
+-    esac
+-    theme_value="${theme_line#*:}"
+-    theme_value="${theme_value//[[:space:]]/}"
+-    if [ -n "$theme_value" ] && [ -f "$MASTODON_PATH/app/javascript/$theme_value" ]; then
+-      PRESERVED_THEMES+="${theme_key}: ${theme_value}"$'\n'
+-      echo -e "  ${GREEN}Preserved:${NC} $theme_key (existing theme)"
+-    else
+-      echo -e "  ${YELLOW}Dropped stale:${NC} $theme_key (${theme_value:-no path} not found)"
+-    fi
+-  done < "$THEMES_FILE"
+-fi
++#if [ -f "$THEMES_FILE" ]; then
++#  while IFS= read -r theme_line; do
++#    theme_key="${theme_line%%:*}"
++#    theme_key="${theme_key//[[:space:]]/}"
++#    [ -z "$theme_key" ] && continue
++#    case "$theme_key" in
++#      default|mastodon-dark|mastodon-bird-ui-auto|mastodon-bird-ui-accessible|mastodon-bird-ui-accessible-plus)
++#        continue ;;
++#    esac
++#    theme_value="${theme_line#*:}"
++#    theme_value="${theme_value//[[:space:]]/}"
++#    if [ -n "$theme_value" ] && [ -f "$MASTODON_PATH/app/javascript/$theme_value" ]; then
++#      PRESERVED_THEMES+="${theme_key}: ${theme_value}"$'\n'
++#      echo -e "  ${GREEN}Preserved:${NC} $theme_key (existing theme)"
++#    else
++#      echo -e "  ${YELLOW}Dropped stale:${NC} $theme_key (${theme_value:-no path} not found)"
++#    fi
++#  done < "$THEMES_FILE"
++#fi
  
  # Set default theme entry
 -if [[ "$SET_DEFAULT" =~ ^[Yy]$ ]]; then
@@ -70,9 +181,17 @@ index d64c38a..151859f 100644
 +#  add_theme_entry "mastodon-bird-ui-accessible-plus" "styles/mastodon-bird-ui-accessible-plus.scss"
 +#fi
  
+ # Re-add any preserved third-party themes (e.g. Tangerine) captured above
+-if [ -n "$PRESERVED_THEMES" ]; then
+-  printf '%s' "$PRESERVED_THEMES" >> "$THEMES_FILE"
+-fi
++#if [ -n "$PRESERVED_THEMES" ]; then
++#  printf '%s' "$PRESERVED_THEMES" >> "$THEMES_FILE"
++#fi
+ 
  # --- Step 4: Update locale files ---
  echo ""
-@@ -293,23 +293,23 @@ remove_stale_locale_entry() {
+@@ -348,75 +348,75 @@ remove_stale_locale_entry() {
  
  STALE_THEME_KEYS="mastodon-dark mastodon-light contrast system mastodon-bird-ui-dark mastodon-bird-ui-light mastodon-bird-ui-contrast mastodon-bird-ui-dark-change-to-stars hide-finnish hide-finnish-change-to-stars hide-translate-links mastodon-bird-ui-light-hide-finnish mastodon-bird-ui-light-hide-finnish-change-to-stars mastodon-bird-ui-light-hide-translate-links mastodon-bird-ui-accessible-hide-finnish"
  
@@ -100,6 +219,22 @@ index d64c38a..151859f 100644
 -  sed -i "s/^    default: Mastodon Bird UI.*/    default: Mastodon/" "$EN_LOCALE" 2>/dev/null
 -  sed -i "s/^    default: Mastodon Bird UI.*/    default: Mastodon/" "$FI_LOCALE" 2>/dev/null
 -fi
+-
+-add_locale_entry() {
+-  local file="$1"
+-  local key="$2"
+-  local value="$3"
+-  local lang="$4"
+-
+-  [ ! -f "$file" ] && return
+-
+-  if ! grep -q "^    ${key}:" "$file"; then
+-    if grep -q "^  themes:" "$file"; then
+-      sed -i "/^  themes:/a\\    ${key}: ${value}" "$file"
+-      echo -e "  ${GREEN}Added to $lang:${NC} $key"
+-    fi
+-  fi
+-}
 +#if [[ "$SET_DEFAULT" =~ ^[Yy]$ ]]; then
 +#  sed -i "s/^    default: Mastodon.*/    default: Mastodon Bird UI/" "$EN_LOCALE"
 +#  sed -i "s/^    default: Mastodon.*/    default: Mastodon Bird UI/" "$FI_LOCALE"
@@ -108,11 +243,22 @@ index d64c38a..151859f 100644
 +#  sed -i "s/^    default: Mastodon Bird UI.*/    default: Mastodon/" "$EN_LOCALE" 2>/dev/null
 +#  sed -i "s/^    default: Mastodon Bird UI.*/    default: Mastodon/" "$FI_LOCALE" 2>/dev/null
 +#fi
- 
- add_locale_entry() {
-   local file="$1"
-@@ -328,40 +328,40 @@ add_locale_entry() {
- }
++
++#add_locale_entry() {
++#  local file="$1"
++#  local key="$2"
++#  local value="$3"
++#  local lang="$4"
++#
++#  [ ! -f "$file" ] && return
++#
++#  if ! grep -q "^    ${key}:" "$file"; then
++#    if grep -q "^  themes:" "$file"; then
++#      sed -i "/^  themes:/a\\    ${key}: ${value}" "$file"
++#      echo -e "  ${GREEN}Added to $lang:${NC} $key"
++#    fi
++#  fi
++#}
  
  # Core theme locale entries
 -if [[ "$SET_DEFAULT" =~ ^[Yy]$ ]]; then
