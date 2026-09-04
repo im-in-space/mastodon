@@ -1,6 +1,11 @@
 $classic-highlight-color: #e7b01c;
 $ui-highlight-color: $classic-highlight-color !default;
 
-@use '@/styles/application';
-@use 'modern/style';
-@use 'modern/vanilla-diff';
+@use "@/styles/application";
+@use "modern/style";
+@use "modern/vanilla-diff";
+
+// Workaround so that precompile doesn't mix legacy variants together
+:root {
+  --skin-name: "modern-light";
+}
