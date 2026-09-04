@@ -1,1 +1,6 @@
-@use '@/styles/mastodon-bird-ui-auto';
+@use "@/styles/mastodon-bird-ui-auto";
+
+// Workaround so that precompile doesn't mix legacy variants together
+:root {
+  --skin-name: "mastodon-bird-ui-contrast";
+}
