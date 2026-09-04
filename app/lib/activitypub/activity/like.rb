@@ -5,15 +5,15 @@ class ActivityPub::Activity::Like < ActivityPub::Activity
 
   def perform
     original_status = status_from_uri(object_uri)
-    return if original_status.nil? || !original_status.account.local? || delete_arrived_first?(@json['id'])
+    return if original_status.nil? || delete_arrived_first?(@json['id'])
 
     return if maybe_process_embedded_reaction
 
-    return if @account.favourited?(original_status)
+    return if !original_status.account.local? || @account.favourited?(original_status)
 
     favourite = original_status.favourites.create!(account: @account)
 
-    LocalNotificationWorker.perform_async(original_status.account_id, favourite.id, 'Favourite', 'favourite')
+    LocalNotificationWorker.perform_async(original_status.account_id, favourite.id, 'Favourite', 'favourite') if original_status.account.local?
     Trends.statuses.register(original_status)
   end
 
