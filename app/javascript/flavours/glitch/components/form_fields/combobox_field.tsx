@@ -14,6 +14,7 @@ import { useIntl } from 'react-intl';
 
 import classNames from 'classnames';
 
+import { useMergedRefs } from '@/flavours/glitch/hooks/useMergedRefs';
 import KeyboardArrowDownIcon from '@/material-icons/400-24px/keyboard_arrow_down.svg?react';
 import KeyboardArrowUpIcon from '@/material-icons/400-24px/keyboard_arrow_up.svg?react';
 import SearchIcon from '@/material-icons/400-24px/search.svg?react';
@@ -180,7 +181,15 @@ export const ComboboxFieldWithRef = <
   Item extends ComboboxItem,
   GroupKey extends string,
 >(
-  { id, label, hint, status, required, ...otherProps }: Props<Item, GroupKey>,
+  {
+    id,
+    label,
+    hint,
+    status,
+    required,
+    wrapperClassName,
+    ...otherProps
+  }: Props<Item, GroupKey>,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) => (
   <FormFieldWrapper
@@ -189,6 +198,7 @@ export const ComboboxFieldWithRef = <
     required={required}
     status={status}
     inputId={id}
+    className={wrapperClassName}
   >
     {(inputProps) => <Combobox {...otherProps} {...inputProps} ref={ref} />}
   </FormFieldWrapper>
@@ -307,6 +317,9 @@ const ComboboxWithRef = <Item extends ComboboxItem, GroupKey extends string>(
   // Reset scroll & highlight when menu items change
   useEffect(() => {
     if (flatItems.length) {
+      // This only runs when the items change so should be safe from
+      // cascade renders.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       resetHighlight();
     }
   }, [flatItems, resetHighlight]);
@@ -498,17 +511,7 @@ const ComboboxWithRef = <Item extends ComboboxItem, GroupKey extends string>(
       );
     });
 
-  const mergeInputRefs = useCallback(
-    (element: HTMLInputElement | null) => {
-      setInputElement(element);
-      if (typeof ref === 'function') {
-        ref(element);
-      } else if (ref) {
-        ref.current = element;
-      }
-    },
-    [ref],
-  );
+  const mergedRef = useMergedRefs(ref, setInputElement);
 
   const id = useId();
   const listId = `${id}-list`;
@@ -534,7 +537,7 @@ const ComboboxWithRef = <Item extends ComboboxItem, GroupKey extends string>(
         onKeyDown={handleInputKeyDown}
         icon={icon ?? undefined}
         className={classNames(classes.input, className)}
-        ref={mergeInputRefs}
+        ref={mergedRef}
       />
       {hasMenuContent && (
         <IconButton

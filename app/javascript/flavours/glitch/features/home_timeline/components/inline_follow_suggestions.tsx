@@ -142,13 +142,27 @@ const Card: React.FC<{
       />
 
       <div className='inline-follow-suggestions__body__scrollable__card__avatar'>
-        <Link to={`/@${account?.acct}`} data-hover-card-account={account?.id}>
+        <Link
+          to={{
+            pathname: `/@${account?.acct}`,
+            state: { reference: 'inline_suggestions' },
+          }}
+          data-hover-card-account={account?.id}
+          data-hover-card-reference='inline_suggestions'
+        >
           <Avatar account={account} size={72} />
         </Link>
       </div>
 
       <div className='inline-follow-suggestions__body__scrollable__card__text-stack'>
-        <Link to={`/@${account?.acct}`} data-hover-card-account={account?.id}>
+        <Link
+          to={{
+            pathname: `/@${account?.acct}`,
+            state: { reference: 'inline_suggestions' },
+          }}
+          data-hover-card-account={account?.id}
+          data-hover-card-reference='inline_suggestions'
+        >
           <DisplayName account={account} />
         </Link>
         {firstVerifiedField ? (
@@ -158,7 +172,7 @@ const Card: React.FC<{
         )}
       </div>
 
-      <FollowButton accountId={id} />
+      <FollowButton accountId={id} reference='inline_suggestions' />
     </div>
   );
 };
@@ -174,9 +188,7 @@ export const InlineFollowSuggestions: React.FC<{ hidden?: boolean }> = ({
   const suggestions = useAppSelector((state) => state.suggestions.items);
   const isLoading = useAppSelector((state) => state.suggestions.isLoading);
   const dismissed = useAppSelector(
-    (state) =>
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-      state.settings.getIn(['dismissed_banners', DISMISSIBLE_ID]) as boolean,
+    (state) => !!state.settings.getIn(['dismissed_banners', DISMISSIBLE_ID]),
   );
 
   useEffect(() => {

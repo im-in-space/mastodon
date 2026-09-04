@@ -64,6 +64,8 @@ et:
       custom: Kohandatud
       delete: Kustuta andmed
       deleted: Kustutatud
+      deletion_irreversible: Selle konto andmed on pöördumatult kustutatud.
+      deletion_reversible_hint_html: See konto on kustutamisel ning andmed kustutatakse täielikult kuupäeval %{date}.
       demote: Vähenda õigusi
       destroyed_msg: Kasutaja %{username} andmed on nüüd lõpliku kustutamise ootel
       disable: Lukusta
@@ -1790,7 +1792,7 @@ et:
     invalid: See kutse pole kehtiv
     invited_by: 'Sind kutsus:'
     max_uses:
-      one: 1 kasutus
+      one: 1 kasutaja
       other: "%{count} kasutust"
     max_uses_prompt: Piiranguteta
     prompt: Loo ja jaga linke teistega, et lubada neil liituda selle serveriga

@@ -14,25 +14,31 @@ type Props = Omit<ComponentPropsWithoutRef<'input'>, 'type'> & {
 export const ToggleField = forwardRef<
   HTMLInputElement,
   Props & CommonFieldWrapperProps
->(({ id, label, hint, status, required, ...otherProps }, ref) => (
-  <FormFieldWrapper
-    label={label}
-    hint={hint}
-    required={required}
-    status={status}
-    inputId={id}
-    inputPlacement='inline-end'
-  >
-    {(inputProps) => <Toggle {...otherProps} {...inputProps} ref={ref} />}
-  </FormFieldWrapper>
-));
+>(
+  (
+    { id, label, hint, status, required, wrapperClassName, ...otherProps },
+    ref,
+  ) => (
+    <FormFieldWrapper
+      label={label}
+      hint={hint}
+      required={required}
+      status={status}
+      inputId={id}
+      inputPlacement='inline-end'
+      className={wrapperClassName}
+    >
+      {(inputProps) => <Toggle {...otherProps} {...inputProps} ref={ref} />}
+    </FormFieldWrapper>
+  ),
+);
 
 ToggleField.displayName = 'ToggleField';
 
 export const Toggle = forwardRef<HTMLInputElement, Props>(
   ({ className, size, ...otherProps }, ref) => (
     <span
-      className={classes.wrapper}
+      className={classNames(classes.wrapper, className)}
       style={{ '--diameter': size ? `${size}px` : undefined } as CSSProperties}
     >
       <input
@@ -41,7 +47,7 @@ export const Toggle = forwardRef<HTMLInputElement, Props>(
         className={classes.input}
         ref={ref}
       />
-      <span className={classNames(classes.toggle, className)} hidden />
+      <span className={classes.toggle} hidden />
     </span>
   ),
 );
