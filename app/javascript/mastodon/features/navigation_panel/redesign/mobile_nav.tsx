@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -6,17 +6,16 @@ import { useLocation } from 'react-router';
 
 import {
   BellIcon,
-  ChatCircleIcon,
+  ChatCircleDotsIcon,
   HouseIcon,
   MagnifyingGlassIcon,
-  HamburgerIcon,
 } from '@phosphor-icons/react';
 import { animated, useSpring } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
 
 import { closeNavigation, openNavigation } from '@/mastodon/actions/navigation';
 import { Avatar } from '@/mastodon/components/avatar';
-import { IconButton } from '@/mastodon/components/button/redesign';
+import { Menu, MenuList, MenuTrigger } from '@/mastodon/components/menu';
 import { FOCUS_TARGET } from '@/mastodon/components/navigation_focus_target';
 import { ComposeRedesignButton } from '@/mastodon/features/compose/redesign/trigger';
 import { useAccount } from '@/mastodon/hooks/useAccount';
@@ -25,12 +24,11 @@ import { selectUnreadNotificationGroupsCount } from '@/mastodon/selectors/notifi
 import { useAppDispatch, useAppSelector } from '@/mastodon/store';
 
 import { RedesignNavigationPanel } from '.';
+import { AccountMenuItems } from './account_card_and_menu';
 import classes from './mobile_nav.module.scss';
-import { MobileNavLink } from './navigation_link';
+import { MobileNavLink, MobileNavProfileButton } from './navigation_link';
 
 export const RedesignMobileNavigation: React.FC = () => {
-  const dispatch = useAppDispatch();
-
   const { accountId, signedIn } = useIdentity();
   const account = useAccount(accountId);
 
@@ -38,12 +36,8 @@ export const RedesignMobileNavigation: React.FC = () => {
     selectUnreadNotificationGroupsCount,
   );
 
-  const handleOpenNavigation = useCallback(() => {
-    dispatch(openNavigation());
-  }, [dispatch]);
-
   if (!signedIn) {
-    return null;
+    return <SlideOutNavigation />;
   }
 
   return (
@@ -62,7 +56,7 @@ export const RedesignMobileNavigation: React.FC = () => {
           >
             <FormattedMessage id='tabs_bar.search' defaultMessage='Search' />
           </MobileNavLink>
-          <MobileNavLink to='/conversations' iconComponent={ChatCircleIcon}>
+          <MobileNavLink to='/conversations' iconComponent={ChatCircleDotsIcon}>
             <FormattedMessage
               id='tabs_bar.messages'
               defaultMessage='Messages'
@@ -79,24 +73,30 @@ export const RedesignMobileNavigation: React.FC = () => {
               defaultMessage='Notifications'
             />
           </MobileNavLink>
-          <MobileNavLink
-            to={`/@${account?.acct}`}
-            customIcon={
-              <Avatar size={24} account={account} className={classes.avatar} />
-            }
-          >
-            <FormattedMessage id='tabs_bar.profile' defaultMessage='Profile' />
-          </MobileNavLink>
+          <Menu>
+            <MenuTrigger
+              as={MobileNavProfileButton}
+              avatar={
+                <Avatar
+                  size={24}
+                  account={account}
+                  className={classes.avatar}
+                />
+              }
+            >
+              <FormattedMessage
+                id='tabs_bar.account_settings'
+                defaultMessage='Account settings'
+              />
+            </MenuTrigger>
+            <MenuList placement='top-end' offset={8}>
+              <AccountMenuItems context='mobile' />
+            </MenuList>
+          </Menu>
         </ul>
         <ComposeRedesignButton inline />
-        <IconButton // Silly placeholder – will be replaced with button in column header
-          icon={HamburgerIcon}
-          variant='solid'
-          onClick={handleOpenNavigation}
-        >
-          Menu
-        </IconButton>
       </nav>
+
       <SlideOutNavigation />
     </>
   );

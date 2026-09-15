@@ -1,5 +1,3 @@
-import { useCallback } from 'react';
-
 import classNames from 'classnames';
 
 import { ComposeRedesignButton } from '@/flavours/glitch/features/compose/redesign/trigger';
@@ -7,28 +5,11 @@ import { RedesignNavigationPanel } from '@/flavours/glitch/features/navigation_p
 import { RedesignMobileNavigation } from '@/flavours/glitch/features/navigation_panel/redesign/mobile_nav';
 import { useAppSelector } from '@/flavours/glitch/store';
 import { Footer } from 'flavours/glitch/features/custom_homepage/components/footer';
-import { Header } from 'flavours/glitch/features/custom_homepage/components/header';
 
 import { useBreakpoint } from '../../hooks/useBreakpoint';
-import { useColumnsContext } from '../../util/columns_context';
 
 import { MultiColumnContent } from './multi_column_content';
 import classes from './redesign.module.scss';
-
-const TabsBarPortal: React.FC<React.ComponentProps<'div'>> = (props) => {
-  const { setTabsBarElement } = useColumnsContext();
-
-  const setRef = useCallback(
-    (element: HTMLDivElement | null) => {
-      if (element) {
-        setTabsBarElement(element);
-      }
-    },
-    [setTabsBarElement],
-  );
-
-  return <div {...props} ref={setRef} />;
-};
 
 export const ColumnsAreaRedesign: React.FC<{
   singleColumn?: boolean;
@@ -43,13 +24,10 @@ export const ColumnsAreaRedesign: React.FC<{
 
   if (minimalShell) {
     return (
-      <div className={classes.root}>
+      <div className={classNames(classes.root, classes.rootMinimal)}>
+        {isMobile && <RedesignMobileNavigation />}
         <div className={classes.main}>
-          <Header />
-
-          <TabsBarPortal className={classes.columnHeader} />
-
-          <div className={classes.content}>{children}</div>
+          <div>{children}</div>
 
           <Footer />
         </div>
@@ -65,11 +43,7 @@ export const ColumnsAreaRedesign: React.FC<{
         </div>
         {isMobile ? <RedesignMobileNavigation /> : <ComposeRedesignButton />}
 
-        <main className={classes.main}>
-          <TabsBarPortal className={classes.columnHeader} />
-
-          <div className={classes.content}>{children}</div>
-        </main>
+        <main className={classes.main}>{children}</main>
       </div>
     );
   }

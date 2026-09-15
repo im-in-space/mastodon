@@ -10,7 +10,6 @@ import { ArrowLeftIcon, ListIcon } from '@phosphor-icons/react';
 import { openNavigation } from '@/flavours/glitch/actions/navigation';
 import { getColumnSkipLinkId } from '@/flavours/glitch/features/ui/components/skip_links';
 import { useBreakpoint } from '@/flavours/glitch/features/ui/hooks/useBreakpoint';
-import { RenderIntoTabsBarPortal } from '@/flavours/glitch/features/ui/util/columns_context';
 import { useAppDispatch } from '@/flavours/glitch/store';
 import { hasReactChildren } from '@/flavours/glitch/utils/has_react_children';
 
@@ -26,12 +25,13 @@ import classes from './styles.module.scss';
 export { ColumnSettingsMenu } from './column_settings_menu';
 
 export interface ColumnHeaderProps {
-  title: string;
+  title: React.ReactNode;
   // Set to auto to display the back button based on
   // the `fromMastodon` location state
   withBackButton?: boolean | 'auto';
   withUnreadMarker?: boolean;
   extraButtons?: React.ReactNode;
+  extraStickyContent?: React.ReactNode;
   className?: string;
 }
 
@@ -40,6 +40,7 @@ export const ColumnHeader: React.FC<ColumnHeaderProps> = ({
   withBackButton,
   withUnreadMarker,
   extraButtons,
+  extraStickyContent,
   className,
   ...props
 }: ColumnHeaderProps) => {
@@ -49,14 +50,18 @@ export const ColumnHeader: React.FC<ColumnHeaderProps> = ({
   const hasBackButton =
     withBackButton === true ||
     (withBackButton === 'auto' && location.state?.fromMastodon);
+  const hasExtraStickyContent = hasReactChildren(extraStickyContent);
 
   return (
-    <RenderIntoTabsBarPortal>
-      <header
-        {...props}
-        className={classNames(className, classes.root)}
-        data-has-unread={withUnreadMarker}
-      >
+    <header
+      {...props}
+      className={classNames(
+        className,
+        classes.root,
+        hasExtraStickyContent && classes.withStickyContent,
+      )}
+    >
+      <div className={classes.layout} data-has-unread={withUnreadMarker}>
         {hasBackButton ? <BackButton /> : <MobileMenuButton />}
         <NavigationFocusTarget className={classes.title}>
           <button
@@ -79,8 +84,11 @@ export const ColumnHeader: React.FC<ColumnHeaderProps> = ({
         {hasReactChildren(extraButtons) && (
           <div className={classes.rightButtons}>{extraButtons}</div>
         )}
-      </header>
-    </RenderIntoTabsBarPortal>
+      </div>
+      {hasExtraStickyContent && (
+        <div className={classes.extraStickyContent}>{extraStickyContent}</div>
+      )}
+    </header>
   );
 };
 
