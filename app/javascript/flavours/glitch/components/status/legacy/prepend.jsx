@@ -9,6 +9,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import EditIcon from '@/material-icons/400-24px/edit.svg?react';
 import HomeIcon from '@/material-icons/400-24px/home-fill.svg?react';
 import InsertChartIcon from '@/material-icons/400-24px/insert_chart.svg?react';
+import MoodIcon from '@/material-icons/400-24px/mood.svg?react';
 import PushPinIcon from '@/material-icons/400-24px/push_pin.svg?react';
 import { LinkedDisplayName } from 'flavours/glitch/components/display_name';
 import { Icon } from 'flavours/glitch/components/icon';
@@ -49,6 +50,14 @@ export default class StatusPrepend extends PureComponent {
           id='notification.favourite'
           defaultMessage='{name} favorited your post'
           values={{ name : link }}
+        />
+      );
+    case 'reaction':
+      return (
+        <FormattedMessage
+          id='notification.reaction'
+          defaultMessage='{name} reacted to your status'
+          values={{ name: link }}
         />
       );
     case 'reblog':
@@ -121,6 +130,10 @@ export default class StatusPrepend extends PureComponent {
     case 'favourite':
       iconId = 'star';
       iconComponent = StatusLikeIcon;
+      break;
+    case 'reaction':
+      iconId = 'mood';
+      iconComponent = MoodIcon;
       break;
     case 'featured':
       iconId = 'thumb-tack';
