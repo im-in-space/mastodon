@@ -11,6 +11,7 @@ import {
 import CollectionsIcon from '@/material-icons/400-24px/category.svg?react';
 import HomeIcon from '@/material-icons/400-24px/home-fill.svg?react';
 import InsertChartIcon from '@/material-icons/400-24px/insert_chart.svg?react';
+import MoodIcon from '@/material-icons/400-24px/mood.svg?react';
 import PersonAddIcon from '@/material-icons/400-24px/person_add.svg?react';
 import { setNotificationsFilter } from 'flavours/glitch/actions/notification_groups';
 import { Icon } from 'flavours/glitch/components/icon';
@@ -26,6 +27,10 @@ const tooltips = defineMessages({
   favourites: {
     id: 'notifications.filter.favourites',
     defaultMessage: 'Favorites',
+  },
+  reactions: {
+    id: 'notifications.filter.reactions',
+    defaultMessage: 'Reactions',
   },
   boosts: { id: 'notifications.filter.boosts', defaultMessage: 'Boosts' },
   polls: { id: 'notifications.filter.polls', defaultMessage: 'Poll results' },
@@ -104,6 +109,14 @@ export const FilterBar: React.FC = () => {
           title={intl.formatMessage(tooltips.favourites)}
         >
           <Icon id='star' icon={StatusLikeIcon} />
+        </BarButton>
+        <BarButton
+          selectedFilter={selectedFilter}
+          type='reaction'
+          key='reaction'
+          title={intl.formatMessage(tooltips.reactions)}
+        >
+          <Icon id='react' icon={MoodIcon} />
         </BarButton>
         <BarButton
           selectedFilter={selectedFilter}
