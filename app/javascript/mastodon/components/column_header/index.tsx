@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { useLocation } from 'react-router';
 
 import { ArrowLeftIcon, ListIcon } from '@phosphor-icons/react';
+import type { DistributedOmit } from 'type-fest';
 
 import { openNavigation } from '@/mastodon/actions/navigation';
 import { getColumnSkipLinkId } from '@/mastodon/features/ui/components/skip_links';
@@ -52,6 +53,24 @@ export const ColumnHeader: React.FC<ColumnHeaderProps> = ({
     (withBackButton === 'auto' && location.state?.fromMastodon);
   const hasExtraStickyContent = hasReactChildren(extraStickyContent);
 
+  const handleHeaderClick = useCallback<React.MouseEventHandler>(
+    (e) => {
+      // Only scroll to top when clicking outside
+      // of the leftButton/rightButtons containers
+      if (
+        e.target instanceof Element &&
+        !e.target.matches(`
+          .${classes.leftButton},
+          .${classes.leftButton} *,
+          .${classes.rightButtons},
+          .${classes.rightButtons} *`)
+      ) {
+        scrollTop();
+      }
+    },
+    [scrollTop],
+  );
+
   return (
     <header
       {...props}
@@ -61,7 +80,14 @@ export const ColumnHeader: React.FC<ColumnHeaderProps> = ({
         hasExtraStickyContent && classes.withStickyContent,
       )}
     >
-      <div className={classes.layout} data-has-unread={withUnreadMarker}>
+      {/* eslint-disable-next-line
+          jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
+        */}
+      <div
+        className={classes.layout}
+        data-has-unread={withUnreadMarker}
+        onClick={handleHeaderClick}
+      >
         {hasBackButton ? <BackButton /> : <MobileMenuButton />}
         <NavigationFocusTarget className={classes.title}>
           <button
@@ -92,7 +118,7 @@ export const ColumnHeader: React.FC<ColumnHeaderProps> = ({
   );
 };
 
-type ColumnHeaderButtonProps = IconButtonProps & {
+type ColumnHeaderButtonProps = DistributedOmit<IconButtonProps, 'size'> & {
   showTextOnDesktop?: boolean;
 };
 
@@ -107,14 +133,14 @@ export const ColumnHeaderButton: React.FC<ColumnHeaderButtonProps> = ({
 
   if (showTextOnDesktop && !isMobile) {
     return (
-      <Button {...props} variant={variant}>
+      <Button {...props} variant={variant} size='sm'>
         {children}
       </Button>
     );
   }
 
   return (
-    <IconButton icon={icon} variant={variant} {...props}>
+    <IconButton icon={icon} {...props} variant={variant} size='sm'>
       {children}
     </IconButton>
   );
