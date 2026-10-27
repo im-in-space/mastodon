@@ -6,6 +6,27 @@ $classic-highlight-color: #ff9800;
 $ui-highlight-color: $classic-highlight-color;
 $highlight-text-color: $ui-highlight-color;
 
+// Colors for newer systems
+:root {
+  --base-color-accent: #ff9800;
+  --base-color-bg: var(--color-grey-950);
+  --base-color-bg-desktop: var(--color-grey-950);
+  --color-bg-primary: var(--color-grey-950);
+  --color-bg-secondary: var(--color-grey-900);
+  --color-bg-tertiary: var(--color-grey-800);
+  --color-bg-brand-base: var(--base-color-accent);
+  --color-bg-brand-base-hover: #ffa51f;
+}
+
+// Fix under the new 5.x design
+._navigation_panel_redesign_header__root {
+  border-radius: 0 0 20px 20px;
+}
+
+._navigation_panel_redesign__footer {
+  border-radius: 20px 20px 0 0;
+}
+
 // Some changes to the about pages
 .about-body .wrapper {
   background-color: rgba(0, 0, 0, 70%);
