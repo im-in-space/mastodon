@@ -4,6 +4,7 @@ $ui-highlight-color: $classic-highlight-color !default;
 @use "@/flavours/glitch/styles/application";
 @use "modern/style";
 @use "modern/glitch-fixes";
+@use "modern_fixes";
 
 // Workaround so that precompile doesn't mix legacy variants together
 :root {
