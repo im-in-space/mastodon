@@ -40,7 +40,7 @@ if [ -d mastodon-bird-ui ]; then
   git reset --hard HEAD^
   cd ..
 fi
-pullOrClone "mastodon-bird-ui" "https://github.com/ronilaukkarinen/mastodon-bird-ui.git"
+pullOrClone "mastodon-bird-ui" "https://github.com/rollecode/mastodon-bird-ui.git"
 cd mastodon-bird-ui
 git checkout nightly && git pull
 git apply ../../_fix-mastodon-bird-ui.patch
